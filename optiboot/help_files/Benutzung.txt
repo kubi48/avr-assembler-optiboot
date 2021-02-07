@@ -51,7 +51,7 @@ Geschwindigskeitsvorteil von Linux hin.
 Unter Linux habe ich diese Assemblerversion des optiboot Loaders mit einem
 Arduino-UNO und -Nano Board sowie mit fast allen unterstützten Prozessoren
 (siehe Liste am Ende der LiesMich Datei) getestet. 
-Nur der AT90CAN64, der ATmega1280/2560, der ATmega16u4 und der ATmega8u2/16u2 ist ungetestet.
+Nur der AT90CAN64 ist ungetestet.
 
 Die optionale Software-UART Lösung für die serielle Kommunikation braucht etwas
 mehr Platz als die Nutzung einer vorhandenen seriellen Hardware-Schnittstelle,

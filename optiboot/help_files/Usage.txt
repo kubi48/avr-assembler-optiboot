@@ -51,7 +51,7 @@ in the file Windows_usage.txt .
 
 This optiboot bootloader is tested with a Arduino-UNO and -Nano board and with 
 nearly all supported processors (see the list at the end of this ReadMe2).
-Only the AT90CAN64, the ATmega1280/2560, the ATmega16u4 and the ATmega8u2/16u2 are untestet.
+Only the AT90CAN64  is untestet.
 
 The optional implementation of a software UART requires a little more space, but should
 also match to a 512 Byte boot partition.

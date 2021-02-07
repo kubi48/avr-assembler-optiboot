@@ -18,7 +18,7 @@ Bereich Bits  Zeitüberwachung  Kontrolle
 70-79	 4	mit		mit
 80-89	 9	mit		mit
 
-Alle Vorgaben der Baudrate mit der letzten Ziffer 0-4 benutzen einem 16-Bit Zähler mit
+Alle Vorgaben der Baudrate mit der letzten Ziffer 0-4 benutzen einen 16-Bit Zähler mit
 Faktor 8 geteiltem Takt der CPU, die übrigen mit Ziffer 5-9 benutzen den 16-Bit Zähler
 mit voller Taktrate ohne Vorteiler.
 
@@ -40,7 +40,7 @@ Endziffer	Schleifen-	Auflösung	Kommentar
   4		   8		  8/CLK		Erhöhte Taktzahl eines Schleifendurchlaufs
 
   5		  10		  1/CLK		langsame Berechnung, 8 Takte nur bei 9 Bit
-  5		   6		  1/CLK
+  6		   6		  1/CLK
   7		  10		  1/CLK
   8		   8		  1/CLK		Erhöhte Taktzahl eines Schleifendurchlaufs
   9		  16		  1/CLK		Erhöhte Taktzahl eines Schleifendurchlaufs
