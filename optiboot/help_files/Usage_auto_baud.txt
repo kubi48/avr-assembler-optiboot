@@ -12,7 +12,7 @@ BAUD_RATE | checked |time  | data
 ----------+---------+------+-------
   10-19   |    9    |  -   |   -
   20-29   |    2    |  -   |   -
-  30-39   |    4    | yes  |   -
+  30-39   |    4    |  -   |   -
   40-49   |    2    | yes  |   -
   50-59   |    4    | yes  |   -
   60-69   |    2    | yes  |  yes
@@ -23,6 +23,9 @@ All settings of the baud rate with the last digit in the range 0-4 will select
 a 16-Bit counter with a clock divided by factor 8 for time measurements.
 The other settings with the last digit between 5 and 9 use a 16-Bit counter
 at full CPU clock rate for time measurement.
+The time limit check and the data check is not very usefull, because there is no
+wise action to do by the bootloader.
+So the most interesting area is between 10 and 39.
 
 All automatic selected baud rates can be used with present hardware UARTs or
 with a software solution for the UART.
@@ -39,18 +42,23 @@ last digit | delay loop pass |   resolution |
   0        |   6 or 8        |    8/CLK     |  Slow calculation, 8 cycles only for 9 Bit
   1        |      10         |    8/CLK     |
   2        |       6         |    8/CLK     |
-  3        |      16         |    8/CLK     |  Increased number of cacles for a loop pass
-  4        |       8         |    8/CLK     |  Increased number of cacles for a loop pass
+  3        |      16         |    8/CLK     |  Increased number of cycles for a loop pass
+  4        |       8         |    8/CLK     |  Increased number of cycles for a loop pass
            |                 |              |
-  5        |      10         |    1/CLK     |  Slow calculation, 8 cycles only for 9 Bit
+  5        |      10         |    1/CLK     |  Slow calculation
   6        |       6         |    1/CLK     |
   7        |      10         |    1/CLK     |
-  8        |       8         |    1/CLK     |  Increased number of cacles for a loop pass
-  9        |      16         |    1/CLK     |  Increased number of cacles for a loop pass
+  8        |       8         |    1/CLK     |  Increased number of cycles for a loop pass
+  9        |      16         |    1/CLK     |  Increased number of cycles for a loop pass
 
+To set the baud rate, the number of times the delay loop passes must be calculated.
+If the cycle count is 8 or 16, a shift operation can be used for this.
+For the other loops (cycle count 6 or 10 tics) a division must be carried out.
+Since there is no command from the AVR for this operation, a continuous subtraction
+is used. Although this function is short, it takes a long time to execute. 
 With the slow calculation for the pass count of the delay loop (last digit 0 and 5)
 for the serial communication the risk is high, that the calculation is too slow to
-end before the Stop-Bit has finished and the transmission of next Rx data has allready
+end before the Stop-Bit has finished and the transmission of next Rx data has already
 started without preparing the receiver.
 To prevent this situation, the other methods use either an accelerated subtract loop
 for the devision or shift instructions if the divisor is a power of two.

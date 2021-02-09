@@ -8,19 +8,24 @@ für die Baudraten-Berechnung und die Benutzung einer zusätzlichen Kontrolle
 des empfangenen Zeichens bestimmt.
 Die nachfolgende Liste gibt einen Überblick:
 
-Bereich Bits  Zeitüberwachung  Kontrolle
-10-19	 9	-		-
-20-29	 2	-		-
-30-39	 4	mit		-
-40-49	 2	mit		-
-50-59	 4	mit		-
-60-69	 2	mit		mit
-70-79	 4	mit		mit
-80-89	 9	mit		mit
+BAUD_RATE | Anzahl | Zeitüber- | Rx
+  Bereich | Bits   | wachung   | Kontrolle
+----------+--------+-----------+----------
+  10-19	  |    9   |    -      |    -
+  20-29   |    2   |    -      |    -
+  30-39   |    4   |    -      |    -
+  40-49   |    2   |   mit     |    -
+  50-59   |    4   |   mit     |    -
+  60-69   |    2   |   mit     |   mit
+  70-79   |    4   |   mit     |   mit
+  80-89   |    9   |   mit     |   mit
 
 Alle Vorgaben der Baudrate mit der letzten Ziffer 0-4 benutzen einen 16-Bit Zähler mit
 Faktor 8 geteiltem Takt der CPU, die übrigen mit Ziffer 5-9 benutzen den 16-Bit Zähler
 mit voller Taktrate ohne Vorteiler.
+Die Zeitüberwachung und die Rx-Kontrolle sind nicht sinnvoll,
+weil es keine sinnvolle Reaktion des Bootloaders gibt.
+Deshalb ist der interessanteste Einstellbereich zwischen 10 und 39.
 
 Alle automatisch gewählten Baudraten können mit den vorhandenen Hardware UARTs benutzt werden,
 oder auch mit einer Software UART Lösung. Natürlich sind die erzeugten Optiboot-Programme
@@ -30,21 +35,26 @@ Einstellmöglichkeiten mehr als 512 Byte braucht.
 
 Die folgende Tabelle gibt einen Überblick über die Einstell-Möglichkeiten mit Software UART:
 
-Endziffer	Schleifen-	Auflösung	Kommentar
-		taktzahl	Meßzeit
+BAUD_RATE | Schleifen- | Zähler | Auflösung | Kommentar
+Endziffer | taktzahl   |  Bits  | Meßzeit   | 
+----------+------------+--------+-----------+--------------------------------
+    0     |  6 oder 8  |    8   |   8/CLK   | langsame Berechnung, 8 Takte nur bei 9 Bit
+    1     |    10      |   16   |   8/CLK   |      
+    2     |     6      |    8   |   8/CLK   |      
+    3     |    16      |   16   |   8/CLK   | Erhöhte Taktzahl eines Schleifendurchlaufs
+    4     |     8      |    8   |   8/CLK   | Erhöhte Taktzahl eines Schleifendurchlaufs
+          |            |        |           |                   
+    5     |    10      |   16   |   1/CLK   | langsame Berechnung, 8 Takte nur bei 9 Bit
+    6     |     6      |    8   |   1/CLK   |      
+    7     |    10      |   16   |   1/CLK   |      
+    8     |     8      |    8   |   1/CLK   | Erhöhte Taktzahl eines Schleifendurchlaufs
+    9     |    16      |   16   |   1/CLK   | Erhöhte Taktzahl eines Schleifendurchlaufs
 
-  0		  6/8		  8/CLK		langsame Berechnung, 8 Takte nur bei 9 Bit
-  1		  10		  8/CLK
-  2		   6		  8/CLK
-  3		  16		  8/CLK		Erhöhte Taktzahl eines Schleifendurchlaufs
-  4		   8		  8/CLK		Erhöhte Taktzahl eines Schleifendurchlaufs
-
-  5		  10		  1/CLK		langsame Berechnung, 8 Takte nur bei 9 Bit
-  6		   6		  1/CLK
-  7		  10		  1/CLK
-  8		   8		  1/CLK		Erhöhte Taktzahl eines Schleifendurchlaufs
-  9		  16		  1/CLK		Erhöhte Taktzahl eines Schleifendurchlaufs
-
+Für die Einstellung der Baudrate muß die Durchlaufzahl der Verzögerungsschleife berechnet
+werden. Bei einer Taktzahl der Scheife von 8 oder 16 kann hierfür eine Schiebeoperation
+verwendet werden. Für die anderen Schleifen (6 oder 10 Takte) muß eine Division
+durchgeführt werden. Da hierfür ein Befehl des AVR fehlt, wird eine fortlaufende Subtraktion
+verwendet. Diese Funktion ist zwar kurz, braucht aber lange Zeit bei der Ausführung.
 Bei der langsamen Berechnung der Durchlaufzahl (Endziffer 0 und 5) für die Verzögerungszeit
 der seriellen Datenkommunikation  besteht die Gefahr, daß die Berechnung länger dauert als
 die Übertragung des Stop-Bits des empfangenen Zeichens. Somit kann das nächste Rx Zeichen
