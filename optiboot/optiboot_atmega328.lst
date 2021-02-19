@@ -1,7 +1,7 @@
 
-optiboot.elf:     Dateiformat elf32-avr
+optiboot.elf:     file format elf32-avr
 
-Sektionen:
+Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
   0 .data         00000000  00800100  00007fe8  0000025c  2**0
                   CONTENTS, ALLOC, LOAD, DATA

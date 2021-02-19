@@ -1,4 +1,9 @@
 #!/bin/bash
+# set WITH_COLORS to 2 for plain text (without colors)
+WITH_COLORS=2
+# set the language to english for english .log file
+LANG=en_EN.UTF-8
+#
 make clean
 #
 # The "big three" standard bootloaders.
