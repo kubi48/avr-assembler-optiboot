@@ -5,13 +5,13 @@ Build of Optiboot for 16000000 Hz (16.00 Mhz) operation
  baudcheck.tmp.sh build : OK!
  avr-size run : OK!
  avr-objdump run : OK!
-optiboot for atmega168 with AVR atmega168
+optiboot for atmega328p with AVR atmega328p
 Parameter Settings:
 AVR_FREQ=16000000
-BAUD_RATE=56
+BAUD_RATE=36
 UART=0
 LED_START_FLASHES=0
-LED_DATA_FLASH=
+LED_DATA_FLASH=0
 LED=
 SUPPORT_EEPROM=1
 ISP=
@@ -27,4 +27,4 @@ FORCE_RSTDISBL=
 save_vect_num=
  
 Bootloader use 512 Bytes of Flash,
-so the Application must use less than 0x3E00 Bytes of Flash 
+so the Application must use less than 0x7E00 Bytes of Flash 
