@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  26 SEP 2020 22:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  21 FEB 2021 11:02
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -837,10 +837,10 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 1.
 Package epstopdf Info: Source file: <../FIG/ablauf.eps>
-(epstopdf)                    date: 2020-07-10 19:24:39
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 16407 bytes
 (epstopdf)             Output file: <../FIG/ablauf-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-07-10 19:24:42
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 8451 bytes
 (epstopdf)             Command: <epstopdf --outfile=../FIG/ablauf-eps-converted
 -to.pdf ../FIG/ablauf.eps>
@@ -891,10 +891,10 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 3.
 Package epstopdf Info: Source file: <../FIG/avr_block.eps>
-(epstopdf)                    date: 2020-07-10 19:24:38
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 28004 bytes
 (epstopdf)             Output file: <../FIG/avr_block-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-07-10 19:24:42
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 10831 bytes
 (epstopdf)             Command: <epstopdf --outfile=../FIG/avr_block-eps-conver
 ted-to.pdf ../FIG/avr_block.eps>
@@ -937,10 +937,10 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 73.
 Package epstopdf Info: Source file: <../FIG/port.eps>
-(epstopdf)                    date: 2020-07-10 19:24:38
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 20498 bytes
 (epstopdf)             Output file: <../FIG/port-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-07-10 19:24:42
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 9283 bytes
 (epstopdf)             Command: <epstopdf --outfile=../FIG/port-eps-converted-t
 o.pdf ../FIG/port.eps>
@@ -970,10 +970,10 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 112.
 Package epstopdf Info: Source file: <../FIG/boot_pages.eps>
-(epstopdf)                    date: 2020-07-10 19:24:38
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 17182 bytes
 (epstopdf)             Output file: <../FIG/boot_pages-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-07-10 19:24:42
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 9000 bytes
 (epstopdf)             Command: <epstopdf --outfile=../FIG/boot_pages-eps-conve
 rted-to.pdf ../FIG/boot_pages.eps>
@@ -1029,10 +1029,10 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 300.
 Package epstopdf Info: Source file: <../FIG/ISP.eps>
-(epstopdf)                    date: 2020-07-10 19:24:39
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 15368 bytes
 (epstopdf)             Output file: <../FIG/ISP-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-07-10 19:24:42
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 7022 bytes
 (epstopdf)             Command: <epstopdf --outfile=../FIG/ISP-eps-converted-to
 .pdf ../FIG/ISP.eps>
@@ -1062,10 +1062,10 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 337.
 Package epstopdf Info: Source file: <../FIG/UM232.eps>
-(epstopdf)                    date: 2020-07-10 19:24:39
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 22389 bytes
 (epstopdf)             Output file: <../FIG/UM232-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-07-10 19:24:42
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 8878 bytes
 (epstopdf)             Command: <epstopdf --outfile=../FIG/UM232-eps-converted-
 to.pdf ../FIG/UM232.eps>
@@ -1269,10 +1269,10 @@ Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 554.
  [25]
 Package epstopdf Info: Source file: <../FIG/VectorMove.eps>
-(epstopdf)                    date: 2020-07-10 19:24:39
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 17155 bytes
 (epstopdf)             Output file: <../FIG/VectorMove-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-07-10 19:24:42
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 7506 bytes
 (epstopdf)             Command: <epstopdf --outfile=../FIG/VectorMove-eps-conve
 rted-to.pdf ../FIG/VectorMove.eps>
@@ -1307,11 +1307,11 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 605.
 Package epstopdf Info: Source file: <../FIG/uart_getch_timing.eps>
-(epstopdf)                    date: 2020-07-10 19:24:40
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 23675 bytes
 (epstopdf)             Output file: <../FIG/uart_getch_timing-eps-converted-to.
 pdf>
-(epstopdf)                    date: 2020-07-10 19:24:42
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 11506 bytes
 (epstopdf)             Command: <epstopdf --outfile=../FIG/uart_getch_timing-ep
 s-converted-to.pdf ../FIG/uart_getch_timing.eps>
@@ -1338,11 +1338,11 @@ Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 629.
 [27]
 Package epstopdf Info: Source file: <../FIG/uart_putch_timing.eps>
-(epstopdf)                    date: 2020-07-10 19:24:40
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 22716 bytes
 (epstopdf)             Output file: <../FIG/uart_putch_timing-eps-converted-to.
 pdf>
-(epstopdf)                    date: 2020-07-10 19:24:43
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 12416 bytes
 (epstopdf)             Command: <epstopdf --outfile=../FIG/uart_putch_timing-ep
 s-converted-to.pdf ../FIG/uart_putch_timing.eps>
@@ -1398,11 +1398,11 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 733.
 Package epstopdf Info: Source file: <../FIG/OneWire_simple.eps>
-(epstopdf)                    date: 2020-07-10 19:24:41
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 15673 bytes
 (epstopdf)             Output file: <../FIG/OneWire_simple-eps-converted-to.pdf
 >
-(epstopdf)                    date: 2020-07-10 19:24:43
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 7175 bytes
 (epstopdf)             Command: <epstopdf --outfile=../FIG/OneWire_simple-eps-c
 onverted-to.pdf ../FIG/OneWire_simple.eps>
@@ -1433,10 +1433,10 @@ Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 767.
 [31 <../FIG/OneWire_simple-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <../FIG/OneWire.eps>
-(epstopdf)                    date: 2020-07-22 13:46:35
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 36659 bytes
 (epstopdf)             Output file: <../FIG/OneWire-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-07-22 13:46:36
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 17526 bytes
 (epstopdf)             Command: <epstopdf --outfile=../FIG/OneWire-eps-converte
 d-to.pdf ../FIG/OneWire.eps>
@@ -1458,10 +1458,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 784--800
  []
 
 Package epstopdf Info: Source file: <../FIG/OneWire2.eps>
-(epstopdf)                    date: 2020-07-27 23:30:40
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 26803 bytes
 (epstopdf)             Output file: <../FIG/OneWire2-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-07-27 23:30:40
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 14292 bytes
 (epstopdf)             Command: <epstopdf --outfile=../FIG/OneWire2-eps-convert
 ed-to.pdf ../FIG/OneWire2.eps>
@@ -1491,10 +1491,10 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 811.
 Package epstopdf Info: Source file: <../FIG/AutoBaud.eps>
-(epstopdf)                    date: 2020-07-10 19:24:41
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 19161 bytes
 (epstopdf)             Output file: <../FIG/AutoBaud-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-07-10 19:24:43
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 7055 bytes
 (epstopdf)             Command: <epstopdf --outfile=../FIG/AutoBaud-eps-convert
 ed-to.pdf ../FIG/AutoBaud.eps>
@@ -2342,7 +2342,7 @@ f/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17
 .pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts
 /type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb>
 
-Output written on bootloader.pdf (84 pages, 685720 bytes).
+Output written on bootloader.pdf (84 pages, 685712 bytes).
 PDF statistics:
  1088 PDF objects out of 1200 (max. 8388607)
  953 compressed objects within 10 object streams

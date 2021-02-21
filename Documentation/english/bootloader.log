@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  24 SEP 2020 00:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  21 FEB 2021 10:59
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -792,10 +792,10 @@ l.41 ...e ATtiny841 family}{49}{subsection.3.9.15}
  (./principle.tex
 Chapter 1.
 Package epstopdf Info: Source file: <../FIG/ablauf.eps>
-(epstopdf)                    date: 2020-07-10 19:24:39
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 16407 bytes
 (epstopdf)             Output file: <../FIG/ablauf-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-07-10 19:24:42
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 8451 bytes
 (epstopdf)             Command: <epstopdf --outfile=../FIG/ablauf-eps-converted
 -to.pdf ../FIG/ablauf.eps>
@@ -821,10 +821,10 @@ Package pdftex.def Info: ../FIG/ablauf-eps-converted-to.pdf  used on input line
  (./AVRhardware.tex
 Chapter 2.
 Package epstopdf Info: Source file: <../FIG/avr_block.eps>
-(epstopdf)                    date: 2020-07-10 19:24:38
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 28004 bytes
 (epstopdf)             Output file: <../FIG/avr_block-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-07-10 19:24:42
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 10831 bytes
 (epstopdf)             Command: <epstopdf --outfile=../FIG/avr_block-eps-conver
 ted-to.pdf ../FIG/avr_block.eps>
@@ -846,10 +846,10 @@ ine 16.
 
 ] [7 <../FIG/avr_block-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <../FIG/port.eps>
-(epstopdf)                    date: 2020-07-10 19:24:38
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 20498 bytes
 (epstopdf)             Output file: <../FIG/port-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-07-10 19:24:42
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 9283 bytes
 (epstopdf)             Command: <epstopdf --outfile=../FIG/port-eps-converted-t
 o.pdf ../FIG/port.eps>
@@ -867,10 +867,10 @@ Package pdftex.def Info: ../FIG/port-eps-converted-to.pdf  used on input line 8
 (pdftex.def)             Requested size: 241.90315pt x 123.46092pt.
 [8 <../FIG/port-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <../FIG/boot_pages.eps>
-(epstopdf)                    date: 2020-07-10 19:24:38
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 17182 bytes
 (epstopdf)             Output file: <../FIG/boot_pages-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-07-10 19:24:42
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 9000 bytes
 (epstopdf)             Command: <epstopdf --outfile=../FIG/boot_pages-eps-conve
 rted-to.pdf ../FIG/boot_pages.eps>
@@ -894,10 +894,10 @@ OTSZ=3), 512 Bytes (BOOTSZ=2),
 
 [10 <../FIG/boot_pages-eps-converted-to.pdf>] [11]
 Package epstopdf Info: Source file: <../FIG/ISP.eps>
-(epstopdf)                    date: 2020-07-10 19:24:39
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 15368 bytes
 (epstopdf)             Output file: <../FIG/ISP-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-07-10 19:24:42
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 7022 bytes
 (epstopdf)             Command: <epstopdf --outfile=../FIG/ISP-eps-converted-to
 .pdf ../FIG/ISP.eps>
@@ -915,10 +915,10 @@ Package pdftex.def Info: ../FIG/ISP-eps-converted-to.pdf  used on input line 31
 (pdftex.def)             Requested size: 341.43306pt x 160.3616pt.
 [12 <../FIG/ISP-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <../FIG/UM232.eps>
-(epstopdf)                    date: 2020-07-10 19:24:39
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 22389 bytes
 (epstopdf)             Output file: <../FIG/UM232-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-07-10 19:24:42
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 8878 bytes
 (epstopdf)             Command: <epstopdf --outfile=../FIG/UM232-eps-converted-
 to.pdf ../FIG/UM232.eps>
@@ -989,10 +989,10 @@ Overfull \hbox (30.65001pt too wide) in paragraph at lines 496--536
 
 [23]
 Package epstopdf Info: Source file: <../FIG/VectorMove.eps>
-(epstopdf)                    date: 2020-07-10 19:24:39
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 17155 bytes
 (epstopdf)             Output file: <../FIG/VectorMove-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-07-10 19:24:42
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 7506 bytes
 (epstopdf)             Command: <epstopdf --outfile=../FIG/VectorMove-eps-conve
 rted-to.pdf ../FIG/VectorMove.eps>
@@ -1010,11 +1010,11 @@ line 559.
 (pdftex.def)             Requested size: 278.03807pt x 466.7426pt.
 [24] [25 <../FIG/VectorMove-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <../FIG/uart_getch_timing.eps>
-(epstopdf)                    date: 2020-07-10 19:24:40
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 23675 bytes
 (epstopdf)             Output file: <../FIG/uart_getch_timing-eps-converted-to.
 pdf>
-(epstopdf)                    date: 2020-07-10 19:24:42
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 11506 bytes
 (epstopdf)             Command: <epstopdf --outfile=../FIG/uart_getch_timing-ep
 s-converted-to.pdf ../FIG/uart_getch_timing.eps>
@@ -1033,11 +1033,11 @@ Package pdftex.def Info: ../FIG/uart_getch_timing-eps-converted-to.pdf  used on
 (pdftex.def)             Requested size: 443.6564pt x 775.89685pt.
 [26]
 Package epstopdf Info: Source file: <../FIG/uart_putch_timing.eps>
-(epstopdf)                    date: 2020-07-10 19:24:40
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 22716 bytes
 (epstopdf)             Output file: <../FIG/uart_putch_timing-eps-converted-to.
 pdf>
-(epstopdf)                    date: 2020-07-10 19:24:43
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 12416 bytes
 (epstopdf)             Command: <epstopdf --outfile=../FIG/uart_putch_timing-ep
 s-converted-to.pdf ../FIG/uart_putch_timing.eps>
@@ -1056,11 +1056,11 @@ Package pdftex.def Info: ../FIG/uart_putch_timing-eps-converted-to.pdf  used on
 [27 <../FIG/uart_getch_timing-eps-converted-to.pdf>] [28 <../FIG/uart_putch_tim
 ing-eps-converted-to.pdf>] [29]
 Package epstopdf Info: Source file: <../FIG/OneWire_simple.eps>
-(epstopdf)                    date: 2020-07-10 19:24:41
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 15673 bytes
 (epstopdf)             Output file: <../FIG/OneWire_simple-eps-converted-to.pdf
 >
-(epstopdf)                    date: 2020-07-10 19:24:43
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 7175 bytes
 (epstopdf)             Command: <epstopdf --outfile=../FIG/OneWire_simple-eps-c
 onverted-to.pdf ../FIG/OneWire_simple.eps>
@@ -1077,10 +1077,10 @@ Package pdftex.def Info: ../FIG/OneWire_simple-eps-converted-to.pdf  used on in
 put line 758.
 (pdftex.def)             Requested size: 303.13176pt x 191.71577pt.
 Package epstopdf Info: Source file: <../FIG/OneWire.eps>
-(epstopdf)                    date: 2020-07-22 13:46:35
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 36659 bytes
 (epstopdf)             Output file: <../FIG/OneWire-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-07-22 13:46:36
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 17526 bytes
 (epstopdf)             Command: <epstopdf --outfile=../FIG/OneWire-eps-converte
 d-to.pdf ../FIG/OneWire.eps>
@@ -1098,10 +1098,10 @@ e 777.
 (pdftex.def)             Requested size: 850.17418pt x 528.97496pt.
 [30 <../FIG/OneWire_simple-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <../FIG/OneWire2.eps>
-(epstopdf)                    date: 2020-07-27 23:30:40
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 26803 bytes
 (epstopdf)             Output file: <../FIG/OneWire2-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-07-27 23:30:40
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 14292 bytes
 (epstopdf)             Command: <epstopdf --outfile=../FIG/OneWire2-eps-convert
 ed-to.pdf ../FIG/OneWire2.eps>
@@ -1119,10 +1119,10 @@ ne 805.
 (pdftex.def)             Requested size: 850.17418pt x 424.5852pt.
 [31 <../FIG/OneWire-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <../FIG/AutoBaud.eps>
-(epstopdf)                    date: 2020-07-10 19:24:41
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 19161 bytes
 (epstopdf)             Output file: <../FIG/AutoBaud-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-07-10 19:24:43
+(epstopdf)                    date: 2021-02-09 12:32:22
 (epstopdf)                    size: 7055 bytes
 (epstopdf)             Command: <epstopdf --outfile=../FIG/AutoBaud-eps-convert
 ed-to.pdf ../FIG/AutoBaud.eps>
@@ -1187,108 +1187,108 @@ or
  []
 
 [41] [42] [43] [44] [45] [46] [47] [48] [49] [50] [51] [52]
-Underfull \hbox (badness 10000) in paragraph at lines 2407--2411
+Underfull \hbox (badness 10000) in paragraph at lines 2407--2412
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2412--2417
+Underfull \hbox (badness 10000) in paragraph at lines 2413--2418
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2418--2420
+Underfull \hbox (badness 10000) in paragraph at lines 2419--2421
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2421--2427
+Underfull \hbox (badness 10000) in paragraph at lines 2422--2428
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2432--2442
+Underfull \hbox (badness 10000) in paragraph at lines 2433--2443
 
  []
 
 [53]
-Underfull \hbox (badness 10000) in paragraph at lines 2485--2497
+Underfull \hbox (badness 10000) in paragraph at lines 2486--2498
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2498--2508
+Underfull \hbox (badness 10000) in paragraph at lines 2499--2509
 
  []
 
 [54]
-Underfull \hbox (badness 10000) in paragraph at lines 2539--2547
+Underfull \hbox (badness 10000) in paragraph at lines 2540--2548
 
  []
 
 [55]
-Underfull \hbox (badness 10000) in paragraph at lines 2631--2648
+Underfull \hbox (badness 10000) in paragraph at lines 2632--2649
 
  []
 
 [56]
-Underfull \hbox (badness 10000) in paragraph at lines 2649--2658
+Underfull \hbox (badness 10000) in paragraph at lines 2650--2659
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2659--2668
+Underfull \hbox (badness 10000) in paragraph at lines 2660--2669
 
  []
 
 [57]
-Underfull \hbox (badness 10000) in paragraph at lines 2745--2760
+Underfull \hbox (badness 10000) in paragraph at lines 2746--2761
 
  []
 
 [58] [59]
-Underfull \hbox (badness 10000) in paragraph at lines 2809--2822
+Underfull \hbox (badness 10000) in paragraph at lines 2810--2823
 
  []
 
 
-Overfull \hbox (64.36263pt too wide) in paragraph at lines 2823--2832
+Overfull \hbox (64.36263pt too wide) in paragraph at lines 2824--2833
 \T1/lmr/m/n/12 in or-der to save space. If you ab-so-lutely need some-thing to 
 light up, you can use the LED_DATA_FLASH=4
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2823--2832
+Underfull \hbox (badness 10000) in paragraph at lines 2824--2833
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2841--2845
+Underfull \hbox (badness 10000) in paragraph at lines 2842--2846
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2846--2857
+Underfull \hbox (badness 10000) in paragraph at lines 2847--2858
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2859--2861
+Underfull \hbox (badness 10000) in paragraph at lines 2860--2862
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2862--2871
+Underfull \hbox (badness 10000) in paragraph at lines 2863--2872
 
  []
 
 [60]
-Underfull \hbox (badness 10000) in paragraph at lines 2872--2876
+Underfull \hbox (badness 10000) in paragraph at lines 2873--2877
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2877--2882
+Underfull \hbox (badness 10000) in paragraph at lines 2878--2883
 
  []
 
@@ -1351,7 +1351,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 280.
 Here is how much of TeX's memory you used:
  25136 strings out of 492982
  547836 string characters out of 6134897
- 739650 words of memory out of 5000000
+ 739652 words of memory out of 5000000
  27990 multiletter control sequences out of 15000+600000
  58474 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1364,7 +1364,7 @@ f/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17
 .pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts
 /type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb>
 
-Output written on bootloader.pdf (81 pages, 672974 bytes).
+Output written on bootloader.pdf (81 pages, 673202 bytes).
 PDF statistics:
  1076 PDF objects out of 1200 (max. 8388607)
  944 compressed objects within 10 object streams
