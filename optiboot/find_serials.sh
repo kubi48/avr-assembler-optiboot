@@ -17,12 +17,12 @@ for datei in ${LS_AC}
 do
   LSL=`ls -l --color=never ${datei}` ; # make a long ls as shown in the next line
 #crw-rw---- 1 root dialout 166, 0 Jun 19 20:52 /dev/ttyACM0
-#  OWNE=`echo "${LSL}"|cut -c14-18` ; # fetch the owner (usually root)
-#  OWNA=`echo "${LSL}"|cut -c1-4`
-  GROUPID=`echo "${LSL}"|cut -c19-25` ; # get the group name
+  OWNE=`echo "${LSL}"|cut -d' ' -f3` ; # fetch the owner (usually root)
+  OWNA=`echo "${LSL}"|cut -c1-4`
+  GROUPID=`echo "${LSL}"|cut -d' ' -f4` ; # get the group name
   GROUPA=`echo "${LSL}"|cut -c5-7`
   ser_found=1
-  if [[ "${OWNE}" = "root " ]] && [[ "${OWNA}" = "crw-" ]] ; then
+  if [[ "${OWNE}" = "root" ]] && [[ "${OWNA}" = "crw-" ]] ; then
     # char device belong to member root with rw access
     gr_match=0
     for gr_id in ${MYGROUPS}
@@ -66,7 +66,7 @@ if (( ${ser_found_with_access} == 0 )) && (( ${ser_found_without} == 0 )) ; then
    echo "Das Kommando 'lsusb' zeigt alle angeschlossenen USB-Geräte ihres Systems."
    echo " "
    echo "Sie können mehr über den gerade angeschlossene Programmer erfahren mit einem Kommando"
-   echo "wie 'dmesg | tail -20'. 'dmesg' gibt die gesamte Logdatei iihres Linux-Systems aus und"
+   echo "wie 'dmesg | tail -20'. 'dmesg' gibt die gesamte Logdatei ihres Linux-Systems aus und"
    echo "'| tail -20' zeigt nur die letzten 20 Zeilen davon."
   else
    echo "No device with name /dev/ttyUSBx or /dev/ttyACMx found! x can be any sequence number!"
@@ -81,7 +81,7 @@ if (( ${ser_found_with_access} == 0 )) && (( ${ser_found_without} == 0 )) ; then
   fi
 elif (( ${ser_found_with_access} == 0 )) && (( ${ser_found_without} > 0 )) ; then
   if [ "${LANGUAGE}" == "de_DE" ] ; then
-   echo "Es wurden ${ser_found_without} serielle Sxchnittstellen gefunden, aber Sie haben keinen Zugriff!!!"
+   echo "Es wurden ${ser_found_without} serielle Schnittstellen gefunden, aber Sie haben keinen Zugriff!!!"
    echo "Wenn ein Gerät davon das richtige ist, sollten Sie dafür sorgen,"
    echo "daß Sie Mitglied der Gruppe sind, die oben angezeigt ist und für die das Gerät den Zugriff erlaubt,"
    echo "Sie können versuchen, den Benutzer ${USER} zu der Gruppe hizuzufügen mit dem"

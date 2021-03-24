@@ -1197,6 +1197,11 @@ clean:
 	@$(RM_CMD) -rf *.o *.elf *.lst *.log *.map *.sym *.lss *.eep *.srec *.bin *.hex *.ppp *.tmp.sh *.dat
 steril:
 	@$(RM_CMD) -rf *.o *.elf *.map *.sym *.tmp.sh *.dat *.ppp $(PROGRAM).hex 
+serials:
+	@echo "Information found about the USB-serial Interfaces:"
+	@ls -l /dev/serial/by-id/* | cut -c40-
+	@ls -l /dev/tty* | grep "[UA][CS][MB]" 
+	@bash find_serials.sh
 
 help:
 ifeq ("$(LANGUAGE)", "de_DE")
