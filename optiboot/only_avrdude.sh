@@ -11,6 +11,8 @@
 # serial devices. The accessability of the devices for you
 # are checked also.
 
+MYLANG=`echo ${LANGUAGE} | cut -c 1-3`
+
 echo "avrdude ${DUDE_PARAMS}"
 avrdude ${DUDE_PARAMS}
 # avrdude can tell more about the operation with the -v option:
@@ -19,13 +21,13 @@ DUDE_FAIL=$?
 if (( ${DUDE_FAIL} != 0 ))
 then
   echo "#-#-#-#-#-#-#-#"
-  if [ "${LANGUAGE}" == "de_DE" ] ; then
+  if [ "${MYLANG}" == "de_" ] ; then
    echo "*** avrdude *** meldet Fehler mit Rückgabewert ${DUDE_FAIL}!"
   else
    echo "*** avrdude *** failed with return value ${DUDE_FAIL}!"
   fi
   echo "#-#-#-#-#-#-#-#"
-  if [ "${LANGUAGE}" == "de_DE" ] ; then
+  if [ "${MYLANG}" == "de_" ] ; then
    echo "Wenn avrdude keine Kommunikation mit dem Programmer gestartet hat,"
    echo "kann das an einer falschen ISPPORT [jetzt: ${ISPPORT}] liegen!"
   else
@@ -34,7 +36,7 @@ then
   fi
   if [ "${OS}" = "Windows_NT" ]
   then
-    if [ "${LANGUAGE}" == "de_DE" ] ; then
+    if [ "${MYLANG}" == "de_" ] ; then
      echo "Sie können versuchen, geeignete Schnittstellen mit dem Gerätemanager"
      echo "zu finden. Derzeit ist ${ISPPORT} gesetzt."
      echo "Üblichereise werden serielle Geräte wie COMx vom ISP-Programmer benutzt."
@@ -47,14 +49,14 @@ then
     fi
   else
     # only for Linux
-    if [ "${LANGUAGE}" == "de_DE" ] ; then
+    if [ "${MYLANG}" == "de_" ] ; then
      echo "Suche vorhandene serielle Schnittstellen auf Ihrem Linux-System:"
     else
      echo "Looking for serial Ports at your Linux system:"
     fi
     source ./find_serials.sh
   fi
-  if [ "${LANGUAGE}" == "de_DE" ] ; then
+  if [ "${MYLANG}" == "de_" ] ; then
    echo "Wenn avrdude die Kommunikation zu derm Ziel-Prozessor mit dem ISP-Programmer gestartet hat,"
    echo "sollte der gesetzte ISPPORT richtig sein, Deshalb sollten Sie die Kabelverbindung"
    echo "zwischen dem ISP-Programmer und Ihrem AVR Prozessor prüfen"

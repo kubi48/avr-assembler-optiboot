@@ -1,15 +1,15 @@
 # Pinbelegung des ATmega32u4/16u4    44p-TQFP 44p-QFN 
 # Aufbau Spalte1-3 Pinname <Tab> Feld 2 Gehäuse-Pin <Tab> Alternative Bedeutung <Tab> Board Pin-Nr.
 # 
-pE6	1-TQFP44	INT.6 AIN0	-
-pu+	2-TQFP44	UVcc	-
-pd+	3-TQFP44	D-	-
-pd-	4-TQFP44	D+	-
-pu-	5-TQFP44	UGnd	-
-puc	6-TQFP44	UCap	-
-pvb	7-TQFP44	VBus	-
-pB0	8-TQFP44	SS PCINT0	-
-pB1	9-TQFP44	PCINT1 SCLK	-
+pE6	 1-TQFP44	INT.6 AIN0	-
+pu+	 2-TQFP44	UVcc	-
+pd+	 3-TQFP44	D-	-
+pd-	 4-TQFP44	D+	-
+pu-	 5-TQFP44	UGnd	-
+puc	 6-TQFP44	UCap	-
+pvb	 7-TQFP44	VBus	-
+pB0	 8-TQFP44	SS PCINT0	-
+pB1	 9-TQFP44	PCINT1 SCLK	-
 pB2	10-TQFP44	PDI PCINT2 MOSI	-
 pB3	11-TQFP44	PDO PCINT3 MISO	-
 pB7	12-TQFP44	PCINT7 OC0A OX1C /RTS	-

@@ -4,6 +4,8 @@
 #             2 = only the main avr-gcc call is shown
 #             3 = the main tasks are shown
 #             4 = nearly all tasks are shown
+
+MYLANG=`echo ${LANGUAGE} | cut -c 1-3`
 if (( 0${VerboseLev} == 0 )) ; then
   #define the default VerboseLev value in this script
   VerboseLev=2
@@ -77,12 +79,12 @@ LDSECTIONS="-Wl,--section-start=.version=0x${VersionAdr}"
 
 logfile="${PROGRAM}_${TARGET}.log"
 AVR_MHZ="(`echo "scale=2;${AVR_FREQ} / 1000000" | bc` Mhz)"
-if [ "${LANGUAGE}" == "de_DE" ] ; then
+if [ "${MYLANG}" == "de_" ] ; then
  FREQ_OPER="Optiboot für ${Vgelb}${AVR_FREQ} Hz ${AVR_MHZ} Betrieb${Vnormal}"
 else
  FREQ_OPER="Optiboot for ${Vgelb}${AVR_FREQ} Hz ${AVR_MHZ} operation${Vnormal}"
 fi
-if [ "${LANGUAGE}" == "de_DE" ] ; then
+if [ "${MYLANG}" == "de_" ] ; then
  EE_SUPPORT=" und ${Vinv}EEprom Unterstützung${Vnormal} konfiguriert."
 else
  EE_SUPPORT=" and ${Vinv}EEprom support${Vnormal} configured."
@@ -94,13 +96,13 @@ echo " "
 
 if (( ${BAUD_RATE} < 100 )) ; then
  if (( ${SUPPORT_EEPROM}0 == 0 )) ; then
-  if [ "${LANGUAGE}" == "de_DE" ] ; then
+  if [ "${MYLANG}" == "de_" ] ; then
    echo "${FREQ_OPER} mit ${Vgelb}automatischer Baudrate${Vnormal} konfiguriert."
   else
    echo "${FREQ_OPER} with ${Vgelb}Auto-Baudrate${Vnormal} configured."
   fi
  else
-  if [ "${LANGUAGE}" == "de_DE" ] ; then
+  if [ "${MYLANG}" == "de_" ] ; then
    echo "${FREQ_OPER} mit ${Vgelb}automatischer Baudrate${Vnormal}${EE_SUPPORT}"
   else
    echo "${FREQ_OPER} with ${Vgelb}Auto-Baudrate${Vnormal}${EE_SUPPORT}"
@@ -108,14 +110,14 @@ if (( ${BAUD_RATE} < 100 )) ; then
  fi
  if (( ${BAUD_RATE} < 20 )) || (( ${BAUD_RATE} > 59 )) ; then
   if (( ${LED_START_FLASHES} < -1 )) ; then
-   if [ "${LANGUAGE}" == "de_DE" ] ; then
+   if [ "${MYLANG}" == "de_" ] ; then
     echo "Ohne Überwachung der seriellen Empfangsdaten die LED bitte nur einmal blinken lassen!"
    else
     echo "Without monitoring the serial input you should flash the LED only once!"
    fi
   fi
   if (( ${LED_START_FLASHES} > 2 )) ; then
-   if [ "${LANGUAGE}" == "de_DE" ] ; then
+   if [ "${MYLANG}" == "de_" ] ; then
     echo "Bei dieser Autobaud Betriebsart sollten Sie die LED bitte nur maximal 2x blinken lassen!"
    else
     echo "With this Autobaud operating mode you should only let the LED flash a maximum of 2 times!"
@@ -124,13 +126,13 @@ if (( ${BAUD_RATE} < 100 )) ; then
  fi
 else
  if (( ${SUPPORT_EEPROM}0 == 0 )) ; then
-  if [ "${LANGUAGE}" == "de_DE" ] ; then
+  if [ "${MYLANG}" == "de_" ] ; then
    echo "${FREQ_OPER} mit ${Vgelb}Baudrate ${BAUD_RATE}${Vnormal} konfiguriert."
   else
    echo "${FREQ_OPER} with ${Vgelb}Baudrate ${BAUD_RATE}${Vnormal} configured."
   fi
  else
-  if [ "${LANGUAGE}" == "de_DE" ] ; then
+  if [ "${MYLANG}" == "de_" ] ; then
    echo "${FREQ_OPER} mit ${Vgelb}Baudrate ${BAUD_RATE}${Vnormal}${EE_SUPPORT}"
   else
    echo "${FREQ_OPER} with ${Vgelb}Baudrate ${BAUD_RATE}${Vnormal}${EE_SUPPORT}"
@@ -138,7 +140,7 @@ else
  fi
 fi
 
-if [ "${LANGUAGE}" == "de_DE" ] ; then
+if [ "${MYLANG}" == "de_" ] ; then
  echo " >>> Starte optiboot für AVR ${MCU_TARGET} erstellen:"
 else
  echo " >>> Start building optiboot for AVR ${MCU_TARGET}:"
@@ -323,7 +325,7 @@ rm -f ./baudcheck.tmp
 # Generate the final ${PROGRAM}.elf file at the right Start Address,
 # which is the base to generate the ${PROGRAM}_${TARGET}.hex and ${PROGRAM}_${TARGET}.lst files.
 echo "${Vgrau}# # # # # # # # # # # # # # # # # # # # # #"
-if [ "${LANGUAGE}" == "de_DE" ] ; then
+if [ "${MYLANG}" == "de_" ] ; then
  echo "${Vnormal}Urlader Startadresse: 0x${BL_StartAdr}${Vgrau} = `echo "ibase=16;${BL_StartAdr}" | bc`"
  else
  echo "${Vnormal}Boot Loader start address: 0x${BL_StartAdr}${Vgrau} = `echo "ibase=16;${BL_StartAdr}" | bc`"
@@ -350,27 +352,27 @@ fi
 
 if (( 0${VIRTUAL_BOOT_PARTITION} > 0 )) ; then
   RelVal=`echo "scale=1;${BootPages}*${FLASH_PAGE_SIZE}*100/${FLASH_SIZE}" | bc`
-  if [ "${LANGUAGE}" == "de_DE" ] ; then
+  if [ "${MYLANG}" == "de_" ] ; then
    RelMsg=`echo ", das ist ${RelVal}% des Flash Speichers"`
   else
    RelMsg=`echo ", which is ${RelVal}% of Flash Memory"`
   fi
   size2know=`echo "${BootPages} * ${FLASH_PAGE_SIZE}" | bc`
   if (( ${BootPages} > 1 )) ; then
-   if [ "${LANGUAGE}" == "de_DE" ] ; then
+   if [ "${MYLANG}" == "de_" ] ; then
     echo -n "Benötigt ${BootPages} Flash Seiten, je ${FLASH_PAGE_SIZE} Bytes${RelMsg}"
    else
     echo -n "Requires ${BootPages} Flash Pages, ${FLASH_PAGE_SIZE} Bytes each${RelMsg}"
    fi
   else
-   if [ "${LANGUAGE}" == "de_DE" ] ; then
+   if [ "${MYLANG}" == "de_" ] ; then
     echo -n "Benötigt ${BootPages} Flash Seite mit ${FLASH_PAGE_SIZE} Bytes${RelMsg}"
    else
     echo -n "Requires ${BootPages} Flash Page of ${FLASH_PAGE_SIZE} Bytes${RelMsg}"
    fi
   fi
  if (( 0${FLASH_ERASE_CNT} > 1 )) ; then
-   if [ "${LANGUAGE}" == "de_DE" ] ; then
+   if [ "${MYLANG}" == "de_" ] ; then
     echo ", Gruppe von ${FLASH_ERASE_CNT} Seiten löschbar"
    else
     echo ", Cluster of ${FLASH_ERASE_CNT} Pages erasable"
@@ -379,13 +381,13 @@ if (( 0${VIRTUAL_BOOT_PARTITION} > 0 )) ; then
     echo " "
  fi
  if (( ${BOOT_PAGE_LEN} < 129)) ; then
-   if [ "${LANGUAGE}" == "de_DE" ] ; then
+   if [ "${MYLANG}" == "de_" ] ; then
     echo "Keine Boot Seiten vorhanden!"
    else
     echo "No Boot Pages present!"
    fi
  else
-   if [ "${LANGUAGE}" == "de_DE" ] ; then
+   if [ "${MYLANG}" == "de_" ] ; then
     echo "Boot Seiten vorhanden, werden aber nicht benutzt!"
    else
     echo "Boot Pages present, but No Boot Pages used!"
@@ -397,14 +399,14 @@ else
  BOOTSZ=`echo "0+(${pg_anz}<5)+(${pg_anz}<3)+(${pg_anz}<2)" | bc`
 
  RelVal=`echo "scale=1;${BootPages}*${BOOT_PAGE_LEN}*100/${FLASH_SIZE}" | bc`
- if [ "${LANGUAGE}" == "de_DE" ] ; then
+ if [ "${MYLANG}" == "de_" ] ; then
   RelMsg=`echo ", das ist ${RelVal}% des Flash Speichers"`
  else
   RelMsg=`echo ", which is ${RelVal}% of Flash Memory"`
  fi
  size2know=`echo "${BootPages} * ${BOOT_PAGE_LEN}" | bc`
  if (( ${pg_anz} > 1 )) ; then
-  if [ "${LANGUAGE}" == "de_DE" ] ; then
+  if [ "${MYLANG}" == "de_" ] ; then
    echo "Benötigt ${BootPages} Boot Seiten, je ${BOOT_PAGE_LEN} Bytes${RelMsg}"
    echo "${Vinv}BOOTSZ=${BOOTSZ}${Vnormal}, das bedeutet ${Vinv}${BootPages} Boot Seiten${Vnormal}"
   else
@@ -412,7 +414,7 @@ else
    echo "${Vinv}BOOTSZ=${BOOTSZ}${Vnormal}, which means ${Vinv}${BootPages} Boot Pages${Vnormal}"
   fi
  else
-  if [ "${LANGUAGE}" == "de_DE" ] ; then
+  if [ "${MYLANG}" == "de_" ] ; then
    echo "Benötigt ${pg_anz} Boot Seite mit ${BOOT_PAGE_LEN} Bytes${RelMsg}"
    echo "${Vinv}BOOTSZ=${BOOTSZ}${Vnormal}, das bedeutet ${Vinv}${BootPages} Boot Seite${Vnormal}"
   else

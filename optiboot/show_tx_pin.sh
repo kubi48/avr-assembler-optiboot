@@ -16,6 +16,7 @@
 # find at lease one TX port. For devices without a hardware UART,
 # the TX entry is listed in a unused column.
 
+MYLANG=`echo ${LANGUAGE} | cut -c 1-3`
 if (( ${my_uarts} > 1 )) ; then
   # more than one UART in this device RXD/TDX is followed by a digit
   if [ "${UART_TX}" = "" ] ; then
@@ -36,7 +37,7 @@ if (( $? == 0 )) ; then
   if [ "${UART_TX}" = "" ] ; then
      ntx=`echo ${tx_zeile} | cut -c2-3`
      if (( ${VerboseLev} > 2 )) ; then
-       if [ "${LANGUAGE}" == "de_DE" ] ; then
+       if [ "${MYLANG}" == "de_" ] ; then
          echo "UART_TX wird in list_tx_pins.sh auf ${ntx} gesetzt." 
        else
          echo "UART_TX set to ${ntx} in list_tx_pins.sh." 
@@ -47,15 +48,15 @@ if (( $? == 0 )) ; then
   fi
   tx_desc=`echo "${tx_zeile}" | cut -f3`
   tx_layout=`echo "${tx_zeile}" | cut -f2`
-  if [ "${LANGUAGE}" == "de_DE" ] ; then
-    echo -n "${Vgrau}TX-Pin ${Vnormal}P${UART_TX} ${Vgrau}benutzt Pin ${Vnormal}${tx_layout}"
+  if [ "${MYLANG}" == "de_" ] ; then
+    echo -n "${Vgrau} TX-Pin ${Vnormal}P${UART_TX} ${Vgrau}benutzt Pin ${Vnormal}${tx_layout}"
   else
-    echo -n "${Vgrau}TX-Pin ${Vnormal}P${UART_TX} ${Vgrau}use Pin ${Vnormal}${tx_layout}"
+    echo -n "${Vgrau} TX-Pin ${Vnormal}P${UART_TX} ${Vgrau}use Pin ${Vnormal}${tx_layout}"
   fi
   if [ "${tx_desc}" = "-" ] || [ "${tx_desc}" = "" ] ; then
    echo "."
   else
-   if [ "${LANGUAGE}" == "de_DE" ] ; then
+   if [ "${MYLANG}" == "de_" ] ; then
      echo "${Vgrau}, mit Spezialfunktionen: ${Vnormal}${tx_desc}."
    else
      echo "${Vgrau}, with special functions: ${Vnormal}${tx_desc}."
@@ -64,7 +65,7 @@ if (( $? == 0 )) ; then
   unset tx_desc
   unset tx_layout
 else
-  if [ "${LANGUAGE}" == "de_DE" ] ; then
+  if [ "${MYLANG}" == "de_" ] ; then
     echo "list_tx_pin.sh hat ${rx_grep_txt} in avr_pins/${AVR_FAMILY}.pins nicht gefunden."
     echo "Liste der verfügbaren Pinne der ${AVR_FAMILY} Gruppe:"
   else

@@ -36,7 +36,7 @@ all: bootloader.pdf
 	fig2eps $<
 
 
-TEXLIST3 = preface.tex principle.tex AVRhardware.tex optiboot.tex AVRdata.tex USBserial.tex
+TEXLIST3 = preface.tex principle.tex AVRhardware.tex optiboot.tex AVRdata.tex USBserial.tex build.tex
 
 bootloader.pdf: bootloader.tex $(LISTE3) $(TEXLIST3)
 	pdflatex --shell-escape bootloader.tex

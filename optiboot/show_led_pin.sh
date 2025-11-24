@@ -8,9 +8,10 @@
 # You can convert the name of the target processor in MCI_TARGET to
 # AVR_FAMILY with avr_family.sh .
 
+MYLANG=`echo ${LANGUAGE} | cut -c 1-3`
 if (( ${LED_START_FLASHES}0 == 0 )) && (( ${LED_DATA_FLASH}0 == 0 )) ; then
   if (( ${VerboseLev} > 2 )) ; then
-    if [ "${LANGUAGE}" == "de_DE" ] ; then
+    if [ "${MYLANG}" == "de_" ] ; then
       echo "${Vgrau}LED-Pin wird nicht benutzt!${Vnormal}"
     else
       echo "${Vgrau}LED-Pin not used!${Vnormal}"
@@ -28,7 +29,7 @@ else
     if [ "${LED}" = "" ] ; then
       nled=`echo ${pin_zeile} | cut -c2-3`
       if (( ${VerboseLev} > 2 )) ; then
-        if [ "${LANGUAGE}" == "de_DE" ] ; then
+        if [ "${MYLANG}" == "de_" ] ; then
           echo "LED wird in list_led_pins.sh auf ${nled} gesetzt." 
         else
           echo "LED set to ${nled} in list_led_pins.sh." 
@@ -39,7 +40,7 @@ else
     fi
     pin_desc=`echo "${pin_zeile}" | cut -f3`
     pin_layout=`echo "${pin_zeile}" | cut -f2`
-    if [ "${LANGUAGE}" == "de_DE" ] ; then
+    if [ "${MYLANG}" == "de_" ] ; then
       echo -n "${Vgrau}LED-Pin ${Vnormal}P${LED} ${Vgrau}benutzt Pin ${Vnormal}${pin_layout}"
     else
       echo -n "${Vgrau}LED-Pin ${Vnormal}P${LED} ${Vgrau}use Pin ${Vnormal}${pin_layout}"
@@ -47,7 +48,7 @@ else
     if [ "${pin_desc}" = "-" ] || [ "${pin_desc}" = "" ] ; then
      echo "."
     else
-     if [ "${LANGUAGE}" == "de_DE" ] ; then
+     if [ "${MYLANG}" == "de_" ] ; then
        echo "${Vgrau}, mit Spezialfunktionen: ${Vnormal}${pin_desc}."
      else
        echo "${Vgrau}, with special functions: ${Vnormal}${pin_desc}."
@@ -56,7 +57,7 @@ else
     unset pin_layout
     unset pin_desc
   else
-    if [ "${LANGUAGE}" == "de_DE" ] ; then
+    if [ "${MYLANG}" == "de_" ] ; then
       echo "list_led_pin.sh hat ${rx_grep_txt} in avr_pins/${AVR_FAMILY}.pins nicht gefunden."
       echo "Liste der verfügbaren Pinne der ${AVR_FAMILY} Gruppe:"
     else

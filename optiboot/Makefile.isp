@@ -38,7 +38,7 @@
 # These are the parameters for a usb-based STK500v2 programmer.
 # Exact type unknown.  (historical Makefile values.)
 ISPTOOL	   = avrisp2
-ISPPORT	   =  /dev/ttyACM0
+ISPPORT	   :=  /dev/ttyACM0
 #ISPPORT	   = usb
 #ISPPORT           = COM7
 ISPSPEED   = -b 115200

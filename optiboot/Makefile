@@ -134,11 +134,11 @@ fixpath = $(1)
 # no ENV set
 GCCROOT =
 AVRDUDE_CONF =
-ifdef ETC_CONF
-  AVRDUDE_CONF += -C /etc/avrdude.conf
-else 
-  AVRDUDE_CONF += -C ./avrdude.conf
-endif
+#ifdef ETC_CONF
+#  AVRDUDE_CONF += -C /etc/avrdude.conf
+#else 
+#  AVRDUDE_CONF += -C ./avrdude.conf
+#endif
 
 BC_CMD = bc
 CAT_CMD = cat
@@ -1320,8 +1320,8 @@ ifeq ("$(LANGUAGE)", "de_DE")
 	@$(ECHO_CMD) "                Ohne diese Option wird die Erzeugung des Bootloaders abgebrochen."
 	@$(ECHO_CMD) " "
 	@$(ECHO_CMD) "NO_EARLY_PAGE_ERASE verhindert das Löschen der Flash-Speicherseite während"
-	@$(ECHO_CMD) "                des Dateneempfang. Das nach dem Datenempfang durchgeführte"
-	@$(ECHO_CMD) "                Löschen macht den Programmirvorgang etwa 30% langsamer,"
+	@$(ECHO_CMD) "                des Datenempfang. Das nach dem Datenempfang durchgeführte"
+	@$(ECHO_CMD) "                Löschen macht den Programmiervorgang etwa 30% langsamer,"
 	@$(ECHO_CMD) "                spart aber 14 Byte Platz für den optiboot."
 
 else

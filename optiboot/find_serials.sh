@@ -6,6 +6,7 @@
 # because often 32 or more entries are found.
 # so only known names for USB-serial converters are searched!
 
+MYLANG=`echo ${LANGUAGE} | cut -c 1-3`
 LS_AC=`ls -C --color=never /dev/ttyACM* /dev/ttyUSB* 2> /dev/null`
 # LS_AC is only a list of the found names.
 
@@ -34,21 +35,21 @@ do
 	break
       fi
     done
-    if [ "${LANGUAGE}" == "de_DE" ] ; then
+    if [ "${MYLANG}" == "de_" ] ; then
       echo -n "${datei}: ist ein character Gerät, das den ${GROUPA} Zugriff für Gruppe ${GROUPID} erlaubt"
     else
       echo -n "${datei}: is a character device which allowes ${GROUPA} access for group ${GROUPID}"
     fi
     if (( gr_match == 1 )) ; then
       ser_found_with_access=${ser_found_with_access}+1
-      if [ "${LANGUAGE}" == "de_DE" ] ; then
+      if [ "${MYLANG}" == "de_" ] ; then
         echo ", bei welcher Sie Mitglied sind."
       else
         echo ", where you are member."
       fi
     else
       ser_found_without=${ser_found_without}+1
-      if [ "${LANGUAGE}" == "de_DE" ] ; then
+      if [ "${MYLANG}" == "de_" ] ; then
       echo ": für Sie kein Zugriff möglich!"
       else
       echo ": NO Access for you!"
@@ -58,7 +59,7 @@ do
 done
 if (( ${ser_found_with_access} == 0 )) && (( ${ser_found_without} == 0 )) ; then
    echo " "
-  if [ "${LANGUAGE}" == "de_DE" ] ; then
+  if [ "${MYLANG}" == "de_" ] ; then
    echo "Kein Gerät mit Namen /dev/ttyUSBx oder /dev/ttyACMx gefunden! x steht für eine vergebene Nummer!"
    echo " "
    echo "Prüfen Sie die Verbindung ihres ISP-Programmers zu einer USB-Schnittstelle ihres PCs."
@@ -80,7 +81,7 @@ if (( ${ser_found_with_access} == 0 )) && (( ${ser_found_without} == 0 )) ; then
    echo "and '| tail -20' will display only the last 20 lines."
   fi
 elif (( ${ser_found_with_access} == 0 )) && (( ${ser_found_without} > 0 )) ; then
-  if [ "${LANGUAGE}" == "de_DE" ] ; then
+  if [ "${MYLANG}" == "de_" ] ; then
    echo "Es wurden ${ser_found_without} serielle Schnittstellen gefunden, aber Sie haben keinen Zugriff!!!"
    echo "Wenn ein Gerät davon das richtige ist, sollten Sie dafür sorgen,"
    echo "daß Sie Mitglied der Gruppe sind, die oben angezeigt ist und für die das Gerät den Zugriff erlaubt,"
