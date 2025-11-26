@@ -29,7 +29,10 @@ then
   # ISPPORT="/dev/ttyACM0"
 fi
 export ISPPORT
-ISPSPEED="-b 115200"
+if [ "${ISPSPEED}" = "" ]
+then
+ISPSPEED="115200"
+fi
 #
 #
 
@@ -92,7 +95,7 @@ then
   else
    echo "##### read complete EEprom from ${TARGET} to Read_${TARGET}.eep"
   fi
-  export DUDE_PARAMS=" ${AVRDUDE_CONF} -c ${ISPTOOL} -B ${BIT_CLOCK} -p ${MCU_TARGET} -P ${ISPPORT} ${ISPSPEED} -U eeprom:r:./Read_${TARGET}.eep:i"
+  export DUDE_PARAMS=" ${AVRDUDE_CONF} -c ${ISPTOOL} -B ${BIT_CLOCK} -p ${MCU_TARGET} -P ${ISPPORT} -b ${ISPSPEED} -U eeprom:r:./Read_${TARGET}.eep:i"
   source ./only_avrdude.sh
   exit
 fi
@@ -103,7 +106,7 @@ then
   else
    echo "##### read complete flash from ${TARGET} to Read_${TARGET}.hex"
   fi
-  export DUDE_PARAMS="${AVRDUDE_CONF} -c ${ISPTOOL} -B ${BIT_CLOCK} -p ${MCU_TARGET} -P ${ISPPORT} ${ISPSPEED} -U flash:r:./Read_${TARGET}.hex:i"
+  export DUDE_PARAMS="${AVRDUDE_CONF} -c ${ISPTOOL} -B ${BIT_CLOCK} -p ${MCU_TARGET} -P ${ISPPORT} -b ${ISPSPEED} -U flash:r:./Read_${TARGET}.hex:i"
   source ./only_avrdude.sh
   exit
 fi
@@ -115,7 +118,7 @@ then
   else
    echo "##### verify the optiboot in ${TARGET}"
   fi
-  export DUDE_PARAMS="${AVRDUDE_CONF} -c ${ISPTOOL} -B ${BIT_CLOCK} -p ${MCU_TARGET} -P ${ISPPORT} ${ISPSPEED} -U flash:v:${PROGRAM}_${TARGET}.hex:i"
+  export DUDE_PARAMS="${AVRDUDE_CONF} -c ${ISPTOOL} -B ${BIT_CLOCK} -p ${MCU_TARGET} -P ${ISPPORT} -b ${ISPSPEED} -U flash:v:${PROGRAM}_${TARGET}.hex:i"
   source ./only_avrdude.sh
   exit
 fi
@@ -460,7 +463,7 @@ then
   else
    echo "##### erase the ${TARGET} and set fuses"
   fi
-  export DUDE_PARAMS="${AVRDUDE_CONF} -c ${ISPTOOL} -B 200 -p ${MCU_TARGET} -P ${ISPPORT} ${ISPSPEED} -q -q ${ISPFUSES}"
+  export DUDE_PARAMS="${AVRDUDE_CONF} -c ${ISPTOOL} -B 200 -p ${MCU_TARGET} -P ${ISPPORT} -b ${ISPSPEED} -q -q ${ISPFUSES}"
   source ./only_avrdude.sh
   DUDE_FAIL=$?
   if (( ${DUDE_FAIL} != 0 ))
@@ -482,6 +485,6 @@ then
      echo "##### write the optiboot bootloader to ${TARGET} and set the lock bits"
     fi
   fi
-  export DUDE_PARAMS="${AVRDUDE_CONF} -c ${ISPTOOL} -B ${BIT_CLOCK} -p ${MCU_TARGET} -P ${ISPPORT} ${ISPSPEED} -D ${ISPFLASH}"
+  export DUDE_PARAMS="${AVRDUDE_CONF} -c ${ISPTOOL} -B ${BIT_CLOCK} -p ${MCU_TARGET} -P ${ISPPORT} -b ${ISPSPEED} -D ${ISPFLASH}"
   source ./only_avrdude.sh
 fi
