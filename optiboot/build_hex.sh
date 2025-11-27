@@ -6,6 +6,67 @@
 #             4 = nearly all tasks are shown
 
 MYLANG=`echo ${LANGUAGE} | cut -c 1-3`
+# replace 1M to 20M with 1000000 to 20000000
+if [ "${AVR_FREQ}" = "1M" ] ; then
+ export AVR_FREQ=1000000
+fi
+if [ "${AVR_FREQ}" = "2M" ] ; then
+ export AVR_FREQ=2000000
+fi
+if [ "${AVR_FREQ}" = "3M" ] ; then
+ export AVR_FREQ=3000000
+fi
+if [ "${AVR_FREQ}" = "4M" ] ; then
+ export AVR_FREQ=4000000
+fi
+if [ "${AVR_FREQ}" = "5M" ] ; then
+ export AVR_FREQ=5000000
+fi
+if [ "${AVR_FREQ}" = "6M" ] ; then
+ export AVR_FREQ=6000000
+fi
+if [ "${AVR_FREQ}" = "7M" ] ; then
+ export AVR_FREQ=7000000
+fi
+if [ "${AVR_FREQ}" = "8M" ] ; then
+ export AVR_FREQ=8000000
+fi
+if [ "${AVR_FREQ}" = "9M" ] ; then
+ export AVR_FREQ=9000000
+fi
+if [ "${AVR_FREQ}" = "10M" ] ; then
+ export AVR_FREQ=10000000
+fi
+if [ "${AVR_FREQ}" = "11M" ] ; then
+ export AVR_FREQ=11000000
+fi
+if [ "${AVR_FREQ}" = "12M" ] ; then
+ export AVR_FREQ=12000000
+fi
+if [ "${AVR_FREQ}" = "13M" ] ; then
+ export AVR_FREQ=13000000
+fi
+if [ "${AVR_FREQ}" = "14M" ] ; then
+ export AVR_FREQ=14000000
+fi
+if [ "${AVR_FREQ}" = "15M" ] ; then
+ export AVR_FREQ=15000000
+fi
+if [ "${AVR_FREQ}" = "16M" ] ; then
+ export AVR_FREQ=16000000
+fi
+if [ "${AVR_FREQ}" = "17M" ] ; then
+ export AVR_FREQ=17000000
+fi
+if [ "${AVR_FREQ}" = "18M" ] ; then
+ export AVR_FREQ=18000000
+fi
+if [ "${AVR_FREQ}" = "19M" ] ; then
+ export AVR_FREQ=19000000
+fi
+if [ "${AVR_FREQ}" = "20M" ] ; then
+ export AVR_FREQ=20000000
+fi
 if (( 0${VerboseLev} == 0 )) ; then
   #define the default VerboseLev value in this script
   VerboseLev=2

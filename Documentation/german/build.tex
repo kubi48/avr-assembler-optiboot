@@ -12,22 +12,66 @@ Für die Erstellung wird hier ein Linux-System vorausgesetzt, bei dem die folgen
 	\item{grep}
 \end{itemize}
 Einige der Pakete können schon standardmäßig installiert sein.
+Sie sollten auf der bash Kommandoebene arbeiten.
+Das kann entweder ein Terminalfenster oder eine virtuelle Konsole sein.
+Normalerweise kann Linux zwischen 6 virtuellen Konsolen umschalten mit
+den Tastenkombination \textbf{<Strg> + <Alt> + <F1>} bis \textbf{<Strg> + <Alt> + <F6>} .
+In den Konsolen müssen Sie sich mit ihrem Benutzernamen und dem Kennwort anmelden.
+Sie können aber genau so gut in einem Terminalfenster in der grafischen Oberfläche \textbf{(<Strg> + <Alt> + <F7>)}
+arbeiten. 
+Wenn sie eine Befehlszeile mit geringen Änderungen wiederholen möchten, können Sie 
+die \textbf{Cursor Aufwärts} Taste $\uparrow$ auf ihrer Tastatur betätigen um einen alten Befehl zurückzuholen.
+Wenn sie nur einen Parameter ergänzen wollen, können sie den einfach neu dazu schreiben und die
+Return Taste drücken. Mit der Taste \textbf{Cursor links} $\leftarrow$ können sie auch an eine zu ändernde Stelle des alten Befehls positionieren.
+Diese paar einleitenden Sätze sollen Linux Neulingen den Einstieg erleichtern,
+für alle sind aber die folgenden Hinweise gedacht.
+
 
 Die Erstellung des optiboot Bootloaders sollte in zwei Hauptschritten erfolgen.
 Zuerst sollte die Erstellung des Programms auf dem PC erfolgen ohne das Programm
-auf den Zielprozessor zu schreiben.
+auf den Zielprozessor (Atmel Mikrocontroller) zu schreiben.
 Erst im zweiten Hauptschritt sollte das Laden des Programms auf den Zielprozessor
 versucht werden.
 Diese Aufteilung hat den Grund, daß viele Einstellungen schon vorab geprüft werden und
 die Erstellung schon mit einer Fehlermeldung abgebrochen werden kann.
 Für jeden der unterstützten Prozessoren gibt es Voreinstellungen, die aber durch
-Eingabe von Parametern beim make Aufruf geändert werden können.
-Die Fahigkeiten des optiboot Bootloaders sind im Kapitel \ref{sec:optiboot} ab Seite \pageref{sec:optiboot}
+Eingabe von Parametern beim \textbf{make} Aufruf geändert werden können.
+Die Fähigkeiten des optiboot Bootloaders sind im Kapitel \ref{sec:optiboot} ab Seite \pageref{sec:optiboot}
 beschrieben.
 Die wichtigsten Fähigkeiten sind in einer Liste auf Seite \pageref{item:capability} aufgeführt.
 Die zur Verfügung stehenden Parameter sind in Tabelle \ref{tab:options1}  auf Seite \pageref{tab:options1}
 und in Tabelle \ref{tab:options2} auf Seite \pageref{tab:options2} sowie in Tabelle \ref{tab:options3} auf 
 Seite \pageref{tab:options3} aufgeführt.
+Wenn sich einige Parameter während den Probeläufen nicht ändern sollen,
+können diese auch als Umgebungsvariable definiert werden.
+Ein gutes Beispiel dafür ist der verwendete ISP-Programmertyp.
+Die entsprechende Variable heißt ISPTOOL.
+Wenn diese Variable weder als Umgebungsvariable noch als Parameter beim \textbf{make} Aufruf angegeben ist,
+wird \textbf{avrisp2} als Typ angenommen.
+Wenn der Typ für Sie nicht richtig ist, konnen sie das beim \textbf{make} Aufruf ändern wie:
+\begin{verbatim}
+make atmega328p ISP=1 ISPTOOL=stk500
+\end{verbatim}
+Alternativ können sie ISPTOOL auch als Umgebungsvariable setzen und \textbf{make} ohne diesen Parameter aufrufen wie:
+\begin{verbatim}
+export ISPTOOL=stk500
+make atmega328p ISP=1
+\end{verbatim}
+Bis zum Ende Ihrer Terminal-Sitzung brauchen sie bei allen nachfolgenden \textbf{make} Aufrufen
+den Parameter ISPTOOL nicht mehr angeben. Dann ist in diesem Terminal der ISP-Programmertyp
+auf stk500 eingestellt. Wenn Sie nach längerer Arbeitspause nicht mehr wissen, ob und welcher
+Programmertyp eingestellt ist, gibt das Kommando
+\begin{verbatim}
+printenv ISPTOOL
+\end{verbatim}
+eine Auskunft darüber.
+Wenn die Vorbesetzung für ISPTOOL auf stk500 zukünftig für alle ihre Terminalfenster gelten soll, kann
+das \textbf{export ISPTOOL=stk500} an die versteckte Textdatei \raisebox{-0.3ex}{\textasciitilde}/.bashrc 
+angehängt werden.
+Besonders wenn man beabsichtigt, verschiedene AVR Mikrocontroller mit einem neuen Bootloader zu versehen,
+sollte man vom Prozessortyp abhängige Parameter \textbf{nicht} mit der Umgebungsvariable fest einstellen.
+Beispiele hierfür sind die Parameter LED, LFUSE, HFUSE, EFUSE, BAUD\_RATE und AVR\_FREQ.
+
 
 
 \section{Ein einfaches Beispiel für die optiboot Erstellung}
@@ -39,7 +83,12 @@ einer entsprechenden Fehlermeldung abgebrochen,
 wenn beispielweise die gewählte Betriebsfrequenz (AVR\_FREQ) nicht zu der
 mit den Fuses (CKSEL,CKDIV8) eingestellten Möglichkeiten für den Takt paßt.
 Es muß zwingend ein Zielprozessor für den optiboot Bootloader als erster
-Parameter beim make Aufruf angegeben werden.
+Parameter beim \textbf{make} Aufruf angegeben werden.
+Sie sollten die Beispiele nach Möglichkeit auch an ihrem PC ausführen.
+Wenn sie in einen Terminal-Fenster arbeiten, dann wechseln sie dort mit dem \textbf{cd} Kommando
+in das optiboot verzeichnis und tippen sie die \textbf{make} Kommandos ab.
+Wenn sie tippfaul sind, können sie auch die PDF Dokumenation öffnen und die
+\textbf{make} Befehle mit der linken Maustaste  vollständig markieren und mit der mittleren Maustate in das Terminal-Fenster kopieren.
 
 Beginnen wir mit einem einfachen Beispiel:
 
@@ -82,10 +131,104 @@ Diese Anzeige ist besonders nützlich, wenn eine vom Standard abweichende Konfig
 Damit kann beispielsweise eine ungünstige Belegung der LED Funktion vermieden werden.
 Hinter dem Kompileraufruf wird die angestrebte und die tatsächliche Baudrate mit einem prozentualen
 Fehler angegeben. Danach wird auch die Start-Adresse des Bootloaders und die Zahl der benutzten
-Bootspeicherseiten sowie die Größe des Bootloaders angegeben.
+Boot-Speicherseiten sowie die Größe des Bootloaders angegeben.
+Trotz des einfachen Aufrufes würde diese Konfiguration für gängige Platinen wir Arduino UNO oder Arduino Nano passen.
+Die von der Größe des Bootloaders abhängige Zahl der Boot-Speicherseiten wird übrigens beim Programmieren
+des ATmega328 automatisch berücksichtigt. So entsteht auch bei deutlich größeren Bootloader-Versionen  ein lauffähiger Bootloader.
+Aus reiner Neugier können wir doch mal testen, wie das Ergebnis wäre, wenn man statt der Assembler-Version
+die C-Quelle verwenden würde, also:
+
+\begin{verbatim}
+make atmega328 C_SOURCE=1
+\end{verbatim}
+\footnotesize
+\begin{verbatim}
+ 
+Optiboot für 16000000 Hz (16.00 Mhz) Betrieb mit Baudrate 115200 konfiguriert.
+ >>> Starte optiboot für AVR atmega328 erstellen:
+LED-Pin PB5 benutzt Pin 19-PDIP28 17-TQFP32, mit Spezialfunktionen: SCK PCINT5.
+ RX-Pin PD0 benutzt Pin  2-PDIP28 30-TQFP32, mit Spezialfunktionen: PCINT16 RXD.
+ TX-Pin PD1 benutzt Pin  3-PDIP28 31-TQFP32, mit Spezialfunktionen: PCINT17 TXD.
+avr-gcc -g -Wall -Os -fno-split-wide-types -mrelax -mmcu=atmega328  -fno-diagnostics-show-caret 
+ -DBAUD_RATE=115200 -DLED_START_FLASHES=3 -DSUPPORT_EEPROM=0 -DLED=pB5 -DUART=00 -DSOFT_UART=0 
+ -DUART_-DSUPPORT_EEPROM=0RX=pD0 -DUART_TX=pD1 -DF_CPU=16000000 -DHFUSE=hexDE -DLFUSE=hexFF -DBOOT_PAGE_LEN=512 
+ -DVerboseLev=2 -c -o optiboot.o optiboot.c
+optiboot.c: In function 'main':
+optiboot.c:628:7: warning: #warning "BAUD_RATE error greater than 2%" [-Wcpp]
+optiboot.c: In function 't1_delay':
+optiboot.c:1538:1: warning: control reaches end of non-void function [-Wreturn-type]
+ 
+--------------------------------------------------------------------------------
+BAUD RATE CHECK: Desired: 115200,  Real: 117647, UBRR = 16, Difference=2.12%
+--------------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # #
+Urlader Startadresse: 0x7E00 = 32256
+# # # # # # # # # # # # # # # # # # # # # #
+ 
+   text	   data	    bss	    dec	    hex	filename
+    488	      0	      0	    488	    1e8	optiboot.elf
+Benötigt 1 Boot Seite mit 512 Bytes, das ist 1.5% des Flash Speichers
+BOOTSZ=3, das bedeutet 1 Boot Seite
+ 
+\end{verbatim}
+\normalsize
+Das ist ja eine Überraschung, die Programmlänge ist gleich wie bei der Assembler-Version.
+Noch einmal prüfen, ob da was schief gelaufen ist. Beim avr-gcc Aufruf ist aber an letzter Stelle das Programm optiboot.c
+und nicht optiboot.S angegeben. Also wird der Parameter \inquotes{C\_SOURCE=1} richtig verarbeitet.
+Wenn man genauer hinschaut, fehlt aber in der ersten Zeile des Bildschirm-Protokolls
+der Hinweis \inquotes{ und EEprom Unterstützung}. Richtig, in der Parameterliste beim avr-gcc Aufruf
+ist mit \inquotes{-DSUPPORT\_EEPROM=0} die EEProm Unterstützung tatsächlich abgeschaltet.
+Die EEProm Unterstützung läßt sich aber sicher wieder einschalten:
+
+\begin{verbatim}
+make atmega328 C_SOURCE=1 SUPPORT_EEPROM=1
+\end{verbatim}
+\footnotesize
+\begin{verbatim}
+
+Optiboot für 16000000 Hz (16.00 Mhz) Betrieb mit Baudrate 115200 und EEprom Unterstützung 
+ konfiguriert.
+ >>> Starte optiboot für AVR atmega328 erstellen:
+LED-Pin PB5 benutzt Pin 19-PDIP28 17-TQFP32, mit Spezialfunktionen: SCK PCINT5.
+ RX-Pin PD0 benutzt Pin  2-PDIP28 30-TQFP32, mit Spezialfunktionen: PCINT16 RXD.
+ TX-Pin PD1 benutzt Pin  3-PDIP28 31-TQFP32, mit Spezialfunktionen: PCINT17 TXD.
+avr-gcc -g -Wall -Os -fno-split-wide-types -mrelax -mmcu=atmega328  -fno-diagnostics-show-caret 
+ -DBAUD_RATE=115200 -DLED_START_FLASHES=3 -DSUPPORT_EEPROM=1 -DLED=pB5 -DUART=00 -DSOFT_UART=0 
+ -DUART_RX=pD0 -DUART_TX=pD1 -DF_CPU=16000000 -DHFUSE=hexDE -DLFUSE=hexFF -DBOOT_PAGE_LEN=512 
+ -DVerboseLev=2 -c -o optiboot.o optiboot.c
+optiboot.c: In function 'main':
+optiboot.c:628:7: warning: #warning "BAUD_RATE error greater than 2%" [-Wcpp]
+optiboot.c: In function 't1_delay':
+optiboot.c:1538:1: warning: control reaches end of non-void function [-Wreturn-type]
+
+--------------------------------------------------------------------------------
+BAUD RATE CHECK: Desired: 115200,  Real: 117647, UBRR = 16, Difference=2.12%
+--------------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # #
+Urlader Startadresse: 0x7C00 = 31744
+# # # # # # # # # # # # # # # # # # # # # #
+
+   text	   data	    bss	    dec	    hex	filename
+    592	      0	      0	    592	    250	optiboot.elf
+Benötigt 2 Boot Seiten, je 512 Bytes, das ist 3.1% des Flash Speichers
+BOOTSZ=2, das bedeutet 2 Boot Seiten
+
+\end{verbatim}
+\normalsize
+Jetzt sieht das Ergebnis doch anders aus. Das Programm mit den gleichen Fähigkeiten 
+wie die Assembler-Version ist 104 Byte größer und verbraucht jetzt mit 2 Boot-Speicherseiten doppelt so viel
+Platz im Flash-Speicher des ATmega328. Das ist also der Grund für die Umstellung von
+der Programmiersprache C auf Assembler gewesen. Es hat sich gelohnt, um jedes Byte zu kämpfen!
+Wenn jetzt versucht würde, mit dem zusätzlichen Parameter
+\inquotes{ISP=1} diesen Bootloader auf den ATmega328 zu laden, wäre dieser Bootloader
+lauffähig, da die Fuses des ATmega und auch die Start-Adresse automatisch an die größere Bootloader-Version
+angepasst werden. Es ist aber jetzt auch verständlich, warum bei der Standard-Konfiguration für
+die C-Quelle die EEProm Unterstützung weggelassen wird.
+Der Bootloader soll standardmäßig in eine Bootseite von 512 Byte passen.
+ 
 
 \section{Exotische Beispiele für die optiboot Erstellung}
-Wenn wir nun den Aufruf mit einem anderen Zielprozessor wiederholen, sieht das Ergebnis völlig
+Wenn wir nun den Standard-Aufruf mit einem anderen Zielprozessor wiederholen, sieht das Ergebnis völlig
 anders aus:
 
 \begin{verbatim}
@@ -121,12 +264,12 @@ Keine Boot Seiten vorhanden!
 \normalsize
 Zunächst ist die Betriebsfrequenz jetzt 8 MHz und es wird eine Software-Emulation der seriellen Schnittstelle
 aud Pin PD0 und PD1 für den Bootloader benutzt. Das Fehlen einer seriellen Schnittstelle kann man in der Optionsliste
-für den Kompiler avr-gcc aus der automatisch gesetzten Option -DSOFT\_UART=1 erkennen sowie beim BAUD RATE CHECK aus
-dem Wort SoftUART\_Real. Die angegebene Differenz zur gewünschten Baudrate von 115000 sollte einen aber nicht
+für den Kompiler avr-gcc aus der automatisch gesetzten Option \inquotes{-DSOFT\_UART=1} erkennen sowie beim \inquotes{BAUD RATE CHECK} aus
+dem Wort \textbf{SoftUART\_Real}. Die angegebene Differenz zur gewünschten Baudrate von 115000 sollte einen aber nicht
 täuschen. Wenn der ATtiny88 mit dem internen Taktgenerator betrieben wird, hält er wahrscheinlich die Taktfrequenz
 nicht genau ein und damit weicht auch die errechnete Baudrate in Wirklichkeit anders ab.
 Außerdem unterstützt der ATtiny88 keine Bootloader-Funktion. Stattdessen wird hier eine Nachbildung per Software benutzt.
-Deswegeb ist das Bootloaderprogramm deutlich größer und benutzt 10 Flashspeicher-Seiten mit jeweils 64 Bytes.
+Deswegen ist das Bootloaderprogramm deutlich größer und benutzt 10 Flashspeicher-Seiten mit jeweils 64 Bytes.
 
 Jetzt noch ein Beispiel mit einem anderen Mikrocontroller:
 
@@ -164,7 +307,7 @@ Keine Boot Seiten vorhanden!
 \normalsize
 Dieser Mikrocontroller hat ebenfalls keine Bootloader Unterstützung und besitzt aber eine serielle Schnittstelle,
 die standardmäßig vom Bootloader unterstüzt wird. Das Bootloader Programm belegt hier 5 Flashspeicher Seiten a 128 Bytes.
-Diese Beispiele sollen zeigen, was die vom make Aufruf alles über den Ziel-Prozessor wissen.
+Diese Beispiele sollen zeigen, was die vom \textbf{make} Aufruf alles über den Ziel-Prozessor wissen.
 Wenn man über die Eingabe von Parametern die Standard Einstellung des Bootloaders verändern will, sollte man
 aufmerksam das Bildschirm-Protokoll lesen, ob das Ergebnis so gewünscht wird.
 
@@ -173,7 +316,8 @@ aufmerksam das Bildschirm-Protokoll lesen, ob das Ergebnis so gewünscht wird.
 Doch nun zurück zum weit verbreiteten Mikrocontroller ATmega328.
 Jetzt wollen wir versuchen, statt einer festen Baudrate eine automatisch ermittelte Baudrate zu benutzen.
 Das wird mit einer angegebenen Baudrate unter 100 angewählt. Hier werden durch die angegebene Zahl verschiedene
-Verfahren ausgewählt, die im Unterkapitel \ref{sec:autobaud} auf Seite \pageref{sec:autobaud} beschieben sind. Aus den Untersuchungen ist die Angabe einer 32 sinnvoll:
+Verfahren ausgewählt, die im Unterkapitel \ref{sec:autobaud} auf Seite \pageref{sec:autobaud} beschieben sind.
+Aus den Untersuchungen ist die Angabe einer 32 sinnvoll:
 
 \begin{verbatim}
 make atmega328 BAUD_RATE=32
@@ -252,7 +396,7 @@ Der Bootloader kommt wieder mit einer Bootseite aus. Aber es wird keine LED mehr
 die den Start des Bootloaders anzeigt. Da gibt es doch noch die Option LED\_DATA\_FLASH.
 Diese Option schaltet die LED normalerweise ein, wenn die serielle Schnittstelle auf Daten wartet.
 Mit der speziellen Einstellung 4 wird die LED nur beim Start des Bootloaders eingeschaltet.
-Das sollte doch reichen und brauch sicher nicht viel Programmplatz, also:
+Das sollte doch reichen um den gestarteten Bootloader zu erkennen und braucht sicher nicht viel Programmplatz, also:
 
 \begin{verbatim}
 make atmega328 BAUD_RATE=32 LED_START_FLASHES=0 LED_DATA_FLASH=4
@@ -318,14 +462,14 @@ Besondere Vorsicht ist geboten, wenn der Atmel Prozessor auf einem separaten Soc
 Alle mir bekannten Atmel Prozessoren laufen im Auslieferungszustand mit einem internen Takt, der oft auch
 geteilt wird. Wenn der Prozessor auf der Platine mit einem Quarz laufen soll, werden als erster
 Programmier-Schritt die Fuses programmiert. Weil man davon ausgehen muß, daß bei diesem Schritt
-der Takt noch deutlich geringer ist als beim make Aufruf für den Bootloader spezifiziert, wird dieser
-Schritt generell bei langsamer Bitrate (avrdude -B 200) durchgeführt.
+der Takt noch deutlich geringer ist als beim \textbf{make} Aufruf für den Bootloader spezifiziert, wird dieser
+Schritt generell bei langsamer Bitrate (\textbf{avrdude -B 200}) durchgeführt.
 Dieser Schritt läuft also bei einem neuen Atmel Prozessor. Wenn der Atmel Prozessor aber schon
 auf den Quarzbetrieb eingestellt ist, läuft auch schon der erste iProgrammier-Schritt nicht, da jeglicher Takt
 für den Prozessor ohne Quarz fehlt. Aus dem gleichen Grund können für alle Zustände des Atmel Prozessors
 die weiteren Programmier-Schritte nicht ohne Quarz laufen.
 Abhilfe für dieses Problem schafft ein zusaätzlich am Programmier-Sockel angebrachter Quarz.
-Außer dem ersten Programmierschritt (setzen der Fuses) wird die Bitrate (avrdude -B) 
+Außer dem ersten Programmierschritt (setzen der Fuses) wird die Bitrate (\textbf{avrdude -B}) 
 bei der Programmierung automatisch an die gewählte Taktrate (AVR\_FREQ) des Atmel Prozessors angepaßt.
 
 \subsection{Programmieren mit ISP Standardeinstellungen}
@@ -350,7 +494,7 @@ Dies Beispiel-Protokoll stammt von einem älteren Diamex AVR-Prog Programmer und
 ist mit dmesg -t (ohne Zeit) erzeugt. Sie sollten aber die Option -T verwenden,
 um die Zeit des Entrage kontrollieren zu können. Dieser Programmer ist
 zum Atmel AVRISP mkII kompatibel und ist als Programmer voreingestellt (ISPPORT=usb , ISPTOOL=avrisp2).
-Für diesen Programmer braucht an den make Aufruf nur der Parameter ISP=1 angehängt zu werden.
+Für diesen Programmer braucht an den \textbf{make} Aufruf nur der Parameter ISP=1 angehängt zu werden.
 Für das letzte Beispiel mit der automatischen Baudraten-Erkennung also:
 \begin{verbatim}
 make atmega328 BAUD_RATE=32 LED_START_FLASHES=0 LED_DATA_FLASH=4 ISP=1
@@ -418,19 +562,19 @@ Diese können Zeitprobleme mit dem halb-duplex Protokoll von avrdude verursachen
  
 \end{verbatim}
 \normalsize
-Da ist doch etwas schiefgelaufen! Das Programm avrdude hat mit einem Fehler abgebrochen,
-der Grund ist an der avrdude Fehlermeldung zu erkennen:
+Da ist doch etwas schiefgelaufen! Das Programm \textbf{avrdude} hat mit einem Fehler abgebrochen,
+der Grund ist an der \textbf{avrdude} Fehlermeldung zu erkennen:
 \begin{verbatim}
 avrdude error: expected signature for ATmega328 is 1E 95 14
         double check chip or use -F to override this check
 \end{verbatim}
-Das Programm avrdude erwartet eine andere Signatur des Mikrocontrollers.
-Die nachfolgenden Ratschläge sind uninteressant. Das Programm avrdude
+Das Programm \textbf{avrdude} erwartet eine andere Signatur des Mikrocontrollers.
+Die nachfolgenden Ratschläge sind uninteressant. Das Programm \textbf{avrdude}
 kehrt bei jedem Fehler mit Rückgabewert 1 zurück, der aufrufende Script
-geht aber von einem Kommunikationsproblem des Programm avrdude aus.
+geht aber von einem Kommunikationsproblem des Programm \textbf{avrdude} aus.
 Die Ursache für den Fehler ist aber anders, auf der Arduino Nano Platine ist ein ATmega328P 
 und nicht ein ATmega328 verbaut.
-Das hat avrdude festgestellt, also läuft die Kommunikation! 
+Das hat \textbf{avrdude} festgestellt, also läuft die Kommunikation! 
 Das ist jedoch schnell korrigiert:
 
 \begin{verbatim}
@@ -502,8 +646,17 @@ avrdude done.  Thank you.
 \end{verbatim}
 \normalsize
 Jetzt hat alles geklappt, der Bootloader ist auf der Arduino Nano Platine installiert.
-Der Vorteil dieser Art von Programmern ist, daß sie vom Programm avrdude gefunden werden,
-wenn als Schnittstelle (-P) usb angegeben wird. 
+Der Vorteil dieser Art von ISP-Programmern ist, daß sie vom Programm \textbf{avrdude} gefunden werden,
+wenn als Schnittstelle (-P) \inquotes{usb} angegeben wird. 
+Wenn sie die Zielplatine mit dem frisch installierten Bootloader unter Spannung setzen,
+blinkt die LED langsam. Das kommt daher, daß zuerst der Bootloader gestartet wird.
+Der schaltet die LED ein. Nach dem eingestellten Time-out wird versucht, das Anwenderprogramm
+zu starten. Dabei geht die LED wieder aus. 
+Da kein Anwenderprogramm installiert ist, läuft der Programmzähler von 0 immer weiter
+hoch bis der Bootloader wieder erreicht wird und die LED wieder einschaltet.
+Sobald ein Anwender-Programm über die serielle Schnittstelle geladen ist,
+verschwindet dieser Effekt und die LED bleibt nach dem Time-out dunkel sofern sie nicht
+vom Anwenderprogramm anders benutzt wird.
 
 \subsection{ISP-Programmieren mit USB-seriell Schnittstelle }
 
@@ -553,10 +706,10 @@ cdc_acm 1-4:1.0: ttyACM1: USB ACM device
 \end{verbatim}
 Man sieht in der letzten Zeile, daß sich der Name von ttyACM0 auf ttyACM1 geändert hat.
 Somit hat man für diesen Typ von ISP-Programmern eine Möglichkeit, den Namen der Schnittstelle
-für avrdude richtig einzustellen. Der Name der Schnittstelle wird beim avrdude Programm mit dem
-Parameter -P angegeben. Beim make Aufruf wird die Schnittstelle mit dem Parameter ISPPORT angegeben.
-Das Protokoll für den ISP-Programmer wird beim Programm avrdude mit dem Parameter -c angegeben,
-beim make Aufruf heißt der entsprechende Parameter ISPTOOL.
+für \textbf{avrdude} richtig einzustellen. Der Name der Schnittstelle wird beim \textbf{avrdude} Programm mit dem
+Parameter -P angegeben. Beim \textbf{make} Aufruf wird die Schnittstelle mit dem Parameter ISPPORT angegeben.
+Das Protokoll für den ISP-Programmer wird beim Programm \textbf{avrdude} mit dem Parameter -c angegeben,
+beim \textbf{make} Aufruf heißt der entsprechende Parameter ISPTOOL.
 Bei entsprechender Einstellung der DIP-Schalter unterstützt der Diamex EXA-PROG das stk500 Protokoll von Atmel unterstützt.
 Die Baudrate der seriellen Schnittstelle (arduino Parameter -b) ist auf 115000 eingestellt und
 braucht in der Regel nicht mit dem Parameter ISPSPEED geändert werden.
@@ -630,15 +783,15 @@ avrdude done.  Thank you.
 \normalsize
 Dummerweise weiß das Betriebssystem nichts über den and die serielle Schnittstelle
 angeschlossenen ISP-Programmer.
-Für die Einstellung des Parameters ISPTOOL (Option -c für avrdude) sollte das Handbuch des Programmers oder
+Für die Einstellung des Parameters ISPTOOL (Option -c für \textbf{avrdude}) sollte das Handbuch des Programmers oder
 der Hersteller Auskunft erteilen können.
 Wenn die Entwicklung des ISP-Programmers aus einem Projekt stammt, gibt die Dokumentation des Projektes
-hoffentlich Hinweise. Das Programm avrdude unterstützt viele Programmer.
-wenn Sie avrdude nur mit der Spezifikation des Zielprozessors -p atmega328p aufrufen, werden 
+hoffentlich Hinweise. Das Programm \textbf{avrdude} unterstützt viele Programmer.
+wenn Sie \textbf{avrdude} nur mit der Spezifikation des Zielprozessors \inquotes{-p atmega328p} aufrufen, werden 
 Ihnen 127 verschiedene Möglichkeiten eines Programmers aufgelistet. Wenn man die Einstellungen  
 ausschließt, die kein ISP-Protokoll verwenden, verbleiben immer noch 83 Möglichkeiten.
 Deswegen sollten Sie jede Möglichkeit nutzen, eine geeignete Einstellung für Ihren ISP-Programmer zu finden.
-Manchmal gibt der Name der von avrdude angezeigten Programmer Einstellungen einen Hinweis auf die Eignung
+Manchmal gibt der Name der von \textbf{avrdude} angezeigten Programmer Einstellungen einen Hinweis auf die Eignung
 dieser Einstellmöglichkeit wie die folgenden Beispiele:
 \begin{itemize}
 	\item{arduinoisp         = Arduino ISP Programmer}
