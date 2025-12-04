@@ -67,7 +67,7 @@ fi
 if [ "${AVR_FREQ}" = "20M" ] ; then
  export AVR_FREQ=20000000
 fi
-if (( 0${VerboseLev} == 0 )) ; then
+if [ "${VerboseLev}" = "" ] ; then
   #define the default VerboseLev value in this script
   VerboseLev=2
 fi
@@ -78,14 +78,16 @@ if [ "${PROGRAM}" = "" ] ; then
  PROGRAM="optiboot"
 fi
 
-if (( ${LED_DATA_FLASH} > 0 )) ; then
+if (( 0${LED_DATA_FLASH} > 0 )) ; then
  # force to disable START_FLASH
   if (( 0${LED_START_FLASHES} > 0 )) ; then
+   if (( ${VerboseLev} > 1 )) ; then 
     if [ "${MYLANG}" == "de_" ] ; then
       echo ">> ${Vgelb}LED_START_FLASHES${Vnormal} abgeschaltet weil LED_DATA_FLASH gesetzt ist!!"
     else
       echo ">> ${Vgelb}LED_START_FLASHES${Vnormal} disabled because LED_DATA_FLASH is set!!"
     fi
+   fi
   fi
  LED_START_FLASHES=0
 fi
