@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.11.23)  27 NOV 2025 23:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.11.23)  30 NOV 2025 13:14
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1266,7 +1266,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.41 ... ATtiny841 Familie}{51}{subsection.3.9.15}
+l.41 ... ATtiny841 Familie}{50}{subsection.3.9.15}
                                                   % [1
 
 ])
@@ -1644,144 +1644,120 @@ Underfull \hbox (badness 10000) in paragraph at lines 1298--1310
 
  []
 
-[39]
-Overfull \hbox (0.37563pt too wide) in paragraph at lines 1351--1351
-[] \T1/lmtt/m/n/12 -DSUPPORT_EEPROM=1 -DLED=pB5 -DUART=00 -DSOFT_UART=0 -DUART_
-RX=pD0 -DUART_TX=pD1 \[] 
- []
-
-[40]
-Overfull \hbox (6.55063pt too wide) in paragraph at lines 1386--1386
-[] \T1/lmtt/m/n/12 -DSUPPORT_EEPROM=1 -DLED=pB5 -DUART=00 -DSOFT_UART=01 -DUART
-_RX=pD0 -DUART_TX=pD1 \[] 
- []
-
-
-Overfull \hbox (25.06863pt too wide) in paragraph at lines 1386--1386
-[]\T1/lmtt/m/n/12 BAUD RATE CHECK: Desired: 115200, SoftUART_Real: 115107, Dela
-y: 116*1, Difference=-.07%[] 
- []
-
-[41]
-Overfull \hbox (0.37563pt too wide) in paragraph at lines 1430--1430
-[]\T1/lmtt/m/n/12 Simple Baudrate measurement with time limit implemented in op
-tiboot! (4-bit, CLK/8)[] 
- []
-
-
-Overfull \hbox (0.37563pt too wide) in paragraph at lines 1464--1464
-[] \T1/lmtt/m/n/12 -DSUPPORT_EEPROM=1 -DLED=pB5 -DUART=00 -DSOFT_UART=0 -DUART_
-RX=pD0 -DUART_TX=pD1 \[] 
- []
-
-
-Overfull \hbox (7.44012pt too wide) in paragraph at lines 1467--1467
+[39] [40] [41]
+Overfull \hbox (7.44012pt too wide) in paragraph at lines 1479--1479
 []\T1/lmr/bx/n/17.28 Anpassung der Takt-fre-quenz bei in-ter-nem RC-Generator 
  []
 
 [42] [43] [44]
-Overfull \hbox (1.22614pt too wide) in paragraph at lines 1658--1662
+Overfull \hbox (1.22614pt too wide) in paragraph at lines 1670--1674
 \T1/lmr/m/n/12 Der AT-me-ga32 und der AT-me-ga16 kön-nen 4 ver-schie-de-ne Fre-
 quen-zen mit dem in-ter-nen RC-Generator
  []
 
 [45] [46] [47] [48]
-Overfull \hbox (1.27835pt too wide) in paragraph at lines 1998--2007
+Overfull \hbox (1.27835pt too wide) in paragraph at lines 2010--2019
 \T1/lmr/m/n/12 Oszillator und der $\OT1/lmr/m/n/12 128\OML/lmm/m/it/12 kHz$ \T1
 /lmr/m/n/12 Takt der Watchdog-Schaltung be-nutzt wer-den. Der $\OT1/lmr/m/n/12 
 6\OML/lmm/m/it/12 :\OT1/lmr/m/n/12 4\OML/lmm/m/it/12 MHz$ \T1/lmr/m/n/12 RC-Osz
 illator
  []
 
-[49] [50]
-Overfull \hbox (6.49998pt too wide) in paragraph at lines 2120--2122
+[49]
+Overfull \hbox (6.49998pt too wide) in paragraph at lines 2132--2134
 []\T1/lmr/m/n/12 Bei al-len un-ter-such-ten Ex-em-pla-ren kann die se-ri-el-le 
 Schnitt-stel-le auch oh-ne die OSCCAL-Korrektur
  []
 
-[51] [52] [53]
-Underfull \hbox (badness 10000) in paragraph at lines 2381--2390
+[50] [51] [52] [53]
+Underfull \hbox (badness 10000) in paragraph at lines 2393--2402
 
  []
 
-[54]
-Overfull \hbox (10.1829pt too wide) in paragraph at lines 2391--2399
+
+Overfull \hbox (10.1829pt too wide) in paragraph at lines 2403--2411
 \T1/lmr/m/n/12 Ori-gi-nal Chip von Fu-ture Tech-no-lo-gy De-vi-ces In-ter-na-ti
 o-nal Li-mi-ted (FT-DI) und ein-mal als FT232clone,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2391--2399
+Underfull \hbox (badness 10000) in paragraph at lines 2403--2411
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2400--2417
+Underfull \hbox (badness 10000) in paragraph at lines 2412--2429
 
  []
 
-[55]
-Underfull \hbox (badness 10000) in paragraph at lines 2465--2476
+[54]
+Underfull \hbox (badness 10000) in paragraph at lines 2477--2488
 
  []
 
-[56{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}]
-Underfull \hbox (badness 10000) in paragraph at lines 2516--2527
+[55{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}]
+Underfull \hbox (badness 10000) in paragraph at lines 2528--2539
 
  []
 
-[57]
-Underfull \hbox (badness 10000) in paragraph at lines 2616--2631
+[56] [57]
+Underfull \hbox (badness 10000) in paragraph at lines 2628--2643
 
  []
 
 [58]
-Underfull \hbox (badness 10000) in paragraph at lines 2632--2644
+Underfull \hbox (badness 10000) in paragraph at lines 2644--2656
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2645--2656
+Underfull \hbox (badness 10000) in paragraph at lines 2657--2668
 
  []
 
 [59]
-Underfull \hbox (badness 10000) in paragraph at lines 2732--2746
+Underfull \hbox (badness 10000) in paragraph at lines 2744--2758
 
  []
 
 [60] [61]
-Underfull \hbox (badness 10000) in paragraph at lines 2800--2821
+Underfull \hbox (badness 10000) in paragraph at lines 2812--2833
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2831--2835
+Overfull \hbox (5.2993pt too wide) in paragraph at lines 2843--2847
+\T1/lmr/m/n/12 Als ich die Ar-beit mit der \T1/lmr/bx/n/12 op-ti-boot \T1/lmr/m
+/n/12 Um-stel-lung auf As-sem-b-ler und Ein-bau der EEprom-Unterstützung
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2843--2847
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2836--2841
+Underfull \hbox (badness 10000) in paragraph at lines 2848--2853
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2842--2846
+Underfull \hbox (badness 10000) in paragraph at lines 2854--2858
 
  []
 
 [62]
-Underfull \hbox (badness 10000) in paragraph at lines 2847--2859
+Underfull \hbox (badness 10000) in paragraph at lines 2859--2871
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2860--2863
+Underfull \hbox (badness 10000) in paragraph at lines 2872--2875
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2864--2869
+Underfull \hbox (badness 10000) in paragraph at lines 2876--2881
 
  []
 
@@ -1818,7 +1794,7 @@ ternational, Ltd FT232 Serial (UART) IC[]
  []
 
 [72] [73] [74]
-Overfull \hbox (105.33667pt too wide) in paragraph at lines 222--222
+Overfull \hbox (105.33667pt too wide) in paragraph at lines 223--223
 []\T1/lmtt/m/n/12 Bus 002 Device 076: ID 0403:6001 Future Technology Devices In
 ternational, Ltd FT232 Serial (UART) IC[] 
  []
@@ -1833,18 +1809,12 @@ Kapitel 6.
 
 
 
-] [83]
-Overfull \hbox (70.59868pt too wide) in paragraph at lines 173--173
-[] \T1/lmtt/m/n/10 -DUART_-DSUPPORT_EEPROM=0RX=pD0 -DUART_TX=pD1 -DF_CPU=160000
-00 -DHFUSE=hexDE -DLFUSE=hexFF -DBOOT_PAGE_LEN=512[] 
- []
-
-[84] [85] [86] [87] [88] [89] [90] [91] [92] [93] [94]) [95] [96
+] [83] [84] [85] [86] [87] [88] [89] [90] [91] [92] [93] [94]) [95] [96
 
 
 
-] [97]
-(./bootloader.aux (./preface.aux) (./principle.aux) (./AVRhardware.aux)
+]
+[97] (./bootloader.aux (./preface.aux) (./principle.aux) (./AVRhardware.aux)
 (./optiboot.aux) (./AVRdata.aux) (./USBserial.aux) (./build.aux))
  ***********
 LaTeX2e <2023-11-01> patch level 1
@@ -1867,7 +1837,7 @@ r/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/pub
 lic/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/shar
 e/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/l
 m/lmtt12.pfb>
-Output written on bootloader.pdf (98 pages, 764639 bytes).
+Output written on bootloader.pdf (98 pages, 764822 bytes).
 PDF statistics:
  1223 PDF objects out of 1440 (max. 8388607)
  1062 compressed objects within 11 object streams

@@ -11,8 +11,8 @@ AVR_FREQ=16000000
 BAUD_RATE=36
 UART=0
 LED_START_FLASHES=0
-LED_DATA_FLASH=0
-LED=
+LED_DATA_FLASH=4
+LED=B5
 SUPPORT_EEPROM=1
 ISP=
 SOFT_UART=
@@ -25,6 +25,7 @@ TIMEOUT_MS=
 OSCCAL_CORR=
 FORCE_RSTDISBL=
 save_vect_num=
+NO_APP_SPM=2
  
 Bootloader use 512 Bytes of Flash,
 so the Application must use less than 0x7E00 Bytes of Flash 

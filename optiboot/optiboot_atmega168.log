@@ -25,6 +25,7 @@ TIMEOUT_MS=
 OSCCAL_CORR=
 FORCE_RSTDISBL=
 save_vect_num=
+NO_APP_SPM=
  
 Bootloader use 512 Bytes of Flash,
 so the Application must use less than 0x3E00 Bytes of Flash 

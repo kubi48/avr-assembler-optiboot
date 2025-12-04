@@ -58,10 +58,10 @@ else
     unset pin_desc
   else
     if [ "${MYLANG}" == "de_" ] ; then
-      echo "list_led_pin.sh hat ${rx_grep_txt} in avr_pins/${AVR_FAMILY}.pins nicht gefunden."
+      echo "list_led_pin.sh hat LED=${LED} in avr_pins/${AVR_FAMILY}.pins nicht gefunden."
       echo "Liste der verfügbaren Pinne der ${AVR_FAMILY} Gruppe:"
     else
-      echo "list_led_pin.sh has not found \"${led_grep_txt}\" in avr_pins/${AVR_FAMILY}.pins"
+      echo "list_led_pin.sh has not found LED=\"${LED}\" in avr_pins/${AVR_FAMILY}.pins"
       echo "List of available pins for ${AVR_FAMILY} group:"
     fi
     grep "^p[A-N][0-7]" avr_pins/${AVR_FAMILY}.pins

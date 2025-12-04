@@ -117,10 +117,10 @@ Below are some of the features listed for the optiboot bootloader:
 	For some problematic processors this feature enables the use of a
 	bootloader with a fix baud rate in this operation mode.}
 
-\item {Installing the optiboot bootloader at a respective AVR can be done with the program avrdude and
+\item {Installing the optiboot bootloader at a respective AVR can be done with the program \textbf{avrdude} and
 	a connected ISP-programmer.
-	To initiate this task only a additional ISP=1 is required at the make call.
-	With a ISP=2 at the make call you can operate a verify run of avrdude.
+	To initiate this task only a additional ISP=1 is required at the \textbf{make} call.
+	With a ISP=2 at the \textbf{make} call you can operate a verify run of \textbf{avrdude}.
 	Additionally a read out of the total flash memory of the AVR is possible
 	with ISP=3. A ISP=4 will read the complete EEprom data from your AVR processor.}
 
@@ -202,14 +202,14 @@ If the variable ISP is set, also the script program\_target is called.
 the hfuse and efuse settings. 
 If the configuration result to another number of used bootpages, the BOOTSZ bits
 of the ATmega must be changed. The bits are depending on the AVR model
-in the hfuse or efuse byte, which does not make the correction easier.
-After the required corrections the avrdude program is called with
+in the hfuse or efuse byte, which does not \textbf{make} the correction easier.
+After the required corrections the \textbf{avrdude} program is called with
 the script only\_avrdude.sh .
 
 \item [only\_avrdude.sh] makes only one avrdude call with the params
 given by the variable DUDE\_PARAMS .
 For check of the parameters the call is reported at the terminal.
-If the avrdude call returns with an error, the script give some common hints
+If the \textbf{avrdude} call returns with an error, the script give some common hints
 for error search. At a Linux system a additional search of probably matching serial
 interfaces is done.
 
@@ -263,7 +263,7 @@ baud rate state.
 There can exist different configurations for the same processor type.
 The table~\ref{tab:processors} shows some basic configuration
 for several target processors.
-You can select some parameters also with the make call or by setting
+You can select some parameters also with the \textbf{make} call or by setting
 a environment variable of the shell.
 These settings will allways replace the default selections.
 There are two main variable names, which are given to the bash shell script
@@ -762,7 +762,7 @@ The figure~\ref{fig:onewire-simple} should illustrate this simplest connection.
 
 Now is the problem, that the mostly full-duplex capable external interface will
 read back the own output.
-The communication program like avrdude at the external side is usually unprepared for this condition.
+The communication program like \textbf{avrdude} at the external side is usually unprepared for this condition.
 One solution for this problem is to adapt the program at the external side to handle
 this read back.
 But I believe, that this is not a good idea, because this special version will 
@@ -793,7 +793,7 @@ The circuit consisting of a diode, two resistors and a \(18 pF\) capacitor forwa
 to NAND input 6 than the rising edge.
 only two NAND gates are required for the function. the other two NAND gates are used for a optional
 display of TX/RX activity.
-With this circuit you can use an unchanged transfer program like avrdude for example.
+With this circuit you can use an unchanged transfer program like \textbf{avrdude} for example.
 The circuit is largely independent of the selected baud rate.
 I expect only problems with very high baud rates.
 At 115200 baud the circuit operates well. Much higher baud rates can 
@@ -1182,8 +1182,8 @@ Unfortunately the programs in the colums labled with \_0 and \_5, this means all
 Baud rate selections ending with the digit 0 or 5, are practical unusable.
 The reason herefore is, that the division operation by successive subtraction
 is too slow to finish before the serial data stop bit ends.
-A workaround would be to let the transmitter of the data (avrdude) send all data with 2 stop bits.
-Because this is not intended by the avrdude version 6.3,
+A workaround would be to let the transmitter of the data (\textbf{avrdude}) send all data with 2 stop bits.
+Because this is not intended by the \textbf{avrdude} version 6.3,
 the other columns use an accelerated subtraction loop,
 which then causes a longer program.
 If possible, the faster shift operation for division by powers of 2 is used instead of the subtraction loop.
@@ -1300,9 +1300,9 @@ The hardware UART switch on a second stop bit for transmitted data and the
 software solution use a additional half stop bit.
 This seems to be usefull with little differences of the baud rate between sender and receiver,
 because there is more time for the receiver to synchronize with the next start bit.
-The PC side with avrdude version 6.3 could send data with two stop bits.
-So I had pached the sources for avrdude to add this feature with the additional option -S.
-But unfortunately this feature is missing with avrdude.
+The PC side with \textbf{avrdude} version 6.3 could send data with two stop bits.
+So I had pached the sources for \textbf{avrdude} to add this feature with the additional option -S.
+But unfortunately this feature is missing with \textbf{avrdude}.
 
 You can disable the two stop bit selection of optiboot with the option TWO\_STOP\_BITS=0.
 The difference in speed is insignificant, so I would recommend to use the longer stop bit.\\
@@ -1320,18 +1320,20 @@ or disadvantages with this feature, not even when operating with just one pin.
 The first example is the building of a bootloader for the popular ATmega328P:
 
 \begin{verbatim}
-optiboot $ make atmega328p
+make atmega328p
+\end{verbatim}
+\footnotesize
+\begin{verbatim}
 
-Optiboot for 16000000 Hz (16.00 Mhz) operation with Baudrate 115200 and EEprom \
-  support configured.
+Optiboot for 16000000 Hz (16.00 Mhz) operation with Baudrate 115200 and EEprom support \
+ configured.
  >>> Start building for AVR atmega328p:
 LED-Pin PB5 use Pin 19-PDIP28 17-TQFP32, with special functions: SCK PCINT5
-RX-Pin PD0 use Pin 2-PDIP28 30-TQFP32, with special functions: PCINT16 RXD
-TX-Pin PD1 use Pin 3-PDIP28 31-TQFP32, with special functions: PCINT17 TXD
-avr-gcc -g -Wall -Os -fno-split-wide-types -mrelax -mmcu=atmega328p \
- -fno-diagnostics-show-caret -DBAUD_RATE=115200 -DLED_START_FLASHES=3 \
- -DSUPPORT_EEPROM=1 -DLED=pB5 -DUART=00 -DSOFT_UART=0 -DUART_RX=pD0 -DUART_TX=pD1 \
- -DF_CPU=16000000 -DHFUSE=hexDE -DLFUSE=hexFF -DBOOT_PAGE_LEN=512 \
+ RX-Pin PD0 use Pin  2-PDIP28 30-TQFP32, with special functions: PCINT16 RXD
+ TX-Pin PD1 use Pin  3-PDIP28 31-TQFP32, with special functions: PCINT17 TXD
+avr-gcc -g -Wall -Os -fno-split-wide-types -mrelax -mmcu=atmega328p -fno-diagnostics-show-caret \
+ -DBAUD_RATE=115200 -DLED_START_FLASHES=3 -DSUPPORT_EEPROM=1 -DLED=pB5 -DUART=00 -DSOFT_UART=0 \
+ -DUART_RX=pD0 -DUART_TX=pD1 -DF_CPU=16000000 -DHFUSE=hexDE -DLFUSE=hexFF -DBOOT_PAGE_LEN=512 \
  -DVerboseLev=2 -c -o optiboot.o optiboot.S
 
 --------------------------------------------------------------------------------
@@ -1347,6 +1349,7 @@ Requires 1 Boot Page of 512 Bytes, which is 1.5% of Flash Memory
 BOOTSZ=3, which means 1 Boot Pages
 
 \end{verbatim}
+\normalsize
 
 
 With no additional option a baudrate of 115200 with a clock frequency of \(16 MHz\) is selected.
@@ -1355,18 +1358,20 @@ You should notice, that the systematic baud rate error is above 2\% with the har
 The second example with the same processor is done with a software solution for the serial interface.
 
 \begin{verbatim}
-optiboot $ make atmega328p SOFT_UART=1
+make atmega328p SOFT_UART=1
+\end{verbatim}
+\footnotesize
+\begin{verbatim}
 
-Optiboot for 16000000 Hz (16.00 Mhz) operation with Baudrate 115200 and EEprom \
-  support configured.
+Optiboot for 16000000 Hz (16.00 Mhz) operation with Baudrate 115200 and EEprom support \
+ configured.
  >>> Start building for AVR atmega328p:
 LED-Pin PB5 use Pin 19-PDIP28 17-TQFP32, with special functions: SCK PCINT5
-RX-Pin PD0 use Pin 2-PDIP28 30-TQFP32, with special functions: PCINT16 RXD
-TX-Pin PD1 use Pin 3-PDIP28 31-TQFP32, with special functions: PCINT17 TXD
-avr-gcc -g -Wall -Os -fno-split-wide-types -mrelax -mmcu=atmega328p \
- -fno-diagnostics-show-caret -DBAUD_RATE=115200 -DLED_START_FLASHES=3 \
- -DSUPPORT_EEPROM=1 -DLED=pB5 -DUART=00 -DSOFT_UART=01 -DUART_RX=pD0 -DUART_TX=pD1 \
- -DF_CPU=16000000 -DHFUSE=hexDE -DLFUSE=hexFF -DBOOT_PAGE_LEN=512 \
+ RX-Pin PD0 use Pin  2-PDIP28 30-TQFP32, with special functions: PCINT16 RXD
+ TX-Pin PD1 use Pin  3-PDIP28 31-TQFP32, with special functions: PCINT17 TXD
+avr-gcc -g -Wall -Os -fno-split-wide-types -mrelax -mmcu=atmega328p -fno-diagnostics-show-caret \
+ -DBAUD_RATE=115200 -DLED_START_FLASHES=3 -DSUPPORT_EEPROM=1 -DLED=pB5 -DUART=00 -DSOFT_UART=01 \
+ -DUART_RX=pD0 -DUART_TX=pD1 -DF_CPU=16000000 -DHFUSE=hexDE -DLFUSE=hexFF -DBOOT_PAGE_LEN=512 \
  -DVerboseLev=2 -c -o optiboot.o optiboot.S
 
 --------------------------------------------------------------------------------
@@ -1382,6 +1387,7 @@ Requires 1 Boot Page of 512 Bytes, which is 1.5% of Flash Memory
 BOOTSZ=3, which means 1 Boot Pages
 
 \end{verbatim}
+\normalsize
 
 Please note, that the software solution for the serial interface requires a little more flash memory,
 but take use of only 1 boot page too. The systematic baud rate error is much smaller than the error with the hardware UART.
@@ -1398,18 +1404,20 @@ by measuring the rate of the first incoming data.
 The flashing of the LED at the program start is deselected in the first example to save flash memory.
 
 \begin{verbatim}
-optiboot $ make atmega328p LED_START_FLASHES=0 BAUD_RATE=52
+make atmega328p LED_START_FLASHES=0 BAUD_RATE=52
+\end{verbatim}
+\footnotesize
+\begin{verbatim}
 
-Optiboot for 16000000 Hz (16.00 Mhz) operation with Auto-Baudrate and EEprom \
-  support configured.
+Optiboot for 16000000 Hz (16.00 Mhz) operation with Auto-Baudrate and EEprom support \
+ configured.
  >>> Start building for AVR atmega328p:
 LED-Pin not used!
-RX-Pin PD0 use Pin 2-PDIP28 30-TQFP32, with special functions: PCINT16 RXD
-TX-Pin PD1 use Pin 3-PDIP28 31-TQFP32, with special functions: PCINT17 TXD
-avr-gcc -g -Wall -Os -fno-split-wide-types -mrelax -mmcu=atmega328p \
- -fno-diagnostics-show-caret -DBAUD_RATE=52 -DLED_START_FLASHES=0 \
- -DSUPPORT_EEPROM=1 -DLED=p -DUART=00 -DSOFT_UART=0 -DUART_RX=pD0 -DUART_TX=pD1 \
- -DF_CPU=16000000 -DHFUSE=hexDE -DLFUSE=hexFF -DBOOT_PAGE_LEN=512 \
+ RX-Pin PD0 use Pin  2-PDIP28 30-TQFP32, with special functions: PCINT16 RXD
+ TX-Pin PD1 use Pin  3-PDIP28 31-TQFP32, with special functions: PCINT17 TXD
+avr-gcc -g -Wall -Os -fno-split-wide-types -mrelax -mmcu=atmega328p -fno-diagnostics-show-caret \
+ -DBAUD_RATE=52 -DLED_START_FLASHES=0 -DSUPPORT_EEPROM=1 -DLED=p -DUART=00 -DSOFT_UART=0 \
+ -DUART_RX=pD0 -DUART_TX=pD1 -DF_CPU=16000000 -DHFUSE=hexDE -DLFUSE=hexFF -DBOOT_PAGE_LEN=512 \
  -DVerboseLev=2 -c -o optiboot.o optiboot.S
 
 --------------------------------------------------------------------------------
@@ -1426,6 +1434,7 @@ Requires 1 Boot Page of 512 Bytes, which is 1.5% of Flash Memory
 BOOTSZ=3, which means 1 Boot Pages
 
 \end{verbatim}
+\normalsize
 
 
 for the last example the most complex methode of baud rate measurement
@@ -1433,18 +1442,20 @@ was selected because the limit of 512 byte would be exceeded with
 selecting the LED flashing and the simplest measurement method (534 byte).
 
 \begin{verbatim}
-optiboot $ make atmega328p BAUD_RATE=76
+make atmega328p BAUD_RATE=76
+\end{verbatim}
+\footnotesize
+\begin{verbatim}
 
-Optiboot for 16000000 Hz (16.00 Mhz) operation with Auto-Baudrate and EEprom \
-  support configured.
+Optiboot for 16000000 Hz (16.00 Mhz) operation with Auto-Baudrate and EEprom support \
+ configured.
  >>> Start building for AVR atmega328p:
 LED-Pin PB5 use Pin 19-PDIP28 17-TQFP32, with special functions: SCK PCINT5
-RX-Pin PD0 use Pin 2-PDIP28 30-TQFP32, with special functions: PCINT16 RXD
-TX-Pin PD1 use Pin 3-PDIP28 31-TQFP32, with special functions: PCINT17 TXD
-avr-gcc -g -Wall -Os -fno-split-wide-types -mrelax -mmcu=atmega328p \
- -fno-diagnostics-show-caret -DBAUD_RATE=82 -DLED_START_FLASHES=3 \
- -DSUPPORT_EEPROM=1 -DLED=pB5 -DUART=00 -DSOFT_UART=0 -DUART_RX=pD0 -DUART_TX=pD1 \
- -DF_CPU=16000000 -DHFUSE=hexDE -DLFUSE=hexFF -DBOOT_PAGE_LEN=512 \
+ RX-Pin PD0 use Pin  2-PDIP28 30-TQFP32, with special functions: PCINT16 RXD
+ TX-Pin PD1 use Pin  3-PDIP28 31-TQFP32, with special functions: PCINT17 TXD
+avr-gcc -g -Wall -Os -fno-split-wide-types -mrelax -mmcu=atmega328p -fno-diagnostics-show-caret \
+ -DBAUD_RATE=82 -DLED_START_FLASHES=3 -DSUPPORT_EEPROM=1 -DLED=pB5 -DUART=00 -DSOFT_UART=0 \
+ -DUART_RX=pD0 -DUART_TX=pD1 -DF_CPU=16000000 -DHFUSE=hexDE -DLFUSE=hexFF -DBOOT_PAGE_LEN=512 \
  -DVerboseLev=2 -c -o optiboot.o optiboot.S
 
 --------------------------------------------------------------------------------
@@ -1461,6 +1472,7 @@ Requires 2 Boot Pages, 512 Bytes each, which is 3.1% of Flash Memory
 BOOTSZ=2, which means 2 Boot Pages
 
 \end{verbatim}
+\normalsize
 
 
 \section{Clock Frequency Correction of the internal RC-Generator}
@@ -2346,10 +2358,10 @@ a clock for the AVR.
 The function generator can be operated both via the front panel and via a USB interface.
 The USB interface consists of an internal CH341 USB-serial converter, so that no special USB driver is required.
 The control can be done with well-documented ASCII character strings.
-iThis fulfills the essential requirements for systematic tests of the interaction between avrdude,
+iThis fulfills the essential requirements for systematic tests of the interaction between \textbf{avrdude},
 the USB-serial converter and the optiboot bootloader.
 In particular, the behavior of the automatic baud rate adjustment should be examined more intensively.
-For this, downloads with avrdude should be repeated with different clock frequencies,
+For this, downloads with \textbf{avrdude} should be repeated with different clock frequencies,
 so that problems are detected.
 I choosed a number of 40 repititions as a acceptable compromise between expenditure of time and
 statistical significance.
@@ -2372,10 +2384,10 @@ The other source of error for the time measurement is caused by the query loop f
 results to at least 3 clocks for each measuring point.
 But first I will show the count of errors with different USB-serial chips with 40 downloads for
 each clock frequency between 14 MHz and 18 MHz with a step size of 100 kHz and a baud rate of 115200.
-A total of 1640 downloads of 10 kByte with avrdude was the base for each table entry.
-A special modified avrdude program was used for these tests,
+A total of 1640 downloads of 10 kByte with \textbf{avrdude} was the base for each table entry.
+A special modified \textbf{avrdude} program was used for these tests,
 which can select a serial output with two stop bits with the new parameter -S.
-The differences of the avrdude sources are notices in the file ee\_test/avrdude.diff.
+The differences of the \textbf{avrdude} sources are notices in the file ee\_test/avrdude.diff.
 
 
 \begin{table}[H]
@@ -2453,7 +2465,7 @@ The USB-serial converters speed is always set to 115200 baud.
 The clock frequency of the ATmega has been increased from 14.7 MHz in 100 kHz steps
 to 17.1 MHz instead of the fixed 16 MHz.
 The optiboot baud rate changes proportionally with the change in frequency.
-For the tests downloads of 10 kByte each with avrdude are repested 40 times for each frequency.
+For the tests downloads of 10 kByte each with \textbf{avrdude} are repested 40 times for each frequency.
 The number of unsuccessful attempts for each frequency are recorded in a table from the script file test\_download.
 From the tables obtained in this way for the various USB-serial converters, an editor was used to create
 an overall table for the test series with 1 stop bit (Doku/results/HWfix\_1\_115200\_USBserial\_0.tab)
@@ -2630,7 +2642,7 @@ Frequency  & Period & auto & UBRR=8 & UBRR=7 & auto & auto & auto \\
 \end{table}
 
 All test results in the table \ref{tab:ExtremErrs} represent the number of failed attempts at the
-respective clock rate (column 1) of 40 download attempts of 10 kByte with avrdude.
+respective clock rate (column 1) of 40 download attempts of 10 kByte with \textbf{avrdude}.
 The USB-serial converters always use 2 stop bits for these tests.
 The unsuccessful attempts for a CP2104 USB-serial converter are recorded in the first data column.
 The PL2303TA chip has shown the same result for this test.
@@ -2679,7 +2691,7 @@ The baud rate is calculated from the transmission time for 4 data bits.
 A counter with / 8 prescaler is used to measure the time.
 The clock of the AVR was starting in steps of 100 kHz
 at 14 MHz increased to 18 MHz.
-40 downloads of 10 kByte each with the modified avrdude (2 stop bits) are tried for each frequency.
+40 downloads of 10 kByte each with the modified \textbf{avrdude} (2 stop bits) are tried for each frequency.
 The table \ref{tab:ExtremErrs16} shows the results for the existing USB-serial converters.
 
 \begin{table}[H]
@@ -2786,8 +2798,8 @@ The extensive tests, which are summarized in the tables \ref{tab:HWfixErrs} on p
 \ref{tab:SWfixErrs} on page \pageref{tab:SWfixErrs}, showed that the use of a second stop bit for the transmit data 
 increases the usable baud rate difference significantly.
 This shows that the occurrence of unfavorable baud rate combinations with 2 stop bits is reduced.
-Unfortunately the standard avrdude with version 6.3 does not allow the use of a second stop bit.
-You can try to patch the avrdude version 6.3 sources with the diff documentation in the
+Unfortunately the standard \textbf{avrdude} with version 6.3 does not allow the use of a second stop bit.
+You can try to patch the \textbf{avrdude} version 6.3 sources with the diff documentation in the
 file ee\_test/avrdude.diff.
 The loss of speed is insignificant, you gain more speed, if you can select a higher baud rate instead.
 
@@ -2815,11 +2827,11 @@ Because both the software UART solution and the autobaud function require more f
 it is becoming more and more difficult to fit the optiboot in 512 bytes flash.
 Of course you don't have to worry about the 512 byte limit,
 if the target processor has a larger bootloader page such as 1024 bytes.
-You should try the configurations of optiboot to fit in 512 byte flash with make calls without the ISP option or with
+You should try the configurations of optiboot to fit in 512 byte flash with \textbf{make} calls without the ISP option or with
 the ISP option set to 0.
 You can try out the different options until you find a suitable configuration that fits in 512 bytes.
 By the way, the size of the bootloader page of the target processor is displayed in the terminal log 
-with every make call that specifies a target processor.\\
+with every \textbf{make} call that specifies a target processor.\\
 
 First you should switch off the blinking function of the LED with LED\_START\_FLASHES=0 in order to save space.
 If you absolutely need something to light up, you can use the LED\_DATA\_FLASH=4 function,
@@ -2871,9 +2883,9 @@ The advantage of the autobaud function is that you can try out the higher baud r
 If that doesn't work, you can switch to a lower baud rate without changing the bootloader.\\
 
 So I was able to prove in extensive test series that a larger deviation of the baud rate is tolerated
-from avrdude with the use of a second stop bit for the transmitted serial data.
+from \textbf{avrdude} with the use of a second stop bit for the transmitted serial data.
 It is a little surprising that this has not been noticed so far.
-Otherwise the second stop bit should at least be selectable as an option from avrdude.\\
+Otherwise the second stop bit should at least be selectable as an option from \textbf{avrdude}.\\
 
 Even when I thought there was nothing more to improve, I got the idea to reset the frequency prescaler
 for counters during the final tests of the autobaud function with various USB-to-serial converters.
@@ -2885,7 +2897,7 @@ I am sorry that the many setting options for optiboot are confusing for a user.
 As far as possible, I have taken over the options of the C version from Peter Knight ands
 Bill Westfield to make it easier for users of the original version of optiboot.
 Otherwise I hope that the examples from chapter \ref{Examples} on page \pageref{Examples} facilitate the first introduction.
-In addition, a make call with the desired target processor as a parameter is sufficient
+In addition, a \textbf{make} call with the desired target processor as a parameter is sufficient
 to generate an executable optiboot as a .hex file.
 The terminal log shows which setting has been selected.
 That is always a matching clock frequency and a (fixed) baud rate preselected for this specific processor.\\

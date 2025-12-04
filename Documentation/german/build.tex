@@ -34,6 +34,8 @@ Erst im zweiten Hauptschritt sollte das Laden des Programms auf den Zielprozesso
 versucht werden.
 Diese Aufteilung hat den Grund, daß viele Einstellungen schon vorab geprüft werden und
 die Erstellung schon mit einer Fehlermeldung abgebrochen werden kann.
+Außerdem sollten Sie das Bildschirm-Protokoll prüfen und somit feststellen, ob die eingegebenen Parameter
+richtig verarbeitet sind, also ohne Tippfehler eingegeben sind.
 Für jeden der unterstützten Prozessoren gibt es Voreinstellungen, die aber durch
 Eingabe von Parametern beim \textbf{make} Aufruf geändert werden können.
 Die Fähigkeiten des optiboot Bootloaders sind im Kapitel \ref{sec:optiboot} ab Seite \pageref{sec:optiboot}
@@ -48,7 +50,7 @@ Ein gutes Beispiel dafür ist der verwendete ISP-Programmertyp.
 Die entsprechende Variable heißt ISPTOOL.
 Wenn diese Variable weder als Umgebungsvariable noch als Parameter beim \textbf{make} Aufruf angegeben ist,
 wird \textbf{avrisp2} als Typ angenommen.
-Wenn der Typ für Sie nicht richtig ist, konnen sie das beim \textbf{make} Aufruf ändern wie:
+Wenn der Typ für Sie nicht richtig ist, können sie das beim \textbf{make} Aufruf ändern wie:
 \begin{verbatim}
 make atmega328p ISP=1 ISPTOOL=stk500
 \end{verbatim}
@@ -86,9 +88,11 @@ Es muß zwingend ein Zielprozessor für den optiboot Bootloader als erster
 Parameter beim \textbf{make} Aufruf angegeben werden.
 Sie sollten die Beispiele nach Möglichkeit auch an ihrem PC ausführen.
 Wenn sie in einen Terminal-Fenster arbeiten, dann wechseln sie dort mit dem \textbf{cd} Kommando
-in das optiboot verzeichnis und tippen sie die \textbf{make} Kommandos ab.
+in ihr optiboot verzeichnis und tippen sie die \textbf{make} Kommandos ab.
 Wenn sie tippfaul sind, können sie auch die PDF Dokumenation öffnen und die
 \textbf{make} Befehle mit der linken Maustaste  vollständig markieren und mit der mittleren Maustate in das Terminal-Fenster kopieren.
+Zum Markieren fahren sie mit festgehaltener linken Maustaste über den vollständigen Befehl oder
+sie können wahrscheinlich auch mit dem Mauszeiger über der Zeile die linke Maustaste drei Mal tippen. 
 
 Beginnen wir mit einem einfachen Beispiel:
 
@@ -100,7 +104,7 @@ make atmega328
 
 Optiboot für 16000000 Hz (16.00 Mhz) Betrieb mit Baudrate 115200 und EEprom Unterstützung
  konfiguriert.
- >>> Starte optiboot für AVR atmega328 erstellen:
+ >>> Starte:: optiboot für AVR atmega328 erstellen
 LED-Pin PB5 benutzt Pin 19-PDIP28 17-TQFP32, mit Spezialfunktionen: SCK PCINT5.
  RX-Pin PD0 benutzt Pin  2-PDIP28 30-TQFP32, mit Spezialfunktionen: PCINT16 RXD.
  TX-Pin PD1 benutzt Pin  3-PDIP28 31-TQFP32, mit Spezialfunktionen: PCINT17 TXD.
@@ -113,7 +117,7 @@ avr-gcc -g -Wall -Os -fno-split-wide-types -mrelax -mmcu=atmega328  -fno-diagnos
 BAUD RATE CHECK: Desired: 115200,  Real: 117647, UBRR = 16, Difference=2.12%
 --------------------------------------------------------------------------------
 # # # # # # # # # # # # # # # # # # # # # #
-Urlader Startadresse: 0x7E00 = 32256
+Bootloader Startadresse: 0x7E00 = 32256
 # # # # # # # # # # # # # # # # # # # # # #
  
    text	   data	    bss	    dec	    hex	filename
@@ -132,7 +136,7 @@ Damit kann beispielsweise eine ungünstige Belegung der LED Funktion vermieden w
 Hinter dem Kompileraufruf wird die angestrebte und die tatsächliche Baudrate mit einem prozentualen
 Fehler angegeben. Danach wird auch die Start-Adresse des Bootloaders und die Zahl der benutzten
 Boot-Speicherseiten sowie die Größe des Bootloaders angegeben.
-Trotz des einfachen Aufrufes würde diese Konfiguration für gängige Platinen wir Arduino UNO oder Arduino Nano passen.
+Trotz des einfachen Aufrufes würde diese Konfiguration für gängige Platinen wir \textbf{Arduino UNO} oder \textbf{Arduino Nano} passen.
 Die von der Größe des Bootloaders abhängige Zahl der Boot-Speicherseiten wird übrigens beim Programmieren
 des ATmega328 automatisch berücksichtigt. So entsteht auch bei deutlich größeren Bootloader-Versionen  ein lauffähiger Bootloader.
 Aus reiner Neugier können wir doch mal testen, wie das Ergebnis wäre, wenn man statt der Assembler-Version
@@ -145,14 +149,14 @@ make atmega328 C_SOURCE=1
 \begin{verbatim}
  
 Optiboot für 16000000 Hz (16.00 Mhz) Betrieb mit Baudrate 115200 konfiguriert.
- >>> Starte optiboot für AVR atmega328 erstellen:
+ >>> Starte: optiboot für AVR atmega328 erstellen
 LED-Pin PB5 benutzt Pin 19-PDIP28 17-TQFP32, mit Spezialfunktionen: SCK PCINT5.
  RX-Pin PD0 benutzt Pin  2-PDIP28 30-TQFP32, mit Spezialfunktionen: PCINT16 RXD.
  TX-Pin PD1 benutzt Pin  3-PDIP28 31-TQFP32, mit Spezialfunktionen: PCINT17 TXD.
 avr-gcc -g -Wall -Os -fno-split-wide-types -mrelax -mmcu=atmega328  -fno-diagnostics-show-caret 
  -DBAUD_RATE=115200 -DLED_START_FLASHES=3 -DSUPPORT_EEPROM=0 -DLED=pB5 -DUART=00 -DSOFT_UART=0 
- -DUART_-DSUPPORT_EEPROM=0RX=pD0 -DUART_TX=pD1 -DF_CPU=16000000 -DHFUSE=hexDE -DLFUSE=hexFF -DBOOT_PAGE_LEN=512 
- -DVerboseLev=2 -c -o optiboot.o optiboot.c
+ -DUART_-DSUPPORT_EEPROM=0RX=pD0 -DUART_TX=pD1 -DF_CPU=16000000 -DHFUSE=hexDE -DLFUSE=hexFF 
+ -DBOOT_PAGE_LEN=512 -DVerboseLev=2 -c -o optiboot.o optiboot.c
 optiboot.c: In function 'main':
 optiboot.c:628:7: warning: #warning "BAUD_RATE error greater than 2%" [-Wcpp]
 optiboot.c: In function 't1_delay':
@@ -162,7 +166,7 @@ optiboot.c:1538:1: warning: control reaches end of non-void function [-Wreturn-t
 BAUD RATE CHECK: Desired: 115200,  Real: 117647, UBRR = 16, Difference=2.12%
 --------------------------------------------------------------------------------
 # # # # # # # # # # # # # # # # # # # # # #
-Urlader Startadresse: 0x7E00 = 32256
+Bootloader Startadresse: 0x7E00 = 32256
 # # # # # # # # # # # # # # # # # # # # # #
  
    text	   data	    bss	    dec	    hex	filename
@@ -173,10 +177,10 @@ BOOTSZ=3, das bedeutet 1 Boot Seite
 \end{verbatim}
 \normalsize
 Das ist ja eine Überraschung, die Programmlänge ist gleich wie bei der Assembler-Version.
-Noch einmal prüfen, ob da was schief gelaufen ist. Beim avr-gcc Aufruf ist aber an letzter Stelle das Programm optiboot.c
+Noch einmal prüfen, ob da was schief gelaufen ist. Beim \textbf{avr-gcc} Aufruf ist aber an letzter Stelle das Programm optiboot.c
 und nicht optiboot.S angegeben. Also wird der Parameter \inquotes{C\_SOURCE=1} richtig verarbeitet.
 Wenn man genauer hinschaut, fehlt aber in der ersten Zeile des Bildschirm-Protokolls
-der Hinweis \inquotes{ und EEprom Unterstützung}. Richtig, in der Parameterliste beim avr-gcc Aufruf
+der Hinweis \inquotes{ und EEprom Unterstützung}. Richtig, in der Parameterliste beim \textbf{avr-gcc} Aufruf
 ist mit \inquotes{-DSUPPORT\_EEPROM=0} die EEProm Unterstützung tatsächlich abgeschaltet.
 Die EEProm Unterstützung läßt sich aber sicher wieder einschalten:
 
@@ -188,7 +192,7 @@ make atmega328 C_SOURCE=1 SUPPORT_EEPROM=1
 
 Optiboot für 16000000 Hz (16.00 Mhz) Betrieb mit Baudrate 115200 und EEprom Unterstützung 
  konfiguriert.
- >>> Starte optiboot für AVR atmega328 erstellen:
+ >>> Starte: optiboot für AVR atmega328 erstellen
 LED-Pin PB5 benutzt Pin 19-PDIP28 17-TQFP32, mit Spezialfunktionen: SCK PCINT5.
  RX-Pin PD0 benutzt Pin  2-PDIP28 30-TQFP32, mit Spezialfunktionen: PCINT16 RXD.
  TX-Pin PD1 benutzt Pin  3-PDIP28 31-TQFP32, mit Spezialfunktionen: PCINT17 TXD.
@@ -205,7 +209,7 @@ optiboot.c:1538:1: warning: control reaches end of non-void function [-Wreturn-t
 BAUD RATE CHECK: Desired: 115200,  Real: 117647, UBRR = 16, Difference=2.12%
 --------------------------------------------------------------------------------
 # # # # # # # # # # # # # # # # # # # # # #
-Urlader Startadresse: 0x7C00 = 31744
+Bootloader Startadresse: 0x7C00 = 31744
 # # # # # # # # # # # # # # # # # # # # # #
 
    text	   data	    bss	    dec	    hex	filename
@@ -222,7 +226,7 @@ der Programmiersprache C auf Assembler gewesen. Es hat sich gelohnt, um jedes By
 Wenn jetzt versucht würde, mit dem zusätzlichen Parameter
 \inquotes{ISP=1} diesen Bootloader auf den ATmega328 zu laden, wäre dieser Bootloader
 lauffähig, da die Fuses des ATmega und auch die Start-Adresse automatisch an die größere Bootloader-Version
-angepasst werden. Es ist aber jetzt auch verständlich, warum bei der Standard-Konfiguration für
+angepasst würden. Es ist aber jetzt auch verständlich, warum bei der Standard-Konfiguration für
 die C-Quelle die EEProm Unterstützung weggelassen wird.
 Der Bootloader soll standardmäßig in eine Bootseite von 512 Byte passen.
  
@@ -239,7 +243,7 @@ make attiny88
  
 Optiboot für 8000000 Hz (8.00 Mhz) Betrieb mit Baudrate 115200 und EEprom Unterstützung 
  konfiguriert.
- >>> Starte optiboot für AVR attiny88 erstellen:
+ >>> Starte: optiboot für AVR attiny88 erstellen
 LED-Pin PB5 benutzt Pin 19-PDIP28 17-TQFP32, mit Spezialfunktionen: SCK PCINT5.
  RX-Pin PD0 benutzt Pin  2-PDIP28 30-TQFP32, mit Spezialfunktionen: PCINT16 .
  TX-Pin PD1 benutzt Pin  3-PDIP28 31-TQFP32, mit Spezialfunktionen: PCINT17 .
@@ -252,7 +256,7 @@ avr-gcc -g -Wall -Os -fno-split-wide-types -mrelax -mmcu=attiny88  -fno-diagnost
 BAUD RATE CHECK: Desired: 115200,  SoftUART_Real: 115942, Delay: 46*1, Difference=.64%
 --------------------------------------------------------------------------------
 # # # # # # # # # # # # # # # # # # # # # #
-Urlader Startadresse: 0x1D80 = 7552
+Bootloader Startadresse: 0x1D80 = 7552
 # # # # # # # # # # # # # # # # # # # # # #
  
    text	   data	    bss	    dec	    hex	filename
@@ -263,12 +267,13 @@ Keine Boot Seiten vorhanden!
 \end{verbatim}
 \normalsize
 Zunächst ist die Betriebsfrequenz jetzt 8 MHz und es wird eine Software-Emulation der seriellen Schnittstelle
-aud Pin PD0 und PD1 für den Bootloader benutzt. Das Fehlen einer seriellen Schnittstelle kann man in der Optionsliste
-für den Kompiler avr-gcc aus der automatisch gesetzten Option \inquotes{-DSOFT\_UART=1} erkennen sowie beim \inquotes{BAUD RATE CHECK} aus
+auf Pin PD0 und PD1 für den Bootloader benutzt. Das Fehlen einer seriellen Schnittstelle kann man in der Optionsliste
+für den Kompiler \textbf{avr-gcc} aus der automatisch gesetzten Option \inquotes{-DSOFT\_UART=1} erkennen sowie beim \inquotes{BAUD RATE CHECK:} aus
 dem Wort \textbf{SoftUART\_Real}. Die angegebene Differenz zur gewünschten Baudrate von 115000 sollte einen aber nicht
 täuschen. Wenn der ATtiny88 mit dem internen Taktgenerator betrieben wird, hält er wahrscheinlich die Taktfrequenz
 nicht genau ein und damit weicht auch die errechnete Baudrate in Wirklichkeit anders ab.
 Außerdem unterstützt der ATtiny88 keine Bootloader-Funktion. Stattdessen wird hier eine Nachbildung per Software benutzt.
+Der Bootloader wird aber wie bei einer echten Bootloaderfunktion in den oberen Speicherbereich geladen (Bootloader Startadresse:).
 Deswegen ist das Bootloaderprogramm deutlich größer und benutzt 10 Flashspeicher-Seiten mit jeweils 64 Bytes.
 
 Jetzt noch ein Beispiel mit einem anderen Mikrocontroller:
@@ -282,7 +287,7 @@ Auch hier sieht das Protokoll auf dem Bildschirm wieder anders aus:
  
 Optiboot für 8000000 Hz (8.00 Mhz) Betrieb mit Baudrate 115200 und EEprom Unterstützung 
  konfiguriert.
- >>> Starte optiboot für AVR attiny87 erstellen:
+ >>> Starte: optiboot für AVR attiny87 erstellen
 LED-Pin PA2 benutzt Pin  3-SOIC20 31-MLF32, mit Spezialfunktionen: MISO D0 OC0A ADC2 PCINT2.
  RX-Pin PA0 benutzt Pin  1-SOIC20 29-MLF32, mit Spezialfunktionen: RXLIN RXD ADC0 PCINT0.
  TX-Pin PA1 benutzt Pin  2-SOIC20 30-MLF32, mit Spezialfunktionen: TXLIN TXD ADC1 PCINT1.
@@ -295,7 +300,7 @@ avr-gcc -g -Wall -Os -fno-split-wide-types -mrelax -mmcu=attiny87  -fno-diagnost
 BAUD RATE CHECK: Desired: 115200,  Real: 111111, UBRR = 8, Difference=-3.54%
 --------------------------------------------------------------------------------
 # # # # # # # # # # # # # # # # # # # # # #
-Urlader Startadresse: 0x1D80 = 7552
+Bootloader Startadresse: 0x1D80 = 7552
 # # # # # # # # # # # # # # # # # # # # # #
  
    text	   data	    bss	    dec	    hex	filename
@@ -307,9 +312,9 @@ Keine Boot Seiten vorhanden!
 \normalsize
 Dieser Mikrocontroller hat ebenfalls keine Bootloader Unterstützung und besitzt aber eine serielle Schnittstelle,
 die standardmäßig vom Bootloader unterstüzt wird. Das Bootloader Programm belegt hier 5 Flashspeicher Seiten a 128 Bytes.
-Diese Beispiele sollen zeigen, was die vom \textbf{make} Aufruf alles über den Ziel-Prozessor wissen.
+Diese Beispiele sollen zeigen, was beim \textbf{make} Aufruf alles über den Ziel-Prozessor bekannt ist.
 Wenn man über die Eingabe von Parametern die Standard Einstellung des Bootloaders verändern will, sollte man
-aufmerksam das Bildschirm-Protokoll lesen, ob das Ergebnis so gewünscht wird.
+immer aufmerksam das Bildschirm-Protokoll lesen, ob das Ergebnis so gewünscht wird.
 
 \section{Beispiel für die optiboot Erstellung mit Sonderfunktion}
 
@@ -328,7 +333,7 @@ Das Bildschirm Protokoll sieht jetzt so aus:
 
 Optiboot für 16000000 Hz (16.00 Mhz) Betrieb mit automatischer Baudrate und EEprom Unterstützung
  konfiguriert.
- >>> Starte optiboot für AVR atmega328 erstellen:
+ >>> Starte: optiboot für AVR atmega328 erstellen
 LED-Pin PB5 benutzt Pin 19-PDIP28 17-TQFP32, mit Spezialfunktionen: SCK PCINT5.
  RX-Pin PD0 benutzt Pin  2-PDIP28 30-TQFP32, mit Spezialfunktionen: PCINT16 RXD.
  TX-Pin PD1 benutzt Pin  3-PDIP28 31-TQFP32, mit Spezialfunktionen: PCINT17 TXD.
@@ -342,7 +347,7 @@ Simple Baudrate measurement implemented in optiboot! (4-bit, Clk/8)
 UART Minimum 488 Baud, Difference surely less than 4% up to 160.0 kBaud
 --------------------------------------------------------------------------------
 # # # # # # # # # # # # # # # # # # # # # #
-Urlader Startadresse: 0x7C00 = 31744
+Bootloader Startadresse: 0x7C00 = 31744
 # # # # # # # # # # # # # # # # # # # # # #
  
    text	   data	    bss	    dec	    hex	filename
@@ -368,7 +373,7 @@ Jetzt sieht das Bildschirm Protokoll schon viel besser aus:
  
 Optiboot für 16000000 Hz (16.00 Mhz) Betrieb mit automatischer Baudrate und EEprom Unterstützung
  konfiguriert.
- >>> Starte optiboot für AVR atmega328 erstellen:
+ >>> Starte: optiboot für AVR atmega328 erstellen
  RX-Pin PD0 benutzt Pin  2-PDIP28 30-TQFP32, mit Spezialfunktionen: PCINT16 RXD.
  TX-Pin PD1 benutzt Pin  3-PDIP28 31-TQFP32, mit Spezialfunktionen: PCINT17 TXD.
 avr-gcc -g -Wall -Os -fno-split-wide-types -mrelax -mmcu=atmega328  -fno-diagnostics-show-caret 
@@ -381,7 +386,7 @@ Simple Baudrate measurement implemented in optiboot! (4-bit, Clk/8)
 UART Minimum 488 Baud, Difference surely less than 4% up to 160.0 kBaud
 --------------------------------------------------------------------------------
 # # # # # # # # # # # # # # # # # # # # # #
-Urlader Startadresse: 0x7E00 = 32256
+Bootloader Startadresse: 0x7E00 = 32256
 # # # # # # # # # # # # # # # # # # # # # #
  
    text	   data	    bss	    dec	    hex	filename
@@ -407,7 +412,7 @@ Jetzt wird der LED-Port wieder benutzt, wie das Protokoll zeigt:
 
 Optiboot für 16000000 Hz (16.00 Mhz) Betrieb mit automatischer Baudrate und EEprom Unterstützung
  konfiguriert.
- >>> Starte optiboot für AVR atmega328 erstellen:
+ >>> Starte: optiboot für AVR atmega328 erstellen
 LED-Pin PB5 benutzt Pin 19-PDIP28 17-TQFP32, mit Spezialfunktionen: SCK PCINT5.
  RX-Pin PD0 benutzt Pin  2-PDIP28 30-TQFP32, mit Spezialfunktionen: PCINT16 RXD.
  TX-Pin PD1 benutzt Pin  3-PDIP28 31-TQFP32, mit Spezialfunktionen: PCINT17 TXD.
@@ -421,7 +426,7 @@ Simple Baudrate measurement implemented in optiboot! (4-bit, Clk/8)
 UART Minimum 488 Baud, Difference surely less than 4% up to 160.0 kBaud
 --------------------------------------------------------------------------------
 # # # # # # # # # # # # # # # # # # # # # #
-Urlader Startadresse: 0x7E00 = 32256
+Bootloader Startadresse: 0x7E00 = 32256
 # # # # # # # # # # # # # # # # # # # # # #
 
    text	   data	    bss	    dec	    hex	filename
@@ -444,10 +449,10 @@ Auch ein Wechsel der Taktrate mit einem anderen Quarz macht so weniger Probleme.
 
 Nachdem ein geeigneter Bootlader für einen Mikrocontroller erstellt ist, sollte man sich um das Hochladen
 des Bootloaders in den Mikrocontroller kümmern. Auf der Platine mit dem Mikrocontroller sollte es eine
-ISP-Schnittstelle geben. Das ist idealerweise ein 6-poliger oder ein 10-poliger Wannenstecker wie er
-auf Abbildung \ref{fig:ISP} auf Seite \pageref{fig:ISP} dargestellt ist.
+ISP-Schnittstelle geben. Das ist idealerweise ein 6-poliger oder ein 10-poliger Wannenstecker wie sie
+auf Abbildung \ref{fig:ISP} auf Seite \pageref{fig:ISP} dargestellt sind.
 Wir benötigen ebenfalls einen ISP-Programmer, der idealerweise einen gleichen Wannenstecker haben sollte.
-Einen Flachbandkabel mit passenden Steckbuchsen wird auch benötigt. Ein Flachbandkabel wird oft mit dem
+Einen Flachbandkabel mit passenden Steckbuchsen wird auch benötigt. Das Flachbandkabel wird oft mit dem
 ISP-Programmer mitgeliefert. Die meisten käuflich erwerbbare ISP-Programmer benutzen zum Verbinden
 mit dem PC eine USB-Schnittstelle. Die USB-Schnittstelle bietet gegenüber einer seriellen Schnittstelle
 den Vorteil, daß sie sowohl der Programmer als auch die Mikrocontroller-Platine mit Spannung (5V oder 3,3V) 
@@ -463,12 +468,12 @@ Alle mir bekannten Atmel Prozessoren laufen im Auslieferungszustand mit einem in
 geteilt wird. Wenn der Prozessor auf der Platine mit einem Quarz laufen soll, werden als erster
 Programmier-Schritt die Fuses programmiert. Weil man davon ausgehen muß, daß bei diesem Schritt
 der Takt noch deutlich geringer ist als beim \textbf{make} Aufruf für den Bootloader spezifiziert, wird dieser
-Schritt generell bei langsamer Bitrate (\textbf{avrdude -B 200}) durchgeführt.
-Dieser Schritt läuft also bei einem neuen Atmel Prozessor. Wenn der Atmel Prozessor aber schon
-auf den Quarzbetrieb eingestellt ist, läuft auch schon der erste iProgrammier-Schritt nicht, da jeglicher Takt
-für den Prozessor ohne Quarz fehlt. Aus dem gleichen Grund können für alle Zustände des Atmel Prozessors
-die weiteren Programmier-Schritte nicht ohne Quarz laufen.
-Abhilfe für dieses Problem schafft ein zusaätzlich am Programmier-Sockel angebrachter Quarz.
+Schritt generell bei langsamer Bitrate (\textbf{avrdude -B 500}) durchgeführt.
+Dieser Schritt läuft also bei jedem neuen Atmel Prozessor. Wenn der Atmel Prozessor aber schon
+auf den Quarzbetrieb eingestellt ist, läuft auch schon der erste Programmier-Schritt nicht, da jeglicher Takt
+für den Prozessor ohne den Quarz fehlt. Aus dem gleichen Grund können die weiteren Programmier-Schritte 
+für den Atmel Prozessor nicht ohne Quarz laufen.
+Abhilfe für dieses Problem schafft ein zusätzlich am Programmier-Sockel angebrachter Quarz.
 Außer dem ersten Programmierschritt (setzen der Fuses) wird die Bitrate (\textbf{avrdude -B}) 
 bei der Programmierung automatisch an die gewählte Taktrate (AVR\_FREQ) des Atmel Prozessors angepaßt.
 
@@ -490,10 +495,10 @@ usb 1-6: Manufacturer: ERFOS
 usb 1-6: SerialNumber: 0000A00128255
 \end{verbatim}
 \normalsize
-Dies Beispiel-Protokoll stammt von einem älteren Diamex AVR-Prog Programmer und
+Dies Beispiel-Protokoll stammt von einem älteren \textbf{Diamex AVR-Prog} Programmer und
 ist mit dmesg -t (ohne Zeit) erzeugt. Sie sollten aber die Option -T verwenden,
-um die Zeit des Entrage kontrollieren zu können. Dieser Programmer ist
-zum Atmel AVRISP mkII kompatibel und ist als Programmer voreingestellt (ISPPORT=usb , ISPTOOL=avrisp2).
+um die Zeit des Einträge kontrollieren zu können. Dieser Programmer ist
+zum \textbf{Atmel AVRISP mkII} kompatibel und ist als Programmer voreingestellt (ISPPORT=usb , ISPTOOL=avrisp2).
 Für diesen Programmer braucht an den \textbf{make} Aufruf nur der Parameter ISP=1 angehängt zu werden.
 Für das letzte Beispiel mit der automatischen Baudraten-Erkennung also:
 \begin{verbatim}
@@ -505,7 +510,7 @@ make atmega328 BAUD_RATE=32 LED_START_FLASHES=0 LED_DATA_FLASH=4 ISP=1
 
 Optiboot für 16000000 Hz (16.00 Mhz) Betrieb mit automatischer Baudrate und EEprom Unterstützung
  konfiguriert.
- >>> Starte optiboot für AVR atmega328 erstellen:
+ >>> Starte: optiboot für AVR atmega328 erstellen
 LED-Pin PB5 benutzt Pin 19-PDIP28 17-TQFP32, mit Spezialfunktionen: SCK PCINT5.
  RX-Pin PD0 benutzt Pin  2-PDIP28 30-TQFP32, mit Spezialfunktionen: PCINT16 RXD.
  TX-Pin PD1 benutzt Pin  3-PDIP28 31-TQFP32, mit Spezialfunktionen: PCINT17 TXD.
@@ -519,7 +524,7 @@ Simple Baudrate measurement implemented in optiboot! (4-bit, Clk/8)
 UART Minimum 488 Baud, Difference surely less than 4% up to 160.0 kBaud
 --------------------------------------------------------------------------------
 # # # # # # # # # # # # # # # # # # # # # #
-Urlader Startadresse: 0x7E00 = 32256
+Bootloader Startadresse: 0x7E00 = 32256
 # # # # # # # # # # # # # # # # # # # # # #
  
    text	   data	    bss	    dec	    hex	filename
@@ -574,7 +579,8 @@ kehrt bei jedem Fehler mit Rückgabewert 1 zurück, der aufrufende Script
 geht aber von einem Kommunikationsproblem des Programm \textbf{avrdude} aus.
 Die Ursache für den Fehler ist aber anders, auf der Arduino Nano Platine ist ein ATmega328P 
 und nicht ein ATmega328 verbaut.
-Das hat \textbf{avrdude} festgestellt, also läuft die Kommunikation! 
+Die beiden Prozessoren haben aber eine unterschiedliche Signature.
+Das hat \textbf{avrdude} festgestellt, also läuft die Kommunikation zwischen avrdude und dem ATmega328P! 
 Das ist jedoch schnell korrigiert:
 
 \begin{verbatim}
@@ -586,7 +592,7 @@ make atmega328p BAUD_RATE=32 LED_START_FLASHES=0 LED_DATA_FLASH=4 ISP=1
 
 Optiboot für 16000000 Hz (16.00 Mhz) Betrieb mit automatischer Baudrate und EEprom Unterstützung
  konfiguriert.
- >>> Starte optiboot für AVR atmega328p erstellen:
+ >>> Starte: optiboot für AVR atmega328p erstellen
 LED-Pin PB5 benutzt Pin 19-PDIP28 17-TQFP32, mit Spezialfunktionen: SCK PCINT5.
  RX-Pin PD0 benutzt Pin  2-PDIP28 30-TQFP32, mit Spezialfunktionen: PCINT16 RXD.
  TX-Pin PD1 benutzt Pin  3-PDIP28 31-TQFP32, mit Spezialfunktionen: PCINT17 TXD.
@@ -600,7 +606,7 @@ Simple Baudrate measurement implemented in optiboot! (4-bit, Clk/8)
 UART Minimum 488 Baud, Difference surely less than 4% up to 160.0 kBaud
 --------------------------------------------------------------------------------
 # # # # # # # # # # # # # # # # # # # # # #
-Urlader Startadresse: 0x7E00 = 32256
+Bootloader Startadresse: 0x7E00 = 32256
 # # # # # # # # # # # # # # # # # # # # # #
 
    text	   data	    bss	    dec	    hex	filename
@@ -653,7 +659,7 @@ blinkt die LED langsam. Das kommt daher, daß zuerst der Bootloader gestartet wi
 Der schaltet die LED ein. Nach dem eingestellten Time-out wird versucht, das Anwenderprogramm
 zu starten. Dabei geht die LED wieder aus. 
 Da kein Anwenderprogramm installiert ist, läuft der Programmzähler von 0 immer weiter
-hoch bis der Bootloader wieder erreicht wird und die LED wieder einschaltet.
+hoch bis wieder der Bootloader erreicht wird und die LED wieder einschaltet.
 Sobald ein Anwender-Programm über die serielle Schnittstelle geladen ist,
 verschwindet dieser Effekt und die LED bleibt nach dem Time-out dunkel sofern sie nicht
 vom Anwenderprogramm anders benutzt wird.
@@ -666,7 +672,7 @@ Das Betriebssystem erkennt den USB-seriell Wandler und weist der Seriell-Schnitt
 Dateisystem für den Zugriff zu. Bei Linux Systemen ist das normalerweise ein Eintrag in der Form /dev/ttyACMx,
 wobei das x für eine fortlaufende Nummer ist. Wenn der USB-seriell Wandler aus einem Spezialchip wie FT232 oder CH341 besteht, 
 vergibt ein Linux System einen Eintrag in der Form /dec/ttyUSBx, wobei x wieder für eine fortlaufende Nummer steht.
-Da die Spezialchips relativ teuer sind, wird aber meistens eine Emulation mit einem Mikrocontroller verbaut.
+Da die Spezialchips relativ teuer waren, wird aber oft eine Emulation mit einem Mikrocontroller verbaut.
 Sowohl bei der Form /dev/ttyACMx als auch bei der Form /dev/ttyUSBx ist aber aber so, das sich das x in dem Namen
 aus der Reihenfolge des Einsteckens in die USB-Schnittstellen des PCs ergibt. Ein einmal vergebener Name wird aber
 bis zum Ausstecken beibehalten. Wenn der erste eingesteckte USB-seriell Wandler den Namen /dev/ttyACM0 erhält,
@@ -679,9 +685,9 @@ System-Ringpuffers ist:
 \begin{verbatim}
 dmesg -t | tail -20
 \end{verbatim}
-Hier wurde statt -T ein -t verwendet, da die Zeit beim gedruckten Beispiel uninteressant ist.
-Sie sollten aber dmesg -T verwenden um die Zeit des Eintrags kontrollieren zu können.
-Kurz nach dem Einstecken eines Diamex EXA-PROG Programmers sieht man so folgendes:
+Hier wurde statt \textbf{-T} ein \textbf{-t} verwendet, da die Zeit beim gedruckten Beispiel uninteressant ist.
+Sie sollten aber \textbf{dmesg -T} verwenden um die Zeit des Eintrags kontrollieren zu können.
+Kurz nach dem Einstecken eines \textbf{Diamex EXA-PROG} Programmers sieht man so folgendes:
 \begin{verbatim}
 ...
 usb 1-3: new full-speed USB device number 24 using xhci_hcd
@@ -723,7 +729,7 @@ make atmega328p ISP=1 ISPPORT=/dev/ttyACM0 ISPTOOL=stk500
  
 Optiboot für 16000000 Hz (16.00 Mhz) Betrieb mit Baudrate 115200 und EEprom Unterstützung
  konfiguriert.
- >>> Starte optiboot für AVR atmega328p erstellen:
+ >>> Starte: optiboot für AVR atmega328p erstellen
 LED-Pin PB5 benutzt Pin 19-PDIP28 17-TQFP32, mit Spezialfunktionen: SCK PCINT5.
  RX-Pin PD0 benutzt Pin  2-PDIP28 30-TQFP32, mit Spezialfunktionen: PCINT16 RXD.
  TX-Pin PD1 benutzt Pin  3-PDIP28 31-TQFP32, mit Spezialfunktionen: PCINT17 TXD.
@@ -736,7 +742,7 @@ avr-gcc -g -Wall -Os -fno-split-wide-types -mrelax -mmcu=atmega328p  -fno-diagno
 BAUD RATE CHECK: Desired: 115200,  Real: 117647, UBRR = 16, Difference=2.12%
 --------------------------------------------------------------------------------
 # # # # # # # # # # # # # # # # # # # # # #
-Urlader Startadresse: 0x7E00 = 32256
+Bootloader Startadresse: 0x7E00 = 32256
 # # # # # # # # # # # # # # # # # # # # # #
  
    text	   data	    bss	    dec	    hex	filename
@@ -781,7 +787,7 @@ avrdude done.  Thank you.
 
 \end{verbatim}
 \normalsize
-Dummerweise weiß das Betriebssystem nichts über den and die serielle Schnittstelle
+Dummerweise weiß das Betriebssystem nichts über den an die serielle Schnittstelle
 angeschlossenen ISP-Programmer.
 Für die Einstellung des Parameters ISPTOOL (Option -c für \textbf{avrdude}) sollte das Handbuch des Programmers oder
 der Hersteller Auskunft erteilen können.

@@ -9,23 +9,17 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
   2 .data         00000000  00800060  00001fd6  0000024a  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  3 .debug_aranges 00000020  00000000  00000000  00000250  2**3
+  3 .stab         00000b70  00000000  00000000  0000024c  2**2
                   CONTENTS, READONLY, DEBUGGING
-  4 .debug_info   00000026  00000000  00000000  00000270  2**0
-                  CONTENTS, READONLY, DEBUGGING
-  5 .debug_abbrev 00000014  00000000  00000000  00000296  2**0
-                  CONTENTS, READONLY, DEBUGGING
-  6 .debug_line   000005f0  00000000  00000000  000002aa  2**0
-                  CONTENTS, READONLY, DEBUGGING
-  7 .debug_str    00000045  00000000  00000000  0000089a  2**0
+  4 .stabstr      00000058  00000000  00000000  00000dbc  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
 
 00001e00 <__ctors_end>:
-	.section .text
-	.func optiboot
-	.global optiboot
+  #endif
+ #endif
+#endif
 
 optiboot:
 	cli
@@ -482,8 +476,8 @@ wr_lop1:
 	ldi	r20, (1<<SELFPRGEN)
     1ee4:	41 e0       	ldi	r20, 0x01	; 1
 	; r0:r1 is data, Z r30:r31 is address, probably RAMPZ is also set
-	rcall	do_spm		; AOUT SPMCSR, r20 ; spm
-    1ee6:	5d d0       	rcall	.+186    	; 0x1fa2 <do_spm>
+	rcall	my_do_spm		; AOUT SPMCSR, r20 ; spm
+    1ee6:	5d d0       	rcall	.+186    	; 0x1fa2 <my_do_spm>
 	eor	r1, r1
     1ee8:	11 24       	eor	r1, r1
 	adiw	ZL, 2		; increment address
@@ -505,16 +499,16 @@ wr_lop1:
         // -----------------------------
 	ldi	r20, (1<<PGWRT)|(1<<SELFPRGEN)	; 0x05	
     1ef2:	45 e0       	ldi	r20, 0x05	; 5
-	rcall	do_spm		; AOUT SPMCSR, r20 ; spm
-    1ef4:	56 d0       	rcall	.+172    	; 0x1fa2 <do_spm>
+	rcall	my_do_spm		; AOUT SPMCSR, r20 ; spm
+    1ef4:	56 d0       	rcall	.+172    	; 0x1fa2 <my_do_spm>
 	rcall	wait_flash_ready
     1ef6:	4f d0       	rcall	.+158    	; 0x1f96 <wait_flash_ready>
 #if defined(RWWSRE)
        // Reenable read access to flash
 	ldi	r20, (1<<RWWSRE)|(1<<SELFPRGEN)	; 0x11	
     1ef8:	41 e1       	ldi	r20, 0x11	; 17
-	rcall	do_spm		; AOUT SPMCSR, r20 ; spm
-    1efa:	53 d0       	rcall	.+166    	; 0x1fa2 <do_spm>
+	rcall	my_do_spm		; AOUT SPMCSR, r20 ; spm
+    1efa:	53 d0       	rcall	.+166    	; 0x1fa2 <my_do_spm>
 	rcall	wr_eeprom
         ; Now we have saved the original save_vector address to the last two EEproms.
 	; The save_vector has now the original address from the reset vector and
@@ -849,8 +843,8 @@ boot_page_erase:
 	ldi	r20, (1<<PGERS)|(1<<SELFPRGEN)	; 0x03
     1fa0:	43 e0       	ldi	r20, 0x03	; 3
 
-00001fa2 <do_spm>:
-do_spm:
+00001fa2 <my_do_spm>:
+my_do_spm:
 	AOUT	SPMCSR, r20	; (1<<PGERS)|(SELFPRGEN)
     1fa2:	47 bf       	out	0x37, r20	; 55
 	spm

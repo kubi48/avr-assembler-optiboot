@@ -389,7 +389,7 @@ Dieser zweite serielle Eingang horcht so die Ausgaben des AVR mit und stört dab
 Kommunikation beim Programm-laden nicht, wenn diese Schnittstelle für den Serial Monitor gewählt wird.
 
 \subsection{Diagnose Werkzeuge}
-Unter dem Linux-Betriebssystem gibt es ein Werkzeug (Tool) mit dem seltsamen Namen jpnevulator, mit dem
+Unter dem Linux-Betriebssystem gibt es ein Werkzeug (Tool) mit dem seltsamen Namen \textbf{jpnevulator}, mit dem
 zwei serielle Eingänge zur selben Zeit überwacht werden können.
 Die übertragenen Daten werden im sedezimal (hex) Format dargestellt und mit der Option -a auch als ASCII-Zeichen.
 Mit der Option --timing-print werden die System-Zeiten der empfangenen seriellen Datenpakete gezeigt.
@@ -401,7 +401,7 @@ Zusammen mit dem Modul für das Programmladen sind dann drei solche Module an de
 Natürlich müssen alle drei Module auf die gleiche Baudrate eingestellt sein (stty ... -F /dev/ttyUSB1).
 Ohne den speed Parameter gibt das stty Programm die Parameter der angegebenen Schnittstelle
 aus (stty -F /dev/ttyUSB1).
-Einige Anwendungen wie avrdude können die Baudrate selber einstellen.
+Einige Anwendungen wie \textbf{avrdude} können die Baudrate selber einstellen.
 Der komplette Aufruf für das Werkzeug mit dem Beginn der Ausgaben könnte beispielsweise so aussehen:
 \begin{verbatim}
 jpnevulator -a --timing-print --read --tty "/dev/ttyUSB1" --tty "/dev/ttyUSB2"
@@ -430,7 +430,7 @@ jpnevulator -a --timing-print --read --tty "/dev/ttyUSB1" --tty "/dev/ttyUSB2"
 \end{verbatim}
 
 
-Daneben hat dat Programm avrdude die Möglichkeit, die Aktivitäten zu protokollieren.
+Daneben hat dat Programm \textbf{avrdude} die Möglichkeit, die Aktivitäten zu protokollieren.
 Eingeschaltet wird diese Funktion mit der Option -v .
 Durch mehrere v wird das Protokoll ausführlicher. Mit -vvvv wird
 nahezu jedes Detail protokolliert.

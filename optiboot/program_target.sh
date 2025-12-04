@@ -463,12 +463,28 @@ then
   else
    echo "##### erase the ${TARGET} and set fuses"
   fi
-  export DUDE_PARAMS="${AVRDUDE_CONF} -c ${ISPTOOL} -B 200 -p ${MCU_TARGET} -P ${ISPPORT} -b ${ISPSPEED} -q -q ${ISPFUSES}"
+  # We dont know anythig about the connected MCU_TARGET, so we assume the worst case for the clock.
+  # This is a internal oscillator with 128 kHz and a /8 clock divider, this gives a 16 kHz CPU-Clock
+  # The ISP Bitclock must 4 times slower, this gives 1000/16*4 = 250µs period for -B parameter.
+  # This is very slow, but it should work with any AVR processor, which have a clock
+  # Even a Low Frequency external Oscillator is faster without the /8  clock divider,
+  # but it needs a connected Crystal.
+  # The programming speed is not important because only fuses are programmed here!
+  export DUDE_PARAMS="${AVRDUDE_CONF} -c ${ISPTOOL} -B 500 -p ${MCU_TARGET} -P ${ISPPORT} -b ${ISPSPEED} -q -q ${ISPFUSES}"
   source ./only_avrdude.sh
   DUDE_FAIL=$?
   if (( ${DUDE_FAIL} != 0 ))
   then
     # Don't try the second Step, if avrdude fail!
+    # Probably the MCU_TARGET has no clock!
+    echo " "
+    if [ "${MYLANG}" == "de_" ] ; then
+      echo "Das Setzen der Fuses von ${TARGET} hat nicht funktioniert!"
+      echo "Prüfe, of der ${MCU_TARGET} einen angeschlossenen Quarz hat!"
+    else
+      echo "Setting of fuses for ${TARGET} fail!"
+      echo "Check, if the ${MCU_TARGET} has a connected crystal!"
+    fi
     return ${DUDE_FAIL}
   fi
   if (( 0${VIRTUAL_BOOT_PARTITION} > 0 ))

@@ -73,7 +73,7 @@ if (( 0${VerboseLev} == 0 )) ; then
 fi
 
 # WITH_COLORS=1, color + bold + reverse is use to format the screen output
-# WITH_COLORS=0, unformatted output to the scrrenn
+# WITH_COLORS=0, unformatted output to the screen
 if (( 0${WITH_COLORS} == 0 )) ; then
   WITH_COLORS=1
 fi
@@ -202,7 +202,7 @@ else
 fi
 
 if [ "${MYLANG}" == "de_" ] ; then
- echo " >>> Starte optiboot für AVR ${MCU_TARGET} erstellen:"
+ echo " >>> Starte: optiboot für AVR ${MCU_TARGET} erstellen"
 else
  echo " >>> Start building optiboot for AVR ${MCU_TARGET}:"
 fi
@@ -263,6 +263,9 @@ if [ "${NO_EARLY_PAGE_ERASE}" != "" ] ; then
 fi
 if [ "${TWO_STOP_BITS}" != "" ] ; then
 	XTRA_OPTIONS="${XTRA_OPTIONS} -DTWO_STOP_BITS=${TWO_STOP_BITS}"
+fi
+if [ "${NO_APP_SPM}" != "" ] ; then
+	XTRA_OPTIONS="${XTRA_OPTIONS} -DNO_APP_SPM=${NO_APP_SPM}"
 fi
 if [ "${UART}" = "" ] ; then
 UART=0
@@ -342,7 +345,7 @@ fi
 # Therefore the "round up" is not required for the ATtiny84, but the BOOT_PAGE_LEN is 64 for
 # this processor, so the number of pages is more than 7 pages for the actual size of optiboot.
 
-export prog_size=`avr-size -C ${PROGRAM}x.elf | grep "Program:" | cut -c 10-16`
+export prog_size=`avr-size ${PROGRAM}x.elf | grep "${PROGRAM}x.elf" | cut -c 1-7`
 export pg_anz=`echo "(${prog_size}-1)/${BOOT_PAGE_LEN}+1" | bc`
 
 if (( 0${VIRTUAL_BOOT_PARTITION} > 0 )) ; then
@@ -387,7 +390,7 @@ rm -f ./baudcheck.tmp
 # which is the base to generate the ${PROGRAM}_${TARGET}.hex and ${PROGRAM}_${TARGET}.lst files.
 echo "${Vgrau}# # # # # # # # # # # # # # # # # # # # # #"
 if [ "${MYLANG}" == "de_" ] ; then
- echo "${Vnormal}Urlader Startadresse: 0x${BL_StartAdr}${Vgrau} = `echo "ibase=16;${BL_StartAdr}" | bc`"
+ echo "${Vnormal}Bootlader Startadresse: 0x${BL_StartAdr}${Vgrau} = `echo "ibase=16;${BL_StartAdr}" | bc`"
  else
  echo "${Vnormal}Boot Loader start address: 0x${BL_StartAdr}${Vgrau} = `echo "ibase=16;${BL_StartAdr}" | bc`"
 fi
@@ -546,6 +549,7 @@ if [ "${NO_EARLY_PAGE_ERASE}" != "" ] ; then
 echo "NO_EARLY_PAGE_ERASE=${NO_EARLY_PAGE_ERASE}" >> ${logfile}
 echo "TWO_STOP_BITS=${TWO_STOP_BITS}" >> ${logfile}
 fi
+echo "NO_APP_SPM=${NO_APP_SPM}" >> ${logfile}
 echo " " >> ${logfile}
 echo "Bootloader use ${size2know} Bytes of Flash," >> ${logfile}
 echo "so the Application must use less than 0x${BL_StartAdr} Bytes of Flash " >> ${logfile}

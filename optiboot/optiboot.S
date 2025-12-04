@@ -381,6 +381,36 @@ optiboot_version:
 	.section .text
 	.func optiboot
 	.global optiboot
+# generate no pre_main code, if NO_APP_SPM is greater 1
+#if (NO_APP_SPM < 2)
+pre_main:
+	rjmp	optiboot
+ #if (NO_APP_SPM != 0)
+	ret		;dummy function
+ #else
+// Build the function do_spm here (NO_APP_SPM = 0)
+// static void do_spm(uint16_t address, uint8_t command, uint16_t data)
+do_spm:
+	movw	r30,r24			;uint16_t address to Z
+	movw	r0,r20			;uint16_t data to r0:r1
+	AOUT	SPMCSR, r22		; r22 = uint8_t command
+	spm
+  #if defined(__AVR_ATmega161__) || defined(__AVR_AT163__) || defined(__AVR_ATmega323__)
+;	special handling of spm for ATmega163 and ATmega323
+	.word	0xffff
+	nop
+  #endif
+	clr	r1			;set r1 to zero again
+  #if defined(RWWSRE)
+	rcall	wait_flash_ready	;
+       // Reenable read access to flash
+	ldi	r20, (1<<RWWSRE)|(1<<SELFPRGEN)	; 0x11	
+	rjmp	my_do_spm		; AOUT SPMCSR, r20 ; spm ; ret
+  #else
+	rjmp	wait_flash_ready	; call wait_flash_ready ; ret
+  #endif
+ #endif
+#endif
 
 optiboot:
 	cli
@@ -1013,7 +1043,7 @@ wr_lop1:
 	ld	r1, Y+
 	ldi	r20, (1<<SELFPRGEN)
 	; r0:r1 is data, Z r30:r31 is address, probably RAMPZ is also set
-	rcall	do_spm		; AOUT SPMCSR, r20 ; spm
+	rcall	my_do_spm		; AOUT SPMCSR, r20 ; spm
 	eor	r1, r1
 	adiw	ZL, 2		; increment address
 #if FLASHEND > 0x1ffff
@@ -1032,12 +1062,12 @@ wr_lop1:
         // Write from programming buffer
         // -----------------------------
 	ldi	r20, (1<<PGWRT)|(1<<SELFPRGEN)	; 0x05	
-	rcall	do_spm		; AOUT SPMCSR, r20 ; spm
+	rcall	my_do_spm		; AOUT SPMCSR, r20 ; spm
 	rcall	wait_flash_ready
 #if defined(RWWSRE)
        // Reenable read access to flash
 	ldi	r20, (1<<RWWSRE)|(1<<SELFPRGEN)	; 0x11	
-	rcall	do_spm		; AOUT SPMCSR, r20 ; spm
+	rcall	my_do_spm		; AOUT SPMCSR, r20 ; spm
 #endif
 #if FLASHEND > 0x1ffff
 	AOUT	RAMPZ, r21	; save (probably)  updated RAMPZ
@@ -1221,7 +1251,7 @@ ver_put:
 ;
 ; Here is a good location to place the delay loop for putch
 ; Usually the uart delay is placed before the getch or putch function automatically.
-; But we wish to save a RJMP later at no_to
+; But we wish to save a RJMP later at label no_to
  #define SOFT_UART_PORT UART_TX_PORT
  #include "uart_delay.S"
 #endif
@@ -1259,7 +1289,7 @@ no_to:
  #include "soft_uart.S"		/* This will generate the putch and getch function */
 				/* The uart_delay function is generated at a lower space. */
 				/* Therefore the putch function is the first one and */
-				/* can be reached from no_to without a rjmp  */
+				/* can be reached from label no_to without a rjmp  */
 #else
  ; the Hardware UART is used
  #if ((F_CPU + (BAUD_RATE * 4)) / (BAUD_RATE * 8) - 1) < 3
@@ -1445,7 +1475,7 @@ boot_page_erase:
 ;	rcall	wait_flash_ready
     	movw	ZL, r4		; __boot_page_erase_short((uint16_t)(void*)address)
 ;	second entry	***********************************
-;	rcall do_spm
+;	rcall my_do_spm
 ;	r20 must contain the spm command
 ;	no register is destroyed
  #if defined(__AVR_ATtiny841__) || defined(__AVR_ATtiny441__) || defined(__AVR_ATtiny1634__) 
@@ -1466,7 +1496,7 @@ boot_page_erase:
 	brne	no_erase4	; not a fourth page
  #endif
 	ldi	r20, (1<<PGERS)|(1<<SELFPRGEN)	; 0x03
-do_spm:
+my_do_spm:
 	AOUT	SPMCSR, r20	; (1<<PGERS)|(SELFPRGEN)
 	spm
 #if defined(__AVR_ATmega161__) || defined(__AVR_AT163__) || defined(__AVR_ATmega323__)

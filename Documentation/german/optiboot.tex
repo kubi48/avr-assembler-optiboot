@@ -2,10 +2,10 @@
 \label{sec:optiboot}
 
 \section*{}
-Der optiboot Bootloader wurde in der Sprache C von Peter Knight und
+Der \textbf{optiboot} Bootloader wurde in der Sprache C von Peter Knight und
 Bill Westfield entwickelt. Die Version 6.2 habe ich als Basis
 für die hier beschriebene überarbeitete Assembler Version benutzt.
-Dabei möchte ich betonen, daß ich den optiboot Bootloader nicht
+Dabei möchte ich betonen, daß ich den \textbf{optiboot} Bootloader nicht
 neu erfunden habe, sondern lediglich weiter optimiert. 
 Viele Anpassungen an verschiedene Zielprozessoren und spezielle
 Platinenentwürfe waren bereits in der Version 6.2 vorhanden.
@@ -46,12 +46,12 @@ der Wert 0 den acht-fachen Speicherbereich vor.
 Die Tabelle~\ref{tab:bootsz} auf Seite~\pageref{tab:bootsz} gibt einen
 Überblick für verschiedene Zielprozessoren.
 Das Bild~\ref{fig:PlatinesAndAVRs} zeigt fast alle Testplatinen und Prozessoren,
-die für die optiboot Tests verwendet wurden. 
+die für die \textbf{optiboot} Tests verwendet wurden. 
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=9cm]{../FIG/Samples_AVR_boot.jpg}
-\caption{Einige Testplatinen und AVRs für den optiboot Test}
+\caption{Einige Testplatinen und AVRs für den \textbf{optiboot} Test}
 \label{fig:PlatinesAndAVRs}
 \end{figure}
 
@@ -64,9 +64,9 @@ Zusätzlich werden Einstellungen auch geprüft und die Erzeugung mit
 einer entsprechenden Fehlermeldung abgebrochen,
 wenn beispielweise die gewählte Betriebsfrequenz (AVR\_FREQ) nicht zu der
 mit den Fuses (CKSEL,CKDIV8) eingestellten Möglichkeiten für den Takt paßt.
-Ein Empfang von Programmdaten für optiboot ist derzeit nur über eine serielle Schnittstelle möglich.\\
+Ein Empfang von Programmdaten für \textbf{optiboot} ist derzeit nur über eine serielle Schnittstelle möglich.\\
 
-Hier sind einige der Fähigkeiten des optiboot Programms aufgelistet:
+Hier sind einige der Fähigkeiten des \textbf{optiboot} Programms aufgelistet:
 
 \begin{itemize}
 
@@ -96,13 +96,13 @@ Hier sind einige der Fähigkeiten des optiboot Programms aufgelistet:
 \item {Kann eine automatische Baudraten-Anpassung vornehmen.
 	Dabei wird die Baudzeit aus dem ersten empfangenen Datenbyte gemessen. 
 	Verschiedene Methoden der Baudzeit-Messung können dabei ausgewählt werden.
-	Wenn der so konfigurierte optiboot noch in 512 Byte Flash passen soll,
+	Wenn der so konfigurierte \textbf{optiboot} noch in 512 Byte Flash passen soll,
 	muß die LED Blink Funktion beim Programmstart abgewählt werden.}
 
 \item {Kann auch für AVRs ohne Bootloader Unterstützung benutzt werden.\\
 	Diese VIRTUAL\_BOOT\_PARTITION Fähigkeit kann natürlich auch
 	für AVRs benutzt werden, die die Bootloader Unterstützung besitzen.
-	Das optiboot Programm wird dabei größer, kann aber dann auf jeder
+	Das \textbf{optiboot} Programm wird dabei größer, kann aber dann auf jeder
 	Flash-Speicher Seite starten.}
 
 \item {Läßt eine angeschlossene LED standardmäßig drei mal blinken (LED\_START\_FLASHES=3).
@@ -122,9 +122,9 @@ Hier sind einige der Fähigkeiten des optiboot Programms aufgelistet:
 \item {Unterstützt die Anpassung der Oszillator-Frequenz für den AVR internen RC-Oszillator.
  	Dadurch ist auch in Problemfällen die Benutzung eines Bootloaders mit fester Baudrate möglich.}
 
-\item {Das Laden des optiboot Programms in den jeweiligen AVR Prozessor kann automatisch mit dem
+\item {Das Laden des \textbf{optiboot} Programms in den jeweiligen AVR Prozessor kann automatisch mit dem
 	Programm avrdude und einem angeschlossenem ISP-Programmer erfolgen.
-	Dazu ist nur die zusätzliche Eingabe von ISP=1 beim make Aufruf erforderlich.
+	Dazu ist nur die zusätzliche Eingabe von ISP=1 beim \textbf{make} Aufruf erforderlich.
 	Die zusätzliche Eingabe ISP=2 würde eine Verifikation mit avrdude bewirken.
 	Mit ISP=3 wird der gesamte Programmspeicher (Flash) des angeschlossenen AVR ausgelesen.
 	Mit ISP=4 wird der gesamte EEprom-Speicher des angeschlossenen AVR ausgelesen.}
@@ -136,17 +136,17 @@ Die nachfolgenden Fähigkeiten beziehen sich nur auf den Herstellungsprozess des
 
 \begin{itemize}
 
-\item {Für die Erzeugung des optiboot Bootloaders können wahlweise auch angepaßte C-Quellen
+	\item {Für die Erzeugung des \textbf{optiboot} Bootloaders können wahlweise auch angepaßte C-Quellen
 	benutzt werden. Die meisten Funktionen sind auch hier möglich.
-	Natürlich wird das erzeugte optiboot Programm größer!}
+	Natürlich wird das erzeugte \textbf{optiboot} Programm größer!}
 
-\item {Der Umfang der Bildschirmausgabe bei der Erzeugung von optiboot kann mit der Systemvariablen
+	\item {Der Umfang der Bildschirmausgabe bei der Erzeugung von \textbf{optiboot} kann mit der Systemvariablen
 	VerboseLev verändert werden. Der Wert kann zwischen 1 und 4 liegen, wobei 2 der Standardwert ist.}
 
 \item {Die Bildschirmausgabe kann mit der Systemvariablen WITH\_COLORS=1 bunter gestaltet werden.
 	Mit WITH\_COLORS=2 wird reiner Text ausgegeben}
 
-\item {Die Erzeugung des optiboot Programms wird in einer Bash Script Datei gesteuert, wobei die
+\item {Die Erzeugung des \textbf{optiboot} Programms wird in einer Bash Script Datei gesteuert, wobei die
 	Text-Datei avr\_params.def die notwendigen Daten für alle unterstützten AVR-Prozessoren liefert.
 	In dieser avr\_params.def Datei sind auch für jeden unterstützten Prozessor Standard-Werte
 	für die Fuses, Arbeitsfrequenz und Baudrate festgelegt.}
@@ -155,7 +155,7 @@ Die nachfolgenden Fähigkeiten beziehen sich nur auf den Herstellungsprozess des
 	in dem avr\_pins Verzeichnis in einer passenden Datei. Hier werden bei Bedarf auch
 	Standardwerte für die von SOFT\_UART benutzten Pins und für die LED gefunden.}
 
-\item {Die Erzeugung des optiboot Programms läuft unter Linux mit installierten avr Paketen.
+\item {Die Erzeugung des \textbf{optiboot} Programms läuft unter Linux mit installierten avr Paketen.
 	Eine Erzeugung unter Windows10 ist möglich,
 	wenn zusätzlich zum Arduino Paket Programmpakete installiert sind,
 	die die bei der Erzeugung erforderlichen Programme wie bash, bc, echo und andere zur Verfügung stellt.
@@ -191,7 +191,7 @@ Hier sind die Namen und die Bedeutung der Script Dateien aufgeführt.
 \begin{description}
 
 \item [build\_hex.sh] erhält die Variablen von der Makefile, mit der dann ein passender
-optiboot Hex-Datei in Intel Format erzeugt wird.
+\textbf{optiboot} Hex-Datei in Intel Format erzeugt wird.
 Der build\_hex.sh Script ruft die weitere Shell Scripte  get\_avr\_params.sh,
 avr\_family.sh, show\_led\_pin.sh, show\_rx\_pin.sh und show\_tx\_pin.sh auf.
 Wenn die Variable ISP gesetzt ist, wird auch der Script program\_target.sh
@@ -202,7 +202,7 @@ zu überprüfen und zu korrigieren. Bei geänderter Anzahl der benutzten Bootpag
 müssen die BOOTSZ Bits des ATmega angepaßt werden. Die Bits liegen je nach AVR-Modell
 in dem hfuse oder efuse Byte, was die Korrektur nicht einfacher macht.
 Nach erfolgten Korrekturen wird das Programm avrdude mit dem Script only\_avrdude.sh aufgerufen,
-um den AVR mit dem optiboot Bootloader zu beschreiben und alle Fuses zu setzen.
+um den AVR mit dem \textbf{optiboot} Bootloader zu beschreiben und alle Fuses zu setzen.
 
 \item [only\_avrdude.sh] enthält nur einen avrdude Aufruf mit der in der Variablen
 DUDE\_PARAMS Parameterliste. Zur Kontrolle wird der Aufruf auf dem Terminal protokolliert.
@@ -258,7 +258,7 @@ Es können verschiedene Konfigurationen auch für einen Prozessortyp
 festgelegt werden. In der Tabelle~\ref{tab:processors} sind die einige der derzeit vordefinierten
 Konfigurationen für AVR Prozessoren angegeben. 
 Die einstellbaren Parameter sind aber auch in der Aufrufzeile des
-make Programms als Parameter oder auch als Umgebungsvariable der Shell
+\textbf{make} Programms als Parameter oder auch als Umgebungsvariable der Shell
 einstellbar und haben Vorrang zu den Grundeinstellungen.
 Es gibt zwei Haupt Variabalennamen, die dem bash Script build\_hex.sh übergeben
 werden, TARGET und MCU\_TARGET . Die Variable MCU\_TARGET muß dabei
@@ -349,7 +349,7 @@ Die Tabelle~\ref{tab:boards} zeigt die unterschiedlichen Einstellungen.
 
 \section{Die Optionen für die optiboot Makefile}
 
-Mit den Optionen wird die Eigenschaft des optiboot Bootloaders eingestellt.
+Mit den Optionen wird die Eigenschaft des \textbf{optiboot} Bootloaders eingestellt.
 Beispielsweise kann mit der Option SOFT\_UART veranlasst werden, daß ein
 Softwareprogramm für die serielle Kommunikation verwendet werden soll.
 Sonst wird, wenn vorhanden, die auf dem Chip integrierte  serielle Schnittstelle
@@ -529,7 +529,7 @@ PAGE\_ERASE        & PAGE\_ERASE=1  & Daten über die serielle Schnittstelle emp
                    &                & um etwa 30\% langsamer. Da der normalerweise auch \\
 		   &                & durchgeführte Datenvergleich (verify) etwa genau so viel \\
                    &                & Zeit braucht, ist der Zeitverlust nicht so erheblich. \\
-                   &                & Dafür spart man beim optiboot Bootloader etwa 14 Bytes \\
+		   &                & Dafür spart man beim \textbf{optiboot} Bootloader etwa 14 Bytes \\
 		   &                & Platz in der Bootloader-Seite, was wegen der AVR-Technik \\
 		   &                & in der Praxis auch eine Halbierung des Platzbedarfs \\
 		   &                & bedeuten kann. \\
@@ -543,7 +543,7 @@ PAGE\_ERASE        & PAGE\_ERASE=1  & Daten über die serielle Schnittstelle emp
 \section{Benutzung von optiboot ohne Bootloader-Bereich}
 
 Für Prozessoren ohne speziellen Bootloader-Bereich im Flash-Speicher wie dem ATtiny84 ist
-eine Möglichkeit vorgesehen, trotzdem optiboot zu benutzen. 
+eine Möglichkeit vorgesehen, trotzdem \textbf{optiboot} zu benutzen. 
 Diese Funktion wird mit der Option VIRTUAL\_BOOT\_PARTITION gewählt.
 Dabei wird im Anwenderprogramm auf der Reset-Vektoradresse die Start-Adresse des Bootloaders
 eingetragen damit bei einem Reset immer der Bootloader zuerst angesprochen wird.
@@ -587,7 +587,7 @@ Auch diese Art der Vektortabelle wird von Optiboot berücksichtigt. Wenn aber f�
 (Linker avr-ld) die Option --relax verwendet wird,
 werden alle jmp Befehle durch die kürzeren rjmp Befehle ersetzt,
 wenn dies bei der jeweiligen Sprungadresse möglich ist.
-Dies wird derzeit nicht von optiboot berücksichtigt.
+Dies wird derzeit nicht von \textbf{optiboot} berücksichtigt.
 Das Optiboot Programm geht fest davon aus, daß in der Vektortabelle jmp Befehle stehen,
 wenn mehr als 8 kByte Flash-Speicher vorhanden sind.
 Deshalb wird die VIRTUAL\_BOOT\_PARTITION Methode meistens nicht funktionieren, wenn die --relax Option
@@ -695,7 +695,7 @@ um \(7.84\%\) zu kurz, im zweiten Fall ist die Baud-Zeit um \(3.68\%\) zu lang.
 Die Assembler Datei soft\_uart.S ist dafür ausgelegt,
 von einer anderen Datei eingefügt (\#include) zu werden, welche ein
 normales Assembler-Programm für die AVR-Familie beinhaltet.
-Für die optiboot Applikation wird das von der Datei optiboot.S gemacht.
+Für die \textbf{optiboot} Applikation wird das von der Datei optiboot.S gemacht.
 Die eingefügte Datei soft\_uart.S benutzt viele Anweisungen für den GNU C-Preprocessor
 und fügt eine weitere Datei uart\_delay.S ein, um eine Verzögerungsschleife
 für die gewünschte Baud-Rate zu generieren.
@@ -738,7 +738,7 @@ Manchmal ist es sinnvoll, die serielle Datenkommunikation nur über einen Pin zu
 um einen der wenigen IO-Pins bei kleinen AVRs freizuschalten. 
 Mit einer speziellen Schaltungstechnik kann erreicht werden, daß in den Ausgabe-Pausen
 der seriellen Ausgabe ein Einlesen von Daten möglich ist.
-Bei der hier bei optiboot gewählten Software-Lösung ist ohnehin nur ein Halb-Duplex Betrieb
+Bei der hier bei \textbf{optiboot} gewählten Software-Lösung ist ohnehin nur ein Halb-Duplex Betrieb
 möglich. Es kann also zu einer Zeit nur entweder Daten gesendet oder Daten empfangen werden.
 Normalerweise wird der Ausgabepin mit der TX-Funktion in den Sendepausen auf High Pegel
 geschaltet, was ein Einlesen von Daten auf dem gleichen Pin verhindert.
@@ -1295,7 +1295,7 @@ von \(250kBaud\) benutzen.
 
 \subsection{Besonderheiten der seriellen Schnittstelle}
 
-Normalerweise wird in optiboot bei der seriellen Ausgabe ein verlängertes Stoppbit ausgegeben.
+Normalerweise wird in \textbf{optiboot} bei der seriellen Ausgabe ein verlängertes Stoppbit ausgegeben.
 Die Hardware UART Schnittstelle schaltet ein zweites Stoppbit ein, bei der Software wird
 nur ein halbes zusätzliches Stoppbit berücksichtigt.
 Dies scheint bei geringfügig unterschiedlichen Baudraten sinnvoll zu sein, da so den
@@ -1304,7 +1304,7 @@ Die PC-Seite mit der avrdude Version 6.3 hat leider die Möglichkeit nicht, bei
 der seriellen Ausgabe ein zweites Stoppbit auszugeben.
 Für meine Tests habe ich die Quellen von avrdude so verändert, daß diese Funktion mit
 einem zusätzlichen Parameter -S angewähltt werden kann.
-Abschalten läßt sich die zwei Stoppbit Ausgabe bei optiboot übrigens mit der Option TWO\_STOP\_BITS=0.
+Abschalten läßt sich die zwei Stoppbit Ausgabe bei \textbf{optiboot} übrigens mit der Option TWO\_STOP\_BITS=0.
 Der Unterschied bei der Geschwindigkeit ist allerdings unbedeutend, so daß ich empfehle,
 bei der Benutzung des längeren Stoppbits zu bleiben.\\
 
@@ -1322,18 +1322,20 @@ dieser Methode beobachtet, auch nicht beim Betrieb mit nur einem Pin.
 Das erste Beispiel ist die Bildung eines Bootloaders für den beliebten ATmega328P:
 
 \begin{verbatim}
-optiboot $ make atmega328p
+make atmega328p
+\end{verbatim}
+\footnotesize
+\begin{verbatim}
 
-Optiboot for 16000000 Hz (16.00 Mhz) operation with Baudrate 115200 and EEprom \
-  support configured.
- >>> Start building for AVR atmega328p:
+Optiboot for 16000000 Hz (16.00 Mhz) operation with Baudrate 115200 and EEprom support 
+ configured.
+ >>> Start building optiboot for AVR atmega328p:
 LED-Pin PB5 use Pin 19-PDIP28 17-TQFP32, with special functions: SCK PCINT5
-RX-Pin PD0 use Pin 2-PDIP28 30-TQFP32, with special functions: PCINT16 RXD
-TX-Pin PD1 use Pin 3-PDIP28 31-TQFP32, with special functions: PCINT17 TXD
-avr-gcc -g -Wall -Os -fno-split-wide-types -mrelax -mmcu=atmega328p  \
- -fno-diagnostics-show-caret -DBAUD_RATE=115200 -DLED_START_FLASHES=3 \
- -DSUPPORT_EEPROM=1 -DLED=pB5 -DUART=00 -DSOFT_UART=0 -DUART_RX=pD0 -DUART_TX=pD1 \
- -DF_CPU=16000000 -DHFUSE=hexDE -DLFUSE=hexFF -DBOOT_PAGE_LEN=512 \
+ RX-Pin PD0 use Pin  2-PDIP28 30-TQFP32, with special functions: PCINT16 RXD
+ TX-Pin PD1 use Pin  3-PDIP28 31-TQFP32, with special functions: PCINT17 TXD
+avr-gcc -g -Wall -Os -fno-split-wide-types -mrelax -mmcu=atmega328p -fno-diagnostics-show-caret 
+ -DBAUD_RATE=115200 -DLED_START_FLASHES=3 -DSUPPORT_EEPROM=1 -DLED=pB5 -DUART=00 -DSOFT_UART=0 
+ -DUART_RX=pD0 -DUART_TX=pD1 -DF_CPU=16000000 -DHFUSE=hexDE -DLFUSE=hexFF -DBOOT_PAGE_LEN=512 
  -DVerboseLev=2 -c -o optiboot.o optiboot.S
 
 --------------------------------------------------------------------------------
@@ -1349,26 +1351,29 @@ Requires 1 Boot Page of 512 Bytes, which is 1.5% of Flash Memory
 BOOTSZ=3, which means 1 Boot Pages
 
 \end{verbatim}
+\normalsize
 
 Wenn keine zusätzliche Option angegeben wird, wird eine Baudrate von 115200 mit einer Taktfrequenz von \(16 MHz\) gewählt.
 Für die serielle Ausgabe wird die vorhandene Hardware-Schnittstelle benutzt. 
 Man beachte, daß der systematische Fehler der Baudrate über 2\% mit dem Hardware UART beträgt.
-Das zweite Beispiel zeigt die Erzeugung von optiboot für den gleichen Prozessor mit einer Software-Lösung
+Das zweite Beispiel zeigt die Erzeugung von \textbf{optiboot} für den gleichen Prozessor mit einer Software-Lösung
 für die serielle Schnittstelle.
 
 \begin{verbatim}
-optiboot $ make atmega328p SOFT_UART=1
+make atmega328p SOFT_UART=1
+\end{verbatim}
+\footnotesize
+\begin{verbatim}
 
-Optiboot for 16000000 Hz (16.00 Mhz) operation with Baudrate 115200 and EEprom \
-  support configured.
- >>> Start building for AVR atmega328p:
+Optiboot for 16000000 Hz (16.00 Mhz) operation with Baudrate 115200 and EEprom support 
+ configured.
+ >>> Start building optiboot for AVR atmega328p:
 LED-Pin PB5 use Pin 19-PDIP28 17-TQFP32, with special functions: SCK PCINT5
-RX-Pin PD0 use Pin 2-PDIP28 30-TQFP32, with special functions: PCINT16 RXD
-TX-Pin PD1 use Pin 3-PDIP28 31-TQFP32, with special functions: PCINT17 TXD
-avr-gcc -g -Wall -Os -fno-split-wide-types -mrelax -mmcu=atmega328p \
- -fno-diagnostics-show-caret -DBAUD_RATE=115200 -DLED_START_FLASHES=3 \
- -DSUPPORT_EEPROM=1 -DLED=pB5 -DUART=00 -DSOFT_UART=01 -DUART_RX=pD0 -DUART_TX=pD1 \
- -DF_CPU=16000000 -DHFUSE=hexDE -DLFUSE=hexFF -DBOOT_PAGE_LEN=512 \
+ RX-Pin PD0 use Pin  2-PDIP28 30-TQFP32, with special functions: PCINT16 RXD
+ TX-Pin PD1 use Pin  3-PDIP28 31-TQFP32, with special functions: PCINT17 TXD
+avr-gcc -g -Wall -Os -fno-split-wide-types -mrelax -mmcu=atmega328p -fno-diagnostics-show-caret 
+ -DBAUD_RATE=115200 -DLED_START_FLASHES=3 -DSUPPORT_EEPROM=1 -DLED=pB5 -DUART=00 -DSOFT_UART=01 
+ -DUART_RX=pD0 -DUART_TX=pD1 -DF_CPU=16000000 -DHFUSE=hexDE -DLFUSE=hexFF -DBOOT_PAGE_LEN=512 
  -DVerboseLev=2 -c -o optiboot.o optiboot.S
 
 --------------------------------------------------------------------------------
@@ -1384,6 +1389,7 @@ Requires 1 Boot Page of 512 Bytes, which is 1.5% of Flash Memory
 BOOTSZ=3, which means 1 Boot Pages
 
 \end{verbatim}
+\normalsize
 
 Beachten Sie bitte, daß die Software-Lösung für die serielle Schnittstelle etwas mehr flash-Speicher braucht,
 aber es wird auch nur eine ,,boot page'' gebraucht. Der systematische Fehler der Baudrate ist hier deutlich kleiner
@@ -1399,19 +1405,21 @@ Die letzten beiden Beispiele zeigen jeweils eine Konfiguration mit der neuen aut
 Um Platz im Speicher zu sparen, wurde beim ersten Beispiel die LED-Blinkfunktion abgewählt.
 
 \begin{verbatim}
-optiboot $ make atmega328p BAUD_RATE=52 LED_START_FLASHES=0
+make atmega328p BAUD_RATE=52 LED_START_FLASHES=0
+\end{verbatim}
+\footnotesize
+\begin{verbatim}
 
 
-Optiboot for 16000000 Hz (16.00 Mhz) operation with Auto-Baudrate and EEprom \
-  support configured.
- >>> Start building for AVR atmega328p:
+Optiboot for 16000000 Hz (16.00 Mhz) operation with Auto-Baudrate and EEprom support 
+ configured.
+ >>> Start building optiboot for AVR atmega328p:
 LED-Pin not used!
-RX-Pin PD0 use Pin 2-PDIP28 30-TQFP32, with special functions: PCINT16 RXD
-TX-Pin PD1 use Pin 3-PDIP28 31-TQFP32, with special functions: PCINT17 TXD
-avr-gcc -g -Wall -Os -fno-split-wide-types -mrelax -mmcu=atmega328p \
- -fno-diagnostics-show-caret -DBAUD_RATE=52 -DLED_START_FLASHES=0 \
- -DSUPPORT_EEPROM=1 -DLED=p -DUART=00 -DSOFT_UART=0 -DUART_RX=pD0 -DUART_TX=pD1 \
- -DF_CPU=16000000 -DHFUSE=hexDE -DLFUSE=hexFF -DBOOT_PAGE_LEN=512 \
+ RX-Pin PD0 use Pin  2-PDIP28 30-TQFP32, with special functions: PCINT16 RXD
+ TX-Pin PD1 use Pin  3-PDIP28 31-TQFP32, with special functions: PCINT17 TXD
+avr-gcc -g -Wall -Os -fno-split-wide-types -mrelax -mmcu=atmega328p -fno-diagnostics-show-caret 
+ -DBAUD_RATE=52 -DLED_START_FLASHES=0 -DSUPPORT_EEPROM=1 -DLED=p -DUART=00 -DSOFT_UART=0 
+ -DUART_RX=pD0 -DUART_TX=pD1 -DF_CPU=16000000 -DHFUSE=hexDE -DLFUSE=hexFF -DBOOT_PAGE_LEN=512 
  -DVerboseLev=2 -c -o optiboot.o optiboot.S
 
 --------------------------------------------------------------------------------
@@ -1428,24 +1436,27 @@ Requires 1 Boot Page of 512 Bytes, which is 1.5% of Flash Memory
 BOOTSZ=3, which means 1 Boot Pages
 
 \end{verbatim}
+\normalsize
 
 Beim letzten Beispiel wurde die aufwendigste Methode der Baudraten-Messung
 gewählt, da mit der LED-Blink Funktion ohnehin die Grenze von 512 Byte
 überschritten würde (534 Bytes).
 
 \begin{verbatim}
-optiboot $ make atmega328p BAUD_RATE=76
+make atmega328p BAUD_RATE=76
+\end{verbatim}
+\footnotesize
+\begin{verbatim}
 
-Optiboot for 16000000 Hz (16.00 Mhz) operation with Auto-Baudrate and EEprom \
-  support configured.
- >>> Start building for AVR atmega328p:
+Optiboot for 16000000 Hz (16.00 Mhz) operation with Auto-Baudrate and EEprom support 
+ configured.
+ >>> Start building optiboot for AVR atmega328p:
 LED-Pin PB5 use Pin 19-PDIP28 17-TQFP32, with special functions: SCK PCINT5
-RX-Pin PD0 use Pin 2-PDIP28 30-TQFP32, with special functions: PCINT16 RXD
-TX-Pin PD1 use Pin 3-PDIP28 31-TQFP32, with special functions: PCINT17 TXD
-avr-gcc -g -Wall -Os -fno-split-wide-types -mrelax -mmcu=atmega328p \
- -fno-diagnostics-show-caret -DBAUD_RATE=82 -DLED_START_FLASHES=3 \
- -DSUPPORT_EEPROM=1 -DLED=pB5 -DUART=00 -DSOFT_UART=0 -DUART_RX=pD0 -DUART_TX=pD1 \
- -DF_CPU=16000000 -DHFUSE=hexDE -DLFUSE=hexFF -DBOOT_PAGE_LEN=512 \
+ RX-Pin PD0 use Pin  2-PDIP28 30-TQFP32, with special functions: PCINT16 RXD
+ TX-Pin PD1 use Pin  3-PDIP28 31-TQFP32, with special functions: PCINT17 TXD
+avr-gcc -g -Wall -Os -fno-split-wide-types -mrelax -mmcu=atmega328p -fno-diagnostics-show-caret 
+ -DBAUD_RATE=82 -DLED_START_FLASHES=3 -DSUPPORT_EEPROM=1 -DLED=pB5 -DUART=00 -DSOFT_UART=0 
+ -DUART_RX=pD0 -DUART_TX=pD1 -DF_CPU=16000000 -DHFUSE=hexDE -DLFUSE=hexFF -DBOOT_PAGE_LEN=512 
  -DVerboseLev=2 -c -o optiboot.o optiboot.S
 
 --------------------------------------------------------------------------------
@@ -1462,6 +1473,7 @@ Requires 2 Boot Pages, 512 Bytes each, which is 3.1% of Flash Memory
 BOOTSZ=2, which means 2 Boot Pages
 
 \end{verbatim}
+\normalsize
 
 
 \section{Anpassung der Taktfrequenz bei internem RC-Generator}
@@ -2329,7 +2341,7 @@ Da bei der automatischen Baudratenanpassung auch 41 verschiedene Frequenzen unte
 sollen, ergeben sich für eine Variante schon 1640 Schreibvorgänge. Bei über 10 dieser Varianten
 würde damit die garantierte Zyklenzahl des AVR Flashspeichers überschritten.
 Da ich nicht die Zyklen-Festigkeit des AVR-Flashspeichers untersuchen wollte, habe ich dafür einen
-Schreibschutz-Pin in der optiboot Software vorgesehen. Diese Zusatzfunktion von optiboot
+Schreibschutz-Pin in der \textbf{optiboot} Software vorgesehen. Diese Zusatzfunktion von \textbf{optiboot}
 ist nur für diese Untersuchungen sinnvoll, deshalb ist diese Option (WRITE\_PROTECT\_PIN) nicht
 weiter dokumentiert.
 
@@ -2339,7 +2351,7 @@ Die Daten für die hier vorgestellten Ergebnisse wurden mit der Bash-Script Date
 im Unterverzeichnis ee\_test erzeugt und dann in .tab Dateien im Verzeichnis Doku/results 
 mit einem Editor zusammengefaßt.
 Im Laufe der Untersuchungen konnte eine Verbesserung der Baudratenmessung mit der vorgeteilten
-Taktfrequenz in optiboot eingebaut werden. Die Verbesserung besteht aus einer Zurücksetzung des
+Taktfrequenz in \textbf{optiboot} eingebaut werden. Die Verbesserung besteht aus einer Zurücksetzung des
 Vorteilers für die Zähler des AVR. Die andere Fehlerquelle für die Zeitmessung entsteht durch
 die Abfrageschleife für den RX Datenpin und beträgt mindestens 3 Takte für jeden Meßpunkt.
 Doch hier erst einmal als Ergebnis die Fehlerrate mit verschiedenen USB-Seriell Chips
@@ -2407,7 +2419,7 @@ dem ersten Datenbit gestartet, das für die Messung benutzt wird.
 Dadurch gewinnt die Zeitmessung an Meßsicherheit.
 Die Einstellungen 26, 36 und 76 benutzen den Zähler ohne Vorteiler und haben daher
 das Problem mit dem undefinierten Vorteiler gar nicht.
-Erwähnen möchte ich hier, daß frühere Versionen der optiboot Autobaud Messung mit
+Erwähnen möchte ich hier, daß frühere Versionen der \textbf{optiboot} Autobaud Messung mit
 der Einstellung 22 und 32 sicherlich ähnlich hohe Fehlerraten wie bei den 
 Einstellungen 62 und 72 ergeben hätten, da der Reset des Vorteilers beim Meßstart
 erst jetzt eingebaut wurde. Bei normaler Benutzung tauchen üblicherweise weniger
@@ -2422,12 +2434,12 @@ dargestellt werden.
 
 \subsection{Messung von USB-Seriell Wandlern mit fester optiboot Baudrate}
 
-Für diese Untersuchung wurde die optiboot Baudrate fest auf 115200 
+Für diese Untersuchung wurde die \textbf{optiboot} Baudrate fest auf 115200 
 bei einer Taktrate von 16 MHz eingestellt.
 Die USB-Seriell Wandler werden auch bei 115200 Baud betrieben.
 Die Taktfrequenz des ATmega wurde statt der festen 16 MHz von 14.7 Mhz
 in 100 kHz Schritten auf 17.1 MHz erhöht.
-Mit der Frequenzänderung ändert sich dann die optiboot Baudrate proportional mit.
+Mit der Frequenzänderung ändert sich dann die \textbf{optiboot} Baudrate proportional mit.
 
 Für die Tests wurden jeweils 40 Downloads von 10 kByte mit avrdude durchgeführt.
 In einer Tabelle wurde die Zahl der Fehlversuche für jede Frequenz von der
@@ -2485,7 +2497,7 @@ Nach Datenblatt unterstützt der FT232RL aber eine maximale Baudrate von 3 MBaud
 6 Mbaud, die nach Datenblatt weder vom CP2102 (1 MBaud) noch vom Testsieger CP2104 (2 MBaud) erreicht werden.
 
 Zusätzlich habe ich auch den Arbeitsbereich der USB-Seriell Wandler im Zusammenspiel mit der
-Software-UART Lösung von optiboot untersucht. Die Software benutzt beim Senden von Daten etwa 1,5 Stoppbits,
+Software-UART Lösung von \textbf{optiboot} untersucht. Die Software benutzt beim Senden von Daten etwa 1,5 Stoppbits,
 die USB-Seriell Wandler benutzen entweder 1 (Doku/results/SWfix\_1\_115200 \_USBserial\_0.tab) oder
 2 Stoppbits (Doku/results/SWfix\_1\_115200\_USBserial\_0.tab). In der Tabelle \ref{tab:SWfixErrs} sind
 die Ergebnisse zusammengefaßt.
@@ -2530,7 +2542,7 @@ gefunden.
 Ich gehe aber davon aus, daß alle eine Form der Überabtastung ähnlich wie bei der AVR-UART
 Schnittstelle benutzen. Allerdings muß sich das Abtastverfahren der einzelnen USB-Seriell Wandler
 doch unterscheiden, anders sind die unterschiedlichen Testergebnisse nicht zu erklären, weil
-die optiboot Seite für alle Testkandidaten gleich war.
+die \textbf{optiboot} Seite für alle Testkandidaten gleich war.
 
 \subsection{Extremtest mit 115200 Baud bei 8 MHz Takt}
 
@@ -2538,13 +2550,13 @@ Der weite Baudratenbereich für eine funktionierende serielle Kommunikation eini
 hat mich ermuntert, das Verhalten der Autobaud Funktion in der Praxis für eine Baudrate von 115200 Baud
 bei einer Taktrate von 8 MHz zu untersuchen.
 Dafür habe ich den USB-Seriell Wandler mit dem größten Baudratentoleranz ausgewählt, den CP2104. 
-Den für die Tests verwendeten ATmega1281 habe ich mit einem optiboot Bootloader
+Den für die Tests verwendeten ATmega1281 habe ich mit einem \textbf{optiboot} Bootloader
 mit dem Autobaud Modus 32 ohne LED-Blinken versehen. 
 In der Autobaud Gruppe 30-39 werden 4 Datenbits zur Messung der Baudrate benutzt.
 Mit dieser Einstellung wurden jeweils 40 Downloads von 10 kByte mit avdrude für 41 Frequenzen
 von 7 MHz bis 9 MHz in 50 kHz Schritten durchgeführt.
 Um das Ergebnis bewerten zu können, wurde die gleiche Meßreihe auch mit fest eingestellter Baudrate
-von optiboot wiederholt. Dabei erzeugt die Einstellung 111111 Baud eine UBRR Einstellung des Hardware UARTs
+von \textbf{optiboot} wiederholt. Dabei erzeugt die Einstellung 111111 Baud eine UBRR Einstellung des Hardware UARTs
 von 8, bei der Einstellung 125 kBaud wird eine UBRR Einstellung von 7 benutzt.
 Durch die Änderung der Taktfreuenz ändert sich die tatsächliche Baudrate natürlich proportional mit.
 
@@ -2630,7 +2642,7 @@ Der teilweise Ausfall des Downloads bei 7800 kHz mit der Autobaud-Variante 32 li
 an der Unsicherheit der Baudratenmessung.\\
 
 In der vierten Datenspalte wurde der Download bei gleichen Einstellungen mit der
-Software-UART Lösung von optiboot versucht. Bei Software-UART zeigte sich schon in der
+Software-UART Lösung von \textbf{optiboot} versucht. Bei Software-UART zeigte sich schon in der
 Tabelle \ref{tab:SWfixErrs} auf Seite \pageref{tab:SWfixErrs} ein größerer
 Frequenzarbeitsbereich mit dem CP2104 gegenüber den Hardware-UART Tests in Tabelle \ref{tab:HWfixErrs}
 auf Seite \pageref{tab:HWfixErrs}. Außerdem wird die Verzögerungszeit des Software-UART
@@ -2640,16 +2652,16 @@ von Vielfachen von 8 Takten (UBRR Einstellung).
 Beide Umstände führen wohl dazu, daß beim CP2104 die Software Lösung im gesamten Frequenzbereich
 nur 4 Fehlversuche bei der Taktfrequenz 7150 kHz zeigt, ein wirklich erstaunliches Ergebnis!
 Ab 7200 kHz Taktrate ist die Baudrate 115200 mit diesem CP2104 USB-seriell Wandler bei 2 Stoppbit Betrieb
-und Software-UART des optiboot mit BAUD\_RATE=32 uneingeschränkt nutzbar.\\
+und Software-UART des \textbf{optiboot} mit BAUD\_RATE=32 uneingeschränkt nutzbar.\\
 
-Als weiteren Test mit der Software UART Lösung von optiboot habe ich die BAUD\_RATE=34 Einstellung
+Als weiteren Test mit der Software UART Lösung von \textbf{optiboot} habe ich die BAUD\_RATE=34 Einstellung
 getestet. Bei dieser Einstellung wird die Verzögerungs-Schleife um einen Takt verlängert,
 so daß sich hier nur ein Vielfaches von 8 Takten wählen läßt, genau wie bei dem Hardware-UART.
-Der Hintergrund für diese Wahlmöglichkeit ist lediglich ein geringfügig kürzeres optiboot Programm
+Der Hintergrund für diese Wahlmöglichkeit ist lediglich ein geringfügig kürzeres \textbf{optiboot} Programm
 mit dieser Einstellung. 
 Obwohl bei dieser Software-UART Einstellung genau so Vielfache von 8 Takten für die Periode
 wie bei dem Hardware-UART, ist das Ergebnis hier leicht besser. 
-Das liegt wahrscheinlich am schon erwähnten größeren Frequenz-Arbeitsbereich des CP2104 Wandlers mit optiboot
+Das liegt wahrscheinlich am schon erwähnten größeren Frequenz-Arbeitsbereich des CP2104 Wandlers mit \textbf{optiboot}
 bei Software-UART Betrieb.
 Außerden liegt der kritische Bereich hier nicht so dicht bei der gewählten Arbeitsfrequenz von 8000 kHz
 wie beim Hardware UART.\\
@@ -2732,8 +2744,8 @@ Frequenz       &  RL     &  clone &        &        &        & TA     & AVR    &
 Wieder zeigen der CP2104 und der PL2303 in der Tabelle \ref{tab:ExtremErrs16} die wenigsten Ausfälle
 über den gesamten Frequenzbereich.
 Die serielle Ausgabe der USB-Seriell Wandler wurden bei dieser Untersuchung mit zwei Stoppbits betrieben
-und der optiboot Bootloader arbeitete mit den Hardware UART. Bei Verwendung des Software-UARTs
-von optiboot wäre das Ergebnis noch besser ausgefallen.
+und der \textbf{optiboot} Bootloader arbeitete mit den Hardware UART. Bei Verwendung des Software-UARTs
+von \textbf{optiboot} wäre das Ergebnis noch besser ausgefallen.
 Dummerweise zeigen außer dem Arduino UNO mit dem ATmega16U2 als USB-Seriell Wandler alle anderen
 USB-Seriell Wandler knapp unter der Taktrate 16 MHz Ausfälle. Der FT232clone hat sogar bei 16 MHz
 selber Probleme mit dem Download, beim Pololu ist ein ganzer Frequenzbereich um die 16 MHz nicht
@@ -2747,7 +2759,7 @@ keine Probleme mit dem Download zum ATmega1281 im Taktfrequenzbereich um die 16 
 Wenn der vorhandene USB-Seriell Wandler den Betrieb mit 250000 Baud unterstützt, ist diese Einstellung
 wahrscheinlich bei einer AVR Taktrate von 16 MHz günstiger, da diese Baudrate ohne Abweichung erzeugt
 werden kann.
-Bei einem optiboot mit der Autobaud Funktion kann man ja einfach ausprobieren,
+Bei einem \textbf{optiboot} mit der Autobaud Funktion kann man ja einfach ausprobieren,
 ob eine höhere Baudrate möglich ist.
 
 
@@ -2801,13 +2813,13 @@ die Messung über 4 Bits reicht aber völlig aus und braucht weniger Speicher.
 Es gibt mehrere Gründe, die den Einsatz der Software UART Lösung notwendig machen wie die Verwendung anderer
 Pins für die serielle Kommunikation oder auch die Ein-Pin Kommunikation (RX und TX-Pin gleich).
 Auch für diesen Fall ist die Benutzung der Autobaud Funktion möglich. Da sowohl die Software-UART Lösung
-als auch die Autobaud Funktion mehr Flash Speicher benötigen, wird es immer schwieriger, den optiboot
+		als auch die Autobaud Funktion mehr Flash Speicher benötigen, wird es immer schwieriger, den \textbf{optiboot}
 in 512 Byte unterzubringen. Wenn der Zielprozessor eine größere Bootloader-Seite wie 1024 Byte hat,
 braucht man sich natürlich um die 512 Byte Grenze nicht zu kümmern.
-Die Tests, ob die optiboot Version in 512 Byte passt, sollte man jedenfalls mit make Aufrufen
+		Die Tests, ob die \textbf{optiboot} Version in 512 Byte passt, sollte man jedenfalls mit \textbf{make} Aufrufen
 ohne die ISP Option oder mit ISP=0 machen. So kann man mit den Optionen so lange
 ausprobieren, bis eine geeignete Konfiguration gefunden ist, die in 512 Byte passt.
-Die Größe der Bootloader-Seite des Zielprozessors wird übrigens bei jedem make Aufruf mit
+Die Größe der Bootloader-Seite des Zielprozessors wird übrigens bei jedem \textbf{make} Aufruf mit
 der Angabe eines Zielprozessors im Terminal-Protokoll angezeigt.\\
 Als erstes sollte man die Blink-Funktion der LED mit LED\_START\_FLASHES=0 abschalten, um Platz zu sparen.
 Wer unbedingt etwas zum Leuchten braucht, kann die Funktion LED\_DATA\_FLASH=4 benutzen,
@@ -2828,9 +2840,9 @@ vermeiden.
 
 \section{Schlußbemerkung}
 
-Als ich die Arbeit mit der optiboot Umstellung auf Assembler und Einbau der EEprom-Unterstützung
+Als ich die Arbeit mit der \textbf{optiboot} Umstellung auf Assembler und Einbau der EEprom-Unterstützung
 begonnen hatte, hatte ich keine Ahnung, wie viel hier untersucht und erweitert werden könnte.
-Die erste Aufgabe bestand ja darin, einen optiboot zu bauen, der das Laden von EEprom Daten unterstützt
+Die erste Aufgabe bestand ja darin, einen \textbf{optiboot} zu bauen, der das Laden von EEprom Daten unterstützt
 und nicht mehr wie 512 Byte Flash braucht. Das erschien mir ein überschaubarer Aufwand zu sein.\\
 
 Da war aber zusätzlich noch die Unterstützung vieler AVR Prozessoren einzubauen,
@@ -2842,13 +2854,13 @@ Damit werden Falschsetzungen der AVR-Fuses für alle unterstützten Prozessoren 
 Die Software-UART Lösung wurde optimiert und so ist damit jetzt auch ein Betrieb mit einem IO-Pin möglich.
 Es wurde die automatische Baudraten-Anpassung (Autobaud) eingebaut und getestet.
 Dabei können jetzt viele Autobaud-Varianten ausgewählt werden, wobei die Autobaud Funktion
-sowohl mit dem Hardware-UART als auch mit der Software-UART Lösung von optiboot funktioniert.\\
+sowohl mit dem Hardware-UART als auch mit der Software-UART Lösung von \textbf{optiboot} funktioniert.\\
 
 Die Einstellmöglichkeit des internen RC-Oszillators als Taktgeber für die unterstützten AVR's
-wurde untersucht und die Einstellmöglichkeit OSCCAL\_CORR in optiboot integriert.
+wurde untersucht und die Einstellmöglichkeit OSCCAL\_CORR in \textbf{optiboot} integriert.
 Speziell bei der Kombination Autobaud und Software-UART ist die 512 Byte Grenze für den Flash eine Herausforderung,
 selbst wenn man die LED-Blinkfunktion abwählt.
-Natürlich läuft optiboot auch dann, wenn mehr als 512 Byte gebraucht werden. Die Grenze war nur meine Zielvorstellung,
+Natürlich läuft \textbf{optiboot} auch dann, wenn mehr als 512 Byte gebraucht werden. Die Grenze war nur meine Zielvorstellung,
 ich wollte möglichst alle Funktionen in die 512 Byte integrieren.
 So wurde mit der Option NO\_EARLY\_PAGE\_ERASE die Möglichkeit gefunden, gegebenenfalls noch ein paar Byte einzusparen.
 Dadurch wird das Flash-Schreiben etwas langsamer, aber wenn beispielsweise die Baudrate 
@@ -2864,15 +2876,15 @@ aufgefallen ist. Sonst dürfte das zweite Stoppbit wenigstens als Option von avr
 Sogar, als ich glaubte, es gäbe nichts mehr zu verbessern, kam bei den abschließenden Tests der Autobaud-Funktion
 mit verschiedenen USB-Seriell-Wandlern die Idee, den Frequenz-Vorteiler für die Zähler bei der Zeitmessung
 für Autobaud zurückzusetzen. Das wird selten benutzt, da der Vorteiler von allen integrierten Zählern gemeinsam
-benutzt wird. Aber hier in optiboot kann diese Funktion benutzt werden und führt zu einer Verringerung
+benutzt wird. Aber hier in \textbf{optiboot} kann diese Funktion benutzt werden und führt zu einer Verringerung
 der Fehlers bei der Autobaud Zeitmessung, wenn der Zähler mit /8 Vorteiler benutzt wird.\\
 
-Es tut mir leid, daß die vielen Einstell-Möglichkeiten für optiboot für einen Benutzer verwirrend sind.
+Es tut mir leid, daß die vielen Einstell-Möglichkeiten für \textbf{optiboot} für einen Benutzer verwirrend sind.
 Soweit es möglich war, habe ich die Optionen der C-Version von Peter Knight und Bill Westfield übernommen,
-damit es Benutzer der Ursprungsversion von optiboot leichter haben.
+damit es Benutzer der Ursprungsversion von \textbf{optiboot} leichter haben.
 Sonst hoffe ich aber, daß die Beispiele aus Kapitel \ref{Examples} auf Seite \pageref{Examples}
-den ersten Einstieg erleichtern. Außerdem reicht immer ein make Aufruf mit dem gewünschten Zielprozessor als
-Parameter aus, um einen lauffähigen optiboot als .hex Datei zu erzeugen. Aus dem Terminal-Protokoll kann man
+den ersten Einstieg erleichtern. Außerdem reicht immer ein \textbf{make} Aufruf mit dem gewünschten Zielprozessor als
+Parameter aus, um einen lauffähigen \textbf{optiboot} als .hex Datei zu erzeugen. Aus dem Terminal-Protokoll kann man
 entnehmen, welche Einstellung gewählt wurde. Das ist immer eine vorgewählte Taktfrequenz und eine
 vorgewählte (feste) Baudrate für diesen speziellen Prozessor.
 Im Bedarfsfall können die Voreinstellungen natürlich geändert werden.
