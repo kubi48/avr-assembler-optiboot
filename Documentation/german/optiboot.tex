@@ -250,6 +250,13 @@ Ohne eine spezielle Benutzerwahl bei SOFT\_UART wird der Pin aus einer avr\_pins
 C-Preprozessor Aufruf aus der Datei baudcheck.S erzeugt und ausgeführt, um Informationen
 über die gewählte Baudraten Einstellung zu geben.
 
+\item [def\_colors.sh] wird von verschiedenen Scripts eingefügt, um die Terminalausgabe
+mit Farben zu versehen.
+
+\item [show\_help2.sh] gibt Hilfetext für optiboot aus.
+
+\item [show\_help3.sh] gibt weiteren Hilfetext für optiboot aus.
+
 \end{description}
 
 \section{Zielvorgaben für optiboot Makefile}
@@ -479,6 +486,10 @@ Diese Optionen sind meist nur für Software-Untersuchungen, die Frequenzkalibrat
     \hline
     EFUSE          & EFUSE=FC       & Gibt einen Wunschwert für das Setzen der Extended Fuse des \\
                    &                & AVRs vor. Es dürfen nur zwei Hex Zeichen angegeben werden. \\
+    \hline
+    NO\_APP\_SPM   & NO\_APP\_SPM=1 & Setzt die Nutzerapplikation do\_spm außer Funktion wenn 1.\\
+                   &                & NO\_APP\_SPM=2 bewirkt ein völliges Entfernen \\
+                   &                & der Zusatzfunktion und spart 4 Byte Flash. \\
     \hline
     \end{tabular}
   \end{center}

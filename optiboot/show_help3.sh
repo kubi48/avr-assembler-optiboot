@@ -6,7 +6,7 @@ source ./def_colors.sh
 MYLANG=`echo ${LANGUAGE} | cut -c 1-3`
 echo " "
 if [ "${MYLANG}" == "de_" ] ; then
- echo "Weitere Optionen zum Erzeugen eines optiboot Bootloaders (${}make help3${}):"
+ echo "Weitere Optionen zum Erzeugen eines optiboot Bootloaders (${Vgreen}make help3${Vnormal}):"
  echo " "
  echo "${Vgelb}SOFT_UART${Vnormal}       wählt ein Software Programm anstelle des Hardware UART."
  echo " "

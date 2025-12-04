@@ -6,6 +6,7 @@
 # because often 32 or more entries are found.
 # so only known names for USB-serial converters are searched!
 
+source ./def_colors.sh
 MYLANG=`echo ${LANGUAGE} | cut -c 1-3`
 LS_AC=`ls -C --color=never /dev/ttyACM* /dev/ttyUSB* 2> /dev/null`
 # LS_AC is only a list of the found names.
@@ -63,22 +64,22 @@ if (( ${ser_found_with_access} == 0 )) && (( ${ser_found_without} == 0 )) ; then
    echo "Kein Gerät mit Namen /dev/ttyUSBx oder /dev/ttyACMx gefunden! x steht für eine vergebene Nummer!"
    echo " "
    echo "Prüfen Sie die Verbindung ihres ISP-Programmers zu einer USB-Schnittstelle ihres PCs."
-   echo "Wenn sie unsicher sind, welcher Programmer eingesteckt ist, kann das Kommando 'lsusb' helfen."
-   echo "Das Kommando 'lsusb' zeigt alle angeschlossenen USB-Geräte ihres Systems."
+   echo "Wenn sie unsicher sind, welcher Programmer eingesteckt ist, kann das Kommando '${Vgreen}lsusb${Vnormal}' helfen."
+   echo "Das Kommando '${Vgreen}lsusb${Vnormal}' zeigt alle angeschlossenen USB-Geräte ihres Systems."
    echo " "
    echo "Sie können mehr über den gerade angeschlossene Programmer erfahren mit einem Kommando"
-   echo "wie 'dmesg | tail -20'. 'dmesg' gibt die gesamte Logdatei ihres Linux-Systems aus und"
-   echo "'| tail -20' zeigt nur die letzten 20 Zeilen davon."
+   echo "wie '${Vgreen}dmesg | tail -20${Vnormal}'. '${Vgreen}dmesg${Vnormal}' gibt die gesamte Logdatei ihres Linux-Systems aus und"
+   echo "'${Vgreen}| tail -20${Vnormal}' zeigt nur die letzten 20 Zeilen davon."
   else
    echo "No device with name /dev/ttyUSBx or /dev/ttyACMx found! x can be any sequence number!"
    echo " "
    echo "Check the connection of your  ISP programmer to a USB interface of your PC."
-   echo "If you are in doubt about the plugged in programmer, the command 'lsusb' may help,"
-   echo "The command 'lsusb' show all USB devices of your system."
+   echo "If you are in doubt about the plugged in programmer, the command '${Vgreen}lsusb${Vnormal}' may help,"
+   echo "The command '${Vgreen}lsusb${Vnormal}' show all USB devices of your system."
    echo " "
    echo "You can learn more about the details of the just plugged programmer with"
-   echo "a command like 'dmesg | tail -20' , 'dmesg' shows the total log file of your Linux system"
-   echo "and '| tail -20' will display only the last 20 lines."
+   echo "a command like '${Vgreen}dmesg | tail -20${Vnormal}' , '${Vgreen}dmesg${Vnormal}' shows the total log file of your Linux system"
+   echo "and '${Vgreen}| tail -20${Vnormal}' will display only the last 20 lines."
   fi
 elif (( ${ser_found_with_access} == 0 )) && (( ${ser_found_without} > 0 )) ; then
   if [ "${MYLANG}" == "de_" ] ; then
@@ -86,9 +87,9 @@ elif (( ${ser_found_with_access} == 0 )) && (( ${ser_found_without} > 0 )) ; the
    echo "Wenn ein Gerät davon das richtige ist, sollten Sie dafür sorgen,"
    echo "daß Sie Mitglied der Gruppe sind, die oben angezeigt ist und für die das Gerät den Zugriff erlaubt,"
    echo "Sie können versuchen, den Benutzer ${USER} zu der Gruppe hizuzufügen mit dem"
-   echo "Kommando 'sudo usermod -aG dialout ${USER}' , wenn dialout als Gruppe in der"
+   echo "Kommando '${Vgreen}sudo usermod -aG dialout ${USER}${Vnormal}' , wenn dialout als Gruppe in der"
    echo "oben angeführten Liste steht."
-   echo "Für 'sudo' ist die Wiedereingabe des Passwortes erforderlich."
+   echo "Für '${Vgreen}sudo${Vnormal}' ist die Wiedereingabe des Passwortes erforderlich."
   else
    echo "${ser_found_without} serial device(s) are found, but you have no access!!!"
    echo "If one or more of the devives are the right one, you should make shure"
@@ -97,7 +98,7 @@ elif (( ${ser_found_with_access} == 0 )) && (( ${ser_found_without} > 0 )) ; the
    echo "You can try to add ${USER} to the group of the device with the"
    echo "command 'sudo usermod -aG dialout ${USER}' , where dialout is a sample name,"
    echo "which should match to the listed group of the device."
-   echo "For 'sudo' a retyped password entry is required."
+   echo "For '${Vgreen}sudo${Vnormal}' a retyped password entry is required."
   fi
 #elif (( ${ser_found_with_access} > 0 )) && (( ${ser_found_without} == 0 )) ; then
 #  echo "You have access to all listed serial devices as shown above."
