@@ -71,45 +71,23 @@ if (( 0${VerboseLev} == 0 )) ; then
   #define the default VerboseLev value in this script
   VerboseLev=2
 fi
-
-# WITH_COLORS=1, color + bold + reverse is use to format the screen output
-# WITH_COLORS=0, unformatted output to the screen
-if (( 0${WITH_COLORS} == 0 )) ; then
-  WITH_COLORS=1
-fi
-if (( 0${WITH_COLORS} > 1 )) ; then WITH_COLORS=0; fi
-if (( WITH_COLORS == 1 )) ; then
- #define the used  tput extension
- #color red
- Vrot=`tput setaf 9`
- #color yellow
- Vgelb=`tput setaf 11`
- #color green
- Vgreen=`tput setaf 2`
- #color grey
- Vgrau=`tput setaf 245`
- # bold
- Vfett=`tput bold`
- #
- Vlila=`tput setaf 13`
- # reverse
- Vinv=`tput rev`
- #normal
- Vnormal=`tput sgr0`
-else
- Vrot=""
- Vgelb=""
- Vgreen=""
- Vgrau=""
- Vfett=""
- Vlila=""
- Vinv=""
- Vnormal=""
-fi
-
+#set colors for terminal output
+source ./def_colors.sh
 
 if [ "${PROGRAM}" = "" ] ; then
  PROGRAM="optiboot"
+fi
+
+if (( ${LED_DATA_FLASH} > 0 )) ; then
+ # force to disable START_FLASH
+  if (( 0${LED_START_FLASHES} > 0 )) ; then
+    if [ "${MYLANG}" == "de_" ] ; then
+      echo ">> ${Vgelb}LED_START_FLASHES${Vnormal} abgeschaltet weil LED_DATA_FLASH gesetzt ist!!"
+    else
+      echo ">> ${Vgelb}LED_START_FLASHES${Vnormal} disabled because LED_DATA_FLASH is set!!"
+    fi
+  fi
+ LED_START_FLASHES=0
 fi
 
 if [ "${LED_START_FLASHES}" = "" ] ; then
