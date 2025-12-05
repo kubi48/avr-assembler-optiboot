@@ -1,7 +1,9 @@
 LISTE3 = ../FIG/boot_pages.eps 	../FIG/avr_block.eps ../FIG/port.eps ../FIG/ablauf.eps
 LISTE3 += ../FIG/VectorMove.eps ../FIG/ISP.eps ../FIG/UM232.eps
 LISTE3 += ../FIG/uart_putch_timing.eps ../FIG/uart_getch_timing.eps
-LISTE3 += ../FIG/OneWire.eps ../FIG/OneWire2.eps ../FIG/OneWire_simple.eps ../FIG/AutoBaud.eps
+LISTE3 += ../FIG/OneWire.eps ../FIG/OneWire2.eps ../FIG/OneWire_simple.eps ../FIG/AutoBaud.eps 
+
+.PHONY: bootloader.pdf
 
 all: bootloader.pdf
 	
@@ -9,34 +11,34 @@ all: bootloader.pdf
 #	gnuplot ../GNU/example.gnu
 
 ../FIG/boot_pages.eps: ../FIG/boot_pages.fig
-	fig2eps $<
+	fig2eps --nogv $<
 ../FIG/port.eps: ../FIG/port.fig
-	fig2eps $<
+	fig2eps --nogv $<
 ../FIG/avr_block.eps: ../FIG/avr_block.fig
-	fig2eps $<
+	fig2eps --nogv $<
 ../FIG/ablauf.eps: ../FIG/ablauf.fig
-	fig2eps $<
+	fig2eps --nogv $<
 ../FIG/ISP.eps: ../FIG/ISP.fig
-	fig2eps $<
+	fig2eps --nogv $<
 ../FIG/UM232.eps: ../FIG/UM232.fig
-	fig2eps $<
+	fig2eps --nogv $<
 ../FIG/VectorMove.eps: ../FIG/VectorMove.fig
-	fig2eps $<
+	fig2eps --nogv $<
 ../FIG/uart_getch_timing.eps: ../FIG/uart_getch_timing.fig
-	fig2eps $<
+	fig2eps --nogv $<
 ../FIG/uart_putch_timing.eps: ../FIG/uart_putch_timing.fig
-	fig2eps $<
+	fig2eps --nogv $<
 ../FIG/OneWire.eps: ../FIG/OneWire.fig
-	fig2eps $<
+	fig2eps --nogv $<
 ../FIG/OneWire2.eps: ../FIG/OneWire2.fig
-	fig2eps $<
+	fig2eps --nogv $<
 ../FIG/OneWire_simple.eps: ../FIG/OneWire_simple.fig
-	fig2eps $<
+	fig2eps --nogv $<
 ../FIG/AutoBaud.eps: ../FIG/AutoBaud.fig
-	fig2eps $<
+	fig2eps --nogv $<
 
 
-TEXLIST3 = preface.tex principle.tex AVRhardware.tex optiboot.tex AVRdata.tex USBserial.tex
+TEXLIST3 = preface.tex principle.tex AVRhardware.tex optiboot.tex AVRdata.tex USBserial.tex build.tex
 
 bootloader.pdf: bootloader.tex $(LISTE3) $(TEXLIST3)
 	pdflatex --shell-escape bootloader.tex
