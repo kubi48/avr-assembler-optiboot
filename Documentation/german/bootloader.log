@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.11.23)  4 DEC 2025 21:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.12.11)  11 DEC 2025 21:01
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -528,7 +528,7 @@ Package: fullpage 1999/02/23 1.1 (PWD)
 Package: babel 2024/01/07 v24.1 The Babel package
 \babel@savecnt=\count196
 \U@D=\dimen141
-\l@unhyphenated=\language62
+\l@unhyphenated=\language89
 
 (/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
 \bbl@readstream=\read2
@@ -539,9 +539,9 @@ Language: english 2017/06/06 v3.3r English support from the babel system
 Package babel Info: Hyphen rules for 'canadian' set to \l@english
 (babel)             (\language0). Reported on input line 102.
 Package babel Info: Hyphen rules for 'australian' set to \l@ukenglish
-(babel)             (\language50). Reported on input line 105.
+(babel)             (\language48). Reported on input line 105.
 Package babel Info: Hyphen rules for 'newzealand' set to \l@ukenglish
-(babel)             (\language50). Reported on input line 108.
+(babel)             (\language48). Reported on input line 108.
 )
 (/usr/share/texlive/texmf-dist/tex/generic/babel-german/ngerman.ldf
 Language: ngerman 2024/01/19 v2.14 German support for babel (post-1996 orthogra
@@ -1285,10 +1285,10 @@ l.41 ... ATtiny841 Familie}{50}{subsection.3.9.15}
  (./principle.tex
 Kapitel 1.
 Package epstopdf Info: Source file: <../FIG/ablauf.eps>
-(epstopdf)                    date: 2025-12-04 21:30:03
+(epstopdf)                    date: 2025-12-11 21:01:01
 (epstopdf)                    size: 26039 bytes
 (epstopdf)             Output file: <../FIG/ablauf-eps-converted-to.pdf>
-(epstopdf)                    date: 2025-12-04 21:30:07
+(epstopdf)                    date: 2025-12-11 21:01:09
 (epstopdf)                    size: 8562 bytes
 (epstopdf)             Command: <epstopdf --outfile=../FIG/ablauf-eps-converted
 -to.pdf ../FIG/ablauf.eps>
@@ -1311,10 +1311,10 @@ Package pdftex.def Info: ../FIG/ablauf-eps-converted-to.pdf  used on input line
  (./AVRhardware.tex
 Kapitel 2.
 Package epstopdf Info: Source file: <../FIG/avr_block.eps>
-(epstopdf)                    date: 2025-12-04 21:30:02
+(epstopdf)                    date: 2025-12-11 21:01:00
 (epstopdf)                    size: 35034 bytes
 (epstopdf)             Output file: <../FIG/avr_block-eps-converted-to.pdf>
-(epstopdf)                    date: 2025-12-04 21:30:08
+(epstopdf)                    date: 2025-12-11 21:01:10
 (epstopdf)                    size: 10901 bytes
 (epstopdf)             Command: <epstopdf --outfile=../FIG/avr_block-eps-conver
 ted-to.pdf ../FIG/avr_block.eps>
@@ -1333,10 +1333,10 @@ ine 16.
 
 ] [7 <../FIG/avr_block-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <../FIG/port.eps>
-(epstopdf)                    date: 2025-12-04 21:30:03
+(epstopdf)                    date: 2025-12-11 21:01:01
 (epstopdf)                    size: 27570 bytes
 (epstopdf)             Output file: <../FIG/port-eps-converted-to.pdf>
-(epstopdf)                    date: 2025-12-04 21:30:08
+(epstopdf)                    date: 2025-12-11 21:01:10
 (epstopdf)                    size: 9300 bytes
 (epstopdf)             Command: <epstopdf --outfile=../FIG/port-eps-converted-t
 o.pdf ../FIG/port.eps>
@@ -1350,10 +1350,10 @@ Package pdftex.def Info: ../FIG/port-eps-converted-to.pdf  used on input line 8
 (pdftex.def)             Requested size: 239.89566pt x 123.46092pt.
  [8 <../FIG/port-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <../FIG/boot_pages.eps>
-(epstopdf)                    date: 2025-12-04 21:30:02
+(epstopdf)                    date: 2025-12-11 21:00:59
 (epstopdf)                    size: 26818 bytes
 (epstopdf)             Output file: <../FIG/boot_pages-eps-converted-to.pdf>
-(epstopdf)                    date: 2025-12-04 21:30:08
+(epstopdf)                    date: 2025-12-11 21:01:10
 (epstopdf)                    size: 9099 bytes
 (epstopdf)             Command: <epstopdf --outfile=../FIG/boot_pages-eps-conve
 rted-to.pdf ../FIG/boot_pages.eps>
@@ -1367,10 +1367,10 @@ line 164.
 (pdftex.def)             Requested size: 341.43306pt x 605.44337pt.
  [9] [10 <../FIG/boot_pages-eps-converted-to.pdf>] [11]
 Package epstopdf Info: Source file: <../FIG/ISP.eps>
-(epstopdf)                    date: 2025-12-04 21:30:04
+(epstopdf)                    date: 2025-12-11 21:01:03
 (epstopdf)                    size: 24998 bytes
 (epstopdf)             Output file: <../FIG/ISP-eps-converted-to.pdf>
-(epstopdf)                    date: 2025-12-04 21:30:08
+(epstopdf)                    date: 2025-12-11 21:01:10
 (epstopdf)                    size: 7119 bytes
 (epstopdf)             Command: <epstopdf --outfile=../FIG/ISP-eps-converted-to
 .pdf ../FIG/ISP.eps>
@@ -1384,10 +1384,10 @@ Package pdftex.def Info: ../FIG/ISP-eps-converted-to.pdf  used on input line 31
 (pdftex.def)             Requested size: 341.43306pt x 160.3616pt.
  [12 <../FIG/ISP-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <../FIG/UM232.eps>
-(epstopdf)                    date: 2025-12-04 21:30:04
+(epstopdf)                    date: 2025-12-11 21:01:04
 (epstopdf)                    size: 29419 bytes
 (epstopdf)             Output file: <../FIG/UM232-eps-converted-to.pdf>
-(epstopdf)                    date: 2025-12-04 21:30:08
+(epstopdf)                    date: 2025-12-11 21:01:10
 (epstopdf)                    size: 8908 bytes
 (epstopdf)             Command: <epstopdf --outfile=../FIG/UM232-eps-converted-
 to.pdf ../FIG/UM232.eps>
@@ -1427,189 +1427,189 @@ File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [17{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc} <../FIG/Samples_AVR_boot.
 jpg>] [18] [19] [20] [21{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/sh
 are/texmf/fonts/enc/dvips/lm/lm-mathit.enc}]
-Overfull \hbox (16.58519pt too wide) in paragraph at lines 378--439
+Overfull \hbox (16.58519pt too wide) in paragraph at lines 379--440
  [] 
  []
 
 [22] [23]
-Overfull \hbox (36.9356pt too wide) in paragraph at lines 460--497
+Overfull \hbox (36.9356pt too wide) in paragraph at lines 461--498
  [] 
  []
 
 
-Overfull \hbox (14.73824pt too wide) in paragraph at lines 504--551
+Overfull \hbox (14.73824pt too wide) in paragraph at lines 505--552
  [] 
  []
 
 [24] [25]
 Package epstopdf Info: Source file: <../FIG/VectorMove.eps>
-(epstopdf)                    date: 2025-12-04 21:30:04
+(epstopdf)                    date: 2025-12-11 21:01:02
 (epstopdf)                    size: 26790 bytes
 (epstopdf)             Output file: <../FIG/VectorMove-eps-converted-to.pdf>
-(epstopdf)                    date: 2025-12-04 21:30:08
+(epstopdf)                    date: 2025-12-11 21:01:10
 (epstopdf)                    size: 7614 bytes
 (epstopdf)             Command: <epstopdf --outfile=../FIG/VectorMove-eps-conve
 rted-to.pdf ../FIG/VectorMove.eps>
-(epstopdf)             \includegraphics on input line 572.
+(epstopdf)             \includegraphics on input line 573.
 Package epstopdf Info: Output file is already uptodate.
 <../FIG/VectorMove-eps-converted-to.pdf, id=557, 278.03876pt x 466.74374pt>
 File: ../FIG/VectorMove-eps-converted-to.pdf Graphic file (type pdf)
 <use ../FIG/VectorMove-eps-converted-to.pdf>
 Package pdftex.def Info: ../FIG/VectorMove-eps-converted-to.pdf  used on input 
-line 572.
+line 573.
 (pdftex.def)             Requested size: 278.03807pt x 466.7426pt.
  [26 <../FIG/VectorMove-eps-converted-to.pdf>]
-Overfull \hbox (0.10078pt too wide) in paragraph at lines 597--608
+Overfull \hbox (0.10078pt too wide) in paragraph at lines 598--609
 []\T1/lmr/m/n/12 Bei Pro-zes-so-ren mit mehr als 8 kByte Flash Spei-cher wer-de
 n zwei Be-fehls-wor-te für je-den Interrupt-
  []
 
 Package epstopdf Info: Source file: <../FIG/uart_getch_timing.eps>
-(epstopdf)                    date: 2025-12-04 21:30:05
+(epstopdf)                    date: 2025-12-11 21:01:05
 (epstopdf)                    size: 33282 bytes
 (epstopdf)             Output file: <../FIG/uart_getch_timing-eps-converted-to.
 pdf>
-(epstopdf)                    date: 2025-12-04 21:30:08
+(epstopdf)                    date: 2025-12-11 21:01:11
 (epstopdf)                    size: 11630 bytes
 (epstopdf)             Command: <epstopdf --outfile=../FIG/uart_getch_timing-ep
 s-converted-to.pdf ../FIG/uart_getch_timing.eps>
-(epstopdf)             \includegraphics on input line 640.
+(epstopdf)             \includegraphics on input line 641.
 Package epstopdf Info: Output file is already uptodate.
 <../FIG/uart_getch_timing-eps-converted-to.pdf, id=572, 443.6575pt x 775.89874p
 t>
 File: ../FIG/uart_getch_timing-eps-converted-to.pdf Graphic file (type pdf)
 <use ../FIG/uart_getch_timing-eps-converted-to.pdf>
 Package pdftex.def Info: ../FIG/uart_getch_timing-eps-converted-to.pdf  used on
- input line 640.
+ input line 641.
 (pdftex.def)             Requested size: 443.6564pt x 775.89685pt.
 [27]
 Package epstopdf Info: Source file: <../FIG/uart_putch_timing.eps>
-(epstopdf)                    date: 2025-12-04 21:30:05
+(epstopdf)                    date: 2025-12-11 21:01:04
 (epstopdf)                    size: 32325 bytes
 (epstopdf)             Output file: <../FIG/uart_putch_timing-eps-converted-to.
 pdf>
-(epstopdf)                    date: 2025-12-04 21:30:09
+(epstopdf)                    date: 2025-12-11 21:01:11
 (epstopdf)                    size: 12536 bytes
 (epstopdf)             Command: <epstopdf --outfile=../FIG/uart_putch_timing-ep
 s-converted-to.pdf ../FIG/uart_putch_timing.eps>
-(epstopdf)             \includegraphics on input line 647.
+(epstopdf)             \includegraphics on input line 648.
 Package epstopdf Info: Output file is already uptodate.
 <../FIG/uart_putch_timing-eps-converted-to.pdf, id=579, 389.455pt x 417.56pt>
 File: ../FIG/uart_putch_timing-eps-converted-to.pdf Graphic file (type pdf)
 <use ../FIG/uart_putch_timing-eps-converted-to.pdf>
 Package pdftex.def Info: ../FIG/uart_putch_timing-eps-converted-to.pdf  used on
- input line 647.
+ input line 648.
 (pdftex.def)             Requested size: 389.45404pt x 417.55896pt.
  [28 <../FIG/uart_getch_timing-eps-converted-to.pdf>] [29 <../FIG/uart_putch_ti
 ming-eps-converted-to.pdf>] [30]
 Package epstopdf Info: Source file: <../FIG/OneWire_simple.eps>
-(epstopdf)                    date: 2025-12-04 21:30:06
+(epstopdf)                    date: 2025-12-11 21:01:07
 (epstopdf)                    size: 25287 bytes
 (epstopdf)             Output file: <../FIG/OneWire_simple-eps-converted-to.pdf
 >
-(epstopdf)                    date: 2025-12-04 21:30:09
+(epstopdf)                    date: 2025-12-11 21:01:11
 (epstopdf)                    size: 7272 bytes
 (epstopdf)             Command: <epstopdf --outfile=../FIG/OneWire_simple-eps-c
 onverted-to.pdf ../FIG/OneWire_simple.eps>
-(epstopdf)             \includegraphics on input line 774.
+(epstopdf)             \includegraphics on input line 775.
 Package epstopdf Info: Output file is already uptodate.
 <../FIG/OneWire_simple-eps-converted-to.pdf, id=608, 303.1325pt x 191.71625pt>
 File: ../FIG/OneWire_simple-eps-converted-to.pdf Graphic file (type pdf)
 <use ../FIG/OneWire_simple-eps-converted-to.pdf>
 Package pdftex.def Info: ../FIG/OneWire_simple-eps-converted-to.pdf  used on in
-put line 774.
+put line 775.
 (pdftex.def)             Requested size: 303.13176pt x 191.71577pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 779--782
+Underfull \hbox (badness 10000) in paragraph at lines 780--783
 
  []
 
 [31 <../FIG/OneWire_simple-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <../FIG/OneWire.eps>
-(epstopdf)                    date: 2025-12-04 21:30:05
+(epstopdf)                    date: 2025-12-11 21:01:06
 (epstopdf)                    size: 46027 bytes
 (epstopdf)             Output file: <../FIG/OneWire-eps-converted-to.pdf>
-(epstopdf)                    date: 2025-12-04 21:30:09
+(epstopdf)                    date: 2025-12-11 21:01:11
 (epstopdf)                    size: 17735 bytes
 (epstopdf)             Command: <epstopdf --outfile=../FIG/OneWire-eps-converte
 d-to.pdf ../FIG/OneWire.eps>
-(epstopdf)             \includegraphics on input line 794.
+(epstopdf)             \includegraphics on input line 795.
 Package epstopdf Info: Output file is already uptodate.
 <../FIG/OneWire-eps-converted-to.pdf, id=623, 850.17625pt x 528.97626pt>
 File: ../FIG/OneWire-eps-converted-to.pdf Graphic file (type pdf)
 <use ../FIG/OneWire-eps-converted-to.pdf>
 Package pdftex.def Info: ../FIG/OneWire-eps-converted-to.pdf  used on input lin
-e 794.
+e 795.
 (pdftex.def)             Requested size: 850.17418pt x 528.97496pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 799--815
+Underfull \hbox (badness 10000) in paragraph at lines 800--816
 
  []
 
 Package epstopdf Info: Source file: <../FIG/OneWire2.eps>
-(epstopdf)                    date: 2025-12-04 21:30:06
+(epstopdf)                    date: 2025-12-11 21:01:07
 (epstopdf)                    size: 36289 bytes
 (epstopdf)             Output file: <../FIG/OneWire2-eps-converted-to.pdf>
-(epstopdf)                    date: 2025-12-04 21:30:09
+(epstopdf)                    date: 2025-12-11 21:01:11
 (epstopdf)                    size: 14433 bytes
 (epstopdf)             Command: <epstopdf --outfile=../FIG/OneWire2-eps-convert
 ed-to.pdf ../FIG/OneWire2.eps>
-(epstopdf)             \includegraphics on input line 820.
+(epstopdf)             \includegraphics on input line 821.
 Package epstopdf Info: Output file is already uptodate.
 <../FIG/OneWire2-eps-converted-to.pdf, id=625, 850.17625pt x 424.58624pt>
 File: ../FIG/OneWire2-eps-converted-to.pdf Graphic file (type pdf)
 <use ../FIG/OneWire2-eps-converted-to.pdf>
 Package pdftex.def Info: ../FIG/OneWire2-eps-converted-to.pdf  used on input li
-ne 820.
+ne 821.
 (pdftex.def)             Requested size: 850.17418pt x 424.5852pt.
 [32 <../FIG/OneWire-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <../FIG/AutoBaud.eps>
-(epstopdf)                    date: 2025-12-04 21:30:07
+(epstopdf)                    date: 2025-12-11 21:01:08
 (epstopdf)                    size: 28794 bytes
 (epstopdf)             Output file: <../FIG/AutoBaud-eps-converted-to.pdf>
-(epstopdf)                    date: 2025-12-04 21:30:09
+(epstopdf)                    date: 2025-12-11 21:01:11
 (epstopdf)                    size: 7139 bytes
 (epstopdf)             Command: <epstopdf --outfile=../FIG/AutoBaud-eps-convert
 ed-to.pdf ../FIG/AutoBaud.eps>
-(epstopdf)             \includegraphics on input line 869.
+(epstopdf)             \includegraphics on input line 870.
 Package epstopdf Info: Output file is already uptodate.
 <../FIG/AutoBaud-eps-converted-to.pdf, id=642, 894.34125pt x 225.84375pt>
 File: ../FIG/AutoBaud-eps-converted-to.pdf Graphic file (type pdf)
 <use ../FIG/AutoBaud-eps-converted-to.pdf>
 Package pdftex.def Info: ../FIG/AutoBaud-eps-converted-to.pdf  used on input li
-ne 869.
+ne 870.
 (pdftex.def)             Requested size: 894.33907pt x 225.84319pt.
  [33 <../FIG/OneWire2-eps-converted-to.pdf>] [34 <../FIG/AutoBaud-eps-converted
 -to.pdf>] [35]
-Overfull \hbox (3.27184pt too wide) in paragraph at lines 1011--1026
+Overfull \hbox (3.27184pt too wide) in paragraph at lines 1012--1027
 \T1/lmr/m/n/12 Blinken ge-wählt wird. Bei ei-ni-gen Pro-zes-so-ren kann als Zu-
 satz-funk-ti-on noch die LED_DATA_FLASH
  []
 
 [36] [37] [38]
-Overfull \hbox (4.37773pt too wide) in paragraph at lines 1290--1298
+Overfull \hbox (4.37773pt too wide) in paragraph at lines 1291--1299
 []\T1/lmr/m/n/12 Für den Be-triebs-mo-dus 82 ha-be ich mit dem Soft-wa-re UART 
 auch die un-ge-ra-den OSC-CAL_CORR
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1311--1323
+Underfull \hbox (badness 10000) in paragraph at lines 1312--1324
 
  []
 
 [39] [40] [41]
-Overfull \hbox (7.44012pt too wide) in paragraph at lines 1492--1492
+Overfull \hbox (7.44012pt too wide) in paragraph at lines 1493--1493
 []\T1/lmr/bx/n/17.28 Anpassung der Takt-fre-quenz bei in-ter-nem RC-Generator 
  []
 
 [42] [43] [44]
-Overfull \hbox (1.22614pt too wide) in paragraph at lines 1683--1687
+Overfull \hbox (1.22614pt too wide) in paragraph at lines 1684--1688
 \T1/lmr/m/n/12 Der AT-me-ga32 und der AT-me-ga16 kön-nen 4 ver-schie-de-ne Fre-
 quen-zen mit dem in-ter-nen RC-Generator
  []
 
 [45] [46] [47] [48]
-Overfull \hbox (1.27835pt too wide) in paragraph at lines 2023--2032
+Overfull \hbox (1.27835pt too wide) in paragraph at lines 2024--2033
 \T1/lmr/m/n/12 Oszillator und der $\OT1/lmr/m/n/12 128\OML/lmm/m/it/12 kHz$ \T1
 /lmr/m/n/12 Takt der Watchdog-Schaltung be-nutzt wer-den. Der $\OT1/lmr/m/n/12 
 6\OML/lmm/m/it/12 :\OT1/lmr/m/n/12 4\OML/lmm/m/it/12 MHz$ \T1/lmr/m/n/12 RC-Osz
@@ -1617,100 +1617,100 @@ illator
  []
 
 [49]
-Overfull \hbox (6.49998pt too wide) in paragraph at lines 2145--2147
+Overfull \hbox (6.49998pt too wide) in paragraph at lines 2146--2148
 []\T1/lmr/m/n/12 Bei al-len un-ter-such-ten Ex-em-pla-ren kann die se-ri-el-le 
 Schnitt-stel-le auch oh-ne die OSCCAL-Korrektur
  []
 
 [50] [51] [52] [53]
-Underfull \hbox (badness 10000) in paragraph at lines 2406--2415
+Underfull \hbox (badness 10000) in paragraph at lines 2407--2416
 
  []
 
 
-Overfull \hbox (10.1829pt too wide) in paragraph at lines 2416--2424
+Overfull \hbox (10.1829pt too wide) in paragraph at lines 2417--2425
 \T1/lmr/m/n/12 Ori-gi-nal Chip von Fu-ture Tech-no-lo-gy De-vi-ces In-ter-na-ti
 o-nal Li-mi-ted (FT-DI) und ein-mal als FT232clone,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2416--2424
+Underfull \hbox (badness 10000) in paragraph at lines 2417--2425
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2425--2442
+Underfull \hbox (badness 10000) in paragraph at lines 2426--2443
 
  []
 
 [54]
-Underfull \hbox (badness 10000) in paragraph at lines 2490--2501
+Underfull \hbox (badness 10000) in paragraph at lines 2491--2502
 
  []
 
 [55{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}]
-Underfull \hbox (badness 10000) in paragraph at lines 2541--2552
+Underfull \hbox (badness 10000) in paragraph at lines 2542--2553
 
  []
 
 [56] [57]
-Underfull \hbox (badness 10000) in paragraph at lines 2641--2656
+Underfull \hbox (badness 10000) in paragraph at lines 2642--2657
 
  []
 
 [58]
-Underfull \hbox (badness 10000) in paragraph at lines 2657--2669
+Underfull \hbox (badness 10000) in paragraph at lines 2658--2670
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2670--2681
+Underfull \hbox (badness 10000) in paragraph at lines 2671--2682
 
  []
 
 [59]
-Underfull \hbox (badness 10000) in paragraph at lines 2757--2771
+Underfull \hbox (badness 10000) in paragraph at lines 2758--2772
 
  []
 
 [60] [61]
-Underfull \hbox (badness 10000) in paragraph at lines 2825--2846
+Underfull \hbox (badness 10000) in paragraph at lines 2826--2847
 
  []
 
 
-Overfull \hbox (5.2993pt too wide) in paragraph at lines 2856--2860
+Overfull \hbox (5.2993pt too wide) in paragraph at lines 2857--2861
 \T1/lmr/m/n/12 Als ich die Ar-beit mit der \T1/lmr/bx/n/12 op-ti-boot \T1/lmr/m
 /n/12 Um-stel-lung auf As-sem-b-ler und Ein-bau der EEprom-Unterstützung
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2856--2860
+Underfull \hbox (badness 10000) in paragraph at lines 2857--2861
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2861--2866
+Underfull \hbox (badness 10000) in paragraph at lines 2862--2867
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2867--2871
+Underfull \hbox (badness 10000) in paragraph at lines 2868--2872
 
  []
 
 [62]
-Underfull \hbox (badness 10000) in paragraph at lines 2872--2884
+Underfull \hbox (badness 10000) in paragraph at lines 2873--2885
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2885--2888
+Underfull \hbox (badness 10000) in paragraph at lines 2886--2889
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2889--2894
+Underfull \hbox (badness 10000) in paragraph at lines 2890--2895
 
  []
 
@@ -1777,12 +1777,12 @@ Package rerunfilecheck Info: File `bootloader.out' has not changed.
 (rerunfilecheck)             Checksum: 22E5E7D1D4FB061F5BE77A8A33AB1063;20657.
  ) 
 Here is how much of TeX's memory you used:
- 39763 strings out of 474757
- 942082 string characters out of 5760388
+ 39763 strings out of 474222
+ 942082 string characters out of 5748732
  1991975 words of memory out of 5000000
- 61052 multiletter control sequences out of 15000+600000
+ 61211 multiletter control sequences out of 15000+600000
  615823 words of font info for 71 fonts, out of 8000000 for 9000
- 889 hyphenation exceptions out of 8191
+ 1141 hyphenation exceptions out of 8191
  99i,9n,107p,499b,606s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/ty
 pe1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></us
@@ -1790,7 +1790,7 @@ r/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/pub
 lic/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/shar
 e/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/l
 m/lmtt12.pfb>
-Output written on bootloader.pdf (98 pages, 765585 bytes).
+Output written on bootloader.pdf (98 pages, 765588 bytes).
 PDF statistics:
  1220 PDF objects out of 1440 (max. 8388607)
  1059 compressed objects within 11 object streams

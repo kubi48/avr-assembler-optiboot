@@ -1609,13 +1609,19 @@ void appStart(uint8_t rstFlags) {
   //  This can be saved in a main program by putting code in .init0 (which
   //  executes before normal c init code) to save R2 to a global variable.
   __asm__ __volatile__ ("mov r2, %0\n" :: "r" (rstFlags));
-
+#if 1
+  AIND = 0;
   __asm__ __volatile__ (
     // Jump to WDT or RST vector
     "ldi r30,%[rstvec]\n"
     "clr r31\n"
     "ijmp\n"::[rstvec] "M"(appstart_vec)
   );
+#else
+  __asm__ __volatile__ (
+   "rjmp	optiboot_version+2+%[vect]	;\n\t"::[vect] "M"(save_vect_addr)
+  );
+#endif
 
 #if BIGBOOT >= 128
  #include "wast_128bytes.h"

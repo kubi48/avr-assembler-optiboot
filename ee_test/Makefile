@@ -161,27 +161,27 @@ hexfile: size
 
 # make upload  additionally calls make to compile the software for selected target
 upload: $(PARTNO)_test.hex $(PARTNO)_test.eep $(PARTNO)_test.lst size
-	avrdude -c $(PROGRAMMER) -B $(BitClock) $(AVRDUDE_BAUD) $(AVRDUDE_CONF) -p $(PARTNO) -P $(PORT) -u \
+	avrdude -c $(PROGRAMMER) -B $(BitClock) $(AVRDUDE_BAUD) $(AVRDUDE_CONF) -p $(PARTNO) -P $(PORT)  \
 	-U flash:w:./$(PARTNO)_test.hex:a \
 	-U eeprom:w:./$(PARTNO)_test.eep:a
 program: $(PARTNO)_test.hex
-	avrdude -c $(PROGRAMMER) -B $(BitClock) $(AVRDUDE_BAUD) $(AVRDUDE_CONF) -p $(PARTNO) -P $(PORT) -u \
+	avrdude -c $(PROGRAMMER) -B $(BitClock) $(AVRDUDE_BAUD) $(AVRDUDE_CONF) -p $(PARTNO) -P $(PORT)  \
 	-U flash:w:./$(PARTNO)_test.hex:a \
 	-U eeprom:w:./$(PARTNO)_test.eep:a
 flash: $(PARTNO)_test.hex
-	avrdude -c $(PROGRAMMER) -B $(BitClock) $(AVRDUDE_BAUD) $(AVRDUDE_CONF) -p $(PARTNO) -P $(PORT) -u \
+	avrdude -c $(PROGRAMMER) -B $(BitClock) $(AVRDUDE_BAUD) $(AVRDUDE_CONF) -p $(PARTNO) -P $(PORT)  \
 	-U flash:w:./$(PARTNO)_test.hex:a 
 eeprom: $(PARTNO)_test.eep
-	avrdude -c $(PROGRAMMER) -B $(BitClock) $(AVRDUDE_BAUD) $(AVRDUDE_CONF) -p $(PARTNO) -P $(PORT) -u \
+	avrdude -c $(PROGRAMMER) -B $(BitClock) $(AVRDUDE_BAUD) $(AVRDUDE_CONF) -p $(PARTNO) -P $(PORT)  \
 	-U eeprom:w:./$(PARTNO)_test.eep:a
 eeread:
-	avrdude -c $(PROGRAMMER) -B $(BitClock) $(AVRDUDE_BAUD) $(AVRDUDE_CONF) -p $(PARTNO) -P $(PORT) -u \
+	avrdude -c $(PROGRAMMER) -B $(BitClock) $(AVRDUDE_BAUD) $(AVRDUDE_CONF) -p $(PARTNO) -P $(PORT)  \
 	-U eeprom:r:./Read.eep:i
 read:
-	avrdude -c $(PROGRAMMER) -B $(BitClock)  -p $(PARTNO) $(AVRDUDE_BAUD) $(AVRDUDE_CONF) -P $(PORT) -u \
+	avrdude -c $(PROGRAMMER) -B $(BitClock)  -p $(PARTNO) $(AVRDUDE_BAUD) $(AVRDUDE_CONF) -P $(PORT)  \
 	-U flash:r:./Read.hex:i
 verify: $(PARTNO)_test.hex $(PARTNO)_test.eep
-	avrdude -D -c $(PROGRAMMER) -B $(BitClock)  -p $(PARTNO) $(AVRDUDE_BAUD) $(AVRDUDE_CONF) -P $(PORT) -u \
+	avrdude -D -c $(PROGRAMMER) -B $(BitClock)  -p $(PARTNO) $(AVRDUDE_BAUD) $(AVRDUDE_CONF) -P $(PORT)  \
 	-U flash:v:./$(PARTNO)_test.hex:a \
 	-U eeprom:v:./$(PARTNO)_test.eep:a -v
 help:

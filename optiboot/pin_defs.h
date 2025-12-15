@@ -1257,7 +1257,10 @@
  #endif //save_vect_num
 
  // check if it's on the same page (code assumes that)
- #if (SPM_PAGESIZE <= (save_vect_num * Vect2Byte))
+
+
+ #define save_vect_addr (save_vect_num * Vect2Byte)
+ #if (SPM_PAGESIZE <= save_vect_addr)
   #error "Save vector not in the same page as reset vector!"
  #endif
 
@@ -1267,7 +1270,6 @@
   //  may behave wrong for upper part of address space.
   #define rstVect0 2
   #define rstVect1 3
-  #define save_vect_addr (save_vect_num*4)
   #define saveVect0 (save_vect_num*4+2)
   #define saveVect1 (save_vect_num*4+3)
   #define appstart_vec (save_vect_num*2)
@@ -1275,13 +1277,13 @@
   // AVRs with up to 8k of flash have 2-byte vectors, and use rjmp.
   #define rstVect0 0
   #define rstVect1 1
-  #define save_vect_addr (save_vect_num*2)
   #define saveVect0 (save_vect_num*2)
   #define saveVect1 (save_vect_num*2+1)
   #define appstart_vec (save_vect_num)
  #endif
 #else
  #define appstart_vec (0)
+ #define save_vect_addr 0
 #endif // VIRTUAL_BOOT_PARTITION
 
 // AVR processors with more than 128kbyte flash have slower rcall and ret commands

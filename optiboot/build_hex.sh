@@ -118,7 +118,7 @@ LIBS="-lc"
 LDSECTIONS="-Wl,--section-start=.version=0x${VersionAdr}"
 
 
-logfile="${PROGRAM}_${TARGET}.log"
+LOGFILE="${PROGRAM}_${TARGET}.log"
 AVR_MHZ="(`echo "scale=2;${AVR_FREQ} / 1000000" | bc` Mhz)"
 if [ "${MYLANG}" == "de_" ] ; then
  FREQ_OPER="Optiboot für ${Vgelb}${AVR_FREQ} Hz ${AVR_MHZ} Betrieb${Vnormal}"
@@ -130,8 +130,8 @@ if [ "${MYLANG}" == "de_" ] ; then
 else
  EE_SUPPORT=" and ${Vinv}EEprom support${Vnormal} configured."
 fi
-echo "###############################" > ${logfile}
-echo "Build of ${FREQ_OPER}" >> ${logfile}
+echo "###############################" > ${LOGFILE}
+echo "Build of ${FREQ_OPER}" >> ${LOGFILE}
 
 echo " "
 
@@ -277,24 +277,25 @@ LDFLAGS="-Wl,--relax -nostartfiles -nostdlib"
 LDSECTIONS="-Wl,--section-start=.version=0x`echo "obase=16;${FLASH_SIZE}-2" | bc`"
 
 # Build of the first object file .o
+c_params="${CFLAGS} ${COMMON_OPTIONS} ${XTRA_OPTIONS}"
 if (( 0${VIRTUAL_BOOT_PARTITION} > 0 )) ; then
  FLASH_ERASE_CNT=${VIRTUAL_BOOT_PARTITION}
- if [ "${save_vect_num}" = "" ] ; then
-c_params="${CFLAGS} ${COMMON_OPTIONS} ${XTRA_OPTIONS} -DVIRTUAL_BOOT_PARTITION=${VIRTUAL_BOOT_PARTITION}  -DLED=p${LED} -DUART=0${UART} -DSOFT_UART=0${SOFT_UART} -DUART_RX=p${UART_RX} -DUART_TX=p${UART_TX} -DF_CPU=${AVR_FREQ} -DHFUSE=hex${HFUSE^^} -DLFUSE=hex${LFUSE^^} -DBOOT_PAGE_LEN=${BOOT_PAGE_LEN} -DVerboseLev=${VerboseLev} -c -o ${PROGRAM}.o ${PROGRAM}.${SOURCE_TYPE}"
- else
-c_params="${CFLAGS} ${COMMON_OPTIONS} ${XTRA_OPTIONS} -DVIRTUAL_BOOT_PARTITION=${VIRTUAL_BOOT_PARTITION}  -Dsave_vect_num=${save_vect_num} -DLED=p${LED} -DUART=0${UART} -DSOFT_UART=0${SOFT_UART} -DUART_RX=p${UART_RX} -DUART_TX=p${UART_TX} -DF_CPU=${AVR_FREQ} -DHFUSE=hex${HFUSE^^} -DLFUSE=hex${LFUSE^^} -DBOOT_PAGE_LEN=${BOOT_PAGE_LEN} -DVerboseLev=${VerboseLev} -c -o ${PROGRAM}.o ${PROGRAM}.${SOURCE_TYPE}"
+ c_params+=" -DVIRTUAL_BOOT_PARTITION=${VIRTUAL_BOOT_PARTITION}"
+ if [ "${save_vect_num}" != "" ] ; then
+  c_params+=" -Dsave_vect_num=${save_vect_num}"
  fi
-else
-c_params="${CFLAGS} ${COMMON_OPTIONS} ${XTRA_OPTIONS} -DLED=p${LED} -DUART=0${UART} -DSOFT_UART=0${SOFT_UART} -DUART_RX=p${UART_RX} -DUART_TX=p${UART_TX} -DF_CPU=${AVR_FREQ} -DHFUSE=hex${HFUSE^^} -DLFUSE=hex${LFUSE^^} -DBOOT_PAGE_LEN=${BOOT_PAGE_LEN} -DVerboseLev=${VerboseLev} -c -o ${PROGRAM}.o ${PROGRAM}.${SOURCE_TYPE}"
 fi
+c_params+=" -DLED=p${LED} -DUART=0${UART} -DSOFT_UART=0${SOFT_UART} -DUART_RX=p${UART_RX} -DUART_TX=p${UART_TX} -DF_CPU=${AVR_FREQ}"
+c_params+=" -DHFUSE=hex${HFUSE^^} -DLFUSE=hex${LFUSE^^} -DBOOT_PAGE_LEN=${BOOT_PAGE_LEN}"
+c_params+=" -DVerboseLev=${VerboseLev} -c -o ${PROGRAM}.o ${PROGRAM}.${SOURCE_TYPE}"
 
-  if (( ${VerboseLev} > 1 )) ; then echo "${Vgreen}avr-gcc ${c_params}${Vnormal}"; fi
+if (( ${VerboseLev} > 1 )) ; then echo "${Vgreen}avr-gcc ${c_params}${Vnormal}"; fi
 avr-gcc ${c_params}
 
 if (( $? == 0 )) ; then
- echo " .o build : OK!" >> ${logfile}
+ echo " .o build : OK!" >> ${LOGFILE}
 else
- echo " .o build : FAILED!" >> ${logfile} ; exit 1
+ echo " .o build : FAILED!" >> ${LOGFILE} ; exit 1
 fi
 
 #  we can determine the size of the loader with optiboot.o for Assembler source input,
@@ -303,15 +304,19 @@ fi
 #  After computing the required size (and the possible relocation address),
 #  This x.elf is removed later.
 
-c_paramsx="${CFLAGS} ${COMMON_OPTIONS} ${XTRA_OPTIONS} ${LDSECTIONS} ${LDFLAGS} -o ${PROGRAM}x.elf ${PROGRAM}.o ${LIBS}"
+c_paramsx="${CFLAGS} ${COMMON_OPTIONS} ${XTRA_OPTIONS} ${LDSECTIONS}"
+#  We must set a temporarely section start for .text section to prevent error message
+#  because of rjmp use to start user application.
+c_paramsx+=" -Wl,--section-start=.text=0x`echo "obase=16;${FLASH_SIZE}-1024" | bc`"
+c_paramsx+=" ${LDFLAGS} -o ${PROGRAM}x.elf ${PROGRAM}.o ${LIBS}"
 
 if (( ${VerboseLev} > 3 )) ; then echo "${Vgreen}avr-gcc ${c_paramsx}${Vnormal}" ; fi
 avr-gcc ${c_paramsx}
 
 if (( $? == 0 )) ; then
- echo " x.elf build : OK!" >> ${logfile}
+ echo " x.elf build : OK!" >> ${LOGFILE}
 else
- echo " x.elf build : FAILED!" >> ${logfile} 
+ echo " x.elf build : FAILED!" >> ${LOGFILE} 
  exit 1
 fi
 
@@ -353,9 +358,9 @@ c_params="${CFLAGS} ${COMMON_OPTIONS} -DUART=0${UART} -DSOFT_UART=0${SOFT_UART} 
 avr-gcc ${c_params}
 
 if (( $? == 0 )) ; then
- echo " baudcheck.tmp.sh build : OK!" >> ${logfile}
+ echo " baudcheck.tmp.sh build : OK!" >> ${LOGFILE}
 else
- echo " baudcheck.tmp.sh build : FAILED!" >> ${logfile}
+ echo " baudcheck.tmp.sh build : FAILED!" >> ${LOGFILE}
 fi
 
 # remove \r from baudcheck.tmp to make a bash script
@@ -365,9 +370,10 @@ cat baudcheck.tmp | tr -d "\r" > baudcheck.tmp.sh
   if (( ${VerboseLev} > 3 )) ; then echo "${Vgreen}source ./baudcheck.sh${Vnormal}" ; fi
 source ./baudcheck.tmp.sh
 rm -f ./baudcheck.tmp
+PROGNAME=${PROGRAM}_${TARGET}
 
 # Generate the final ${PROGRAM}.elf file at the right Start Address,
-# which is the base to generate the ${PROGRAM}_${TARGET}.hex and ${PROGRAM}_${TARGET}.lst files.
+# which is the base to generate the ${PROGNAME}.hex and ${PROGNAME}.lst files.
 echo "${Vgrau}# # # # # # # # # # # # # # # # # # # # # #"
 if [ "${MYLANG}" == "de_" ] ; then
  echo "${Vnormal}Bootlader Startadresse: 0x${BL_StartAdr}${Vgrau} = `echo "ibase=16;${BL_StartAdr}" | bc`"
@@ -375,7 +381,7 @@ if [ "${MYLANG}" == "de_" ] ; then
  echo "${Vnormal}Boot Loader start address: 0x${BL_StartAdr}${Vgrau} = `echo "ibase=16;${BL_StartAdr}" | bc`"
 fi
 echo "# # # # # # # # # # # # # # # # # # # # # #${Vnormal}"
-c_paramf="${CFLAGS} ${COMMON_OPTIONS} ${LDSECTIONS} -Wl,--section-start=.text=0x${BL_StartAdr} ${LDFLAGS} -o ${PROGRAM}.elf ${PROGRAM}.o ${LIBS}"
+c_paramf="${CFLAGS} ${COMMON_OPTIONS} ${LDSECTIONS} -Wl,--section-start=.text=0x${BL_StartAdr} ${LDFLAGS} -o ${PROGNAME}.elf ${PROGRAM}.o ${LIBS}"
   if (( ${VerboseLev} > 2 )) ; then echo "${Vgreen}avr-gcc ${c_paramf}${Vnormal}" ; fi
 avr-gcc ${c_paramf}
 echo " "
@@ -385,13 +391,13 @@ echo " "
 # This ${BOOTSZ} is taken by the Makefile.isp file to correct the HFUSE or EFUSE.
 # With option VIRTUAL_BOOT_PARTITION ${BOOTSZ} is allways set to 3
 #
-  if (( ${VerboseLev} > 2 )) ; then echo "${Vgreen}avr-size ${PROGRAM}.elf${Vnormal}" ; fi
-avr-size ${PROGRAM}.elf
+  if (( ${VerboseLev} > 2 )) ; then echo "${Vgreen}avr-size ${PROGNAME}.elf${Vnormal}" ; fi
+avr-size ${PROGNAME}.elf
 
 if (( $? == 0 )) ; then
- echo " avr-size run : OK!" >> ${logfile}
+ echo " avr-size run : OK!" >> ${LOGFILE}
 else
- echo " avr-size run : FAILED!" >> ${logfile}
+ echo " avr-size run : FAILED!" >> ${LOGFILE}
 fi
 
 if (( 0${VIRTUAL_BOOT_PARTITION} > 0 )) ; then
@@ -469,70 +475,70 @@ else
 fi
 
 # generate a new .hex and .lst file from the right .elf
-ocp_args="-j .text -j .data -j .version --set-section-flags .version=alloc,load -O ihex ${PROGRAM}.elf ${PROGRAM}_${TARGET}.hex"
+ocp_args="-j .text -j .data -j .version --set-section-flags .version=alloc,load -O ihex ${PROGNAME}.elf ${PROGNAME}.hex"
   if (( ${VerboseLev} > 3 )) ; then echo "${Vgreen}avr-objcopy ${ocp_args}${Vnormal}" ; fi
-avr-objcopy -j .text -j .data -j .version --set-section-flags .version=alloc,load -O ihex ${PROGRAM}.elf ${PROGRAM}_${TARGET}.hex
+avr-objcopy -j .text -j .data -j .version --set-section-flags .version=alloc,load -O ihex ${PROGNAME}.elf ${PROGNAME}.hex
 
-  if (( ${VerboseLev} > 3 )) ; then echo "${Vgreen}avr-objdump -h -S ${PROGRAM}.elf > ${PROGRAM}_${TARGET}.lst${Vnormal}" ; fi
- lstfile="${PROGRAM}_${TARGET}.lst"
-avr-objdump -h -S ${PROGRAM}.elf > ${lstfile}
+  if (( ${VerboseLev} > 3 )) ; then echo "${Vgreen}avr-objdump -h -S ${PROGNAME}.elf > ${PROGNAME}.lst${Vnormal}" ; fi
+ LSTFILE="${PROGNAME}.lst"
+avr-objdump -h -S ${PROGNAME}.elf > ${LSTFILE}
 
 if (( $? == 0 )) ; then
- echo " avr-objdump run : OK!" >> ${logfile}
+ echo " avr-objdump run : OK!" >> ${LOGFILE}
 else
- echo " avr-objdump run : FAILED!" >> ${logfile}
+ echo " avr-objdump run : FAILED!" >> ${LOGFILE}
 fi
 
 # copy the  .lst and .hex files to files which identify the target
 # add some options to the end of the .lst file as comment
-echo "; " >> ${lstfile}
-echo "; FORCE_WATCHDOG=${FORCE_WATCHDOG}" >> ${lstfile}
-echo "; LED_START_FLASHES=${LED_START_FLASHES}" >> ${lstfile}
-echo "; LED_DATA_FLASH=${LED_DATA_FLASH}" >> ${lstfile}
-echo "; LED=${LED}" >> ${lstfile}
+echo "; " >> ${LSTFILE}
+echo "; FORCE_WATCHDOG=${FORCE_WATCHDOG}" >> ${LSTFILE}
+echo "; LED_START_FLASHES=${LED_START_FLASHES}" >> ${LSTFILE}
+echo "; LED_DATA_FLASH=${LED_DATA_FLASH}" >> ${LSTFILE}
+echo "; LED=${LED}" >> ${LSTFILE}
 if (( 0${SOFT_UART} > 0 )) ; then
-  echo "; SOFT_UART=${SOFT_UART}" >> ${lstfile}
-  echo "; UART_RX=${UART_RX}" >> ${lstfile}
-  echo "; UART_TX=${UART_TX}" >> ${lstfile}
+  echo "; SOFT_UART=${SOFT_UART}" >> ${LSTFILE}
+  echo "; UART_RX=${UART_RX}" >> ${LSTFILE}
+  echo "; UART_TX=${UART_TX}" >> ${LSTFILE}
 fi
-echo "; UART=${UART}" >> ${lstfile}
-echo "; SOURCE_TYPE=${SOURCE_TYPE}" >> ${lstfile}
-echo "; SUPPORT_EEPROM=${SUPPORT_EEPROM}" >> ${lstfile}
-echo "; MCU_TARGET = ${MCU_TARGET}" >> ${lstfile}
-echo "; AVR_FREQ= ${AVR_FREQ}" >> ${lstfile}
-echo "; BAUD_RATE=${BAUD_RATE}" >> ${lstfile}
+echo "; UART=${UART}" >> ${LSTFILE}
+echo "; SOURCE_TYPE=${SOURCE_TYPE}" >> ${LSTFILE}
+echo "; SUPPORT_EEPROM=${SUPPORT_EEPROM}" >> ${LSTFILE}
+echo "; MCU_TARGET = ${MCU_TARGET}" >> ${LSTFILE}
+echo "; AVR_FREQ= ${AVR_FREQ}" >> ${LSTFILE}
+echo "; BAUD_RATE=${BAUD_RATE}" >> ${LSTFILE}
 
-echo "${PROGRAM} for ${TARGET} with AVR ${MCU_TARGET}" >> ${logfile}
-echo "Parameter Settings:" >> ${logfile}
-echo "AVR_FREQ=${AVR_FREQ}" >> ${logfile}
-echo "BAUD_RATE=${BAUD_RATE}" >> ${logfile}
-echo "UART=${UART}" >> ${logfile}
-echo "LED_START_FLASHES=${LED_START_FLASHES}" >> ${logfile}
-echo "LED_DATA_FLASH=${LED_DATA_FLASH}" >> ${logfile}
-echo "LED=${LED}" >> ${logfile}
-echo "SUPPORT_EEPROM=${SUPPORT_EEPROM}" >> ${logfile}
-echo "ISP=${ISP}" >> ${logfile}
-echo "SOFT_UART=${SOFT_UART}" >> ${logfile}
-echo "UART_RX=${UART_RX}" >> ${logfile}
-echo "UART_TX=${UART_TX}" >> ${logfile}
-echo "C_SOURCE=${C_SOURCE} ,SOURCE_TYPE=${SOURCE_TYPE}" >> ${logfile}
-echo "BIGBOOT=${BIGBOOT}" >> ${logfile}
-echo "VIRTUAL_BOOT_PARTITION=${VIRTUAL_BOOT_PARTITION}" >> ${logfile}
-echo "TIMEOUT_MS=${TIMEOUT_MS}" >> ${logfile}
-echo "OSCCAL_CORR=${OSCCAL_CORR}" >> ${logfile}
-echo "FORCE_RSTDISBL=${FORCE_RSTDISBL}" >> ${logfile}
-echo "save_vect_num=${save_vect_num}" >> ${logfile}
+echo "${PROGRAM} for ${TARGET} with AVR ${MCU_TARGET}" >> ${LOGFILE}
+echo "Parameter Settings:" >> ${LOGFILE}
+echo "AVR_FREQ=${AVR_FREQ}" >> ${LOGFILE}
+echo "BAUD_RATE=${BAUD_RATE}" >> ${LOGFILE}
+echo "UART=${UART}" >> ${LOGFILE}
+echo "LED_START_FLASHES=${LED_START_FLASHES}" >> ${LOGFILE}
+echo "LED_DATA_FLASH=${LED_DATA_FLASH}" >> ${LOGFILE}
+echo "LED=${LED}" >> ${LOGFILE}
+echo "SUPPORT_EEPROM=${SUPPORT_EEPROM}" >> ${LOGFILE}
+echo "ISP=${ISP}" >> ${LOGFILE}
+echo "SOFT_UART=${SOFT_UART}" >> ${LOGFILE}
+echo "UART_RX=${UART_RX}" >> ${LOGFILE}
+echo "UART_TX=${UART_TX}" >> ${LOGFILE}
+echo "C_SOURCE=${C_SOURCE} ,SOURCE_TYPE=${SOURCE_TYPE}" >> ${LOGFILE}
+echo "BIGBOOT=${BIGBOOT}" >> ${LOGFILE}
+echo "VIRTUAL_BOOT_PARTITION=${VIRTUAL_BOOT_PARTITION}" >> ${LOGFILE}
+echo "TIMEOUT_MS=${TIMEOUT_MS}" >> ${LOGFILE}
+echo "OSCCAL_CORR=${OSCCAL_CORR}" >> ${LOGFILE}
+echo "FORCE_RSTDISBL=${FORCE_RSTDISBL}" >> ${LOGFILE}
+echo "save_vect_num=${save_vect_num}" >> ${LOGFILE}
 if [ "${WRITE_PROTECT_PIN}" != "" ] ; then
-echo "WRITE_PROTECT_PIN=${WRITE_PROTECT_PIN}" >> ${logfile}
+echo "WRITE_PROTECT_PIN=${WRITE_PROTECT_PIN}" >> ${LOGFILE}
 fi
 if [ "${NO_EARLY_PAGE_ERASE}" != "" ] ; then
-echo "NO_EARLY_PAGE_ERASE=${NO_EARLY_PAGE_ERASE}" >> ${logfile}
-echo "TWO_STOP_BITS=${TWO_STOP_BITS}" >> ${logfile}
+echo "NO_EARLY_PAGE_ERASE=${NO_EARLY_PAGE_ERASE}" >> ${LOGFILE}
+echo "TWO_STOP_BITS=${TWO_STOP_BITS}" >> ${LOGFILE}
 fi
-echo "NO_APP_SPM=${NO_APP_SPM}" >> ${logfile}
-echo " " >> ${logfile}
-echo "Bootloader use ${size2know} Bytes of Flash," >> ${logfile}
-echo "so the Application must use less than 0x${BL_StartAdr} Bytes of Flash " >> ${logfile}
+echo "NO_APP_SPM=${NO_APP_SPM}" >> ${LOGFILE}
+echo " " >> ${LOGFILE}
+echo "Bootloader use ${size2know} Bytes of Flash," >> ${LOGFILE}
+echo "so the Application must use less than 0x${BL_StartAdr} Bytes of Flash " >> ${LOGFILE}
 
 export TARGET FLASH_SIZE BOOT_PAGE_LEN BOOTSZ BL_StartAdr
 export EFUSE HFUSE LFUSE

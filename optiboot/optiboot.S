@@ -12,6 +12,9 @@
 /* host side RX, if the data are send from host's TX. The AVR TX/RX output will   */
 /* pass to the Host's RX.  */
 /* Prepared to support the old ATmega163     Dec. 17,2017                         */
+/* The APP_SPM feature is now also supported as in original version 8.3           */
+/* The VIRTUAL_BOOT_PARTITION for AVRs with more than 8K flash will now differ    */
+/* between JMP and RJMP in the interrupt vector table   Dec. 15,2025              */
 /**********************************************************************************/
 
 
@@ -118,7 +121,7 @@
 /* the program will usually fit into a 512 byte boot page.  */
 /* Only with special options like automatic baud rate selection */
 /* and software UART the space of the 512 byte boot page is */
-/* insufficient                                             */   
+/* insufficient                                             */
 /* A few bytes can be saved by setting the option           */
 /* NO_EARLY_PAGE_ERASE, by the programming is slower.       */
 
@@ -168,7 +171,7 @@
 /* Frequency generation of the ATmega is used             */
 /*                                                        */
 /**********************************************************/
-
+
 /**********************************************************/
 /* Version Numbers!                                       */
 /*                                                        */
@@ -190,34 +193,34 @@
 /**********************************************************/
 
 /**********************************************************/
-/* Edit History:					  */
-/*			   				  */
-/* Aug 2014						  */
+/* Edit History:                                          */
+/*                                                        */
+/* Aug 2014                                               */
 /* 6.2 WestfW: make size of length variables dependent    */
 /*              on the SPM_PAGESIZE.  This saves space    */
 /*              on the chips where it's most important.   */
-/* 6.1 WestfW: Fix OPTIBOOT_CUSTOMVER (send it!)	  */
-/*             Make no-wait mod less picky about	  */
-/*               skipping the bootloader.		  */
-/*             Remove some dead code			  */
-/*							  */
-/* Jun 2014						  */
-/* 6.0 WestfW: Modularize memory read/write functions	  */
-/*             Remove serial/flash overlap		  */
-/*              (and all references to NRWWSTART/etc)	  */
+/* 6.1 WestfW: Fix OPTIBOOT_CUSTOMVER (send it!)          */
+/*             Make no-wait mod less picky about          */
+/*               skipping the bootloader.                 */
+/*             Remove some dead code                      */
+/*                                                        */
+/* Jun 2014                                               */
+/* 6.0 WestfW: Modularize memory read/write functions     */
+/*             Remove serial/flash overlap                */
+/*              (and all references to NRWWSTART/etc)     */
 /*             Correctly handle pagesize > 255bytes       */
 /*             Add EEPROM support in BIGBOOT (1284)       */
 /*             EEPROM write on small chips now causes err */
 /*             Split Makefile into smaller pieces         */
-/*             Add Wicked devices Wildfire		  */
-/*             Move UART=n conditionals into pin_defs.h	  */
-/*             Remove LUDICOUS_SPEED option		  */
-/*             Replace inline assembler for .version	  */
+/*             Add Wicked devices Wildfire                */
+/*             Move UART=n conditionals into pin_defs.h   */
+/*             Remove LUDICOUS_SPEED option               */
+/*             Replace inline assembler for .version      */
 /*              and add OPTIBOOT_CUSTOMVER for user code  */
 /*             Fix LED value for Bobuino (Makefile)       */
 /*             Make all functions explicitly inline or    */
-/*              noinline, so we fit when using gcc4.8	  */
-/*             Change optimization options for gcc4.8	  */
+/*              noinline, so we fit when using gcc4.8     */
+/*             Change optimization options for gcc4.8     */
 /*             Make ENV=arduino work in 1.5.x trees.      */
 /* May 2014                                               */
 /* 5.0 WestfW: Add support for 1Mbps UART                 */
@@ -229,7 +232,7 @@
 /* 4.6 WestfW/Pito: Add ATmega32 support                  */
 /* 4.6 WestfW/radoni: Don't set LED_PIN as an output if   */
 /*                    not used. (LED_START_FLASHES = 0)   */
-/* Jan 2013						  */
+/* Jan 2013                                               */
 /* 4.6 WestfW/dkinzer: use autoincrement lpm for read     */
 /* 4.6 WestfW/dkinzer: pass reset cause to app in R2      */
 /* Mar 2012                                               */
@@ -260,7 +263,7 @@
 /*  http://code.google.com/p/arduino/issues/detail?id=368n*/
 /* 4.2 WestfW: reduce code size, fix timeouts, change     */
 /*             verifySpace to use WDT instead of appstart */
-/* 4.1 WestfW: put version number in binary.		  */
+/* 4.1 WestfW: put version number in binary.              */
 /**********************************************************/
 
 #ifndef __ASSEMBLER__
@@ -277,7 +280,7 @@
 #include "check_fuses.h"
 
 
-#define OPTIBOOT_MAJVER 6
+#define OPTIBOOT_MAJVER 8
 #define OPTIBOOT_MINVER 3
 /*
  * OPTIBOOT_CUSTOMVER should be defined (by the makefile) for custom edits
@@ -312,8 +315,9 @@
 #endif
 
 #ifndef SUPPORT_EEPROM
- #define SUPPORT_EEPROM 1	/* enable EEprom support by default */
+ #define SUPPORT_EEPROM 1       /* enable EEprom support by default */
 #endif
+
 
 #ifndef BIGBOOT
  #define BIGBOOT 0		/* set dummy size to 0 */
@@ -372,6 +376,7 @@
 optiboot_version:
 	.byte	OPTIBOOT_MINVER
 	.byte	OPTIBOOT_MAJVER+OPTIBOOT_CUSTOMVER
+
 #ifdef RADIO_UART
  #error "RADIO_UART is not supported by optiboot!"
 #endif
@@ -382,8 +387,8 @@ optiboot_version:
 	.func optiboot
 	.global optiboot
 # generate no pre_main code, if NO_APP_SPM is greater 1
-#if (NO_APP_SPM < 2)
 pre_main:
+#if (NO_APP_SPM < 2)
 	rjmp	optiboot
  #if (NO_APP_SPM != 0)
 	ret		;dummy function
@@ -529,15 +534,15 @@ no_app_start:
 
 to_app_start:
  #if 0
-	AIN	r20, MARKER1		; if MARKER1:4 == 0xDEADBEEF
-	cpi	r20, 0xDE
-	AIN	r20, MARKER2
-	sbci	r20, 0xAD
-	AIN	r20, MARKER3
-	sbci	r20, 0xBE
-	AIN	r20, MARKER4
-	sbci	r20, 0xEF
-	brne	no_app_start
+        AIN     r20, MARKER1            ; if MARKER1:4 == 0xDEADBEEF
+        cpi     r20, 0xDE
+        AIN     r20, MARKER2
+        sbci    r20, 0xAD
+        AIN     r20, MARKER3
+        sbci    r20, 0xBE
+        AIN     r20, MARKER4
+        sbci    r20, 0xEF
+        brne    no_app_start
  #endif
 	AOUT	MARKER1, r1		; marker = 0
 	AOUT	MARKER2, r1		;
@@ -588,13 +593,10 @@ appStart:
 	; application program should look to the RESET_CAUSE register directly instead
 
 #if	VIRTUAL_BOOT_PARTITION > 0
-	ldi	ZL, save_vect_addr/2		; // Jump to WDT vector (jmp or rjmp table)
-	eor	ZH, ZH
+	rjmp	optiboot_version+2+save_vect_addr ; is a "JMP save_vect_addr"
 #else
-       	eor	ZL, ZL	; // Jump to RST vector	 0x0000
-      	eor	ZH, ZH
+	rjmp	optiboot_version+2		; is a JMP 0
 #endif
-       	ijmp
 
 ;***************************************************************
 try_loader:
@@ -641,7 +643,7 @@ no_pll:
 #endif
 
 #if FLASHEND > 0x1ffff
-	clr	r3			; reset mode
+        clr     r3                      ; reset mode
 #endif
 	ldi	r18, lo8(RAMSTART)	; r18:r19 = RAMSTART
 	ldi	r19, hi8(RAMSTART)	; 
@@ -686,26 +688,27 @@ no_pll:
    #define INVERSE_UART 0
   #endif
   #warning "One Wire mode serial IO selected!"
-	ACBI	UART_TX_PORT, UART_TX_BIT	; set TX bit to low
-	ACBI	UART_TX_DDR, UART_TX_BIT	; set TX DDR bit as input, High level with Pull-Up
+        ACBI    UART_TX_PORT, UART_TX_BIT       ; set TX bit to low
+        ACBI    UART_TX_DDR, UART_TX_BIT        ; set TX DDR bit as input, High level with Pull-Up
  #else
-	; initialize the TX output, normal mode
+        ; initialize the TX output, normal mode
   #if INVERSE_UART > 0
-	ACBI	UART_TX_PORT, UART_TX_BIT	; set TX bit to low
+        ACBI    UART_TX_PORT, UART_TX_BIT       ; set TX bit to low
   #else
-	ASBI	UART_TX_PORT, UART_TX_BIT	; set TX bit to high
+        ASBI    UART_TX_PORT, UART_TX_BIT       ; set TX bit to high
   #endif
-	ASBI	UART_TX_DDR, UART_TX_BIT	; set TX DDR bit as output
+        ASBI    UART_TX_DDR, UART_TX_BIT        ; set TX DDR bit as output
  #endif
 
  #if BAUD_RATE < 100
   ; try with Auto-baud
 
-  #include "flash_led_opti.S"	/* flash the led before init of UART */
+  #include "flash_led_opti.S"   /* flash the led before init of UART */
   #include "init_uart_auto_baud.S"
 
  #endif
 #endif
+
 
 #if BAUD_RATE >= 100
  #include "flash_led_opti.S"	/* flash the led after init of UART */
@@ -724,7 +727,6 @@ test_out:
 	rcall	putch			; putch can use r22, r23,(r24), r25
 	rjmp	test_out		; endless loop
 #endif
-
 
 
 ;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -753,31 +755,31 @@ to_putch:
 fin_get_par:
 ;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 #if defined(SUPPORT_READ_FUSES) && defined(__AVR_ATtiny84__)
-	cpi	r24, STK_READ_FUSE		; 0x72
-	brne	no_rd_fuse
-	rcall	verifySpace	; check Sync_CRC_EOP, putch(STK_INSYNC)
-	rcall	transfer_low_high_fuse
-	rjmp	put_ok		; putch(STK_OK); rjmp get_nextp
+        cpi     r24, STK_READ_FUSE              ; 0x72
+        brne    no_rd_fuse
+        rcall   verifySpace     ; check Sync_CRC_EOP, putch(STK_INSYNC)
+        rcall   transfer_low_high_fuse
+        rjmp    put_ok          ; putch(STK_OK); rjmp get_nextp
 no_rd_fuse:
 ;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-	cpi	r24, STK_READ_FUSE_EXT		; 0x77
-	brne	no_rd_fuse_ext
-	rcall	transfer_low_high_fuse
-	ldi	ZL, 2		; address of extended FUSE
-	rcall	transfer_fuse
-	rjmp	put_ok		; putch(STK_OK); rjmp get_nextp
+        cpi     r24, STK_READ_FUSE_EXT          ; 0x77
+        brne    no_rd_fuse_ext
+        rcall   transfer_low_high_fuse
+        ldi     ZL, 2           ; address of extended FUSE
+        rcall   transfer_fuse
+        rjmp    put_ok          ; putch(STK_OK); rjmp get_nextp
 no_rd_fuse_ext:
  #if 0
 ;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-	cpi	r24, STK_READ_LOCK		; 0x73
-	brne	no_rd_lock
-	rcall	verifySpace	; check Sync_CRC_EOP, putch(STK_INSYNC)
-	ldi	ZL, 1
-	rcall	transfer_fuse
-	rjmp	put_ok		; putch(STK_OK); rjmp get_nextp
+        cpi     r24, STK_READ_LOCK              ; 0x73
+        brne    no_rd_lock
+        rcall   verifySpace     ; check Sync_CRC_EOP, putch(STK_INSYNC)
+        ldi     ZL, 1
+        rcall   transfer_fuse
+        rjmp    put_ok          ; putch(STK_OK); rjmp get_nextp
 no_read_lock:
  #endif
-#endif	/* SUPPORT_READ_FUSES */
+#endif  /* SUPPORT_READ_FUSES */
 ck_SET_DEV:
 	ldi	r20, 20
 ;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -811,10 +813,10 @@ ck_LA:
 #endif
 #ifdef RAMPZ
  #if FLASHEND > 0x1ffff
-	AIN	r24, RAMPZ
-	andi	r24, 0xfe
-        adc	r24, r1		; add carry
-	AOUT	RAMPZ, r24
+        AIN     r24, RAMPZ
+        andi    r24, 0xfe
+        adc     r24, r1         ; add carry
+        AOUT    RAMPZ, r24
 no_update:
  #else
 	adc	r1, r1
@@ -828,27 +830,27 @@ ck_UNI:
        	cpi	r24, STK_UNIVERSAL 	; 'V'
        	brne	ck_PP
 #if 0
-	; The following code is not tested, the RAMPZ is updated with the
-	; Address Overflow instead. If the Begin of the Update-region is
-	; below 0x1ff80, this method will work well and requires less code.
+        ; The following code is not tested, the RAMPZ is updated with the
+        ; Address Overflow instead. If the Begin of the Update-region is
+        ; below 0x1ff80, this method will work well and requires less code.
         ; 'V', 'M', 0x00, 0x0R, 0x00, ' '  is the sequence for RAMPZ setting to R*2
-	rcall	getch
-	cpi	r24, 0x4d		; 'M' = Map Flash memory
-	breq	isMap
-	ldi	r20, 3
-	rcall	getNch
-	ldi	r24, 0
-	rjmp	to_putch	; rcall putch, rjmp put_ok
+        rcall   getch
+        cpi     r24, 0x4d               ; 'M' = Map Flash memory
+        breq    isMap
+        ldi     r20, 3
+        rcall   getNch
+        ldi     r24, 0
+        rjmp    to_putch        ; rcall putch, rjmp put_ok
 isMap:
-	rcall 	getch		; MSB for Program Memory Page is ignored
-	rcall	getch		; LSB for Program Memory Page
-	add	r24, r24	; * 2
-	AOUT	RAMPZ, r24
-	rcall	getch		; 0x00 is ignored
-	rcall	verifySpace
-	ldi	r24,0
-	rcall	putch
-	rjmp	rjmp put_ok
+        rcall   getch           ; MSB for Program Memory Page is ignored
+        rcall   getch           ; LSB for Program Memory Page
+        add     r24, r24        ; * 2
+        AOUT    RAMPZ, r24
+        rcall   getch           ; 0x00 is ignored
+        rcall   verifySpace
+        ldi     r24,0
+        rcall   putch
+        rjmp    rjmp put_ok
 #else
 	ldi	r20, 4		; getNch(4)
 	rcall	getNch
@@ -862,7 +864,7 @@ ck_PP:
 	rjmp	ck_READP
 is_PROG:
 #if FLASHEND > 0x1ffff
-	rcall	check_mode_change
+        rcall   check_mode_change
 #endif
     // Check for Mode change. If other mode before, clear RAMPZ
     /* Write memory, length is big endian and is in bytes */
@@ -895,6 +897,7 @@ fill_buf:
 	st	Y+, r24		; *bufPtr++ = getch()
 	sbiw	r26, 1		; length = length - 1
 	brne	fill_buf
+
 	movw	r26, r16	; set length back to start value
 	movw	YL, r18		; buf16Ptr (r28:r29) = RAMSTART
 
@@ -907,34 +910,34 @@ fill_buf:
 	rjmp	put_ok		; Hardware Write Protect emulation
  #endif
 #if SUPPORT_EEPROM > 0
-	cpse	r6, r1		; r6 == 0, is EEprom write
-	rjmp	write_flash	; if (!type)
+        cpse    r6, r1          ; r6 == 0, is EEprom write
+        rjmp    write_flash     ; if (!type)
 
 ; is EEprom write
 ; the address is allŕeady set in Z
 ee_wrlop:
-     	wdr		; watchdogReset();
-	ld	r24, Y+			; *bufPtr++
+        wdr             ; watchdogReset();
+        ld      r24, Y+                 ; *bufPtr++
  #if VIRTUAL_BOOT_PARTITION > 0
-	rcall	wr_eeprom
+        rcall   wr_eeprom
  #else
  /* eeprom write is done only here, therefore without a rcall to save flash */
-	rcall	set_eeprom_adr	; Z+
-	AOUT	EEDR, r24	; data to EEprom controller
-	ASBI	EECR, EEMPE
-	ASBI	EECR, EEPE	; /* Start eeprom write by setting EEPE */
- #endif 	/* VIRTUAL_BOOT_PARTITION */
+        rcall   set_eeprom_adr  ; Z+
+        AOUT    EEDR, r24       ; data to EEprom controller
+        ASBI    EECR, EEMPE
+        ASBI    EECR, EEPE      ; /* Start eeprom write by setting EEPE */
+ #endif         /* VIRTUAL_BOOT_PARTITION */
 
-	sbiw	r26, 1		; length = length - 1
-	brne	ee_wrlop
-	; eeprom write is finished
-	rjmp	put_ok		; putch(STK_OK); rjmp get_nextp
+        sbiw    r26, 1          ; length = length - 1
+        brne    ee_wrlop
+        ; eeprom write is finished
+        rjmp    put_ok          ; putch(STK_OK); rjmp get_nextp
 #else
-	; without eeprom support
-	cpse	r6, r1		; r6 = 0, is EEprom write
-	rjmp	write_flash	; if (!type)
-	rjmp	put_ok		; putch(STK_OK); rjmp get_nextp ; simulate OK
-#endif		/* SUPPORT_EEPROM */
+        ; without eeprom support
+        cpse    r6, r1          ; r6 = 0, is EEprom write
+        rjmp    write_flash     ; if (!type)
+        rjmp    put_ok          ; putch(STK_OK); rjmp get_nextp ; simulate OK
+#endif          /* SUPPORT_EEPROM */
 
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 write_flash:
@@ -957,9 +960,6 @@ no_erase1:
 	rcall	wait_flash_ready
 
 #if VIRTUAL_BOOT_PARTITION > 0
- #if FLASHEND > 0x1ffff
-  #error "Interrupt Vector Table can NOT be patched with more than 131072 byte flash!"
- #endif
  #if VerboseLev > 2
  #warning "RESET vector will be patched!"
  #endif
@@ -988,29 +988,54 @@ no_erase1:
   * instructions (Option -relax to the binder),
   * the two bytes loaded here, are  usually filled with
   * a nop instruction behind the rjmp.
-  * Probably a patch program at the host computer, which send the 
-  * programming data, is the better solution.
-  * A patch program at the host can analyse the content of the hex data file
-  * and create a new "patched" file. The patch program must know the
-  * address of the bootloader and the interrupt vector number to save
-  * the original reset vector content. 
   * The bootloader solution save the vector content for simulating
   + a correct verify pass after flashing.
   * But you can not repeat a separate verify pass without errors!!!
   */
-	ldd	r24, Y+2	; rstVect = buff[2] | (buff[3]<<8)
-	ldd	r25, Y+3
+	ldd	r25, Y+1		; Operation code of vector 0
+	mov	r24, r25
+	andi	r24, 0xf0
+	ld	r7, Y			; does not affect status
+	ldd	r8, Y+2
+	ldd	r9, Y+3
+	cpi	r24, 0xc0		; instruction rjmp
+	brne	is_jmp_1
+	subi	r24, lo8(save_vect_num*2) ; old rjmp -save_vect_num
+	sbci	r25, hi8(save_vect_num*2)
+is_jmp_1:
 	ldi	ZL, lo8(save_vect_addr)	; load Z with save vector address
 	ldi	ZH, hi8(save_vect_addr)
-	add	ZL, r28
-	adc	ZH, r29		;Z =  RAMSTART + save_vect_addr
-	ldd	r8, Z+2		; r8:9 is the original vector address of save_vect_num
-	ldd	r9, Z+3		; 
-	std	Z+2, r24	; new WDT vector address  = old address of reset vector
-	std	Z+3, r25
-	ldi	r24, lo8(gs(optiboot))		; absolute address of optiboot start
+	add	YL, ZL		; r28:29 += r30:r31
+	adc	YH, ZH		;Z =  RAMSTART + save_vect_addr
+
+;	rcall	wait_flash_ready	;Test #######################################
+	ldi	ZL, lo8(E2END-3)	; use last four bytes of EEprom memory
+	ldi	ZH, hi8(E2END-3)	; 
+	ld	r24, Y
+	rcall	wr_eeprom		; save content of save_vect (r6:r9)
+	ldd	r24, Y+1
+	rcall	wr_eeprom		; 
+	ldd	r24, Y+2		; r6:9 is the original vector content of save_vect_num
+	rcall	wr_eeprom		;
+	ldd	r24, Y+3		; 
+	rcall	wr_eeprom		;
+	rcall	set_eeprom_adr		; Test #####  implement wait eeprom ready
+
+	st	Y+, r7
+	st	Y+, r25
+	st	Y+, r8		; new WDT vector address  = old address of reset vector
+	st	Y, r9
+
+	movw	YL, r18		; buf16Ptr (r28:r29) = RAMSTART
+	ldi	r24, 0x0c
+	ldi	r25, hh8(gs(pre_main))
+	add	r24, r25
+	st	Y, r24
+	ldi	r25, 0x94			; JMP instruction
+	std	Y+1, r25
+	ldi	r24, lo8(gs(pre_main))		; absolute address of optiboot start
 	std	Y+2, r24
-	ldi	r24, hi8(gs(optiboot))		; to reset vector address
+	ldi	r24, hi8(gs(pre_main))		; to reset vector address
 	std	Y+3, r24
  #else
   /* two byte Vector table can only hold rjmp instructions */
@@ -1022,13 +1047,14 @@ no_erase1:
 	sbiw	r24, save_vect_num		; recalculate relative jmp, word address!
 	std	Y+save_vect_addr, r24	; new WDT vector
 	std	Y+save_vect_addr+1, r25
-	ldi	r24, lo8(gs(optiboot-2))	; 0x7f
+	ldi	r24, lo8(gs(pre_main-2))	; 0x7f
 	st	Y, r24
-	ldi	r24, hi8(gs(0x18000+optiboot-2))	; rjmp optiboot instruction (0xce)
+	ldi	r24, hi8(gs(0x18000+pre_main-2))	; rjmp optiboot instruction (0xce)
 	std	Y+1, r24
  #endif		/* FLASHEND > 8192 */ 
 
 no_patch1:
+
 #endif		/* VIRTUAL_BOOT_PARTITION */
 
 ;     Fill the programming buffer
@@ -1073,9 +1099,11 @@ wr_lop1:
 	AOUT	RAMPZ, r21	; save (probably)  updated RAMPZ
 #endif
 #if VIRTUAL_BOOT_PARTITION > 0
-	; now we save the original content of the save_vect (r8:r9)
+	; now we save the original content of the save_vect (r8:r9 or r6:r9)
 	cp	r3, r1
-	breq	put_ok			; no patch was done
+	breq	to_put_ok2			; no patch was done
+ #if FLASHEND > 8192
+ #else
 	ldi	ZL, lo8(E2END-1)	; use last two bytes of EEprom memory
 	ldi	ZH, hi8(E2END-1)	; 
 	mov	r24, r8
@@ -1083,9 +1111,11 @@ wr_lop1:
 	mov	r24, r9
 	rcall	wr_eeprom
         ; Now we have saved the original save_vector address to the last two EEproms.
-	; The save_vector has now the original address from the reset vector and
+	; The save_vector has now the original content from the reset vector and
 	; the reset vector now jmp to the bootloader.
+ #endif
 #endif
+to_put_ok2:
 	rjmp	put_ok		; putch(STK_OK); rjmp get_nextp
 ;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 ck_READP:
@@ -1101,48 +1131,50 @@ ck_READP:
 ;	TODO: putNch()
 
 #if SUPPORT_EEPROM > 0
-	tst	r6		; check if type was 'E'
-	brne	flash_read
+        tst     r6              ; check if type was 'E'
+        brne    flash_read
 ;     must be EEprom read
 ; read EEprom, the Address is allready set in Z
 ee_rd_lop2:
-	sbiw	r26, 1		; length-1
-	brcs	next_adr_put_ok	;
+        sbiw    r26, 1          ; length-1
+        brcs    next_adr_put_ok ;
  #if VIRTUAL_BOOT_PARTITION > 0
-	rcall	rd_eeprom	; Z+
+        rcall   rd_eeprom       ; Z+
  #else
   /* EEprom read is only required here without the VIRTUAL_BOOT_PARTITION */
   /* Therefore is is used without a rcall directly                        */
-	rcall 	set_eeprom_adr	; Z+
-	ASBI	EECR, EERE
-	AIN	r24, EEDR		; read data from EEprom
+        rcall   set_eeprom_adr  ; Z+
+        ASBI    EECR, EERE
+        AIN     r24, EEDR               ; read data from EEprom
  #endif
-	rcall	putch
-	rjmp	ee_rd_lop2
+        rcall   putch
+        rjmp    ee_rd_lop2
 #endif
 
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	read flash
 flash_read:
+	; r26:r27 = r16:r17 = Length
 	movw	ZL, r4		; Z = addrPtr = address
+	movw	YL, r18		; buf16Ptr (r28:r29) = RAMSTART
 
-flash_rd_lop:
-#ifdef RAMPZ
+#if VIRTUAL_BOOT_PARTITION > 0
+flash_rd_lop1:
+ #ifdef RAMPZ
           // Since RAMPZ should already be set, we need to use EPLM directly.
           // Also, we can use the autoincrement version of lpm to update "address"
           //      do putch(pgm_read_byte_near(address++));
           //      while (--length);
           // read a Flash and increment the address (may increment RAMPZ)
 	elpm	r24, Z+
-#else
+ #else
 	lpm	r24, Z+
-#endif
-#define LenDecrement 1
+ #endif
+	st	Y+, r24		; to RAM buf16Ptr (r28:r29)
+	sbiw	r26, 1	; length - 1 
+	brne	flash_rd_lop1
 
-#if	VIRTUAL_BOOT_PARTITION > 0
 	// Undo vector patch in bottom page so verify passes
- #undef LenDecrement 
- #define LenDecrement 2
 	eor	r1, r1		; make shure a zero r1
  #ifdef RAMPZ
 	elpm	r25, Z+
@@ -1155,60 +1187,89 @@ flash_rd_lop:
 	cp	r1, ZH
  #endif
 	brcs	nopatch			; upper bits of address are not zero
+// it is the right address to patch
+	movw	YL, r18		; buf16Ptr (r28:r29) = RAMSTART
  #if FLASHEND > 8192
 	; interrupt table with JMP	(4 Bytes for each entry)
-	cpi	ZL, 2+2			; Z was increased by 2
-	brne	ck8
-	; move vector address back to the reset vector address for read flash
-	subi	ZL, 2-save_vect_addr
-	lpm	r24, Z+ 		; get reset vector address from save_vect
-	lpm	r25, Z
-	ldi	ZL, 2+2			; restore Z for loop
-ck8:
-	cpi	ZL, save_vect_addr+2+2	; Z was increased by 2
-	brne	nopatch
-	movw	r8, ZL			; save Z, which is still used by the loop
-	ldi	ZL, lo8(E2END-1)		; last two bytes of EEprom memory
-	ldi	ZH, hi8(E2END-1)		; 
+	ldi	ZL, lo8(save_vect_addr)
+	ldi	ZH, hi8(save_vect_addr)
+	add	ZL, YL			; RAM aadr of save_vect
+	adc	ZH, YH
+	ldd	r25, Z+1		; Operation code of save_vect
+	mov	r24, r25
+	andi	r24, 0xf0
+	cpi	r24, 0xc0		; instruction rjmp
+	ld	r24, Z			; does not affect status
+	brne	is_jmp_2
+// must be a rjmp, must be corrected to move
+	subi	r24, lo8(0-(save_vect_num*2))
+	sbci	r25, hi8(0-(save_vect_num*2))
+is_jmp_2:
+	st	Y, r24			; vector 0 = save_vect_num
+	std	Y+1, r25
+	ldd	r24, Z+2
+	std	Y+2, r24
+	ldd	r24, Z+3
+	std	Y+3, r24
+	movw	Y, Z			; Y = address of save_vect in RAM
+	ldi	ZL, lo8(E2END-3)		; last four bytes of EEprom memory
+	ldi	ZH, hi8(E2END-3)		; 
 	rcall	rd_eeprom		; get the original save_vect content
-	mov	r14, r24
-	rcall	rd_eeprom
-	movw	ZL, r8			; restore Z for loop
-	mov	r25, r24
-	mov	r24, r14 		; old wdtVect	from EEprom save
+	st	Y+, r24
+	rcall	rd_eeprom		; 
+	st	Y+, r24
+	rcall	rd_eeprom		; 
+	st	Y+, r24
+	rcall	rd_eeprom		; 
+	st	Y+, r24
  #else
 	; interrupt table with RJMP	(2 Bytes for each entry)
-	cpi	ZL, 2
-	brne	ck8
- 
 	; move vector address back to the reset vector address for read flash
-	subi	ZL, 2-save_vect_addr
-	lpm	r24, Z+ 		; get reset vector address from save_vect
-	lpm	r25, Z
-	adiw	r24, save_vect_num	; recalculate relative jmp, word address!
-	ldi	ZL, 2			; restore Z for loop
-ck8:
-	cpi	ZL, save_vect_addr+2
-	brne	nopatch
-	movw	r8, ZL			; save Z, which is still used by the loop
+	ldi	ZL, lo8(save_vect_num*2)
+	ldi	ZH, hi8(save_vect_num*2)
+	add	ZL, YL			; RAM aadr of save_vect
+	adc	ZH, YH
+	ld	r24, Z
+	ldd	r25, Z+1		; Operation code of save_vect
+	subi	r24, lo8(0-save_vect_num))	; recalculate rjmp
+	sbci	r25, hi8(0-save_vect_num))
+	st	Y, r24
+	std	Y+1, r25		; vector 0 = save_vect_num
+
+	movw	YL, ZL			; save Z, which is still used by the loop
 	ldi	ZL, lo8(E2END-1)		; last two bytes of EEprom memory
 	ldi	ZH, hi8(E2END-1)		; 
 	rcall	rd_eeprom		; get the original save_vect content
-	mov	r14, r24
+	st	Y+, r24
 	rcall	rd_eeprom
-	movw	ZL, r8			; restore Z for loop
-	mov	r25, r24
-	mov	r24, r14 		; old wdtVect	from EEprom save
+	st	Y, r24 		; old save_vect	from EEprom save
  #endif		/* FLASHEND > 8192 */
 nopatch:
-	mov	r21, r25	; save second byte
+	movw	r26, r16	; restore Length
+	movw	YL, r18		; buf16Ptr (r28:r29) = RAMSTART
+putch_lop:
+	ld	r24, Y+		; send corrected data
 	rcall	putch
-	mov	r24, r21
+	sbiw	r26, 1
+	brne	putch_lop
+#else
+// no VIRTUAL_BOOT_PARTITION
+flash_rd_lop2:
+ #ifdef RAMPZ
+          // Since RAMPZ should already be set, we need to use EPLM directly.
+          // Also, we can use the autoincrement version of lpm to update "address"
+          //      do putch(pgm_read_byte_near(address++));
+          //      while (--length);
+          // read a Flash and increment the address (may increment RAMPZ)
+	elpm	r24, Z+
+ #else
+	lpm	r24, Z+
+ #endif
+	rcall	putch
+	sbiw	r26, 1
+	brne	flash_rd_lop2
 #endif		/* VIRTUAL_BOOT_PARTITION */
 
-	rcall	putch
-	sbiw	r26, LenDecrement	; length - 1 or 2 bytes for VIRTUAL_BOOT_PARTITION
-	brne	flash_rd_lop
 next_adr_put_ok:
 	movw	r4, ZL		; new address  ???
 put_ok:
@@ -1281,15 +1342,15 @@ no_to:
 
 ;**********************************************************
 #if SOFT_UART > 0
-	; soft putch and getch uses registers r22,r23 and r25
+        ; soft putch and getch uses registers r22,r23 and r25
  #define SOFT_UART_TX_PORT UART_TX_PORT
  #define SOFT_UART_TX_BIT UART_TX_BIT
  #define SOFT_UART_RX_PORT UART_RX_PORT
  #define SOFT_UART_RX_BIT UART_RX_BIT
- #include "soft_uart.S"		/* This will generate the putch and getch function */
-				/* The uart_delay function is generated at a lower space. */
-				/* Therefore the putch function is the first one and */
-				/* can be reached from label no_to without a rjmp  */
+ #include "soft_uart.S"         /* This will generate the putch and getch function */
+                                /* The uart_delay function is generated at a lower space. */
+                                /* Therefore the putch function is the first one and */
+                                /* can be reached from label no_to without a rjmp  */
 #else
  ; the Hardware UART is used
  #if ((F_CPU + (BAUD_RATE * 4)) / (BAUD_RATE * 8) - 1) < 3
@@ -1347,9 +1408,9 @@ gtch1:
 	AIN	r24, UART_STATUS	; if (UART_SRA & _BV(RXC0)) {
      	sbrs	r24, RXC0
        	rjmp	gtch1			; no data received, wait
-#if UART_STATUS != UART_ERRSTAT
+ #if UART_STATUS != UART_ERRSTAT
 	AIN	r24, UART_ERRSTAT
-#endif
+ #endif
       	sbrs	r24, FE0		; if (!(UART_SRA & _BV(FE0))) {
      	wdr		; watchdogReset();
        /*
