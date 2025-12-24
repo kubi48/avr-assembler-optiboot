@@ -1,4 +1,4 @@
-; file flash_led_opti can be insorted to optiboot at the requested location
+; file flash_led_opti can be inserted to optiboot at the requested location
 
 #if (LED_START_FLASHES) != 0
  ; Flash the LED is requested

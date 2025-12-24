@@ -598,14 +598,16 @@ interrupt vector. Normally every of this double words hold one JMP instruction w
 proper jump target address. The optiboot program can respect these JMP vector table too.
 But if you use the linker avr-ld with the option --relax, all JMP instructions are replaced
 by a RJMP, if this is possible for the target address.
-This replacement of JMP instruction in the vector table by RJMP is not respected
+This replacement of JMP instruction in the vector table by RJMP is now respected
 by the optiboot program.
-The optiboot program assume, that all interrupt vector numbers of a processor with
-more than 8 kByte flash hold a JMP instruction.
-For that reason a optiboot program with the VIRTUAL\_BOOT\_Partition option will not
-work with a application program, which is linked with the --relax option.
-The same problem exist, if the application program itself use a RJMP instruction in
-one of the two critical interrupt vector positions.
+The optiboot program checks, if the vector 0 has a RJMP instruction.
+in this case the RJMP is corrected for the shifted new vector place.
+A JMP instruction can be moved ito the new place without any correction.
+The original content of the shifted vector place is saved in the last four bytes of EEprom memory.
+With that features a verify of program data is anytime possible,
+because the content of original vectors are restored in serial data.
+But you can see the modified vector content, if you read back the Flash memory with
+other programming interfaces like ISP.
 
 Further you should notice, that you don't activate the BOOTRST fuse together with
 with the usage of the VIRTUAL\_BOOT\_PARTITION option.

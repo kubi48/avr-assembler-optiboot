@@ -37,6 +37,10 @@ ifndef PORT
 PORT = /dev/ttyACM0
 endif
 
+ifndef REPCNT
+REPCNT = 7
+endif
+
 
 BitClock=5.0
 AVRDUDE_BAUD = -b $(BAUD_RATE)
@@ -120,7 +124,7 @@ soft_uarts.o: soft_uarts.S $(MKFILES) FORCE
         -DUART=0$(UART) -DUART_RX=p$(UART_RX) -DUART_TX=p$(UART_TX) -c -o $@  $<
 
 wast_bytes.o: wast_bytes.S $(MKFILES) FORCE
-	$(CC) $(INCLUDES) $(CFLAGS) -DBIGPROGRAM=$(BIGPROGRAM) -c  -o $@ $<
+	$(CC) $(INCLUDES) $(CFLAGS) -DBIGPROGRAM=$(BIGPROGRAM) -DREPCNT=$(REPCNT) -c -o $@ $<
 
 
 ########### Compile C source only 
@@ -193,4 +197,6 @@ help:
 	@echo "TWO_STOP_BITS use two stop bits for the serial interface"
 	@echo "PORT          set the port for avrdude to something like /dev/ttyUSB0 or /dev/ttyACM0"
 	@echo "BIGPROGRAM    Additional programming data for the flash memory"
+	@echo "BIGPROGRAM    Additional programming data for the flash memory"
+	@echo "REPCNT        Testpattern for the flash memory is repeated every x words (x=3..13)"
 	@echo "ISP           =1 for download the test program with avrdude"

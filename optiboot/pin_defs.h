@@ -1002,47 +1002,79 @@
   #define UART_RX_DDR     DDRB
   #define UART_RX_PORT    PORTB
   #define UART_RX_PIN     PINB
+  #ifdef PUEB
+    #define UART_RX_PUE    PUEB
+  #endif
 #elif (UART_RXX & 0xff00) == pC0
   #define UART_RX_DDR     DDRC
   #define UART_RX_PORT    PORTC
   #define UART_RX_PIN     PINC
+  #ifdef PUEC
+    #define UART_RX_PUE    PUEC
+  #endif
 #elif (UART_RXX & 0xff00) == pD0
   #define UART_RX_DDR     DDRD
   #define UART_RX_PORT    PORTD
   #define UART_RX_PIN     PIND
+  #ifdef PUED
+    #define UART_RX_PUE    PUED
+  #endif
 #elif (UART_RXX & 0xff00) == pE0
   #define UART_RX_DDR     DDRE
   #define UART_RX_PORT    PORTE
   #define UART_RX_PIN     PINE
+  #ifdef PUEE
+    #define UART_RX_PUE    PUEE
+  #endif
 #elif (UART_RXX & 0xff00) == pF0
   #define UART_RX_DDR     DDRF
   #define UART_RX_PORT    PORTF
   #define UART_RX_PIN     PINF
+  #ifdef PUEF
+    #define UART_RX_PUE    PUEF
+  #endif
 #elif (UART_RXX & 0xff00) == pG0
   #define UART_RX_DDR     DDRG
   #define UART_RX_PORT    PORTG
   #define UART_RX_PIN     PING
+  #ifdef PUEG
+    #define UART_RX_PUE    PUEG
+  #endif
 #elif (UART_RXX & 0xff00) == pH0
   #define UART_RX_DDR     DDRH
   #define UART_RX_PORT    PORTH
   #define UART_RX_PIN     PINH
+  #ifdef PUEH
+    #define UART_RX_PUE    PUEH
+  #endif
 #elif (UART_RXX & 0xff00) == pJ0
   #define UART_RX_DDR     DDRJ
   #define UART_RX_PORT    PORTJ
   #define UART_RX_PIN     PINJ
+  #ifdef PUEJ
+    #define UART_RX_PUE    PUEJ
+  #endif
 #elif (UART_RXX & 0xff00) == pK0
   #define UART_RX_DDR     DDRK
   #define UART_RX_PORT    PORTK
   #define UART_RX_PIN     PINK
+  #ifdef PUEK
+    #define UART_RX_PUE    PUEK
+  #endif
 #elif (UART_RXX & 0xff00) == pL0
   #define UART_RX_DDR     DDRL
   #define UART_RX_PORT    PORTL
   #define UART_RX_PIN     PINL
+  #ifdef PUEL
+    #define UART_RX_PUE    PUEL
+  #endif
 #elif (UART_RXX & 0xff00) == pA0
   #define UART_RX_DDR     DDRA
   #define UART_RX_PORT    PORTA
   #define UART_RX_PIN     PINA
- 
+  #ifdef PUEA
+    #define UART_RX_PUE    PUEA
+  #endif
 #else
   #error -------------------------------------------
   #error Unrecognized UART_RX name.  Should be like "B5"

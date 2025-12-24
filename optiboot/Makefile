@@ -1369,6 +1369,35 @@ HELPPT:
 HELPP9:
 	@$(ECHO_CMD) $(HELPTEXTP9)
 
+ISP:
+	@$(ECHO_CMD) ""
+	@$(ECHO_CMD) "ISP=1     Put Bootloader to AVR"
+	@$(ECHO_CMD) "ISP=2     Verify Bootloader at AVR"
+	@$(ECHO_CMD) "ISP=3     Read Flash at AVR, File Read_***.hex"
+	@$(ECHO_CMD) "ISP=4     Read EEprom at AVR, File Read_***.eep"
+	@$(ECHO_CMD) "ISPPORT=x Select Hardware Port x for avrdude"
+	@$(ECHO_CMD) "ISPTOOL=y Select Programmer type y for avrdude"
+	@$(ECHO_CMD) ""
+
+UART:
+	@$(ECHO_CMD) ""
+	@$(ECHO_CMD) "UART=x         Select UART 0-3 for the AVR if possible"
+	@$(ECHO_CMD) "BAUD_RATE=x    Select Baudrate x for the AVR, x=36 for Automatic"
+	@$(ECHO_CMD) "F_CPU=x        Operating Frequency x for the AVR"
+	@$(ECHO_CMD) "SOFT_UART=1    Select Software UART emulation"
+	@$(ECHO_CMD) "UART_TX=px     Select Data Transmit Port p Pin x (SOFT_UART only)"
+	@$(ECHO_CMD) "UART_RX=px     Select Data Receive Port p Pin x (SOFT_UART only)"
+	@$(ECHO_CMD) "INVERSE_UART=1 Change data level of UART pins (SOFT_UART only)"
+	@$(ECHO_CMD) ""
+
+LED:
+	@$(ECHO_CMD) ""
+	@$(ECHO_CMD) "LED=px           LED connected to Port p Pin x"
+	@$(ECHO_CMD) "LED_START_FLASHES=x  LED flashes x times at bootloader start"
+	@$(ECHO_CMD) "LED_DATA_FLASH=1 LED lights when waiting for serial data"
+	@$(ECHO_CMD) "LED_DATA_FLASH=4 LED lights when bootloader is started"
+	@$(ECHO_CMD) "                 Setting of LED_DATA_FLASH will disable LED_START_FLASHES!"
+	@$(ECHO_CMD) ""
 help2:
 	@bash show_help2.sh
 

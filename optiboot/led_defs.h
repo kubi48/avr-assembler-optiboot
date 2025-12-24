@@ -223,9 +223,9 @@
  /* Onboard LED is connected to pin PB0  */ 
  #if (LED == p) && ((LED_DATA_FLASH > 0) || (LED_START_FLASHES != 0))
   #ifndef NO_WARNING
-   #warning "LED bit is set to default B5"
+   #warning "LED bit is set to default B7"
   #endif
-  #define LEDX         pB5
+  #define LEDX         pB7
  #else
   #define LEDX         LED
  #endif

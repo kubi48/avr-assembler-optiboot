@@ -601,11 +601,15 @@ Auch diese Art der Vektortabelle wird von Optiboot berücksichtigt. Wenn aber f�
 (Linker avr-ld) die Option --relax verwendet wird,
 werden alle jmp Befehle durch die kürzeren rjmp Befehle ersetzt,
 wenn dies bei der jeweiligen Sprungadresse möglich ist.
-Dies wird derzeit nicht von \textbf{optiboot} berücksichtigt.
-Das Optiboot Programm geht fest davon aus, daß in der Vektortabelle jmp Befehle stehen,
-wenn mehr als 8 kByte Flash-Speicher vorhanden sind.
-Deshalb wird die VIRTUAL\_BOOT\_PARTITION Methode meistens nicht funktionieren, wenn die --relax Option
-beim Programmbinden benutzt wurde!
+Dies wird jetzt auch von \textbf{optiboot} berücksichtigt.
+Das Optiboot Programm prüft, ob im Vektor 0 ein rjmp Befehl steht,
+der dann für das Umplazieren auf den neuen Vektor korrigiert werden muß.
+Das Umplazieren eines JMP Befehls erfordert keine Korrektur.
+Für das Sichern des überschriebenen ,,Ersatz''-Vektors werden die vier letzten Bytes des EEprom-Speichers benutzt.
+Eine Überprüfung des geschriebenen Anwender-Programms ist so möglich,
+da die zurückgelesenen Interrupt-Vektor Inhalte vom Bootloader in den seriellen Daten korrigiert werden.
+Der wahre Inhalt der Interrupt-Vectoren kann nur zurückgelesen werden, wenn andere
+Programmier-Schnittstellen wie ISP benutzt werden.
 
 
 Weiter ist zu beachten, daß bei Benutzung der VIRTUAL\_BOOT\_PARTITION Option für Prozessoren, die auch

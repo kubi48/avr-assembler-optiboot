@@ -3,15 +3,15 @@ optiboot_atmega168.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000000  00800100  00003ff8  0000026c  2**0
+  0 .data         00000000  00800100  00003ffc  00000270  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .version      00000002  00003ffe  00003ffe  0000026c  2**0
+  1 .version      00000002  00003ffe  00003ffe  00000270  2**0
                   CONTENTS, READONLY
-  2 .text         000001f8  00003e00  00003e00  00000074  2**1
+  2 .text         000001fc  00003e00  00003e00  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  3 .stab         00000ba0  00000000  00000000  00000270  2**2
+  3 .stab         00000bb8  00000000  00000000  00000274  2**2
                   CONTENTS, READONLY, DEBUGGING
-  4 .stabstr      00000058  00000000  00000000  00000e10  2**0
+  4 .stabstr      00000058  00000000  00000000  00000e2c  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -25,9 +25,9 @@ Disassembly of section .text:
     3e06:	67 bf       	out	0x37, r22	; 55
     3e08:	e8 95       	spm
     3e0a:	11 24       	eor	r1, r1
-    3e0c:	d0 d0       	rcall	.+416    	; 0x3fae <wait_flash_ready>
+    3e0c:	cf d0       	rcall	.+414    	; 0x3fac <wait_flash_ready>
     3e0e:	41 e1       	ldi	r20, 0x11	; 17
-    3e10:	d4 c0       	rjmp	.+424    	; 0x3fba <my_do_spm>
+    3e10:	d6 c0       	rjmp	.+428    	; 0x3fbe <my_do_spm>
 
 00003e12 <optiboot>:
 	.func optiboot
@@ -43,175 +43,175 @@ pre_main:
     3e1a:	2e ba       	out	0x1e, r2	; 30
     3e1c:	8d e0       	ldi	r24, 0x0D	; 13
     3e1e:	82 21       	and	r24, r2
-    3e20:	19 f0       	breq	.+6      	; 0x3e28 <try_loader>
+    3e20:	21 f0       	breq	.+8      	; 0x3e2a <try_loader>
 
 00003e22 <appStart>:
     3e22:	40 e0       	ldi	r20, 0x00	; 0
-    3e24:	cd d0       	rcall	.+410    	; 0x3fc0 <watchdogConfig>
-    3e26:	ec c0       	rjmp	.+472    	; 0x4000 <optiboot_version+0x2>
+    3e24:	cf d0       	rcall	.+414    	; 0x3fc4 <watchdogConfig>
+    3e26:	2e b2       	in	r2, 0x1e	; 30
+    3e28:	eb c0       	rjmp	.+470    	; 0x4000 <optiboot_version+0x2>
 
-00003e28 <try_loader>:
-    3e28:	25 9a       	sbi	0x04, 5	; 4
-    3e2a:	4e e0       	ldi	r20, 0x0E	; 14
-    3e2c:	c9 d0       	rcall	.+402    	; 0x3fc0 <watchdogConfig>
-    3e2e:	20 e0       	ldi	r18, 0x00	; 0
-    3e30:	31 e0       	ldi	r19, 0x01	; 1
-    3e32:	82 e0       	ldi	r24, 0x02	; 2
-    3e34:	80 93 c0 00 	sts	0x00C0, r24	; 0x8000c0 <__DATA_REGION_ORIGIN__+0x60>
-    3e38:	9e e0       	ldi	r25, 0x0E	; 14
-    3e3a:	90 93 c2 00 	sts	0x00C2, r25	; 0x8000c2 <__DATA_REGION_ORIGIN__+0x62>
-    3e3e:	90 e1       	ldi	r25, 0x10	; 16
-    3e40:	90 93 c4 00 	sts	0x00C4, r25	; 0x8000c4 <__DATA_REGION_ORIGIN__+0x64>
-    3e44:	88 e1       	ldi	r24, 0x18	; 24
-    3e46:	80 93 c1 00 	sts	0x00C1, r24	; 0x8000c1 <__DATA_REGION_ORIGIN__+0x61>
-    3e4a:	53 e0       	ldi	r21, 0x03	; 3
+00003e2a <try_loader>:
+    3e2a:	25 9a       	sbi	0x04, 5	; 4
+    3e2c:	4e e0       	ldi	r20, 0x0E	; 14
+    3e2e:	ca d0       	rcall	.+404    	; 0x3fc4 <watchdogConfig>
+    3e30:	20 e0       	ldi	r18, 0x00	; 0
+    3e32:	31 e0       	ldi	r19, 0x01	; 1
+    3e34:	58 9a       	sbi	0x0b, 0	; 11
+    3e36:	82 e0       	ldi	r24, 0x02	; 2
+    3e38:	80 93 c0 00 	sts	0x00C0, r24	; 0x8000c0 <__DATA_REGION_ORIGIN__+0x60>
+    3e3c:	9e e0       	ldi	r25, 0x0E	; 14
+    3e3e:	90 93 c2 00 	sts	0x00C2, r25	; 0x8000c2 <__DATA_REGION_ORIGIN__+0x62>
+    3e42:	90 e1       	ldi	r25, 0x10	; 16
+    3e44:	90 93 c4 00 	sts	0x00C4, r25	; 0x8000c4 <__DATA_REGION_ORIGIN__+0x64>
+    3e48:	88 e1       	ldi	r24, 0x18	; 24
+    3e4a:	80 93 c1 00 	sts	0x00C1, r24	; 0x8000c1 <__DATA_REGION_ORIGIN__+0x61>
+    3e4e:	53 e0       	ldi	r21, 0x03	; 3
 
-00003e4c <fl_lop>:
-    3e4c:	2d 9a       	sbi	0x05, 5	; 5
-    3e4e:	be d0       	rcall	.+380    	; 0x3fcc <wait_T1ov>
-    3e50:	28 f0       	brcs	.+10     	; 0x3e5c <fl_lop_end>
-    3e52:	2d 98       	cbi	0x05, 5	; 5
-    3e54:	bb d0       	rcall	.+374    	; 0x3fcc <wait_T1ov>
-    3e56:	10 f0       	brcs	.+4      	; 0x3e5c <fl_lop_end>
-    3e58:	51 50       	subi	r21, 0x01	; 1
-    3e5a:	c1 f7       	brne	.-16     	; 0x3e4c <fl_lop>
+00003e50 <fl_lop>:
+    3e50:	2d 9a       	sbi	0x05, 5	; 5
+    3e52:	be d0       	rcall	.+380    	; 0x3fd0 <wait_T1ov>
+    3e54:	28 f0       	brcs	.+10     	; 0x3e60 <fl_lop_end>
+    3e56:	2d 98       	cbi	0x05, 5	; 5
+    3e58:	bb d0       	rcall	.+374    	; 0x3fd0 <wait_T1ov>
+    3e5a:	10 f0       	brcs	.+4      	; 0x3e60 <fl_lop_end>
+    3e5c:	51 50       	subi	r21, 0x01	; 1
+    3e5e:	c1 f7       	brne	.-16     	; 0x3e50 <fl_lop>
 
-00003e5c <fl_lop_end>:
-    3e5c:	90 d0       	rcall	.+288    	; 0x3f7e <getch>
-    3e5e:	81 34       	cpi	r24, 0x41	; 65
-    3e60:	61 f4       	brne	.+24     	; 0x3e7a <ck_SET_DEV>
-    3e62:	8d d0       	rcall	.+282    	; 0x3f7e <getch>
-    3e64:	58 2f       	mov	r21, r24
-    3e66:	7e d0       	rcall	.+252    	; 0x3f64 <verifySpace>
-    3e68:	83 e0       	ldi	r24, 0x03	; 3
-    3e6a:	52 38       	cpi	r21, 0x82	; 130
-    3e6c:	21 f0       	breq	.+8      	; 0x3e76 <to_putch>
-    3e6e:	83 e0       	ldi	r24, 0x03	; 3
-    3e70:	51 38       	cpi	r21, 0x81	; 129
-    3e72:	09 f4       	brne	.+2      	; 0x3e76 <to_putch>
-    3e74:	86 e7       	ldi	r24, 0x76	; 118
+00003e60 <fl_lop_end>:
+    3e60:	8d d0       	rcall	.+282    	; 0x3f7c <getch>
+    3e62:	81 34       	cpi	r24, 0x41	; 65
+    3e64:	61 f4       	brne	.+24     	; 0x3e7e <ck_SET_DEV>
+    3e66:	8a d0       	rcall	.+276    	; 0x3f7c <getch>
+    3e68:	58 2f       	mov	r21, r24
+    3e6a:	7b d0       	rcall	.+246    	; 0x3f62 <verifySpace>
+    3e6c:	83 e0       	ldi	r24, 0x03	; 3
+    3e6e:	52 38       	cpi	r21, 0x82	; 130
+    3e70:	21 f0       	breq	.+8      	; 0x3e7a <to_putch>
+    3e72:	83 e0       	ldi	r24, 0x03	; 3
+    3e74:	51 38       	cpi	r21, 0x81	; 129
+    3e76:	09 f4       	brne	.+2      	; 0x3e7a <to_putch>
+    3e78:	86 e7       	ldi	r24, 0x76	; 118
 
-00003e76 <to_putch>:
-    3e76:	7b d0       	rcall	.+246    	; 0x3f6e <ptch1>
-    3e78:	5d c0       	rjmp	.+186    	; 0x3f34 <put_ok>
+00003e7a <to_putch>:
+    3e7a:	78 d0       	rcall	.+240    	; 0x3f6c <ptch1>
+    3e7c:	5a c0       	rjmp	.+180    	; 0x3f32 <next_adr_put_ok>
 
-00003e7a <ck_SET_DEV>:
-    3e7a:	44 e1       	ldi	r20, 0x14	; 20
-    3e7c:	82 34       	cpi	r24, 0x42	; 66
-    3e7e:	19 f0       	breq	.+6      	; 0x3e86 <to_getNch>
-    3e80:	45 e0       	ldi	r20, 0x05	; 5
-    3e82:	85 34       	cpi	r24, 0x45	; 69
-    3e84:	11 f4       	brne	.+4      	; 0x3e8a <ck_LA>
+00003e7e <ck_SET_DEV>:
+    3e7e:	44 e1       	ldi	r20, 0x14	; 20
+    3e80:	82 34       	cpi	r24, 0x42	; 66
+    3e82:	19 f0       	breq	.+6      	; 0x3e8a <to_getNch>
+    3e84:	45 e0       	ldi	r20, 0x05	; 5
+    3e86:	85 34       	cpi	r24, 0x45	; 69
+    3e88:	11 f4       	brne	.+4      	; 0x3e8e <ck_LA>
 
-00003e86 <to_getNch>:
-    3e86:	6b d0       	rcall	.+214    	; 0x3f5e <getNch>
+00003e8a <to_getNch>:
+    3e8a:	68 d0       	rcall	.+208    	; 0x3f5c <getNch>
 
-00003e88 <to_put_ok>:
-    3e88:	55 c0       	rjmp	.+170    	; 0x3f34 <put_ok>
+00003e8c <to_put_ok>:
+    3e8c:	52 c0       	rjmp	.+164    	; 0x3f32 <next_adr_put_ok>
 
-00003e8a <ck_LA>:
-    3e8a:	85 35       	cpi	r24, 0x55	; 85
-    3e8c:	41 f4       	brne	.+16     	; 0x3e9e <ck_UNI>
-    3e8e:	77 d0       	rcall	.+238    	; 0x3f7e <getch>
-    3e90:	48 2e       	mov	r4, r24
-    3e92:	75 d0       	rcall	.+234    	; 0x3f7e <getch>
-    3e94:	58 2e       	mov	r5, r24
-    3e96:	44 0c       	add	r4, r4
-    3e98:	55 1c       	adc	r5, r5
-    3e9a:	f2 01       	movw	r30, r4
-    3e9c:	5e c0       	rjmp	.+188    	; 0x3f5a <ver_put>
+00003e8e <ck_LA>:
+    3e8e:	85 35       	cpi	r24, 0x55	; 85
+    3e90:	41 f4       	brne	.+16     	; 0x3ea2 <ck_UNI>
+    3e92:	74 d0       	rcall	.+232    	; 0x3f7c <getch>
+    3e94:	48 2e       	mov	r4, r24
+    3e96:	72 d0       	rcall	.+228    	; 0x3f7c <getch>
+    3e98:	58 2e       	mov	r5, r24
+    3e9a:	44 0c       	add	r4, r4
+    3e9c:	55 1c       	adc	r5, r5
+    3e9e:	f2 01       	movw	r30, r4
+    3ea0:	5b c0       	rjmp	.+182    	; 0x3f58 <ver_put>
 
-00003e9e <ck_UNI>:
-    3e9e:	86 35       	cpi	r24, 0x56	; 86
-    3ea0:	21 f4       	brne	.+8      	; 0x3eaa <ck_PP>
-    3ea2:	44 e0       	ldi	r20, 0x04	; 4
-    3ea4:	5c d0       	rcall	.+184    	; 0x3f5e <getNch>
-    3ea6:	80 e0       	ldi	r24, 0x00	; 0
-    3ea8:	e6 cf       	rjmp	.-52     	; 0x3e76 <to_putch>
+00003ea2 <ck_UNI>:
+    3ea2:	86 35       	cpi	r24, 0x56	; 86
+    3ea4:	21 f4       	brne	.+8      	; 0x3eae <ck_PP>
+    3ea6:	44 e0       	ldi	r20, 0x04	; 4
+    3ea8:	59 d0       	rcall	.+178    	; 0x3f5c <getNch>
+    3eaa:	80 e0       	ldi	r24, 0x00	; 0
+    3eac:	e6 cf       	rjmp	.-52     	; 0x3e7a <to_putch>
 
-00003eaa <ck_PP>:
-    3eaa:	84 36       	cpi	r24, 0x64	; 100
-    3eac:	09 f0       	breq	.+2      	; 0x3eb0 <is_PROG>
-    3eae:	2e c0       	rjmp	.+92     	; 0x3f0c <ck_READP>
+00003eae <ck_PP>:
+    3eae:	84 36       	cpi	r24, 0x64	; 100
+    3eb0:	09 f0       	breq	.+2      	; 0x3eb4 <is_PROG>
+    3eb2:	2c c0       	rjmp	.+88     	; 0x3f0c <ck_READP>
 
-00003eb0 <is_PROG>:
-    3eb0:	75 d0       	rcall	.+234    	; 0x3f9c <get_length>
-    3eb2:	21 f0       	breq	.+8      	; 0x3ebc <no_pg_erase>
-    3eb4:	88 e3       	ldi	r24, 0x38	; 56
-    3eb6:	58 16       	cp	r5, r24
-    3eb8:	08 f4       	brcc	.+2      	; 0x3ebc <no_pg_erase>
-    3eba:	7d d0       	rcall	.+250    	; 0x3fb6 <boot_page_erase>
+00003eb4 <is_PROG>:
+    3eb4:	72 d0       	rcall	.+228    	; 0x3f9a <get_length>
+    3eb6:	19 f0       	breq	.+6      	; 0x3ebe <no_pg_erase>
+    3eb8:	7d d0       	rcall	.+250    	; 0x3fb4 <check_in_rww>
+    3eba:	08 f4       	brcc	.+2      	; 0x3ebe <no_pg_erase>
+    3ebc:	7e d0       	rcall	.+252    	; 0x3fba <boot_page_erase>
 
-00003ebc <no_pg_erase>:
-    3ebc:	e9 01       	movw	r28, r18
+00003ebe <no_pg_erase>:
+    3ebe:	e9 01       	movw	r28, r18
 
-00003ebe <fill_buf>:
-    3ebe:	5f d0       	rcall	.+190    	; 0x3f7e <getch>
-    3ec0:	89 93       	st	Y+, r24
-    3ec2:	11 97       	sbiw	r26, 0x01	; 1
-    3ec4:	e1 f7       	brne	.-8      	; 0x3ebe <fill_buf>
-    3ec6:	d8 01       	movw	r26, r16
-    3ec8:	e9 01       	movw	r28, r18
-    3eca:	4c d0       	rcall	.+152    	; 0x3f64 <verifySpace>
-    3ecc:	61 10       	cpse	r6, r1
-    3ece:	09 c0       	rjmp	.+18     	; 0x3ee2 <write_flash>
+00003ec0 <fill_buf>:
+    3ec0:	5d d0       	rcall	.+186    	; 0x3f7c <getch>
+    3ec2:	89 93       	st	Y+, r24
+    3ec4:	11 97       	sbiw	r26, 0x01	; 1
+    3ec6:	e1 f7       	brne	.-8      	; 0x3ec0 <fill_buf>
+    3ec8:	d8 01       	movw	r26, r16
+    3eca:	e9 01       	movw	r28, r18
+    3ecc:	4a d0       	rcall	.+148    	; 0x3f62 <verifySpace>
+    3ece:	61 10       	cpse	r6, r1
+    3ed0:	09 c0       	rjmp	.+18     	; 0x3ee4 <write_flash>
 
-00003ed0 <ee_wrlop>:
-    3ed0:	a8 95       	wdr
-    3ed2:	89 91       	ld	r24, Y+
-    3ed4:	5d d0       	rcall	.+186    	; 0x3f90 <set_eeprom_adr>
-    3ed6:	80 bd       	out	0x20, r24	; 32
-    3ed8:	fa 9a       	sbi	0x1f, 2	; 31
-    3eda:	f9 9a       	sbi	0x1f, 1	; 31
-    3edc:	11 97       	sbiw	r26, 0x01	; 1
-    3ede:	c1 f7       	brne	.-16     	; 0x3ed0 <ee_wrlop>
-    3ee0:	29 c0       	rjmp	.+82     	; 0x3f34 <put_ok>
+00003ed2 <ee_wrlop>:
+    3ed2:	a8 95       	wdr
+    3ed4:	89 91       	ld	r24, Y+
+    3ed6:	5b d0       	rcall	.+182    	; 0x3f8e <set_eeprom_adr>
+    3ed8:	80 bd       	out	0x20, r24	; 32
+    3eda:	fa 9a       	sbi	0x1f, 2	; 31
+    3edc:	f9 9a       	sbi	0x1f, 1	; 31
+    3ede:	11 97       	sbiw	r26, 0x01	; 1
+    3ee0:	c1 f7       	brne	.-16     	; 0x3ed2 <ee_wrlop>
+    3ee2:	27 c0       	rjmp	.+78     	; 0x3f32 <next_adr_put_ok>
 
-00003ee2 <write_flash>:
-    3ee2:	88 e3       	ldi	r24, 0x38	; 56
-    3ee4:	58 16       	cp	r5, r24
+00003ee4 <write_flash>:
+    3ee4:	67 d0       	rcall	.+206    	; 0x3fb4 <check_in_rww>
     3ee6:	08 f0       	brcs	.+2      	; 0x3eea <no_erase1>
-    3ee8:	66 d0       	rcall	.+204    	; 0x3fb6 <boot_page_erase>
+    3ee8:	68 d0       	rcall	.+208    	; 0x3fba <boot_page_erase>
 
 00003eea <no_erase1>:
-    3eea:	61 d0       	rcall	.+194    	; 0x3fae <wait_flash_ready>
+    3eea:	60 d0       	rcall	.+192    	; 0x3fac <wait_flash_ready>
     3eec:	f2 01       	movw	r30, r4
 
 00003eee <wr_lop1>:
     3eee:	09 90       	ld	r0, Y+
     3ef0:	19 90       	ld	r1, Y+
     3ef2:	41 e0       	ldi	r20, 0x01	; 1
-    3ef4:	62 d0       	rcall	.+196    	; 0x3fba <my_do_spm>
+    3ef4:	64 d0       	rcall	.+200    	; 0x3fbe <my_do_spm>
     3ef6:	11 24       	eor	r1, r1
     3ef8:	32 96       	adiw	r30, 0x02	; 2
     3efa:	12 97       	sbiw	r26, 0x02	; 2
     3efc:	c1 f7       	brne	.-16     	; 0x3eee <wr_lop1>
     3efe:	f2 01       	movw	r30, r4
     3f00:	45 e0       	ldi	r20, 0x05	; 5
-    3f02:	5b d0       	rcall	.+182    	; 0x3fba <my_do_spm>
-    3f04:	54 d0       	rcall	.+168    	; 0x3fae <wait_flash_ready>
+    3f02:	5d d0       	rcall	.+186    	; 0x3fbe <my_do_spm>
+    3f04:	53 d0       	rcall	.+166    	; 0x3fac <wait_flash_ready>
     3f06:	41 e1       	ldi	r20, 0x11	; 17
-    3f08:	58 d0       	rcall	.+176    	; 0x3fba <my_do_spm>
+    3f08:	5a d0       	rcall	.+180    	; 0x3fbe <my_do_spm>
 
-00003f0a <to_put_ok2>:
-    3f0a:	14 c0       	rjmp	.+40     	; 0x3f34 <put_ok>
+00003f0a <update_z_put_ok>:
+    3f0a:	13 c0       	rjmp	.+38     	; 0x3f32 <next_adr_put_ok>
 
 00003f0c <ck_READP>:
     3f0c:	84 37       	cpi	r24, 0x74	; 116
-    3f0e:	a9 f4       	brne	.+42     	; 0x3f3a <ck_READS>
-    3f10:	45 d0       	rcall	.+138    	; 0x3f9c <get_length>
-    3f12:	28 d0       	rcall	.+80     	; 0x3f64 <verifySpace>
+    3f0e:	a1 f4       	brne	.+40     	; 0x3f38 <ck_READS>
+    3f10:	44 d0       	rcall	.+136    	; 0x3f9a <get_length>
+    3f12:	27 d0       	rcall	.+78     	; 0x3f62 <verifySpace>
     3f14:	66 20       	and	r6, r6
     3f16:	39 f4       	brne	.+14     	; 0x3f26 <flash_read>
 
 00003f18 <ee_rd_lop2>:
-    3f18:	11 97       	sbiw	r26, 0x01	; 1
-    3f1a:	58 f0       	brcs	.+22     	; 0x3f32 <next_adr_put_ok>
-    3f1c:	39 d0       	rcall	.+114    	; 0x3f90 <set_eeprom_adr>
-    3f1e:	f8 9a       	sbi	0x1f, 0	; 31
-    3f20:	80 b5       	in	r24, 0x20	; 32
-    3f22:	25 d0       	rcall	.+74     	; 0x3f6e <ptch1>
-    3f24:	f9 cf       	rjmp	.-14     	; 0x3f18 <ee_rd_lop2>
+    3f18:	3a d0       	rcall	.+116    	; 0x3f8e <set_eeprom_adr>
+    3f1a:	f8 9a       	sbi	0x1f, 0	; 31
+    3f1c:	80 b5       	in	r24, 0x20	; 32
+    3f1e:	26 d0       	rcall	.+76     	; 0x3f6c <ptch1>
+    3f20:	11 97       	sbiw	r26, 0x01	; 1
+    3f22:	d1 f7       	brne	.-12     	; 0x3f18 <ee_rd_lop2>
+    3f24:	06 c0       	rjmp	.+12     	; 0x3f32 <next_adr_put_ok>
 
 00003f26 <flash_read>:
     3f26:	f2 01       	movw	r30, r4
@@ -219,145 +219,149 @@ pre_main:
 
 00003f2a <flash_rd_lop2>:
     3f2a:	85 91       	lpm	r24, Z+
-    3f2c:	20 d0       	rcall	.+64     	; 0x3f6e <ptch1>
+    3f2c:	1f d0       	rcall	.+62     	; 0x3f6c <ptch1>
     3f2e:	11 97       	sbiw	r26, 0x01	; 1
     3f30:	e1 f7       	brne	.-8      	; 0x3f2a <flash_rd_lop2>
 
 00003f32 <next_adr_put_ok>:
-    3f32:	2f 01       	movw	r4, r30
+    3f32:	80 e1       	ldi	r24, 0x10	; 16
+    3f34:	1b d0       	rcall	.+54     	; 0x3f6c <ptch1>
 
-00003f34 <put_ok>:
-    3f34:	80 e1       	ldi	r24, 0x10	; 16
-    3f36:	1b d0       	rcall	.+54     	; 0x3f6e <ptch1>
+00003f36 <to_get_nextp>:
+    3f36:	94 cf       	rjmp	.-216    	; 0x3e60 <fl_lop_end>
 
-00003f38 <to_get_nextp>:
-    3f38:	91 cf       	rjmp	.-222    	; 0x3e5c <fl_lop_end>
+00003f38 <ck_READS>:
+    3f38:	85 37       	cpi	r24, 0x75	; 117
+    3f3a:	41 f4       	brne	.+16     	; 0x3f4c <ck_EOP>
+    3f3c:	49 f4       	brne	.+18     	; 0x3f50 <ck_LEAVE>
+    3f3e:	11 d0       	rcall	.+34     	; 0x3f62 <verifySpace>
+    3f40:	8e e1       	ldi	r24, 0x1E	; 30
+    3f42:	14 d0       	rcall	.+40     	; 0x3f6c <ptch1>
+    3f44:	84 e9       	ldi	r24, 0x94	; 148
+    3f46:	12 d0       	rcall	.+36     	; 0x3f6c <ptch1>
+    3f48:	86 e0       	ldi	r24, 0x06	; 6
+    3f4a:	97 cf       	rjmp	.-210    	; 0x3e7a <to_putch>
 
-00003f3a <ck_READS>:
-    3f3a:	85 37       	cpi	r24, 0x75	; 117
-    3f3c:	41 f4       	brne	.+16     	; 0x3f4e <ck_EOP>
-    3f3e:	49 f4       	brne	.+18     	; 0x3f52 <ck_LEAVE>
-    3f40:	11 d0       	rcall	.+34     	; 0x3f64 <verifySpace>
-    3f42:	8e e1       	ldi	r24, 0x1E	; 30
-    3f44:	14 d0       	rcall	.+40     	; 0x3f6e <ptch1>
-    3f46:	84 e9       	ldi	r24, 0x94	; 148
-    3f48:	12 d0       	rcall	.+36     	; 0x3f6e <ptch1>
-    3f4a:	86 e0       	ldi	r24, 0x06	; 6
-    3f4c:	94 cf       	rjmp	.-216    	; 0x3e76 <to_putch>
+00003f4c <ck_EOP>:
+    3f4c:	80 32       	cpi	r24, 0x20	; 32
+    3f4e:	99 f3       	breq	.-26     	; 0x3f36 <to_get_nextp>
 
-00003f4e <ck_EOP>:
-    3f4e:	80 32       	cpi	r24, 0x20	; 32
-    3f50:	99 f3       	breq	.-26     	; 0x3f38 <to_get_nextp>
+00003f50 <ck_LEAVE>:
+    3f50:	81 35       	cpi	r24, 0x51	; 81
+    3f52:	11 f4       	brne	.+4      	; 0x3f58 <ver_put>
+    3f54:	48 e0       	ldi	r20, 0x08	; 8
+    3f56:	36 d0       	rcall	.+108    	; 0x3fc4 <watchdogConfig>
 
-00003f52 <ck_LEAVE>:
-    3f52:	81 35       	cpi	r24, 0x51	; 81
-    3f54:	11 f4       	brne	.+4      	; 0x3f5a <ver_put>
-    3f56:	48 e0       	ldi	r20, 0x08	; 8
-    3f58:	33 d0       	rcall	.+102    	; 0x3fc0 <watchdogConfig>
+00003f58 <ver_put>:
+    3f58:	04 d0       	rcall	.+8      	; 0x3f62 <verifySpace>
+    3f5a:	eb cf       	rjmp	.-42     	; 0x3f32 <next_adr_put_ok>
 
-00003f5a <ver_put>:
-    3f5a:	04 d0       	rcall	.+8      	; 0x3f64 <verifySpace>
-    3f5c:	eb cf       	rjmp	.-42     	; 0x3f34 <put_ok>
+00003f5c <getNch>:
+    3f5c:	0f d0       	rcall	.+30     	; 0x3f7c <getch>
+    3f5e:	41 50       	subi	r20, 0x01	; 1
+    3f60:	e9 f7       	brne	.-6      	; 0x3f5c <getNch>
 
-00003f5e <getNch>:
-    3f5e:	0f d0       	rcall	.+30     	; 0x3f7e <getch>
-    3f60:	41 50       	subi	r20, 0x01	; 1
-    3f62:	e9 f7       	brne	.-6      	; 0x3f5e <getNch>
+00003f62 <verifySpace>:
+    3f62:	0c d0       	rcall	.+24     	; 0x3f7c <getch>
+    3f64:	80 32       	cpi	r24, 0x20	; 32
+    3f66:	09 f0       	breq	.+2      	; 0x3f6a <no_to>
+    3f68:	46 d0       	rcall	.+140    	; 0x3ff6 <wait_timeout>
 
-00003f64 <verifySpace>:
-    3f64:	0c d0       	rcall	.+24     	; 0x3f7e <getch>
-    3f66:	80 32       	cpi	r24, 0x20	; 32
-    3f68:	09 f0       	breq	.+2      	; 0x3f6c <no_to>
-    3f6a:	43 d0       	rcall	.+134    	; 0x3ff2 <wait_timeout>
+00003f6a <no_to>:
+    3f6a:	84 e1       	ldi	r24, 0x14	; 20
 
-00003f6c <no_to>:
-    3f6c:	84 e1       	ldi	r24, 0x14	; 20
+00003f6c <ptch1>:
+    3f6c:	90 91 c0 00 	lds	r25, 0x00C0	; 0x8000c0 <__DATA_REGION_ORIGIN__+0x60>
+    3f70:	95 ff       	sbrs	r25, 5
+    3f72:	fc cf       	rjmp	.-8      	; 0x3f6c <ptch1>
+    3f74:	80 93 c6 00 	sts	0x00C6, r24	; 0x8000c6 <__DATA_REGION_ORIGIN__+0x66>
+    3f78:	a8 95       	wdr
+    3f7a:	08 95       	ret
 
-00003f6e <ptch1>:
-    3f6e:	90 91 c0 00 	lds	r25, 0x00C0	; 0x8000c0 <__DATA_REGION_ORIGIN__+0x60>
-    3f72:	95 ff       	sbrs	r25, 5
-    3f74:	fc cf       	rjmp	.-8      	; 0x3f6e <ptch1>
-    3f76:	80 93 c6 00 	sts	0x00C6, r24	; 0x8000c6 <__DATA_REGION_ORIGIN__+0x66>
-    3f7a:	a8 95       	wdr
-    3f7c:	08 95       	ret
+00003f7c <getch>:
+    3f7c:	80 91 c0 00 	lds	r24, 0x00C0	; 0x8000c0 <__DATA_REGION_ORIGIN__+0x60>
+    3f80:	87 ff       	sbrs	r24, 7
+    3f82:	fc cf       	rjmp	.-8      	; 0x3f7c <getch>
+    3f84:	84 ff       	sbrs	r24, 4
+    3f86:	a8 95       	wdr
+    3f88:	80 91 c6 00 	lds	r24, 0x00C6	; 0x8000c6 <__DATA_REGION_ORIGIN__+0x66>
+    3f8c:	08 95       	ret
 
-00003f7e <getch>:
-    3f7e:	80 91 c0 00 	lds	r24, 0x00C0	; 0x8000c0 <__DATA_REGION_ORIGIN__+0x60>
-    3f82:	87 ff       	sbrs	r24, 7
-    3f84:	fc cf       	rjmp	.-8      	; 0x3f7e <getch>
-    3f86:	84 ff       	sbrs	r24, 4
-    3f88:	a8 95       	wdr
-    3f8a:	80 91 c6 00 	lds	r24, 0x00C6	; 0x8000c6 <__DATA_REGION_ORIGIN__+0x66>
-    3f8e:	08 95       	ret
+00003f8e <set_eeprom_adr>:
+    3f8e:	f9 99       	sbic	0x1f, 1	; 31
+    3f90:	fe cf       	rjmp	.-4      	; 0x3f8e <set_eeprom_adr>
+    3f92:	f2 bd       	out	0x22, r31	; 34
+    3f94:	e1 bd       	out	0x21, r30	; 33
+    3f96:	31 96       	adiw	r30, 0x01	; 1
+    3f98:	08 95       	ret
 
-00003f90 <set_eeprom_adr>:
-    3f90:	f9 99       	sbic	0x1f, 1	; 31
-    3f92:	fe cf       	rjmp	.-4      	; 0x3f90 <set_eeprom_adr>
-    3f94:	f2 bd       	out	0x22, r31	; 34
-    3f96:	e1 bd       	out	0x21, r30	; 33
-    3f98:	31 96       	adiw	r30, 0x01	; 1
-    3f9a:	08 95       	ret
+00003f9a <get_length>:
+    3f9a:	f0 df       	rcall	.-32     	; 0x3f7c <getch>
+    3f9c:	18 2f       	mov	r17, r24
+    3f9e:	ee df       	rcall	.-36     	; 0x3f7c <getch>
+    3fa0:	08 2f       	mov	r16, r24
+    3fa2:	d8 01       	movw	r26, r16
+    3fa4:	eb df       	rcall	.-42     	; 0x3f7c <getch>
+    3fa6:	85 54       	subi	r24, 0x45	; 69
+    3fa8:	68 2e       	mov	r6, r24
+    3faa:	08 95       	ret
 
-00003f9c <get_length>:
-    3f9c:	f0 df       	rcall	.-32     	; 0x3f7e <getch>
-    3f9e:	18 2f       	mov	r17, r24
-    3fa0:	ee df       	rcall	.-36     	; 0x3f7e <getch>
-    3fa2:	08 2f       	mov	r16, r24
-    3fa4:	d8 01       	movw	r26, r16
-    3fa6:	eb df       	rcall	.-42     	; 0x3f7e <getch>
-    3fa8:	85 54       	subi	r24, 0x45	; 69
-    3faa:	68 2e       	mov	r6, r24
-    3fac:	08 95       	ret
+00003fac <wait_flash_ready>:
+    3fac:	07 b6       	in	r0, 0x37	; 55
+    3fae:	00 fc       	sbrc	r0, 0
+    3fb0:	fd cf       	rjmp	.-6      	; 0x3fac <wait_flash_ready>
+    3fb2:	08 95       	ret
 
-00003fae <wait_flash_ready>:
-    3fae:	07 b6       	in	r0, 0x37	; 55
-    3fb0:	00 fc       	sbrc	r0, 0
-    3fb2:	fd cf       	rjmp	.-6      	; 0x3fae <wait_flash_ready>
-    3fb4:	08 95       	ret
+00003fb4 <check_in_rww>:
+    3fb4:	88 e3       	ldi	r24, 0x38	; 56
+    3fb6:	58 16       	cp	r5, r24
 
-00003fb6 <boot_page_erase>:
-    3fb6:	f2 01       	movw	r30, r4
-    3fb8:	43 e0       	ldi	r20, 0x03	; 3
+00003fb8 <ret_check>:
+    3fb8:	08 95       	ret
 
-00003fba <my_do_spm>:
-    3fba:	47 bf       	out	0x37, r20	; 55
-    3fbc:	e8 95       	spm
+00003fba <boot_page_erase>:
+    3fba:	f2 01       	movw	r30, r4
+    3fbc:	43 e0       	ldi	r20, 0x03	; 3
 
-00003fbe <no_erase4>:
-    3fbe:	08 95       	ret
+00003fbe <my_do_spm>:
+    3fbe:	47 bf       	out	0x37, r20	; 55
+    3fc0:	e8 95       	spm
 
-00003fc0 <watchdogConfig>:
-    3fc0:	58 e1       	ldi	r21, 0x18	; 24
-    3fc2:	50 93 60 00 	sts	0x0060, r21	; 0x800060 <__DATA_REGION_ORIGIN__>
-    3fc6:	40 93 60 00 	sts	0x0060, r20	; 0x800060 <__DATA_REGION_ORIGIN__>
-    3fca:	08 95       	ret
+00003fc2 <no_erase4>:
+    3fc2:	08 95       	ret
 
-00003fcc <wait_T1ov>:
-    3fcc:	8c ef       	ldi	r24, 0xFC	; 252
-    3fce:	80 93 85 00 	sts	0x0085, r24	; 0x800085 <__DATA_REGION_ORIGIN__+0x25>
-    3fd2:	82 ef       	ldi	r24, 0xF2	; 242
-    3fd4:	80 93 84 00 	sts	0x0084, r24	; 0x800084 <__DATA_REGION_ORIGIN__+0x24>
-    3fd8:	85 e0       	ldi	r24, 0x05	; 5
-    3fda:	80 93 81 00 	sts	0x0081, r24	; 0x800081 <__DATA_REGION_ORIGIN__+0x21>
+00003fc4 <watchdogConfig>:
+    3fc4:	58 e1       	ldi	r21, 0x18	; 24
+    3fc6:	50 93 60 00 	sts	0x0060, r21	; 0x800060 <__DATA_REGION_ORIGIN__>
+    3fca:	40 93 60 00 	sts	0x0060, r20	; 0x800060 <__DATA_REGION_ORIGIN__>
+    3fce:	08 95       	ret
 
-00003fde <wt_ov1>:
-    3fde:	08 94       	sec
-    3fe0:	48 9b       	sbis	0x09, 0	; 9
-    3fe2:	08 95       	ret
-    3fe4:	86 b3       	in	r24, 0x16	; 22
-    3fe6:	80 ff       	sbrs	r24, 0
-    3fe8:	fa cf       	rjmp	.-12     	; 0x3fde <wt_ov1>
-    3fea:	86 bb       	out	0x16, r24	; 22
-    3fec:	88 94       	clc
-    3fee:	a8 95       	wdr
-    3ff0:	08 95       	ret
+00003fd0 <wait_T1ov>:
+    3fd0:	8c ef       	ldi	r24, 0xFC	; 252
+    3fd2:	80 93 85 00 	sts	0x0085, r24	; 0x800085 <__DATA_REGION_ORIGIN__+0x25>
+    3fd6:	82 ef       	ldi	r24, 0xF2	; 242
+    3fd8:	80 93 84 00 	sts	0x0084, r24	; 0x800084 <__DATA_REGION_ORIGIN__+0x24>
+    3fdc:	85 e0       	ldi	r24, 0x05	; 5
+    3fde:	80 93 81 00 	sts	0x0081, r24	; 0x800081 <__DATA_REGION_ORIGIN__+0x21>
 
-00003ff2 <wait_timeout>:
-    3ff2:	48 e0       	ldi	r20, 0x08	; 8
-    3ff4:	e5 df       	rcall	.-54     	; 0x3fc0 <watchdogConfig>
+00003fe2 <wt_ov1>:
+    3fe2:	08 94       	sec
+    3fe4:	48 9b       	sbis	0x09, 0	; 9
+    3fe6:	08 95       	ret
+    3fe8:	86 b3       	in	r24, 0x16	; 22
+    3fea:	80 ff       	sbrs	r24, 0
+    3fec:	fa cf       	rjmp	.-12     	; 0x3fe2 <wt_ov1>
+    3fee:	86 bb       	out	0x16, r24	; 22
+    3ff0:	88 94       	clc
+    3ff2:	a8 95       	wdr
+    3ff4:	08 95       	ret
 
-00003ff6 <lop77>:
-    3ff6:	ff cf       	rjmp	.-2      	; 0x3ff6 <lop77>
+00003ff6 <wait_timeout>:
+    3ff6:	48 e0       	ldi	r20, 0x08	; 8
+    3ff8:	e5 df       	rcall	.-54     	; 0x3fc4 <watchdogConfig>
+
+00003ffa <lop77>:
+    3ffa:	ff cf       	rjmp	.-2      	; 0x3ffa <lop77>
 ; 
 ; FORCE_WATCHDOG=
 ; LED_START_FLASHES=3
