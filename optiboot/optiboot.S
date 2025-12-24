@@ -126,6 +126,8 @@
 /* start flash of LED.                                      */
 /* A few bytes can be saved by setting the option           */
 /* NO_EARLY_PAGE_ERASE. ( the programming is slower! )      */
+/* For big devices like ATmega2560 a prediction of next     */
+/* address including RAMPZ is made for reset of RAMPZ.      */
 
 
 /**********************************************************/
