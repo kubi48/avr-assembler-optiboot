@@ -1339,11 +1339,11 @@ dieser Methode beobachtet, auch nicht beim Betrieb mit nur einem Pin.
 
 Das erste Beispiel ist die Bildung eines Bootloaders für den beliebten ATmega328P:
 
-\begin{verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{red}]
 make atmega328p
-\end{verbatim}
+\end{Verbatim}
 \footnotesize
-\begin{verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{blue},fontsize=\footnotesize]
 
 Optiboot for 16000000 Hz (16.00 Mhz) operation with Baudrate 115200 and EEprom support 
  configured.
@@ -1368,8 +1368,7 @@ Boot Loader start address: 0x7E00 = 32256
 Requires 1 Boot Page of 512 Bytes, which is 1.5% of Flash Memory
 BOOTSZ=3, which means 1 Boot Pages
 
-\end{verbatim}
-\normalsize
+\end{Verbatim}
 
 Wenn keine zusätzliche Option angegeben wird, wird eine Baudrate von 115200 mit einer Taktfrequenz von \(16 MHz\) gewählt.
 Für die serielle Ausgabe wird die vorhandene Hardware-Schnittstelle benutzt. 
@@ -1377,11 +1376,10 @@ Man beachte, daß der systematische Fehler der Baudrate über 2\% mit dem Hardwa
 Das zweite Beispiel zeigt die Erzeugung von \textbf{optiboot} für den gleichen Prozessor mit einer Software-Lösung
 für die serielle Schnittstelle.
 
-\begin{verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{red}]
 make atmega328p SOFT_UART=1
-\end{verbatim}
-\footnotesize
-\begin{verbatim}
+\end{Verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{blue},fontsize=\footnotesize]
 
 Optiboot for 16000000 Hz (16.00 Mhz) operation with Baudrate 115200 and EEprom support 
  configured.
@@ -1406,8 +1404,7 @@ Boot Loader start address: 0x7E00 = 32256
 Requires 1 Boot Page of 512 Bytes, which is 1.5% of Flash Memory
 BOOTSZ=3, which means 1 Boot Pages
 
-\end{verbatim}
-\normalsize
+\end{Verbatim}
 
 Beachten Sie bitte, daß die Software-Lösung für die serielle Schnittstelle etwas mehr flash-Speicher braucht,
 aber es wird auch nur eine ,,boot page'' gebraucht. Der systematische Fehler der Baudrate ist hier deutlich kleiner
@@ -1422,12 +1419,10 @@ wenn mehr als ein UART zur Verfügung steht.
 Die letzten beiden Beispiele zeigen jeweils eine Konfiguration mit der neuen automatischen Anpassung der Baudrate.
 Um Platz im Speicher zu sparen, wurde beim ersten Beispiel die LED-Blinkfunktion abgewählt.
 
-\begin{verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{red}]
 make atmega328p BAUD_RATE=52 LED_START_FLASHES=0
-\end{verbatim}
-\footnotesize
-\begin{verbatim}
-
+\end{Verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{blue},fontsize=\footnotesize]
 
 Optiboot for 16000000 Hz (16.00 Mhz) operation with Auto-Baudrate and EEprom support 
  configured.
@@ -1453,18 +1448,16 @@ Boot Loader start address: 0x7E00 = 32256
 Requires 1 Boot Page of 512 Bytes, which is 1.5% of Flash Memory
 BOOTSZ=3, which means 1 Boot Pages
 
-\end{verbatim}
-\normalsize
+\end{Verbatim}
 
 Beim letzten Beispiel wurde die aufwendigste Methode der Baudraten-Messung
 gewählt, da mit der LED-Blink Funktion ohnehin die Grenze von 512 Byte
 überschritten würde (534 Bytes).
 
-\begin{verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{red}]
 make atmega328p BAUD_RATE=76
-\end{verbatim}
-\footnotesize
-\begin{verbatim}
+\end{Verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{blue},fontsize=\footnotesize]
 
 Optiboot for 16000000 Hz (16.00 Mhz) operation with Auto-Baudrate and EEprom support 
  configured.
@@ -1490,8 +1483,7 @@ Boot Loader start address: 0x7C00 = 31744
 Requires 2 Boot Pages, 512 Bytes each, which is 3.1% of Flash Memory
 BOOTSZ=2, which means 2 Boot Pages
 
-\end{verbatim}
-\normalsize
+\end{Verbatim}
 
 
 \section{Anpassung der Taktfrequenz bei internem RC-Generator}

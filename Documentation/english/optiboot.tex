@@ -1329,11 +1329,11 @@ or disadvantages with this feature, not even when operating with just one pin.
 
 The first example is the building of a bootloader for the popular ATmega328P:
 
-\begin{verbatim}
+
+\begin{Verbatim}[frame=single,rulecolor=\color{red}]
 make atmega328p
-\end{verbatim}
-\footnotesize
-\begin{verbatim}
+\end{Verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{blue},fontsize=\footnotesize]
 
 Optiboot for 16000000 Hz (16.00 Mhz) operation with Baudrate 115200 and EEprom support \
  configured.
@@ -1358,8 +1358,7 @@ Boot Loader start address: 0x7E00 = 32256
 Requires 1 Boot Page of 512 Bytes, which is 1.5% of Flash Memory
 BOOTSZ=3, which means 1 Boot Pages
 
-\end{verbatim}
-\normalsize
+\end{Verbatim}
 
 
 With no additional option a baudrate of 115200 with a clock frequency of \(16 MHz\) is selected.
@@ -1367,11 +1366,10 @@ For serial output the hardware interface is selected.
 You should notice, that the systematic baud rate error is above 2\% with the hardware UART.
 The second example with the same processor is done with a software solution for the serial interface.
 
-\begin{verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{red}]
 make atmega328p SOFT_UART=1
-\end{verbatim}
-\footnotesize
-\begin{verbatim}
+\end{Verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{blue},fontsize=\footnotesize]
 
 Optiboot for 16000000 Hz (16.00 Mhz) operation with Baudrate 115200 and EEprom support \
  configured.
@@ -1396,8 +1394,7 @@ Boot Loader start address: 0x7E00 = 32256
 Requires 1 Boot Page of 512 Bytes, which is 1.5% of Flash Memory
 BOOTSZ=3, which means 1 Boot Pages
 
-\end{verbatim}
-\normalsize
+\end{Verbatim}
 
 Please note, that the software solution for the serial interface requires a little more flash memory,
 but take use of only 1 boot page too. The systematic baud rate error is much smaller than the error with the hardware UART.
@@ -1413,11 +1410,10 @@ The last examples shows a configuration with the new automatic selection of the 
 by measuring the rate of the first incoming data.
 The flashing of the LED at the program start is deselected in the first example to save flash memory.
 
-\begin{verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{red}]
 make atmega328p LED_START_FLASHES=0 BAUD_RATE=52
-\end{verbatim}
-\footnotesize
-\begin{verbatim}
+\end{Verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{blue},fontsize=\footnotesize]
 
 Optiboot for 16000000 Hz (16.00 Mhz) operation with Auto-Baudrate and EEprom support \
  configured.
@@ -1443,7 +1439,7 @@ Boot Loader start address: 0x7E00 = 32256
 Requires 1 Boot Page of 512 Bytes, which is 1.5% of Flash Memory
 BOOTSZ=3, which means 1 Boot Pages
 
-\end{verbatim}
+\end{Verbatim}
 \normalsize
 
 
@@ -1451,11 +1447,10 @@ for the last example the most complex methode of baud rate measurement
 was selected because the limit of 512 byte would be exceeded with
 selecting the LED flashing and the simplest measurement method (534 byte).
 
-\begin{verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{red}]
 make atmega328p BAUD_RATE=76
-\end{verbatim}
-\footnotesize
-\begin{verbatim}
+\end{Verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{blue},fontsize=\footnotesize]
 
 Optiboot for 16000000 Hz (16.00 Mhz) operation with Auto-Baudrate and EEprom support \
  configured.
@@ -1481,7 +1476,7 @@ Boot Loader start address: 0x7C00 = 31744
 Requires 2 Boot Pages, 512 Bytes each, which is 3.1% of Flash Memory
 BOOTSZ=2, which means 2 Boot Pages
 
-\end{verbatim}
+\end{Verbatim}
 \normalsize
 
 

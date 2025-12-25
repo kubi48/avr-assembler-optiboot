@@ -36,15 +36,15 @@ You can find only a few parts additional to the CP2102 converter chip,
 but a LED for RXD, TXD and power is present.
 With my Linux-Mint 17.2 both convertes are detected without further ado.
 You can see the folowing output of the lsusb command:
-\begin{verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{blue},fontsize=\footnotesize]
 Bus 002 Device 093: ID 10c4:ea60 Cygnal Integrated Products, Inc. CP210x UART Bridge / myAVR mySmartUSB light
 Bus 002 Device 076: ID 0403:6001 Future Technology Devices International, Ltd FT232 Serial (UART) IC
-\end{verbatim}
+\end{Verbatim}
 Of course, the information on the bus depends on the computer and the USB port used.
 The automatically created device name after the connection can be find out by
 the command ''dmesg | tail -20''. In the following example I have
 summarized both results. 
-\begin{verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{blue},fontsize=\footnotesize]
 usb 2-4.2: new full-speed USB device number 94 using ohci-pci
 usb 2-4.2: New USB device found, idVendor=1a86, idProduct=7523
 usb 2-4.2: New USB device strings: Mfr=0, Product=2, SerialNumber=0
@@ -60,7 +60,7 @@ usb 2-4.5: SerialNumber: 0001
 cp210x 2-4.5:1.0: cp210x converter detected
 usb 2-4.5: reset full-speed USB device number 93 using ohci-pci
 usb 2-4.5: cp210x converter now attached to ttyUSB2
-\end{verbatim}
+\end{Verbatim}
 
 With this information and my own experiments I have created the tables~\ref{tab:CH340baudl} and~\ref{tab:CH340baudh}.
 Because the newer operating system Linux Mint 18.3 has given partially better results, I have
@@ -214,14 +214,14 @@ Only a few parts can be found at the boardadditional to the FT232RL chip.
 But two LEDs for Tx and Rx are also present.
 
 As with the other two boards, the devices are properly recognized by Linux Mint 17.1:
-\begin{verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{blue}]
 Bus 002 Device 095: ID 067b:2303 Prolific Technology, Inc. PL2303 Serial Port
 Bus 002 Device 076: ID 0403:6001 Future Technology Devices International, Ltd FT232 Serial (UART) IC
-\end{verbatim}
+\end{Verbatim}
 So the devices are shown with the command lsusb.
 With the command ''dmesg | tail -20'' you can get direcly after plug in a
 simular result as:
-\begin{verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{blue}]
 usb 2-4.5: new full-speed USB device number 95 using ohci-pci
 usb 2-4.5: New USB device found, idVendor=067b, idProduct=2303
 usb 2-4.5: New USB device strings: Mfr=1, Product=2, SerialNumber=0
@@ -229,9 +229,9 @@ usb 2-4.5: Product: USB-Serial Controller
 usb 2-4.5: Manufacturer: Prolific Technology Inc.
 pl2303 2-4.5:1.0: pl2303 converter detected
 usb 2-4.5: pl2303 converter now attached to ttyUSB1
-\end{verbatim}
+\end{Verbatim}
 or rather
-\begin{verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{blue}]
 usb 2-4.3: new full-speed USB device number 96 using ohci-pci
 usb 2-4.3: New USB device found, idVendor=0403, idProduct=6001
 usb 2-4.3: New USB device strings: Mfr=1, Product=2, SerialNumber=3
@@ -245,7 +245,7 @@ usb 2-4.3: Endpoint 1 MaxPacketSize 64
 usb 2-4.3: Endpoint 2 MaxPacketSize 64
 usb 2-4.3: Setting MaxPacketSize 64
 usb 2-4.3: FTDI USB Serial Device converter now attached to ttyUSB0
-\end{verbatim}
+\end{Verbatim}
 
 In the table~\ref{tab:PL2302baudl} the baud setting for the FT232R converter 
 is tested below 300 baud, which can not be solved by the chip.

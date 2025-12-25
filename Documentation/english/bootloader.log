@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.12.11)  15 DEC 2025 23:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.12.11)  25 DEC 2025 20:44
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1149,89 +1149,98 @@ Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
 \multirow@dima=\skip53
 \bigstrutjot=\dimen285
 )
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2024/01/20 4.5c verbatim text (tvz,hv)
+\FV@CodeLineNo=\count307
+\FV@InFile=\read4
+\FV@TabBox=\box65
+\c@FancyVerbLine=\count308
+\FV@StepNumber=\count309
+\FV@OutFile=\write4
+)
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count307
-\l__pdf_internal_box=\box65
+\l__color_backend_stack_int=\count310
+\l__pdf_internal_box=\box66
 )
 (./bootloader.aux (./preface.aux) (./principle.aux) (./AVRhardware.aux)
 (./optiboot.aux) (./AVRdata.aux) (./USBserial.aux) (./build.aux))
 \openout1 = `bootloader.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count308
+\scratchcounter=\count311
 \scratchdimen=\dimen286
-\scratchbox=\box66
-\nofMPsegments=\count309
-\nofMParguments=\count310
+\scratchbox=\box67
+\nofMPsegments=\count312
+\nofMParguments=\count313
 \everyMPshowfont=\toks34
-\MPscratchCnt=\count311
+\MPscratchCnt=\count314
 \MPscratchDim=\dimen287
-\MPnumerator=\count312
-\makeMPintoPDFobject=\count313
+\MPnumerator=\count315
+\makeMPintoPDFobject=\count316
 \everyMPtoPDFconversion=\toks35
 )
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring OFF on input line 22.
+Package hyperref Info: Link coloring OFF on input line 23.
  (./bootloader.out) (./bootloader.out)
-\@outlinefile=\write4
-\openout4 = `bootloader.out'.
+\@outlinefile=\write5
+\openout5 = `bootloader.out'.
 
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 3
-2.
+3.
 
 (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 3
-2.
+3.
 
 (/usr/share/texmf/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-32.
+33.
 
 (/usr/share/texmf/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-32.
+33.
 
 (/usr/share/texmf/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <14.4> on input line 32.
+(Font)              <14.4> on input line 33.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 32.
+(Font)              <10> on input line 33.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 32.
+(Font)              <7> on input line 33.
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 3
-2.
+3.
 
 (/usr/share/texmf/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
@@ -1257,8 +1266,8 @@ l.41 ...e ATtiny841 family}{48}{subsection.3.9.15}
                                                   % [1
 
 ])
-\tf@toc=\write5
-\openout5 = `bootloader.toc'.
+\tf@toc=\write6
+\openout6 = `bootloader.toc'.
 
  [2]
 \openout2 = `preface.aux'.
@@ -1397,7 +1406,7 @@ Package pdftex.def Info: ../FIG/UM232-eps-converted-to.pdf  used on input line
 
  (./optiboot.tex
 Chapter 3.
-<../FIG/Samples_AVR_boot.jpg, id=491, 770.88pt x 578.16pt>
+<../FIG/Samples_AVR_boot.jpg, id=492, 770.88pt x 578.16pt>
 File: ../FIG/Samples_AVR_boot.jpg Graphic file (type jpg)
 <use ../FIG/Samples_AVR_boot.jpg>
 Package pdftex.def Info: ../FIG/Samples_AVR_boot.jpg  used on input line 52.
@@ -1456,7 +1465,7 @@ Package epstopdf Info: Source file: <../FIG/VectorMove.eps>
 rted-to.pdf ../FIG/VectorMove.eps>
 (epstopdf)             \includegraphics on input line 567.
 Package epstopdf Info: Output file is already uptodate.
-<../FIG/VectorMove-eps-converted-to.pdf, id=548, 278.03876pt x 466.74374pt>
+<../FIG/VectorMove-eps-converted-to.pdf, id=549, 278.03876pt x 466.74374pt>
 File: ../FIG/VectorMove-eps-converted-to.pdf Graphic file (type pdf)
 <use ../FIG/VectorMove-eps-converted-to.pdf>
 Package pdftex.def Info: ../FIG/VectorMove-eps-converted-to.pdf  used on input 
@@ -1474,7 +1483,7 @@ pdf>
 s-converted-to.pdf ../FIG/uart_getch_timing.eps>
 (epstopdf)             \includegraphics on input line 642.
 Package epstopdf Info: Output file is already uptodate.
-<../FIG/uart_getch_timing-eps-converted-to.pdf, id=568, 443.6575pt x 775.89874p
+<../FIG/uart_getch_timing-eps-converted-to.pdf, id=569, 443.6575pt x 775.89874p
 t>
 File: ../FIG/uart_getch_timing-eps-converted-to.pdf Graphic file (type pdf)
 <use ../FIG/uart_getch_timing-eps-converted-to.pdf>
@@ -1493,7 +1502,7 @@ pdf>
 s-converted-to.pdf ../FIG/uart_putch_timing.eps>
 (epstopdf)             \includegraphics on input line 650.
 Package epstopdf Info: Output file is already uptodate.
-<../FIG/uart_putch_timing-eps-converted-to.pdf, id=575, 389.455pt x 417.56pt>
+<../FIG/uart_putch_timing-eps-converted-to.pdf, id=576, 389.455pt x 417.56pt>
 File: ../FIG/uart_putch_timing-eps-converted-to.pdf Graphic file (type pdf)
 <use ../FIG/uart_putch_timing-eps-converted-to.pdf>
 Package pdftex.def Info: ../FIG/uart_putch_timing-eps-converted-to.pdf  used on
@@ -1512,7 +1521,7 @@ Package epstopdf Info: Source file: <../FIG/OneWire_simple.eps>
 onverted-to.pdf ../FIG/OneWire_simple.eps>
 (epstopdf)             \includegraphics on input line 768.
 Package epstopdf Info: Output file is already uptodate.
-<../FIG/OneWire_simple-eps-converted-to.pdf, id=603, 303.1325pt x 191.71625pt>
+<../FIG/OneWire_simple-eps-converted-to.pdf, id=604, 303.1325pt x 191.71625pt>
 File: ../FIG/OneWire_simple-eps-converted-to.pdf Graphic file (type pdf)
 <use ../FIG/OneWire_simple-eps-converted-to.pdf>
 Package pdftex.def Info: ../FIG/OneWire_simple-eps-converted-to.pdf  used on in
@@ -1528,7 +1537,7 @@ Package epstopdf Info: Source file: <../FIG/OneWire.eps>
 d-to.pdf ../FIG/OneWire.eps>
 (epstopdf)             \includegraphics on input line 787.
 Package epstopdf Info: Output file is already uptodate.
-<../FIG/OneWire-eps-converted-to.pdf, id=605, 850.17625pt x 528.97626pt>
+<../FIG/OneWire-eps-converted-to.pdf, id=606, 850.17625pt x 528.97626pt>
 File: ../FIG/OneWire-eps-converted-to.pdf Graphic file (type pdf)
 <use ../FIG/OneWire-eps-converted-to.pdf>
 Package pdftex.def Info: ../FIG/OneWire-eps-converted-to.pdf  used on input lin
@@ -1545,7 +1554,7 @@ Package epstopdf Info: Source file: <../FIG/OneWire2.eps>
 ed-to.pdf ../FIG/OneWire2.eps>
 (epstopdf)             \includegraphics on input line 815.
 Package epstopdf Info: Output file is already uptodate.
-<../FIG/OneWire2-eps-converted-to.pdf, id=622, 850.17625pt x 424.58624pt>
+<../FIG/OneWire2-eps-converted-to.pdf, id=623, 850.17625pt x 424.58624pt>
 File: ../FIG/OneWire2-eps-converted-to.pdf Graphic file (type pdf)
 <use ../FIG/OneWire2-eps-converted-to.pdf>
 Package pdftex.def Info: ../FIG/OneWire2-eps-converted-to.pdf  used on input li
@@ -1562,7 +1571,7 @@ Package epstopdf Info: Source file: <../FIG/AutoBaud.eps>
 ed-to.pdf ../FIG/AutoBaud.eps>
 (epstopdf)             \includegraphics on input line 865.
 Package epstopdf Info: Output file is already uptodate.
-<../FIG/AutoBaud-eps-converted-to.pdf, id=638, 894.34125pt x 225.84375pt>
+<../FIG/AutoBaud-eps-converted-to.pdf, id=639, 894.34125pt x 225.84375pt>
 File: ../FIG/AutoBaud-eps-converted-to.pdf Graphic file (type pdf)
 <use ../FIG/AutoBaud-eps-converted-to.pdf>
 Package pdftex.def Info: ../FIG/AutoBaud-eps-converted-to.pdf  used on input li
@@ -1581,114 +1590,114 @@ Underfull \hbox (badness 10000) in paragraph at lines 1317--1319
  []
 
 [38] [39] [40]
-Overfull \hbox (13.2642pt too wide) in paragraph at lines 1488--1488
+Overfull \hbox (13.2642pt too wide) in paragraph at lines 1483--1483
 []\T1/lmr/bx/n/17.28 Clock Fre-quency Cor-rec-tion of the in-ter-nal RC-Generat
 or 
  []
 
 [41] [42] [43] [44] [45] [46] [47] [48] [49] [50] [51]
-Underfull \hbox (badness 10000) in paragraph at lines 2429--2434
+Underfull \hbox (badness 10000) in paragraph at lines 2424--2429
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2435--2440
+Underfull \hbox (badness 10000) in paragraph at lines 2430--2435
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2441--2443
+Underfull \hbox (badness 10000) in paragraph at lines 2436--2438
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2444--2450
+Underfull \hbox (badness 10000) in paragraph at lines 2439--2445
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2455--2465
+Underfull \hbox (badness 10000) in paragraph at lines 2450--2460
 
  []
 
 [52]
-Underfull \hbox (badness 10000) in paragraph at lines 2508--2520
+Underfull \hbox (badness 10000) in paragraph at lines 2503--2515
 
  []
 
 [53{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}]
-Underfull \hbox (badness 10000) in paragraph at lines 2521--2531
+Underfull \hbox (badness 10000) in paragraph at lines 2516--2526
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2562--2570
+Underfull \hbox (badness 10000) in paragraph at lines 2557--2565
 
  []
 
 [54] [55]
-Underfull \hbox (badness 10000) in paragraph at lines 2654--2671
+Underfull \hbox (badness 10000) in paragraph at lines 2649--2666
 
  []
 
 [56]
-Underfull \hbox (badness 10000) in paragraph at lines 2672--2681
+Underfull \hbox (badness 10000) in paragraph at lines 2667--2676
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2682--2691
+Underfull \hbox (badness 10000) in paragraph at lines 2677--2686
 
  []
 
 [57]
-Underfull \hbox (badness 10000) in paragraph at lines 2768--2783
+Underfull \hbox (badness 10000) in paragraph at lines 2763--2778
 
  []
 
 [58] [59]
-Underfull \hbox (badness 10000) in paragraph at lines 2832--2845
+Underfull \hbox (badness 10000) in paragraph at lines 2827--2840
 
  []
 
 
-Overfull \hbox (64.36263pt too wide) in paragraph at lines 2846--2855
+Overfull \hbox (64.36263pt too wide) in paragraph at lines 2841--2850
 \T1/lmr/m/n/12 in or-der to save space. If you ab-so-lutely need some-thing to 
 light up, you can use the LED_DATA_FLASH=4
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2846--2855
+Underfull \hbox (badness 10000) in paragraph at lines 2841--2850
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2864--2868
+Underfull \hbox (badness 10000) in paragraph at lines 2859--2863
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2869--2880
+Underfull \hbox (badness 10000) in paragraph at lines 2864--2875
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2882--2884
+Underfull \hbox (badness 10000) in paragraph at lines 2877--2879
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2885--2894
+Underfull \hbox (badness 10000) in paragraph at lines 2880--2889
 
  []
 
 [60]
-Underfull \hbox (badness 10000) in paragraph at lines 2895--2899
+Underfull \hbox (badness 10000) in paragraph at lines 2890--2894
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2900--2905
+Underfull \hbox (badness 10000) in paragraph at lines 2895--2900
 
  []
 
@@ -1707,30 +1716,12 @@ Chapter 4.
 
  (./USBserial.tex
 Chapter 5.
-
-Overfull \hbox (160.9117pt too wide) in paragraph at lines 42--42
-[]\T1/lmtt/m/n/12 Bus 002 Device 093: ID 10c4:ea60 Cygnal Integrated Products, 
-Inc. CP210x UART Bridge / myAVR mySmartUSB light[] 
- []
-
-
-Overfull \hbox (105.33667pt too wide) in paragraph at lines 42--42
-[]\T1/lmtt/m/n/12 Bus 002 Device 076: ID 0403:6001 Future Technology Devices In
-ternational, Ltd FT232 Serial (UART) IC[] 
- []
-
 [69
 
 
 
 
-] [70] [71]
-Overfull \hbox (105.33667pt too wide) in paragraph at lines 220--220
-[]\T1/lmtt/m/n/12 Bus 002 Device 076: ID 0403:6001 Future Technology Devices In
-ternational, Ltd FT232 Serial (UART) IC[] 
- []
-
-[72] [73] [74] [75] [76] [77]) [78]
+] [70] [71] [72] [73] [74] [75] [76] [77]) [78]
 \openout2 = `build.aux'.
 
  (./build.tex
@@ -1740,47 +1731,17 @@ Chapter 6.
 
 
 
-]
-Overfull \hbox (2.34888pt too wide) in paragraph at lines 109--109
-[]\T1/lmtt/m/n/10 Optiboot for 16000000 Hz (16.00 Mhz) operation with Baudrate 
-115200 and EEprom support configured.[] 
- []
-
-[80] [81]
-Overfull \hbox (2.34888pt too wide) in paragraph at lines 195--195
-[]\T1/lmtt/m/n/10 Optiboot for 16000000 Hz (16.00 Mhz) operation with Baudrate 
-115200 and EEprom support configured.[] 
- []
-
-[82] [83] [84] [85] [86] [87]
-Overfull \hbox (2.34888pt too wide) in paragraph at lines 591--591
-[]\T1/lmtt/m/n/10 avrdude  -c avrisp2 -B 1.50 -p atmega328p -P usb -b 115200 -D
- -U flash:w:optiboot_atmega328p.hex:i[] 
- []
-
-[88]
-Overfull \hbox (2.34888pt too wide) in paragraph at lines 718--718
-[]\T1/lmtt/m/n/10 Optiboot for 16000000 Hz (16.00 Mhz) operation with Baudrate 
-115200 and EEprom support configured.[] 
- []
-
-[89]
-Overfull \hbox (44.34875pt too wide) in paragraph at lines 718--718
-[]\T1/lmtt/m/n/10 avrdude  -c stk500 -B 1.50 -p atmega328p -P /dev/ttyACM0 -b 1
-15200 -D -U flash:w:optiboot_atmega328p.hex:i[] 
- []
-
-) [90] [91
+] [80] [81] [82] [83] [84] [85] [86] [87] [88] [89] [90]) [91] [92
 
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 224--229
+Underfull \hbox (badness 10000) in paragraph at lines 225--230
 [][]$\T1/lmtt/m/n/12 http : / / www . cs . ou . edu / ~fagg / classes / general
  / atmel / avrdude . pdf$[] \T1/lmr/m/it/12 AVR-DUDE User-
  []
 
-[92] (./bootloader.aux (./preface.aux) (./principle.aux) (./AVRhardware.aux)
+[93] (./bootloader.aux (./preface.aux) (./principle.aux) (./AVRhardware.aux)
 (./optiboot.aux) (./AVRdata.aux) (./USBserial.aux) (./build.aux))
  ***********
 LaTeX2e <2023-11-01> patch level 1
@@ -1790,23 +1751,23 @@ Package rerunfilecheck Info: File `bootloader.out' has not changed.
 (rerunfilecheck)             Checksum: 7B43B8C95393D22CB579389EC9389D1D;19166.
  ) 
 Here is how much of TeX's memory you used:
- 39630 strings out of 474222
- 939772 string characters out of 5748732
+ 40023 strings out of 474222
+ 946066 string characters out of 5748732
  1991975 words of memory out of 5000000
- 61095 multiletter control sequences out of 15000+600000
+ 61483 multiletter control sequences out of 15000+600000
  615823 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,9n,107p,466b,601s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,9n,107p,466b,670s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/ty
 pe1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></us
 r/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/pub
 lic/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/shar
 e/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/l
 m/lmtt12.pfb>
-Output written on bootloader.pdf (93 pages, 747944 bytes).
+Output written on bootloader.pdf (94 pages, 762283 bytes).
 PDF statistics:
- 1198 PDF objects out of 1200 (max. 8388607)
- 1042 compressed objects within 11 object streams
- 276 named destinations out of 1000 (max. 500000)
+ 1203 PDF objects out of 1440 (max. 8388607)
+ 1046 compressed objects within 11 object streams
+ 277 named destinations out of 1000 (max. 500000)
  651 words of extra memory for PDF output out of 10000 (max. 10000000)
 

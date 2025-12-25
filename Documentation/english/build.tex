@@ -41,20 +41,20 @@ The corresponding variable is called ISPTOOL.
 If this variable is not specified as an environment variable or as a parameter in the \textbf{make} call,
 \textbf{avrisp2} is assumed to be the type.
 If the type is not correct for you, you can change it in the \textbf{make} call as follows:
-\begin{verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{red}]
 make atmega328p ISP=1 ISPTOOL=stk500
-\end{verbatim}
+\end{Verbatim}
 Alternatively, you can also set ISPTOOL as an environment variable and call \textbf{make} without this parameter, like this:
-\begin{verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{red}]
 export ISPTOOL=stk500
 make atmega328p ISP=1
-\end{verbatim}
+\end{Verbatim}
 Until the end of your terminal session, you no longer need to specify the ISPTOOL parameter in any subsequent \textbf{make} commands.
 The ISP programmer type in this terminal will then be set to stk500.
 If you are unsure whether and which programmer type is set after a long break, the 
-\begin{verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{red}]
 printenv ISPTOOL
-\end{verbatim}
+\end{Verbatim}
 command will provide this information.
 If the default setting for ISPTOOL on stk500 is to apply to all terminal windows in the future,
 the \textbf{export ISPTOOL=stk500} can be appended to the hidden text file \raisebox{-0.3ex}{\textasciitilde}/.bashrc .
@@ -78,11 +78,10 @@ To select the command, hold down the left mouse button and drag it over the enti
 you can probably also hover the mouse pointer over the line and click the left mouse button three times.
 Let's start with a simple example:
 
-\begin{verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{red}]
 make atmega328
-\end{verbatim}
-\footnotesize
-\begin{verbatim}
+\end{Verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{blue},fontsize=\footnotesize]
  
 Optiboot for 16000000 Hz (16.00 Mhz) operation with Baudrate 115200 and EEprom support configured.
  >>> Start building optiboot for AVR atmega328:
@@ -102,12 +101,11 @@ Boot Loader start address: 0x7E00 = 32256
 # # # # # # # # # # # # # # # # # # # # # #
  
    text	   data	    bss	    dec	    hex	filename
-    488	      0	      0	    488	    1e8	optiboot.elf
+    490	      0	      0	    490	    1ea	optiboot.elf
 Requires 1 Boot Page of 512 Bytes, which is 1.5% of Flash Memory
 BOOTSZ=3, which means 1 Boot Page
  
-\end{verbatim}
-\normalsize
+\end{Verbatim}
 Looking at the screen log, the first lines show which microcontroller the bootloader is configured for,
 along with its clock rate and serial interface baud rate.
 The following lines specify the pins used and what special functions these pins can have on this microcontroller.
@@ -120,11 +118,10 @@ The number of boot memory pages, which depends on the size of the bootloader, is
 This ensures a working bootloader even with significantly larger versions.
 Out of pure curiosity, we could test what the result would be if we used the C source code instead of the assembly version:
 
-\begin{verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{red}]
 make atmega328 C_SOURCE=1
-\end{verbatim}
-\footnotesize
-\begin{verbatim}
+\end{Verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{blue},fontsize=\footnotesize]
  
 Optiboot for 16000000 Hz (16.00 Mhz) operation with Baudrate 115200 configured.
  >>> Start building optiboot for AVR atmega328:
@@ -150,8 +147,7 @@ Boot Loader start address: 0x7E00 = 32256
 Requires 1 Boot Page of 512 Bytes, which is 1.5% of Flash Memory
 BOOTSZ=3, which means 1 Boot Page
  
-\end{verbatim}
-\normalsize
+\end{Verbatim}
 That's a surprise, the program matches the same bootloader memory as the assembler version.
 Let's double-check if something went wrong.
 The \textbf{avr-gcc} call specifies the program optiboot.c and not optiboot.S at the end.
@@ -162,11 +158,10 @@ That's right, in the parameter list for the \textbf{avr-gcc} call,
 EEPROM support is indeed disabled with \inquotes{-DSUPPORT\_EEPROM=0}.
 However, EEPROM support can certainly be re-enabled:
 
-\begin{verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{red}]
 make atmega328 C_SOURCE=1 SUPPORT_EEPROM=1
-\end{verbatim}
-\footnotesize
-\begin{verbatim}
+\end{Verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{blue},fontsize=\footnotesize]
  
 Optiboot for 16000000 Hz (16.00 Mhz) operation with Baudrate 115200 and EEprom support configured.
  >>> Start building optiboot for AVR atmega328:
@@ -192,8 +187,7 @@ Boot Loader start address: 0x7C00 = 31744
 Requires 2 Boot Pages, 512 Bytes each, which is 3.1% of Flash Memory
 BOOTSZ=2, which means 2 Boot Pages
 
-\end{verbatim}
-\normalsize
+\end{Verbatim}
 Now the result looks quite different.
 The program with the same capabilities as the assembler version is 114 bytes larger and now uses twice as much space in 
 the ATmega328's flash memory with two boot memory pages.
@@ -210,11 +204,10 @@ The bootloader is designed to fit into a 512-byte boot page by default.
 If we now repeat the standard call with a different target processor, the result looks completely
 different:
 
-\begin{verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{red}]
 make attiny88
-\end{verbatim}
-\footnotesize
-\begin{verbatim}
+\end{Verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{blue},fontsize=\footnotesize]
  
 Optiboot for 8000000 Hz (8.00 Mhz) operation with Baudrate 115200 and EEprom support configured.
  >>> Start building optiboot for AVR attiny88:
@@ -239,8 +232,7 @@ Boot Loader start address: 0x1D80 = 7552
 Requires 10 Flash Pages, 64 Bytes each, which is 7.8% of Flash Memory 
 No Boot Pages present!
  
-\end{verbatim}
-\normalsize
+\end{Verbatim}
 Initially, the operating frequency is now 8 MHz, and a software emulation of the serial interface is used
 on pins PD0 and PD1 for the bootloader.
 The absence of a serial interface can be seen in the options list for the compiler \textbf{avr-gcc}
@@ -254,12 +246,11 @@ However, the bootloader is loaded into the upper memory area, just like a real b
 Therefore, the bootloader program is significantly larger and uses 10 flash memory pages of 64 bytes each.
 Now, another example with a different microcontroller:
 
-\begin{verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{red}]
 make attiny87
-\end{verbatim}
+\end{Verbatim}
 Here too, the protocol on the screen looks different:
-\footnotesize
-\begin{verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{blue},fontsize=\footnotesize]
  
 Optiboot for 8000000 Hz (8.00 Mhz) operation with Baudrate 115200 and EEprom support configured.
  >>> Start building optiboot for AVR attiny87:
@@ -284,8 +275,7 @@ Boot Loader start address: 0x1D80 = 7552
 Requires 5 Flash Pages, 128 Bytes each, which is 7.8% of Flash Memory 
 No Boot Pages present!
  
-\end{verbatim}
-\normalsize
+\end{Verbatim}
 This microcontroller also lacks bootloader support but has a serial interface,
 which is supported by the bootloader by default.
 The bootloader program occupies 5 flash memory pages of 128 bytes each.
@@ -300,12 +290,11 @@ This is selected by specifying a baud rate below 100. Here, the specified number
 methods, which are described in the subsection \ref{sec:autobaud} on page \pageref{sec:autobaud}.
 Based on our investigations, specifying 32 is a good choice:
 
-\begin{verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{red}]
 make atmega328 BAUD_RATE=32
-\end{verbatim}
+\end{Verbatim}
 The screen log now looks like this:
-\footnotesize
-\begin{verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{blue},fontsize=\footnotesize]
  
 Optiboot for 16000000 Hz (16.00 Mhz) operation with Auto-Baudrate and EEprom support configured.
  >>> Start building optiboot for AVR atmega328:
@@ -326,12 +315,11 @@ Boot Loader start address: 0x7C00 = 31744
 # # # # # # # # # # # # # # # # # # # # # #
  
    text	   data	    bss	    dec	    hex	filename
-    552	      0	      0	    552	    228	optiboot.elf
+    554	      0	      0	    554	    22a	optiboot.elf
 Requires 2 Boot Pages, 512 Bytes each, which is 3.1% of Flash Memory
 BOOTSZ=2, which means 2 Boot Pages
 
-\end{verbatim}
-\normalsize
+\end{Verbatim}
 It's noticeable that the bootloader now requires 552 bytes, slightly more than a single boot page (512 bytes).
 However, this means two boot pages are being used, requiring 1024 bytes.
 This configuration could be loaded into the microcontroller.
@@ -341,12 +329,11 @@ Perhaps disabling unnecessary functions would help.
 Let's try it with the LED that the bootloader blinks three times at startup.
 The bootloader should also run without the blinking LED, so:
 
-\begin{verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{red}]
 make atmega328 BAUD_RATE=32 LED_START_FLASHES=0
-\end{verbatim}
+\end{Verbatim}
 The screen log now looks much better:
-\footnotesize
-\begin{verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{blue},fontsize=\footnotesize]
 
 Optiboot for 16000000 Hz (16.00 Mhz) operation with Auto-Baudrate and EEprom support configured.
  >>> Start building optiboot for AVR atmega328:
@@ -366,12 +353,11 @@ Boot Loader start address: 0x7E00 = 32256
 # # # # # # # # # # # # # # # # # # # # # #
  
    text	   data	    bss	    dec	    hex	filename
-    494	      0	      0	    494	    1ee	optiboot.elf
+    496	      0	      0	    496	    1f0	optiboot.elf
 Requires 1 Boot Page of 512 Bytes, which is 1.5% of Flash Memory
 BOOTSZ=3, which means 1 Boot Page
  
-\end{verbatim}
-\normalsize
+\end{Verbatim}
 The bootloader is back to using a single boot page.
 However, it no longer uses an LED to indicate that the bootloader is starting.
 But there's still the option \textbf{LED\_DATA\_FLASH}.
@@ -379,15 +365,37 @@ This option normally turns on the LED when the serial interface is waiting for d
 With the special setting 4, the LED is only turned on when the bootloader starts.
 That should be enough to detect that the bootloader has started and certainly doesn't require much program space, so:
 
-\begin{verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{red}]
 make atmega328 BAUD_RATE=32 LED_START_FLASHES=0 LED_DATA_FLASH=4
-\end{verbatim}
+\end{Verbatim}
 The LED port is now being used again, as the log shows:
-\footnotesize
-\begin{verbatim}
-make atmega328 BAUD_RATE=32 LED_START_FLASHES=0 LED_DATA_FLASH=4
-\end{verbatim}
-\normalsize
+\begin{Verbatim}[frame=single,rulecolor=\color{blue},fontsize=\footnotesize]
+ 
+Optiboot for 16000000 Hz (16.00 Mhz) operation with Auto-Baudrate and EEprom support configured.
+ >>> Start building optiboot for AVR atmega328:
+LED-Pin PB5 use Pin 19-PDIP28 17-TQFP32, with special functions: SCK PCINT5.
+ RX-Pin PD0 use Pin  2-PDIP28 30-TQFP32, with special functions: PCINT16 RXD.
+ TX-Pin PD1 use Pin  3-PDIP28 31-TQFP32, with special functions: PCINT17 TXD.
+avr-gcc -g -Wall -Os -fno-split-wide-types -mrelax -mmcu=atmega328  -fno-diagnostics-show-caret
+ -DBAUD_RATE=32 -DLED_START_FLASHES=0 -DLED_DATA_FLASH=4 -DSUPPORT_EEPROM=1 -DNO_APP_SPM=2s
+ -DLED=pB5 -DUART=00 -DSOFT_UART=0 -DUART_RX=pD0 -DUART_TX=pD1 -DF_CPU=16000000 -DHFUSE=hexDE
+ -DLFUSE=hexFF -DBOOT_PAGE_LEN=512 -DVerboseLev=2 -c -o optiboot.o optiboot.S
+ 
+--------------------------------------------------------------------------------
+Simple Baudrate measurement implemented in optiboot! (4-bit, Clk/8)
+UART Minimum 488 Baud, Difference surely less than 4% up to 160.0 kBaud
+--------------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # #
+Boot Loader start address: 0x7E00 = 32256
+# # # # # # # # # # # # # # # # # # # # # #
+ 
+   text	   data	    bss	    dec	    hex	filename
+    500	      0	      0	    500	    1f4	optiboot_atmega328.elf
+Requires 1 Boot Page of 512 Bytes, which is 1.5% of Flash Memory
+BOOTSZ=3, which means 1 Boot Page
+ 
+
+\end{Verbatim}
 This would be an alternative to the standard bootloader with a fixed baud rate.
 With this bootloader, you can first test the standard baud rate of 115200.
 If there are any problems, you can upload a program with a lower baud rate, such as 57600,
@@ -428,11 +436,10 @@ is automatically adjusted to the selected clock rate (AVR\_FREQ) of the Atmel pr
 
 After plugging the ISP programmer into a USB port, a newly inserted USB device should generate an entry in the system log on a Linux system.
 You can check this with the following command:
-\begin{verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{red}]
 dmesg -T | tail -20
-\end{verbatim}
-\footnotesize
-\begin{verbatim}
+\end{Verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{blue},fontsize=\footnotesize]
 ...
 usb 1-3: new full-speed USB device number 19 using xhci_hcd
 usb 1-3: New USB device found, idVendor=03eb, idProduct=2104, bcdDevice= 2.00
@@ -440,8 +447,7 @@ usb 1-3: New USB device strings: Mfr=1, Product=2, SerialNumber=3
 usb 1-3: Product: ERFOS AVRISP MkII Clone
 usb 1-3: Manufacturer: ERFOS
 usb 1-3: SerialNumber: 0000A00128255
-\end{verbatim}
-\normalsize
+\end{Verbatim}
 This example protocol comes from an older Diamex AVR-Prog programmer and
 was generated with \textbf{dmesg -t} (without a time). However, you should use the \textbf{-T} option
 to be able to check the entry time.
@@ -449,12 +455,11 @@ This programmer is compatible with the Atmel AVRISP mkII and is pre-configured
 as the programmer (ISPPORT=usb, ISPTOOL=avrisp2).
 For this programmer, only the parameter \textbf{ISP=1} needs to be appended to the \textbf{make} call.
 So, for the last example with automatic baud rate detection:
-\begin{verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{red}]
 make atmega328 BAUD_RATE=32 LED_START_FLASHES=0 LED_DATA_FLASH=4 ISP=1
-\end{verbatim}
+\end{Verbatim}
 
-\footnotesize
-\begin{verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{blue},fontsize=\footnotesize]
 
 Optiboot for 16000000 Hz (16.00 Mhz) operation with Auto-Baudrate and EEprom support configured.
  >>> Start building optiboot for AVR atmega328:
@@ -476,7 +481,7 @@ Boot Loader start address: 0x7E00 = 32256
 # # # # # # # # # # # # # # # # # # # # # #
 
    text	   data	    bss	    dec	    hex	filename
-    498	      0	      0	    498	    1f2	optiboot.elf
+    500	      0	      0	    500	    1f4	optiboot.elf
 Requires 1 Boot Page of 512 Bytes, which is 1.5% of Flash Memory
 BOOTSZ=3, which means 1 Boot Page
 
@@ -517,14 +522,13 @@ USB-Hubs can cause timing problems with the half duplex protocol of avrdude.
 Setting of fuses for atmega328 fail!
 Check, if the atmega328 has a connected crystal!
 
-\end{verbatim}
-\normalsize
+\end{Verbatim}
 Something went wrong! The program \textbf{avrdude} terminated with an error;
 the reason can be seen in the \textbf{avrdude} error message:
-\begin{verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{blue}]
 avrdude error: expected signature for ATmega328 is 1E 95 14
         double check chip or use -F to override this check
-\end{verbatim}
+\end{Verbatim}
 The program \textbf{avrdude} expects a different microcontroller signature.
 The following advice is irrelevant. The program \textbf{avrdude}
 returns with a return value of 1 on every error, but the calling script
@@ -534,12 +538,11 @@ not an ATmega328.
 The two processors have different signatures.
 \textbf{avrdude} has detected this, so communication between avrdude and the ATmega328P is working!
 This is easily corrected:
-\begin{verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{red}]
 make atmega328p BAUD_RATE=32 LED_START_FLASHES=0 LED_DATA_FLASH=4 ISP=1
-\end{verbatim}
+\end{Verbatim}
 
-\footnotesize
-\begin{verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{blue},fontsize=\footnotesize]
  
 Optiboot for 16000000 Hz (16.00 Mhz) operation with Auto-Baudrate and EEprom support configured.
  >>> Start building optiboot for AVR atmega328p:
@@ -560,7 +563,7 @@ Boot Loader start address: 0x7E00 = 32256
 # # # # # # # # # # # # # # # # # # # # # #
  
    text	   data	    bss	    dec	    hex	filename
-    498	      0	      0	    498	    1f2	optiboot.elf
+    500	      0	      0	    500	    1f4	optiboot.elf
 Requires 1 Boot Page of 512 Bytes, which is 1.5% of Flash Memory
 BOOTSZ=3, which means 1 Boot Page
  
@@ -588,8 +591,7 @@ Writing 1 byte (0xEF) to lock, 1 byte written, 1 verified
 
 Avrdude done.  Thank you.
 
-\end{verbatim}
-\normalsize
+\end{Verbatim}
 Everything worked well, the bootloader is installed on the Arduino Nano board.
 The advantage of this type of ISP programmer is that it can be detected by the program \textbf{avrdude}
 when the interface (-P) \inquotes{usb} is specified.
@@ -622,13 +624,13 @@ However, newly plugged-in USB devices create an entry in the system ring buffer.
 The contents of the system ring buffer can be displayed using the \textbf{dmesg} command.
 Since the system ring buffer consists of many lines, you usually only need to look at the last few lines.
 A suitable command for viewing the last 20 lines of the system ring buffer is:
-\begin{verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{red}]
 dmesg -t | tail -20
-\end{verbatim}
+\end{Verbatim}
 Here, \textbf{-t} was used instead of \textbf{-T} because the time is irrelevant in the printed example.
 However, you should use \textbf{dmesg -T} to be able to check the entry time.
 Shortly after plugging in a Diamex EXA-PROG programmer, you will see the following:
-\begin{verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{blue}]
 ...
 usb 1-3: new full-speed USB device number 24 using xhci_hcd
 usb 1-3: New USB device found, idVendor=16c0, idProduct=2a9b, bcdDevice=45.80
@@ -637,10 +639,10 @@ usb 1-3: Product: EXA-PROG
 usb 1-3: Manufacturer: ERFOS
 usb 1-3: SerialNumber: 58491-80751-303
 cdc_acm 1-3:1.0: ttyACM0: USB ACM device
-\end{verbatim}
+\end{Verbatim}
 If another USB-to-serial interface was previously plugged in,
 the same programmer will register in the system ring buffer as follows:
-\begin{verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{blue}]
 ...
 usb 1-4: new full-speed USB device number 29 using xhci_hcd
 usb 1-4: New USB device found, idVendor=16c0, idProduct=2a9b, bcdDevice=45.80
@@ -649,7 +651,7 @@ usb 1-4: Product: EXA-PROG
 usb 1-4: Manufacturer: ERFOS
 usb 1-4: SerialNumber: 58491-80751-303
 cdc_acm 1-4:1.0: ttyACM1: USB ACM device
-\end{verbatim}
+\end{Verbatim}
 The last line shows that the name has changed from ttyACM0 to ttyACM1.
 This provides this type of ISP programmer a way to correctly set the interface name
 for \textbf{avrdude}.
@@ -661,12 +663,11 @@ With the appropriate DIP switch settings, the Diamex EXA-PROG supports the STK50
 The baud rate of the serial interface (Arduino parameter -b) is set to 115000 and
 usually does not need to be changed with the ISPSPEED parameter.
 Now, loading a standard optiboot bootloader works with the specification of two additional parameters:
-\begin{verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{red}]
 make atmega328p ISP=1 ISPPORT=/dev/ttyACM0 ISPTOOL=stk500
-\end{verbatim}
+\end{Verbatim}
 
-\footnotesize
-\begin{verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{blue},fontsize=\footnotesize]
 Optiboot for 16000000 Hz (16.00 Mhz) operation with Baudrate 115200 and EEprom support configured.
  >>> Start building optiboot for AVR atmega328p:
 LED-Pin PB5 use Pin 19-PDIP28 17-TQFP32, with special functions: SCK PCINT5.
@@ -715,8 +716,7 @@ Writing 1 byte (0xEF) to lock, 1 byte written, 1 verified
 
 Avrdude done.  Thank you.
  
-\end{verbatim}
-\normalsize
+\end{Verbatim}
 Unfortunately, the operating system knows nothing about the ISP programmer connected to the serial interface.
 The programmer's manual or the manufacturer should provide information on setting the ISPTOOL parameter (option -c for \textbf{avrdude}).
 If the ISP programmer was developed as part of a project, the project documentation should hopefully provide guidance.

@@ -403,8 +403,11 @@ Ohne den speed Parameter gibt das stty Programm die Parameter der angegebenen Sc
 aus (stty -F /dev/ttyUSB1).
 Einige Anwendungen wie \textbf{avrdude} können die Baudrate selber einstellen.
 Der komplette Aufruf für das Werkzeug mit dem Beginn der Ausgaben könnte beispielsweise so aussehen:
-\begin{verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{red}]
+
 jpnevulator -a --timing-print --read --tty "/dev/ttyUSB1" --tty "/dev/ttyUSB2"
+\end{Verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{blue}]
 2016-05-29 11:05:06.589614: /dev/ttyUSB0
 30 20                                           0
 2016-05-29 11:05:06.589722: /dev/ttyUSB1
@@ -427,7 +430,7 @@ jpnevulator -a --timing-print --read --tty "/dev/ttyUSB1" --tty "/dev/ttyUSB2"
 2016-05-29 11:05:06.606576: /dev/ttyUSB1
 14 10                                           ..
 ...
-\end{verbatim}
+\end{Verbatim}
 
 
 Daneben hat dat Programm \textbf{avrdude} die Möglichkeit, die Aktivitäten zu protokollieren.

@@ -413,8 +413,11 @@ Without the speed parameter (stty -F /dev/ttyUSB1) the current settings
 of the specified device are shown by stty.
 Some applications like avrdude can set the baud rate itself.
 The full command line with the start of the protocol can be look like:
-\begin{verbatim}
+
+\begin{Verbatim}[frame=single,rulecolor=\color{red}]
 jpnevulator -a --timing-print --read --tty "/dev/ttyUSB1" --tty "/dev/ttyUSB2"
+\end{Verbatim}
+\begin{Verbatim}[frame=single,rulecolor=\color{blue},fontsize=\footnotesize]
 2016-05-29 11:05:06.589614: /dev/ttyUSB0
 30 20                                           0
 2016-05-29 11:05:06.589722: /dev/ttyUSB1
@@ -437,7 +440,7 @@ jpnevulator -a --timing-print --read --tty "/dev/ttyUSB1" --tty "/dev/ttyUSB2"
 2016-05-29 11:05:06.606576: /dev/ttyUSB1
 14 10                                           ..
 ...
-\end{verbatim}
+\end{Verbatim}
 
 The avrdude program also has the option of logging activities.
 This function is switched on with the -v option.

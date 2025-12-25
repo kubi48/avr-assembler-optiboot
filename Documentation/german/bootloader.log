@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.12.11)  15 DEC 2025 23:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.12.11)  25 DEC 2025 17:37
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1162,89 +1162,98 @@ Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
 \multirow@dima=\skip53
 \bigstrutjot=\dimen285
 )
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2024/01/20 4.5c verbatim text (tvz,hv)
+\FV@CodeLineNo=\count307
+\FV@InFile=\read4
+\FV@TabBox=\box65
+\c@FancyVerbLine=\count308
+\FV@StepNumber=\count309
+\FV@OutFile=\write4
+)
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count307
-\l__pdf_internal_box=\box65
+\l__color_backend_stack_int=\count310
+\l__pdf_internal_box=\box66
 )
 (./bootloader.aux (./preface.aux) (./principle.aux) (./AVRhardware.aux)
 (./optiboot.aux) (./AVRdata.aux) (./USBserial.aux) (./build.aux))
 \openout1 = `bootloader.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count308
+\scratchcounter=\count311
 \scratchdimen=\dimen286
-\scratchbox=\box66
-\nofMPsegments=\count309
-\nofMParguments=\count310
+\scratchbox=\box67
+\nofMPsegments=\count312
+\nofMParguments=\count313
 \everyMPshowfont=\toks34
-\MPscratchCnt=\count311
+\MPscratchCnt=\count314
 \MPscratchDim=\dimen287
-\MPnumerator=\count312
-\makeMPintoPDFobject=\count313
+\MPnumerator=\count315
+\makeMPintoPDFobject=\count316
 \everyMPtoPDFconversion=\toks35
 )
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring OFF on input line 23.
+Package hyperref Info: Link coloring OFF on input line 24.
  (./bootloader.out) (./bootloader.out)
-\@outlinefile=\write4
-\openout4 = `bootloader.out'.
+\@outlinefile=\write5
+\openout5 = `bootloader.out'.
 
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 3
-3.
+4.
 
 (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 3
-3.
+4.
 
 (/usr/share/texmf/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-33.
+34.
 
 (/usr/share/texmf/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-33.
+34.
 
 (/usr/share/texmf/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <14.4> on input line 33.
+(Font)              <14.4> on input line 34.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 33.
+(Font)              <10> on input line 34.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 33.
+(Font)              <7> on input line 34.
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 3
-3.
+4.
 
 (/usr/share/texmf/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
@@ -1266,12 +1275,12 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.41 ... ATtiny841 Familie}{50}{subsection.3.9.15}
+l.41 ... ATtiny841 Familie}{49}{subsection.3.9.15}
                                                   % [1
 
 ])
-\tf@toc=\write5
-\openout5 = `bootloader.toc'.
+\tf@toc=\write6
+\openout6 = `bootloader.toc'.
 
  [2]
 \openout2 = `preface.aux'.
@@ -1597,177 +1606,154 @@ Underfull \hbox (badness 10000) in paragraph at lines 1316--1328
 
  []
 
-[39] [40] [41]
-Overfull \hbox (7.44012pt too wide) in paragraph at lines 1497--1497
+[39]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 1373.
+ [40] [41]
+Overfull \hbox (7.44012pt too wide) in paragraph at lines 1489--1489
 []\T1/lmr/bx/n/17.28 Anpassung der Takt-fre-quenz bei in-ter-nem RC-Generator 
  []
 
-[42] [43] [44]
-Overfull \hbox (1.22614pt too wide) in paragraph at lines 1688--1692
-\T1/lmr/m/n/12 Der AT-me-ga32 und der AT-me-ga16 kön-nen 4 ver-schie-de-ne Fre-
-quen-zen mit dem in-ter-nen RC-Generator
- []
-
-[45] [46] [47] [48]
-Overfull \hbox (1.27835pt too wide) in paragraph at lines 2028--2037
-\T1/lmr/m/n/12 Oszillator und der $\OT1/lmr/m/n/12 128\OML/lmm/m/it/12 kHz$ \T1
-/lmr/m/n/12 Takt der Watchdog-Schaltung be-nutzt wer-den. Der $\OT1/lmr/m/n/12 
-6\OML/lmm/m/it/12 :\OT1/lmr/m/n/12 4\OML/lmm/m/it/12 MHz$ \T1/lmr/m/n/12 RC-Osz
-illator
- []
-
-[49]
-Overfull \hbox (6.49998pt too wide) in paragraph at lines 2150--2152
-[]\T1/lmr/m/n/12 Bei al-len un-ter-such-ten Ex-em-pla-ren kann die se-ri-el-le 
-Schnitt-stel-le auch oh-ne die OSCCAL-Korrektur
- []
-
-[50] [51] [52] [53]
-Underfull \hbox (badness 10000) in paragraph at lines 2411--2420
+[42] [43] [44] [45] [46] [47] [48] [49] [50] [51] [52]
+Underfull \hbox (badness 10000) in paragraph at lines 2403--2412
 
  []
 
 
-Overfull \hbox (10.1829pt too wide) in paragraph at lines 2421--2429
-\T1/lmr/m/n/12 Ori-gi-nal Chip von Fu-ture Tech-no-lo-gy De-vi-ces In-ter-na-ti
-o-nal Li-mi-ted (FT-DI) und ein-mal als FT232clone,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2421--2429
+Underfull \hbox (badness 10000) in paragraph at lines 2413--2421
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2430--2447
+Underfull \hbox (badness 10000) in paragraph at lines 2422--2439
 
  []
 
-[54]
-Underfull \hbox (badness 10000) in paragraph at lines 2495--2506
+[53]
+Underfull \hbox (badness 10000) in paragraph at lines 2487--2498
 
  []
 
-[55{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}]
-Underfull \hbox (badness 10000) in paragraph at lines 2546--2557
+
+Underfull \hbox (badness 10000) in paragraph at lines 2538--2549
 
  []
 
-[56] [57]
-Underfull \hbox (badness 10000) in paragraph at lines 2646--2661
+[54{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}] [55]
+Underfull \hbox (badness 10000) in paragraph at lines 2638--2653
+
+ []
+
+[56]
+Underfull \hbox (badness 10000) in paragraph at lines 2654--2666
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2667--2678
+
+ []
+
+[57]
+Underfull \hbox (badness 10000) in paragraph at lines 2754--2768
 
  []
 
 [58]
-Underfull \hbox (badness 10000) in paragraph at lines 2662--2674
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2675--2686
+Underfull \hbox (badness 10000) in paragraph at lines 2822--2843
 
  []
 
 [59]
-Underfull \hbox (badness 10000) in paragraph at lines 2762--2776
-
- []
-
-[60] [61]
-Underfull \hbox (badness 10000) in paragraph at lines 2830--2851
+Underfull \hbox (badness 10000) in paragraph at lines 2853--2857
 
  []
 
 
-Overfull \hbox (5.2993pt too wide) in paragraph at lines 2861--2865
-\T1/lmr/m/n/12 Als ich die Ar-beit mit der \T1/lmr/bx/n/12 op-ti-boot \T1/lmr/m
-/n/12 Um-stel-lung auf As-sem-b-ler und Ein-bau der EEprom-Unterstützung
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2861--2865
+Underfull \hbox (badness 10000) in paragraph at lines 2858--2863
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2866--2871
+Underfull \hbox (badness 10000) in paragraph at lines 2864--2868
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2872--2876
-
- []
-
-[62]
-Underfull \hbox (badness 10000) in paragraph at lines 2877--2889
+Underfull \hbox (badness 10000) in paragraph at lines 2869--2881
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2890--2893
+Underfull \hbox (badness 10000) in paragraph at lines 2882--2885
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2894--2899
+Underfull \hbox (badness 10000) in paragraph at lines 2886--2891
 
  []
 
-) [63]
+) [60]
 \openout2 = `AVRdata.aux'.
 
  (./AVRdata.tex
 Kapitel 4.
-[64
+[61
 
 
 
 
-] [65] [66] [67] [68] [69]) [70]
+] [62] [63] [64] [65] [66]) [67]
 \openout2 = `USBserial.aux'.
 
  (./USBserial.tex
 Kapitel 5.
-[71
 
-
-
-
-]
-Overfull \hbox (160.9117pt too wide) in paragraph at lines 47--47
-[]\T1/lmtt/m/n/12 Bus 002 Device 093: ID 10c4:ea60 Cygnal Integrated Products, 
+Overfull \hbox (60.09871pt too wide) in paragraph at lines 47--47
+[]\T1/lmtt/m/n/10 Bus 002 Device 093: ID 10c4:ea60 Cygnal Integrated Products, 
 Inc. CP210x UART Bridge / myAVR mySmartUSB light[] 
  []
 
 
-Overfull \hbox (105.33667pt too wide) in paragraph at lines 47--47
-[]\T1/lmtt/m/n/12 Bus 002 Device 076: ID 0403:6001 Future Technology Devices In
+Overfull \hbox (12.84885pt too wide) in paragraph at lines 47--47
+[]\T1/lmtt/m/n/10 Bus 002 Device 076: ID 0403:6001 Future Technology Devices In
 ternational, Ltd FT232 Serial (UART) IC[] 
  []
 
-[72] [73] [74]
-Overfull \hbox (105.33667pt too wide) in paragraph at lines 223--223
-[]\T1/lmtt/m/n/12 Bus 002 Device 076: ID 0403:6001 Future Technology Devices In
+[68
+
+
+
+
+] [69]
+Overfull \hbox (12.84885pt too wide) in paragraph at lines 223--223
+[]\T1/lmtt/m/n/10 Bus 002 Device 076: ID 0403:6001 Future Technology Devices In
 ternational, Ltd FT232 Serial (UART) IC[] 
  []
 
-[75] [76] [77] [78] [79] [80]) [81]
+[70] [71] [72] [73]
+Overfull \hbox (18.51662pt too wide) in paragraph at lines 499--505
+\T1/lmr/m/n/10 Bei mei-nem Li-nux Sys-tem wer-den bei ein-ge-steck-tem Po-lo-lu
+ Pro-gram-mer zwei se-ri-el-le Schnitt-stel-len er-kannt, /dev/ttyACM0
+ []
+
+[74] [75]) [76]
 \openout2 = `build.aux'.
 
  (./build.tex
 Kapitel 6.
-[82
+[77
 
 
 
 
-] [83] [84] [85] [86] [87] [88] [89] [90] [91] [92] [93] [94]) [95] [96
+] [78] [79] [80] [81] [82] [83] [84] [85] [86] [87] [88]) [89] [90
 
 
 
-]
-[97] (./bootloader.aux (./preface.aux) (./principle.aux) (./AVRhardware.aux)
+] [91]
+(./bootloader.aux (./preface.aux) (./principle.aux) (./AVRhardware.aux)
 (./optiboot.aux) (./AVRdata.aux) (./USBserial.aux) (./build.aux))
  ***********
 LaTeX2e <2023-11-01> patch level 1
@@ -1777,23 +1763,25 @@ Package rerunfilecheck Info: File `bootloader.out' has not changed.
 (rerunfilecheck)             Checksum: 22E5E7D1D4FB061F5BE77A8A33AB1063;20657.
  ) 
 Here is how much of TeX's memory you used:
- 39763 strings out of 474222
- 942082 string characters out of 5748732
- 1991975 words of memory out of 5000000
- 61211 multiletter control sequences out of 15000+600000
- 615823 words of font info for 71 fonts, out of 8000000 for 9000
+ 40162 strings out of 474222
+ 948505 string characters out of 5748732
+ 1990975 words of memory out of 5000000
+ 61607 multiletter control sequences out of 15000+600000
+ 622764 words of font info for 76 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,9n,107p,499b,606s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/ty
-pe1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></us
-r/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/pub
-lic/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/shar
-e/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/l
-m/lmtt12.pfb>
-Output written on bootloader.pdf (98 pages, 765809 bytes).
+ 99i,9n,107p,499b,658s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/ty
+pe1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></u
+sr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/p
+ublic/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/shar
+e/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm
+/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt
+12.pfb>
+Output written on bootloader.pdf (92 pages, 852491 bytes).
 PDF statistics:
- 1220 PDF objects out of 1440 (max. 8388607)
- 1059 compressed objects within 11 object streams
- 281 named destinations out of 1000 (max. 500000)
+ 1215 PDF objects out of 1440 (max. 8388607)
+ 1052 compressed objects within 11 object streams
+ 275 named destinations out of 1000 (max. 500000)
  651 words of extra memory for PDF output out of 10000 (max. 10000000)
 

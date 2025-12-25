@@ -1610,7 +1610,6 @@ void appStart(uint8_t rstFlags) {
   //  executes before normal c init code) to save R2 to a global variable.
   __asm__ __volatile__ ("mov r2, %0\n" :: "r" (rstFlags));
 #if 1
-  AIND = 0;
   __asm__ __volatile__ (
     // Jump to WDT or RST vector
     "ldi r30,%[rstvec]\n"
